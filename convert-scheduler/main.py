@@ -88,13 +88,13 @@ async def scheduler(args):
 
     iterator = ConvertDataIterator(args.start_meta_id)
     worker_urls = list(map(
-        lambda x: x + settings.CONVERT_PATH,
+        lambda x: 'https://' + x + settings.CONVERT_PATH,
         [
             'web5.arxiv.org',
             'web6.arxiv.org',
             'web7.arxiv.org',
             'web8.arxiv.org',
-            'web9.arxvi.org',
+            'web9.arxiv.org',
             'web10.arxiv.org',
             'arxiv-sync.serverfarm.cornell.edu'
         ]
