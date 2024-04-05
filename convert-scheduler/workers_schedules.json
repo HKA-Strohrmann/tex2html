@@ -36,7 +36,7 @@
     {
         "url": "web10.arxiv.org",
         "intervals": [[0, 20], [21, 24]],
-        "override_days": [4, 5],
+        "override_days": [5],
         "concurrency": 2
 
     },
@@ -50,7 +50,7 @@
     {
         "url": "nexus2.arxiv.org",
         "intervals": [[4, 20]],
-        "override_days": [4, 5],
+        "override_days": [5],
         "concurrency": 2
     }
 ]
