@@ -1,10 +1,13 @@
-from typing import Optional
+from typing import Optional, List
 import random
+from json import loads
 import logging
 import argparse
 import asyncio
 from asyncio.queues import Queue
 import aiohttp
+from datetime import datetime, timedelta
+import pytz
 from pydantic import BaseModel
 
 from sqlalchemy.sql import select
@@ -50,16 +53,19 @@ class ConvertDataIterator:
                         .filter(Metadata.metadata_id == self.current_meta_id)
                     ).first()
                     if item is None:
+                        logger.info(f'No result for {self.current_meta_id}')
                         continue
                     paper_id, version, source_flags, source_format, is_withdrawn = item._t
                     if is_withdrawn or not 'tex' in source_format:
+                        logger.info(f'Not converting {self.current_meta_id} - withdrawn or no TeX source')
                         continue
                     return ConvertData(
                         paper_id=paper_id,
                         version=version,
                         single_file=('1' in source_flags)
                     )
-                except:
+                except Exception as e:
+                    logger.warn(f'Error converting {self.current_meta_id} with {e}')
                     continue
                 finally:
                     self.current_meta_id -= 1
@@ -67,43 +73,52 @@ class ConvertDataIterator:
 
 async def scheduler(args):
 
-    async def worker (url: str, queue: Queue, args):
+    async def worker (url: str, intervals: List[List[int]], queue: Queue, args):
         print (f"STARTING WORKER {url}")
         async with aiohttp.ClientSession() as session:
             while True:
-                convert_data: ConvertData = await queue.get()
-
-                if convert_data is None:
-                    queue.task_done()
-                    break
+                now = datetime.now(tz=pytz.timezone('US/Eastern'))
+                in_interval = False
+                min_next_hour = 25
+                for interval in intervals:
+                    if now.hour > interval[0] and now.hour < interval[1]:
+                        in_interval = True
+                        break
+                    if now.hour < interval[0] and interval[0] < min_next_hour:
+                        min_next_hour = interval[0]
                 
-                print (f'SENDING {convert_data} to {url}')
-                logger.info(f'SENDING {convert_data} to {url}')
-                if not args.dry_run:
-                    async with session.post(url, json=convert_data.json()) as response:
-                        await response.text
+                if in_interval:
+                    convert_data: ConvertData = await queue.get()
+
+                    if convert_data is None:
+                        queue.task_done()
+                        break
+                    
+                    print (f'SENDING {convert_data} to {url}')
+                    logger.info(f'SENDING {convert_data} to {url}')
+                    if not args.dry_run:
+                        async with session.post(url, json=convert_data.json()) as response:
+                            await response.text
+                    else:
+                        await asyncio.sleep(random.randint(1, 5))
+                    queue.task_done()
                 else:
-                    await asyncio.sleep(random.randint(1, 5))
-                queue.task_done()
+                    await asyncio.sleep((now.replace(hour=min_next_hour, minute=0, second=0)-now).total_seconds())
 
     iterator = ConvertDataIterator(args.start_meta_id)
-    worker_urls = list(map(
-        lambda x: 'https://' + x + settings.CONVERT_PATH,
-        [
-            'web5.arxiv.org',
-            'web6.arxiv.org',
-            'web7.arxiv.org',
-            'web8.arxiv.org',
-            'web9.arxiv.org',
-            'web10.arxiv.org',
-            'arxiv-sync.serverfarm.cornell.edu'
-        ]
-    ))
 
-    max_q_size = len(worker_urls)
+    with open('workers_schedules.json') as f:
+        workers_schedules = loads(f.read())
+
+    print (workers_schedules)
+
+    max_q_size = len(workers_schedules)
     queue = Queue(maxsize=max_q_size)
 
-    workers = [asyncio.create_task(worker(url, queue, args)) for url in worker_urls]
+    workers = [asyncio.create_task(worker('https://' + item['url'] + settings.CONVERT_PATH, 
+                                          item['intervals'],
+                                          queue, 
+                                          args)) for item in workers_schedules]
 
     while True:
         if queue.qsize() < max_q_size:

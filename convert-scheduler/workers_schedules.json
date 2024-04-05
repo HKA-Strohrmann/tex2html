@@ -1,0 +1,34 @@
+[
+    {
+        "url": "web5.arxiv.org",
+        "intervals": null
+    },
+    {
+        "url": "web6.arxiv.org",
+        "intervals": null
+    },
+    {
+        "url": "web7.arxiv.org",
+        "intervals": null
+    },
+    {
+        "url": "web8.arxiv.org",
+        "intervals": null
+    },
+    {
+        "url": "web9.arxiv.org",
+        "intervals": null
+    },
+    {
+        "url": "web10.arxiv.org",
+        "intervals": [[0, 20], [21, 24]]
+    },
+    {
+        "url": "arxiv-sync.serverfarm.cornell.edu",
+        "intervals": null
+    },
+    {
+        "url": "nexus2.arxiv.org",
+        "intervals": [[4, 20]]
+    }
+]
