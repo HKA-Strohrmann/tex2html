@@ -64,6 +64,7 @@ class ConvertDataIterator:
                     self.current_meta_id -= 1
         raise StopIteration
 
+import random
 async def scheduler(args):
 
     async def worker (url: str, queue: Queue, args):
@@ -82,8 +83,7 @@ async def scheduler(args):
                     async with session.post(url, json=convert_data.json()) as response:
                         await response.text
                 else:
-                    await asyncio.sleep(0.5)
-
+                    await asyncio.sleep(random.randint(1, 5))
                 queue.task_done()
 
     iterator = ConvertDataIterator(args.start_meta_id)
