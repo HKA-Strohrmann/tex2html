@@ -82,7 +82,7 @@ async def scheduler(args):
                     async with session.post(url, json=convert_data.json()) as response:
                         await response.text
                 else:
-                    asyncio.sleep(0.5)
+                    await asyncio.sleep(0.5)
 
                 queue.task_done()
 
