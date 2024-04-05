@@ -9,9 +9,8 @@ from pydantic import BaseModel
 from sqlalchemy.sql import select
 from sqlalchemy.sql.expression import func
 
-from arxiv.db import get_db
 from arxiv.db.models import Metadata
-from arxiv.identifier import Identifier
+from arxiv.db import get_db, SessionLocal
 
 from config import settings
 
@@ -26,34 +25,17 @@ class ConvertData (BaseModel):
     version: int
     single_file: bool
 
-async def worker (url: str, queue: Queue, args):
-    async with aiohttp.ClientSession() as session:
-        while True:
-            convert_data: ConvertData = await queue.get()
-
-            if convert_data is None:
-                queue.task_done()
-                break
-            
-            logger.info(f'SENDING {convert_data} to {url}')
-            if not args.dry_run:
-                async with session.post(url, json=convert_data.json()) as response:
-                    await response.text
-            else:
-                asyncio.sleep(0.5)
-
-            queue.task_done()
-
 class ConvertDataIterator:
 
     def __init__ (self, starting_meta_id: Optional[int] = None):
         if starting_meta_id is None:
             with get_db() as session:
                 self.current_meta_id = session.scalar(
-                    func.max(Metadata.metadata_id)
+                    select(func.max(Metadata.metadata_id))
                 )
         else:
             self.current_meta_id = starting_meta_id
+        print (self.current_meta_id)
         
     def __iter__ (self) -> 'ConvertDataIterator':
         return self
@@ -62,16 +44,14 @@ class ConvertDataIterator:
         with get_db() as session:
             while self.current_meta_id >= 0:
                 try:
-                    item = session.scalar (
+                    item = session.execute (
                         select(Metadata.paper_id, Metadata.version, Metadata.source_flags, Metadata.source_format, Metadata.is_withdrawn)
                         .filter(Metadata.metadata_id == self.current_meta_id)
-                    )
+                    ).first()
                     if item is None:
-                        self.current_meta_id -= 1
                         continue
-                    paper_id, version, source_flags, source_format, is_withdrawn = item
+                    paper_id, version, source_flags, source_format, is_withdrawn = item._t
                     if is_withdrawn or not 'tex' in source_format:
-                        self.current_meta_id -= 1
                         continue
                     return ConvertData(
                         paper_id=paper_id,
@@ -79,13 +59,35 @@ class ConvertDataIterator:
                         single_file=('1' in source_flags)
                     )
                 except:
-                    self.current_meta_id -= 1
                     continue
+                finally:
+                    self.current_meta_id -= 1
         raise StopIteration
 
 async def scheduler(args):
+
+    async def worker (url: str, queue: Queue, args):
+        print (f"STARTING WORKER {url}")
+        async with aiohttp.ClientSession() as session:
+            while True:
+                convert_data: ConvertData = await queue.get()
+
+                if convert_data is None:
+                    queue.task_done()
+                    break
+                
+                print (f'SENDING {convert_data} to {url}')
+                logger.info(f'SENDING {convert_data} to {url}')
+                if not args.dry_run:
+                    async with session.post(url, json=convert_data.json()) as response:
+                        await response.text
+                else:
+                    asyncio.sleep(0.5)
+
+                queue.task_done()
+
     iterator = ConvertDataIterator(args.start_meta_id)
-    worker_urls = map(
+    worker_urls = list(map(
         lambda x: x + settings.CONVERT_PATH,
         [
             'web5.arxiv.org',
@@ -96,7 +98,7 @@ async def scheduler(args):
             'web10.arxiv.org',
             'arxiv-sync.serverfarm.cornell.edu'
         ]
-    )
+    ))
 
     max_q_size = len(worker_urls)
     queue = Queue(maxsize=max_q_size)
