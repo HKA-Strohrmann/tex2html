@@ -8,7 +8,7 @@ from filelock import FileLock
 @contextmanager
 def id_lock (id: str, lock_dir: str, timeout: float = -1) -> Generator[None, None, None]:
     if not os.path.exists(lock_dir):
-        os.makedirs(lock_dir)
+        os.makedirs(lock_dir, exist_ok=True)
     lock = FileLock(os.path.join(lock_dir, f'{id}.lock'), thread_local=False, timeout=timeout)
     try:
         lock.acquire()

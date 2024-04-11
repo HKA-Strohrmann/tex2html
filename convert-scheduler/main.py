@@ -139,7 +139,7 @@ async def scheduler(args):
                                           queue, 
                                           args)) for _ in range(item['concurrency'])])
     
-    while True or (count >= 1000 and args.timing_test):
+    while True or (count > 300 and args.timing_test):
         if queue.qsize() < max_q_size:
             try:
                 conv_data = next(iterator)

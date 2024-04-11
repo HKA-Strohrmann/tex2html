@@ -24,6 +24,7 @@ from ...domain.conversion import (
 from ...domain.publish import PublishPayload
 from .main_src import find_main_tex_source
 from .writable_gs_obj_store import WritableGSObjectStore
+from tex_inspection import find_primary_tex, ZeroZeroReadMe
 
 def sub_src_path (payload: SubmissionConversionPayload) -> str:
     src_ext = '.gz' if payload.single_file else '.tar.gz'
@@ -78,12 +79,10 @@ class FileManager:
             checksum = _get_checksum(input_bytes)
         
         if payload.single_file:
-            with open(f'{self.local_conversion_store.prefix}{payload.name}/{src.name}', 'wb+') as local_file:
-                input_bytes = ungzip_file.read()
-                checksum = _get_checksum(input_bytes)
+            with open(f'{self.local_conversion_store.prefix}{payload.name}.tex', 'wb+') as local_file:
                 local_file.write(input_bytes)
 
-            main_src_obj = self.local_conversion_store.to_obj(f'{payload.name}/{src.name}')
+            main_src_obj = self.local_conversion_store.to_obj(f'{payload.name}.tex')
             assert isinstance(main_src_obj, LocalFileObj)
 
             return checksum, main_src_obj
@@ -91,9 +90,12 @@ class FileManager:
         with tarfile.open(fileobj=BytesIO(input_bytes)) as tar:
             tar.extractall(self.local_conversion_store.prefix+payload.name)
 
-        main_src = find_main_tex_source(self.local_conversion_store.prefix+payload.name)
+        in_dir = self.local_conversion_store.prefix+payload.name
+        main_src = find_primary_tex(in_dir, ZeroZeroReadMe(in_dir))[0]
+        print (f'MAIN SRC: {main_src}')
 
-        main_src_obj = self.local_conversion_store.to_obj(os.path.relpath(main_src, self.local_conversion_store.prefix))
+        main_src_obj = self.local_conversion_store.to_obj(os.path.relpath(f'{in_dir}/{main_src}', self.local_conversion_store.prefix))
+        print (f'MAIN SRC OBJ: {main_src_obj}, ID: {payload.name}')
         assert isinstance(main_src_obj, LocalFileObj)
 
         return checksum, main_src_obj
