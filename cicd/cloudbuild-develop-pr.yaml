@@ -6,12 +6,21 @@ steps:
     args:
       - 'build'
       - '--cache-from'
+      - '--gcr.io/$PROJECT_ID/ar5ivist-base:latest'
+      - '-t'
+      - '--gcr.io/$PROJECT_ID/ar5ivist-base:latest'
+      - '-f'
+      - './conversion-container/dockerfiles/'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--cache-from'
       - 'gcr.io/$PROJECT_ID/html-conversion:latest'
       - '-t'
       - 'gcr.io/$PROJECT_ID/html-conversion:$COMMIT_SHA'
       - '-t'
       - 'gcr.io/$PROJECT_ID/html-conversion:latest'
-      - './ConversionContainer/'
+      - './conversion-container/'
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - push
