@@ -3,6 +3,9 @@ steps:
     entrypoint: 'bash'
     args: ['-c', 'docker pull gcr.io/$PROJECT_ID/html-conversion:latest || echo "need a :latest because we use it for cache-from" && exit 0']
   - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['-c', 'docker pull gcr.io/$PROJECT_ID/ar5ivist-base:latest || echo "need a :latest because we use it for cache-from" && exit 0']
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
       - '--cache-from'
