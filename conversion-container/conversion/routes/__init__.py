@@ -6,7 +6,6 @@ import logging
 import json
 from base64 import b64decode
 
-import flask
 from flask import Blueprint, request, jsonify, \
     current_app, Response
 
@@ -20,6 +19,7 @@ from ..processes.publish import publish
 from ..domain.conversion import SubmissionConversionPayload, \
     DocumentConversionPayload
 from ..domain.publish import PublishPayload
+from ..services.db import get_document_is_single_file
 
 from .flask_thread import FlaskThread
 
@@ -39,9 +39,10 @@ def unwrap_submission_conversion_payload (payload: Dict[str, Any]) -> Submission
 
 def unwrap_document_conversion_payload (payload: Dict[str, str]) -> DocumentConversionPayload:
     data = _unwrap_pubsub_payload(payload)
+    identifier = Identifier(f"{data['paper_id']}v{data['version']}")
     return DocumentConversionPayload(
-        identifier=Identifier(f"{data['paper_id']}v{data['version']}"),
-        single_file=data['single_file']
+        identifier=identifier,
+        single_file=get_document_is_single_file(identifier)
     )
 
 def unwrap_publish_payload (payload: Dict[str, str]) -> PublishPayload:

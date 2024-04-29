@@ -217,3 +217,11 @@ def get_version_primary_category (identifier: Identifier) -> Optional[str]:
         .filter(Metadata.version == identifier.version)
     )
     return row.split(' ')[0] if row else None
+
+def get_document_is_single_file (identifier: Identifier) -> bool:
+    source_flags = session.scalar(
+        select(Metadata.source_flags)
+        .filter(Metadata.paper_id == identifier.id)
+        .filter(Metadata.version == identifier.version)
+    )
+    return '1' in source_flags if source_flags else False
