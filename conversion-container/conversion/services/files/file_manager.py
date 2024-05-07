@@ -75,6 +75,7 @@ class FileManager:
 
         if isinstance(payload, DocumentConversionPayload):
             src = UngzippedFileObj(self.doc_src_store.to_obj(doc_src_path(payload)))
+            print (f'SOURCE_PATH: {doc_src_path(payload)}')
         else:
             assert isinstance(payload, SubmissionConversionPayload)
             src = UngzippedFileObj(self.sub_src_store.to_obj(sub_src_path(payload)))

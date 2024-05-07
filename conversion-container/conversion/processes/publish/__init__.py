@@ -20,21 +20,6 @@ from .fastly_purge import fastly_purge_abs
 logger = logging.getLogger()
 
 def publish (payload: PublishPayload) -> None:
-    """Triggered from a message on a Cloud Pub/Sub topic.
-    Args:
-         paylod (dict): Event payload containing a base64 encoded 
-                        string of the json in the ['message']['data'] key    
-    Steps:
-      1. Parse out fields from json payload
-      2. Query arXiv_latexml_sub to check for html for submission
-         [continue to step 3 if exists else end]
-      3. Copy HTML directory from latexml_submission_converted to 
-         latexml_arxiv_id_converted with new name
-      4. Write new row to arXiv_latexml_doc
-      5. Delete from latexml_submission_converted
-
-    """
-
     try:
         # Check if there is an existing conversion for given submission.
         submission_row = get_submission_with_html (payload.submission_id)
@@ -75,8 +60,6 @@ def publish (payload: PublishPayload) -> None:
         # Purge abs page from fastly so we can see it
         if not current_app.config['IS_DEV']:
             fastly_purge_abs(payload.paper_id, current_app.config['FASTLY_PURGE_KEY'])
-
-    # TODO: Clean this shit up
     except Exception as e:
         try:
             logger.warning(f'Error publishing {payload}', exc_info=True)
