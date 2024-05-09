@@ -1,5 +1,9 @@
 # syntax=docker/dockerfile:1
 
+# This dockerfile is for doing full corpus convert.
+# It needs to be run with the correct environment 
+# variables and google application credentials
+
 FROM ar5ivist-base
 
 ######## Install Python 3.11 ########
