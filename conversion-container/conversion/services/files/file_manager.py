@@ -145,12 +145,12 @@ class FileManager:
 
     def clean_up_publish(self, payload: PublishPayload) -> None:
         try:
-            shutil.rmtree(self.local_publish_store.prefix + payload.submission_id)
-        except:
+            shutil.rmtree(f"{self.local_publish_store.prefix}{payload.submission_id}")
+        except Exception:
             pass
         try:
             shutil.rmtree(self.local_publish_store.prefix + payload.paper_id.idv)
-        except:
+        except Exception:
             pass
 
     def download_submission_conversion(self, payload: PublishPayload) -> None:

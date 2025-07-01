@@ -33,6 +33,8 @@ def generate_metadata_convert(payload: ConversionPayload, missing_packages: List
                 "base_url": f'{current_app.config["VIEW_SUB_BASE"]}/html/submission/{payload.identifier}/view',
             }
         )
+    else:
+        raise ValueError(f"Unknown payload type: {type(payload)}")
 
 
 def generate_metadata_publish(payload: PublishPayload, existing_metadata: str) -> str:

@@ -231,4 +231,4 @@ def get_document_is_latest(identifier: Identifier) -> bool:
         .filter(Metadata.paper_id == identifier.id)
         .filter(Metadata.version == identifier.version)
     )
-    return latest if latest is not None else True
+    return bool(latest) if latest is not None else True

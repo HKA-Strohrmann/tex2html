@@ -90,7 +90,7 @@ def process_full_corpus() -> Response:
     except Exception as e:
         print(f"PROCESS_FULL_CORPUS: Failed to parse payload for {request.get_json(silent=True)} with {e}")
         logger.warn(
-            f"PROCESS_FULL_CORPUS: Failed to parse payload for {request.get_json(silent=True)} with {e}", exc_info=1
+            f"PROCESS_FULL_CORPUS: Failed to parse payload for {request.get_json(silent=True)} with {e}", exc_info=True
         )
         return Response(status=202)
     print(doc_conversion_payload)
@@ -107,7 +107,7 @@ def process_full_corpus() -> Response:
 @blueprint.route("/single-convert", methods=["POST"])
 def single_convert_route() -> Response:
     try:
-        doc_conversion_payload = unwrap_document_conversion_payload(request.json)
+        doc_conversion_payload = unwrap_document_conversion_payload(request.get_json())
     except Exception:
         try:
             logger.warn(f"PROCESS: Failed to parse payload for {request.json}")
@@ -115,7 +115,7 @@ def single_convert_route() -> Response:
             logger.warn("PROCESS: Failed to process due to malformed payload")
         return Response(status=202)
     process(doc_conversion_payload)
-    return "", 200
+    return Response(status=200)
 
 
 # @blueprint.route('/reconvert-submission', methods=['POST'])
