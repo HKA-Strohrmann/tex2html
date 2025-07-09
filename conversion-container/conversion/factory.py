@@ -1,10 +1,11 @@
 from typing import Any, Dict
 
-from flask import Flask
 from arxiv.base import Base
+from flask import Flask
 
 from .config import Settings
 from .routes import blueprint
+
 
 def create_web_app(**kwargs: Dict[str, Any]) -> Flask:
     """
@@ -27,7 +28,7 @@ def create_web_app(**kwargs: Dict[str, Any]) -> Flask:
     app.config.from_object(settings)
 
     Base(app)
-   
+
     app.register_blueprint(blueprint)
 
     return app
