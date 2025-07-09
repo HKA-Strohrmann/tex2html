@@ -1,11 +1,12 @@
 import hashlib
 import os
+import re
 import shutil
 import tarfile
 from io import BytesIO
 from pathlib import Path
 
-from arxiv.files import LocalFileObj, UngzippedFileObj
+from arxiv.files import FileObj, LocalFileObj, UngzippedFileObj
 from arxiv.files.key_patterns import abs_path_current_parent, abs_path_orig_parent
 from arxiv.files.object_store import LocalObjectStore, ObjectStore
 from tenacity import retry, stop_after_attempt, wait_fixed
@@ -21,8 +22,7 @@ from .writable_gs_obj_store import WritableGSObjectStore
 
 
 def sub_src_path(payload: SubmissionConversionPayload) -> str:
-    src_ext = ".gz" if payload.single_file else ".tar.gz"
-    return f"{payload.identifier}/{payload.identifier}{src_ext}"
+    return f"{payload.identifier}/{payload.identifier}.tar.gz"
 
 
 def doc_src_path(payload: DocumentConversionPayload) -> str:
@@ -66,13 +66,10 @@ class FileManager:
 
     @retry(stop=stop_after_attempt(6), wait=wait_fixed(10))
     def download_source(self, payload: ConversionPayload) -> tuple[str, LocalFileObj]:
-        """Download the src files and return the main tex file."""
-        if isinstance(payload, DocumentConversionPayload):
-            src = UngzippedFileObj(self.doc_src_store.to_obj(doc_src_path(payload)))
-            print(f"SOURCE_PATH: {doc_src_path(payload)}")
-        else:
-            assert isinstance(payload, SubmissionConversionPayload)
-            src = UngzippedFileObj(self.sub_src_store.to_obj(sub_src_path(payload)))
+        """
+        Download the src files and return the main tex file
+        """
+        src = self.source_payload_to_file_obj(payload)
 
         with src.open("rb") as ungzip_file:
             input_bytes = ungzip_file.read()
@@ -101,6 +98,22 @@ class FileManager:
         assert isinstance(main_src_obj, LocalFileObj)
 
         return checksum, main_src_obj
+
+    def source_payload_to_file_obj(self, payload: ConversionPayload) -> FileObj:
+        if isinstance(payload, DocumentConversionPayload):
+            return UngzippedFileObj(self.doc_src_store.to_obj(doc_src_path(payload)))
+        else:
+            assert isinstance(payload, SubmissionConversionPayload)
+            sub_path = sub_src_path(payload)
+            store_obj = self.sub_src_store.to_obj(sub_path)
+            if not (store_obj.exists()) and sub_path.endswith(".tar.gz"):
+                sub_path = re.sub(".tar.gz$", ".gz", sub_path)
+                gz_store_obj = self.sub_src_store.to_obj(sub_path)
+                # if we successfully find a .gz, it was a single_file upload, use that.
+                if gz_store_obj.exists():
+                    store_obj = gz_store_obj
+                    payload.single_file = True
+            return UngzippedFileObj(store_obj)
 
     def latexml_output_dir_name(self, payload: ConversionPayload) -> str:
         return f"{self.local_conversion_store.prefix}{payload.name}/html/{payload.name}/"
