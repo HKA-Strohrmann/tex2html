@@ -1,4 +1,3 @@
-import tempfile
 from os.path import abspath, dirname
 
 import pytest
@@ -11,31 +10,25 @@ LATEXML_DB_URI = "sqlite:///:memory:?cache=latexml"
 CLASSIC_DATABASE_URI = "sqlite:///:memory:"
 
 TESTING_CONFIG = {
-    "QA_BUCKET_SUB": "latexml_qa",
-    "QA_BUCKET_DOC": "gs://latexml_qa_doc",
+    "QA_BUCKET_SUB": "",
+    "QA_BUCKET_DOC": f"{package_path}/tests/data/",
     "LATEXML_COMMIT": "test_commit_version",
     "LATEXML_DB_URI": LATEXML_DB_URI,
     "LOCK_DIR": "/arxiv/locks",
     "SUBMISSION_SOURCE_BUCKET": f"{package_path}/tests/data/",
     "DOCUMENT_SOURCE_BUCKET": f"{package_path}/tests/data/",
-    "SUBMISSION_CONVERTED_BUCKET": "gs://latexml_submission_converted",
-    "DOCUMENT_CONVERTED_BUCKET": "gs://latexml_arxiv_id_converted",
-    "RAW_LATEXML_SUBMISSION": "gs://raw_latexml_sub_dev",
+    "SUBMISSION_CONVERTED_BUCKET": f"{package_path}/tests/data/",
+    "DOCUMENT_CONVERTED_BUCKET": f"{package_path}/tests/data/",
+    "RAW_LATEXML_SUBMISSION": "",
     "LATEXML_URL_BASE": "/static/browse/0.3.4",
-    "VIEW_SUB_BASE": "https://services.dev.arxiv.org",
-    "VIEW_DOC_BASE": "https://arxiv-browse-html-6lhtms3oua-uc.a.run.app",
+    "VIEW_SUB_BASE": "",
+    "VIEW_DOC_BASE": "",
+    "IS_TESTING": True,
 }
 
 
 def test_config():
     return TESTING_CONFIG.copy()
-
-
-@pytest.fixture(scope="session")
-def test_dir():
-    db_path = tempfile.mkdtemp()
-    yield db_path
-    # shutil.rmtree(db_path)
 
 
 @pytest.fixture(scope="function")

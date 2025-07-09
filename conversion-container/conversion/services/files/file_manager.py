@@ -58,17 +58,13 @@ class FileManager:
         assert isinstance(local_publish_store, LocalObjectStore)
         self.local_publish_store = local_publish_store
 
-        assert isinstance(sub_converted_store, WritableGSObjectStore)
         self.sub_converted_store = sub_converted_store
 
-        assert isinstance(doc_converted_store, WritableGSObjectStore)
         self.doc_converted_store = doc_converted_store
 
     @retry(stop=stop_after_attempt(6), wait=wait_fixed(10))
     def download_source(self, payload: ConversionPayload) -> tuple[str, LocalFileObj]:
-        """
-        Download the src files and return the main tex file
-        """
+        """Download the src files and return the main tex file."""
         src = self.source_payload_to_file_obj(payload)
 
         with src.open("rb") as ungzip_file:
@@ -123,27 +119,28 @@ class FileManager:
 
     def upload_latexml(self, payload: ConversionPayload) -> None:
         """
-        Upload the latexml and metadata for the given payload. Delete the
-        working directory for the payload after.
+        Upload the latexml and metadata for the given payload.
+
+        Deletes the working directory for the payload after.
         """
         src_dir = self._upload_dir_name(payload)
         if isinstance(payload, DocumentConversionPayload):
-            print(f"Uploading to bucket: {self.doc_converted_store.bucket}")
-            self.doc_converted_store.copy_local_dir(self.latexml_output_dir_name(payload), payload.name)
+            if isinstance(self.doc_converted_store, WritableGSObjectStore):
+                print(f"Uploading to bucket: {self.doc_converted_store.bucket}")
+                self.doc_converted_store.copy_local_dir(self.latexml_output_dir_name(payload), payload.name)
         else:
             destination_fname = f"{src_dir}{payload.name}.tar.gz"
             with tarfile.open(destination_fname, "w:gz") as tar:
                 tar.add(f"{src_dir}/{payload.name}", arcname=str(payload.name))
-            self.sub_converted_store.write_obj(
-                LocalFileObj(Path(destination_fname)), self.sub_converted_store.bucket.blob(f"{payload.name}.tar.gz")
-            )
+            if isinstance(self.sub_converted_store, WritableGSObjectStore):
+                self.sub_converted_store.write_obj(
+                    LocalFileObj(Path(destination_fname)),
+                    self.sub_converted_store.bucket.blob(f"{payload.name}.tar.gz"),
+                )
         self.clean_up_conversion(payload)
 
     def remove_ltxml(self, payload: ConversionPayload) -> None:
-        """
-        Remove files with the .ltxml extension from the working
-        directory of the payload.
-        """
+        """Remove files with the .ltxml extension from the working directory of the payload."""
         for root, _, files in os.walk(self.local_conversion_store.prefix + payload.name):
             for file in files:
                 if str(file).endswith(".ltxml"):
@@ -181,7 +178,8 @@ class FileManager:
     # TODO: refactor so publish and convert can both use
     def upload_document_conversion(self, payload: PublishPayload) -> None:
         # Upload directory back
-        self.doc_converted_store.copy_local_dir(
-            self.local_publish_store.prefix + payload.paper_id.idv, payload.paper_id.idv
-        )
+        if isinstance(self.doc_converted_store, WritableGSObjectStore):
+            self.doc_converted_store.copy_local_dir(
+                self.local_publish_store.prefix + payload.paper_id.idv, payload.paper_id.idv
+            )
         print(f"successfully uploaded to bucket for {payload}")
