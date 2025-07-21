@@ -14,9 +14,12 @@ MISSING_PACKAGE_RE = re.compile(
 )
 
 
-def format_missing_dependency(name: str, message_fragment: str) -> str:
+def format_missing_dependency(name: str, message_fragment: str) -> str | None:
     if name.endswith((".sty", ".cls")):
         return name
+    # Ignore some common low-level issues, this report focuses on the high-level latexml requirements
+    elif name.endswith((".css", ".js", ".tex", ".ltx", ".def")):
+        return None
     else:
         ext = "cls" if message_fragment == "binding for class" else "sty"
         return f"{name}.{ext}"
@@ -24,7 +27,7 @@ def format_missing_dependency(name: str, message_fragment: str) -> str:
 
 def list_missing_packages(latexml_log: str) -> list[str]:
     matches = MISSING_PACKAGE_RE.findall(latexml_log)
-    return list(map(lambda match: format_missing_dependency(match[0], match[1]), matches))
+    return list(filter(None, map(lambda match: format_missing_dependency(match[0], match[1]), matches)))
 
 
 def latexml(payload: ConversionPayload, main_src: LocalFileObj) -> LaTeXMLOutput:

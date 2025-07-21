@@ -11,6 +11,8 @@ Warning:missing_file:xifthen Can't find package xifthen
 Warning:missing_file: fail.
 Warning:missing_file:biblatex.sty biblatex.sty is only minimally stubbed and will not be interpreted raw.
 Info:fallback:revtex4-2.cls Interpreted 4-2 as a versioned package/class name, falling back to generic revtex.cls
+Warning:missing_file:/static/browse/0.3.4/css/ar5iv.0.7.9.min.css Couldn't find resource file...
+Warning:missing_file:/static/browse/0.3.4/js/addons_new.js Couldn't find resource file...
 """
     missing_packages = list_missing_packages(latexml_log)
     assert missing_packages == [
