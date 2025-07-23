@@ -47,8 +47,10 @@ def latexml(payload: ConversionPayload, workdir: Path) -> LaTeXMLOutput:
         ],
     )
     LATEXML_PRELOADS = current_app.config.get("LATEXML_PRELOADS", ["ar5iv.sty"])
-    LATEXML_LOG_FILE = current_app.config.get("LATEXML_LOG_FILE", f"{workdir}/__stdout.txt")
-    output_path = f"{get_file_manager().latexml_output_dir_name(payload)}{payload.name}.html"
+    LATEXML_LOG_FILE = current_app.config.get("LATEXML_LOG_FILE", "__stdout.txt")
+    output_dirname = get_file_manager().latexml_output_dir_name(payload)
+    output_path = f"{output_dirname}{payload.name}.html"
+    log_path = f"{output_dirname}{LATEXML_LOG_FILE}"
 
     latexml_config = [
         "latexmlc",
@@ -70,7 +72,7 @@ def latexml(payload: ConversionPayload, workdir: Path) -> LaTeXMLOutput:
         "--navigationtoc=context",
         "--whatsin=directory",
         f"--source={workdir}",
-        f"--log={LATEXML_LOG_FILE}",
+        f"--log={log_path}",
         f"--dest={output_path}",
     ]
     for preload in LATEXML_PRELOADS:

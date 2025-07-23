@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from conversion.domain.conversion import LaTeXMLOutput, SubmissionConversionPayload
+from conversion.services.files import get_file_manager
 from conversion.services.latexml import latexml
 
 
@@ -14,16 +15,19 @@ def call_bare_latexml(app, config=dict | None) -> LaTeXMLOutput:
         with tempfile.TemporaryDirectory() as workdir:
             app.config["LOCAL_CONVERSION_DIR"] = workdir
             app.config["LOCAL_PUBLISH_DIR"] = f"{workdir}/html"
-            app.config["LATEXML_LOG_FILE"] = f"{workdir}/__stdout.txt"
+            app.config["LATEXML_LOG_FILE"] = "__stdout.txt"
             # Empty, we do not have the dockerized ar5iv additions here
             app.config["LATEXML_PATHS"] = []
             app.config["LATEXML_PRELOADS"] = []
             for key, value in config.items():
                 app.config[key] = value
-            latexml_log_path = Path(app.config["LATEXML_LOG_FILE"])
             with open(f"{workdir}/test.tex", "w") as file:
                 file.write(config["TEST_TEX_CONTENT"])
-            result = latexml(SubmissionConversionPayload(identifier=123, single_file=None), Path(workdir))
+            payload = SubmissionConversionPayload(identifier=123, single_file=None)
+            output_dirname = get_file_manager().latexml_output_dir_name(payload)
+            result = latexml(payload, Path(workdir))
+
+            latexml_log_path = Path(output_dirname + app.config["LATEXML_LOG_FILE"])
             assert latexml_log_path.exists()
             with open(latexml_log_path) as latexml_log_file:
                 result.log = latexml_log_file.read()
