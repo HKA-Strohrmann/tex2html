@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install a generic LaTeXML
+        run: |
+          sudo apt-get -q update
+          sudo apt-get -qy install latexml
       - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v3
