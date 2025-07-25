@@ -134,7 +134,7 @@ def latexml(payload: ConversionPayload, workdir: Path) -> LaTeXMLOutput:
     # Note: latexml will write the full conversion log at the path specified by `--log=[path]`,
     # so we can keep the current __stdout.txt convention for now by copying the deposited log.
     return LaTeXMLOutput(
-        missing_packages=list_missing_packages(Path(LATEXML_LOG_FILE)),
+        missing_packages=list_missing_packages(Path(log_path)),
         log=None,  # use the file from --log
         returncode=returncode,
     )
