@@ -75,7 +75,7 @@ def latexml(payload: ConversionPayload, workdir: Path) -> LaTeXMLOutput:
     )
     LATEXML_PRELOADS = current_app.config.get("LATEXML_PRELOADS", ["ar5iv.sty"])
     LATEXML_LOG_FILE = current_app.config.get("LATEXML_LOG_FILE", "__stdout.txt")
-    LATEXML_TIMEOUT_SEC = int(current_app.config.get("LATEXML_TIMEOUT_SEC", 600))
+    LATEXML_TIMEOUT_SEC = int(current_app.config.get("LATEXML_TIMEOUT_SEC", 540))
     # Always clean up before executing the latexml call, this is too important
     # for service health, so we tightly couple it with this call.
     # (at least for now)
