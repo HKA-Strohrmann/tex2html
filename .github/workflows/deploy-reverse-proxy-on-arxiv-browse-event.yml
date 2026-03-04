@@ -1,0 +1,41 @@
+name: Trigger reverse proxy GCP deployments when arxiv-browse updates
+
+on:
+  repository_dispatch:
+    types: [arxiv-browse-updated]
+
+jobs:
+  resolve-environment:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-env.outputs.environment }}
+    steps:
+      - name: Set target environment
+        id: set-env
+        run: |
+          if [[ "${{ github.event.client_payload.branch }}" == "master" ]]; then
+            echo "environment=production" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event.client_payload.branch }}" == "develop" ]]; then
+            echo "environment=development" >> $GITHUB_OUTPUT
+          else
+            echo "No matching environment for branch ${{ github.event.client_payload.branch }}"
+            exit 1
+          fi
+
+  run-the-reverse-proxy-build-trigger:
+    needs: resolve-environment
+    runs-on: ubuntu-latest
+    environment: ${{ needs.resolve-environment.outputs.environment }}
+
+    steps:
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.PROVIDER_NAME }}
+          service_account: ${{ vars.SERVICE_ACCOUNT }}
+
+      - name: Run the reverse proxy build trigger in environment ${{ needs.resolve-environment.outputs.environment }}
+        run: |
+          gcloud builds triggers run ${{ vars.TRIGGER_ID_SUBMIT_REVERSE_PROXY }} \
+            --project=${{ vars.PROJECT_NAME }} \
+            --branch=${{ vars.TRIGGER_BRANCH }}
