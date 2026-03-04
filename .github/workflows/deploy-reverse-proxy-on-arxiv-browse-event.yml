@@ -30,6 +30,19 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: Wait for arxiv-browse push to propagate (upto 30s)
+        env:
+          EXPECTED_SHA: ${{ github.event.client_payload.sha }}
+          BRANCH: ${{ github.event.client_payload.branch }}
+        run: |
+          for attempt in $(seq 1 15); do
+            REMOTE_SHA=$(git ls-remote https://github.com/arXiv/arxiv-browse.git refs/heads/$BRANCH | cut -f1)
+            [ "$REMOTE_SHA" = "$EXPECTED_SHA" ] && echo "Branch is current" && exit 0
+            echo "Attempt $attempt: branch at $REMOTE_SHA, waiting for $EXPECTED_SHA..."
+            sleep 2
+          done
+          echo "Timed out waiting for branch to update, will run trigger anyway."
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v3
         with:
