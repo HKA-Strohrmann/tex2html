@@ -26,7 +26,9 @@ jobs:
     needs: resolve-environment
     runs-on: ubuntu-latest
     environment: ${{ needs.resolve-environment.outputs.environment }}
-
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v3
