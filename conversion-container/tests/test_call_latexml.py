@@ -2,15 +2,17 @@ import os
 import tempfile
 import time
 from pathlib import Path
+from typing import Any
 
 import pytest
+from flask import Flask
 
 from conversion.domain.conversion import LaTeXMLOutput, SubmissionConversionPayload
 from conversion.services.files import get_file_manager
 from conversion.services.latexml import clean_up_stale_assets, latexml
 
 
-def call_bare_latexml(app, config=dict | None) -> LaTeXMLOutput:
+def call_bare_latexml(app: Flask, config: dict[str, Any]) -> LaTeXMLOutput:
     """Call bare latexml without any additional configuration (no ar5iv paths or additions)."""
     with app.app_context():
         with tempfile.TemporaryDirectory() as workdir:
@@ -43,15 +45,15 @@ TIMEOUT_TEX_CONTENT = r"\def\oops{test \oops here}\oops\bye"
     strict=False,
     reason="LaTeXML's internal --timeout can race behind the Python subprocess wrapper on slow CI runners; canary for the internal-timer path",
 )
-def test_latexml_internal_timeout_marker(app):
+def test_latexml_internal_timeout_marker(app: Flask) -> None:
     config = {"LATEXML_TIMEOUT_SEC": 1, "TEST_TEX_CONTENT": TIMEOUT_TEX_CONTENT}
     result = call_bare_latexml(app, config)
-    assert "Fatal:timeout:timedout" in result.log
+    assert result.log is not None and "Fatal:timeout:timedout" in result.log
     assert result.returncode == 1
 
 
 @pytest.mark.call_latexml_tests
-def test_latexml_timeout_terminates(app, caplog):
+def test_latexml_timeout_terminates(app: Flask, caplog: pytest.LogCaptureFixture) -> None:
     latexml_timeout = 1
     wrapper_timeout = latexml_timeout + 5  # from conversion/services/latexml/__init__.py
     config = {"LATEXML_TIMEOUT_SEC": latexml_timeout, "TEST_TEX_CONTENT": TIMEOUT_TEX_CONTENT}
@@ -59,7 +61,7 @@ def test_latexml_timeout_terminates(app, caplog):
     result = call_bare_latexml(app, config)
     # Infinite recursion must terminate via *one* of the two timeout code paths.
     # Each string is unique to exactly that path, so a match rules out other failure modes.
-    timed_out_internally = "Fatal:timeout:timedout" in result.log
+    timed_out_internally = result.log is not None and "Fatal:timeout:timedout" in result.log
     timed_out_by_wrapper = any(
         r.getMessage() == f"LaTeXML conversion timed out after {wrapper_timeout} seconds"
         for r in caplog.records
@@ -69,7 +71,7 @@ def test_latexml_timeout_terminates(app, caplog):
 
 
 @pytest.mark.call_latexml_tests
-def test_clean_up_stale_assets(app):
+def test_clean_up_stale_assets(app: Flask) -> None:
     with tempfile.TemporaryDirectory() as workdir:
         test_file_path = f"{workdir}/test.tex"
         with open(test_file_path, "w") as file:
@@ -79,6 +81,6 @@ def test_clean_up_stale_assets(app):
         time.sleep(1)
         assert os.path.exists(test_file_path)
         assert os.path.exists(test_dir_path)
-        clean_up_stale_assets(workdir, 0)
+        clean_up_stale_assets(Path(workdir), 0)
         assert not (os.path.exists(test_file_path))
         assert not (os.path.exists(test_dir_path))

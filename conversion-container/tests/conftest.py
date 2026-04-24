@@ -1,6 +1,9 @@
+from collections.abc import Generator
 from os.path import abspath, dirname
+from typing import Any
 
 import pytest
+from flask import Flask
 
 from conversion.factory import create_web_app
 
@@ -26,12 +29,12 @@ TESTING_CONFIG = {
 }
 
 
-def test_config():
+def test_config() -> dict[str, Any]:
     return TESTING_CONFIG.copy()
 
 
 @pytest.fixture(scope="function")
-def app():
+def app() -> Generator[Flask, None, None]:
     conf = test_config()
     app = create_web_app(**conf)
     with app.app_context():
