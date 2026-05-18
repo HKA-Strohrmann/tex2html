@@ -1,0 +1,468 @@
+\chapter{Signalabtastung und Rekonstruktion}\label{sec:signalabtastung-und-rekonstruktion}
+
+Als Voraussetzung für die digitale Signalverarbeitung müssen die zeit- und wertkontinuierlichen Signale so gewandelt werden, dass sie abgespeichert und weiterverarbeitet werden können. Diese Wandlung wird Digitalisierung genannt.
+
+Dazu muss das Signal einerseits zeitlich quantisiert werden, da nur endlich viele Werte verarbeitet werden können. Zu diskreten Zeitpunkten wird dabei der aktuelle Wert des Signals abgetastet. Die Abstände zwischen den Zeitpunkten, zu denen die Werte erfasst werden, sind üblicherweise äquidistant, sie sind also immer gleich groß. Die erfassten Werte werden Abtastwerte genannt. Außerdem muss die Amplitude des Signals bestimmt werden, was nur in einem begrenzten Bereich und mit einer definierten Auflösung oder Quantisierung möglich ist.
+
+Nach einer kurzen Darstellung zum Umgang mit Quantisierungsfehlern bei der Amplitude wird in diesem Kapitel die Zeitdiskretisierung betrachtet, da eine falsche Zeitdiskretisierung fatale Auswirkungen auf die folgende Signalverarbeitung hat. Zunächst wird allgemein erklärt, wie die ideale Abtastung von Signalen mathematisch beschrieben werden kann. Hierbei wird deutlich, warum das Spektrum eines abgetasteten Signals immer periodisch ist. Anhand der Periodizität des Spektrums wird das Abtasttheorem von Shannon eingeführt. Es besagt, dass die Abtastfrequenz bei bandbegrenzten Signalen mehr als doppelt so groß sein muss, wie die größten Frequenzanteile im Signal. Mit dem Anti-Aliasing-Tiefpass wird eine Methode vorgestellt, wie Signale ohne Bandbegrenzung gefiltert werden können, um das Abtasttheorem zu erfüllen.
+
+Da die ideale Abtastung von Signalen nur in der Theorie existiert und in der Praxis so nicht direkt angewandt werden kann, wird darüber hinaus die reale Abtastung mathematisch beschrieben und die dadurch entstehenden Signalverzerrungen erläutert. Auch hier gibt es die Möglichkeit, die Effekte durch die geschickte Anwendung von Filtern zu kompensieren.
+
+\section{Quantisierungsfehler der Amplitude}\label{sec:2.1}
+
+Bei der Digitalisierung von Signalen muss die Amplitude einer festen Quantisierungsstufe zugeordnet werden. Entscheidend für die Quantisierung des Signals ist die Auflösung des Analog-Digital-Wandlers (AD-Wandlers), die üblicherweise in Bit angegeben wird. Beispielsweise wird mit einem 12-Bit-AD-Wandler ein definierter Messbereich in \(2^{12} = 4096\) Intervalle eingeteilt. Bei einem Messbereich von 5~V ergäben sich demnach bei einer Auflösung von 12 Bit Quantisierungsstufen von.
+\begin{align}
+\Delta U &= \frac{5\text{ V}}{2^{12}} = \frac{5\text{ V}}{4096} = 1.2\text{ mV} \label{eq:2.1}
+\end{align}
+In der Praxis wird die Quantisierung der Amplitude gerne vernachlässigt, weil die entstehenden Fehler durch eine hohe Auflösung des verwendeten Analog-Digital-Wandlers klein gehalten werden können. Die existierende Abweichung zwischen dem wertdiskreten und wertkontinuierlichen Signal wird als Quantisierungsfehler modelliert. Bild \ref{fig:2.1} verdeutlicht den Quantisierungsfehler an zwei Beispielen.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung des Quantisierungsfehlers (Quantisierungsrauschens)}]{./media/2_1_darstellung_des_quantisierungsfe.png}
+  \caption{Darstellung des Quantisierungsfehlers (Quantisierungsrauschens)}
+  \label{fig:2.1}
+\end{figure}
+
+Der Quantisierungsfehler ergibt sich aus der Differenz zwischen dem wertkontinuierlichen und dem wertdiskreten Signal. Je feiner die Auflösung des AD-Wandlers ist, desto geringer ist der Abstand zwischen dem kontinuierlichen und dem quantisierten Signal. Da die Abweichung einen zufälligen Verlauf zu haben scheint, wird dieser Fehler als Quantisierungsrauschen bezeichnet und als zufälliger Fehler oder zufälliges Störsignal behandelt. Der Umgang mit zufälligen Signalen ist Gegenstand des Teils C dieser Buchreihe, der Quantisierungsfehler wird an dieser Stelle deshalb nicht weiter vertieft.
+
+\section{Vorüberlegungen zur zeitlichen Diskretisierung}\label{sec:2.2}
+
+Die grundlegende Frage bei der zeitlichen Abtastung von Signalen ist, in welchen Zeitabständen \(T_{A}\) beziehungsweise mit welcher Abtastfrequenz \(f_{A}\) ein Signal erfasst werden muss. Die Bedeutung dieser Frage wird an einem Beispiel erläutert.
+
+\begin{example}{Abtastwerte}
+\label{beispiel-abtastwerte}
+
+Bild \ref{fig:2.2} zeigt Abtastwerte eines Signals, das mit unterschiedlichen Abtastzeiten \(T_{A}\) abgetastet wird. Die Abtastwerte sind jeweils über Geradenabschnitte miteinander verbunden. Das Signal scheint davon abzuhängen, wie es abgetastet wird.
+
+\manualFigure
+  [alt={Darstellung der Abtastwerte eines Signals, das mit unterschiedlichen Abtastzeiten \(T_{A}\) abgetastet wird}]
+  {./media/image15.png}
+  {Darstellung der Abtastwerte eines Signals, das mit unterschiedlichen Abtastzeiten \(T_{A}\) abgetastet wird}
+  {\label{fig:2.2}}
+
+
+Das zugrunde liegende Signal ist sinusförmig und wird mit der Funktion
+\begin{align}
+u(t) &= 1\ V  \sin(2  \pi  6  t) \label{eq:2.2}
+\end{align}
+beschrieben. Der Vergleich der Abtastwerte mit dem Signal \(u(t)\) in Bild \ref{fig:2.3} zeigt, dass alle in Bild \ref{fig:2.2} dargestellten abgetasteten Signale falsch oder zumindest irreführend sind.
+
+\manualFigure
+  [alt={Vergleich der Abtastwerte eines harmonischen Signals mit dem Originalsignal}]
+  {./media/image16.png}
+  {Vergleich der Abtastwerte eines harmonischen Signals mit dem Originalsignal}
+  {\label{fig:2.3}}
+
+
+Die Abtastwerte liegen auf einer Schwingung mit wesentlich höherer Frequenz und geben nicht das eigentliche Signal wieder. Daraus kann die Schlussfolgerung gezogen werden, dass beim Abtasten Regeln eingehalten werden müssen, um das Signal richtig rekonstruieren zu können. Diese Überlegung wird zu dem Abtasttheorem führen.
+
+\end{example}
+
+Vor der allgemeinen Herleitung des Abtasttheorems werden die Abtastwerte eines harmonischen Signals \(x(t)\) mit einer Frequenz \(f_{0}\) analysiert. Das Signal ist definiert als
+\begin{align}
+x(t) &= \sin\left( 2  \pi  f_{0}  t \right) \label{eq:2.3}
+\end{align}
+Das Signal wird mit einer Abtastzeit \(T_{A}\) abgetastet, sodass sich an den ganzzahligen Vielfachen k der Abtastzeit t~=~kT\textsubscript{A} die Werte ergeben zu
+\begin{align}
+x[ k] &= x\left( k  T_{A} \right) = \sin\left( 2  \pi  f_{0}  k  T_{A} \right) \label{eq:2.4}
+\end{align}
+Die Abtastwerte der Signalfolge stimmen mit einer Signalfolge überein, die sich aus der Abtastung eines harmonischen Signals mit einer Frequenz \(f_{0}\) und dem Vielfachen der Abtastfrequenz nf\textsubscript{A} ergibt. Einsetzen der Bedingungen ergibt
+\begin{align}
+{\sin \left(2 \pi  \left(f_{0} +n f_{A} \right) k T_{A} \right)} &=  {\sin \left(2 \pi  \left(f_{0}  k T_{A} +\frac{n}{T_{A} }  k T_{A} \right)\right)} \\
+{} &=  {\sin \left(2 \pi  f_{0}  k T_{A} +2 \pi  n k\right)=\sin \left(2 \pi  f_{0}  k T_{A} \right)}
+ \label{eq:2.5}
+\end{align}
+Der Faktor nk ist dabei ein ganzzahliger Wert. Das bedeutet, dass die Abtastwerte, die ein Signal der Frequenz \(f_{0}\) repräsentieren, genau dieselben sind wie diejenigen, die sich beim Abtasten eines Signals der Frequenz \(f_{0}\) und einem Vielfachen der Abtastfrequenz \(f_{A}\) ergeben. Nach der Abtastung kann also nicht zwischen Signalen der Frequenz \(f_{0}\) und \(f_{0}\) + nf\textsubscript{A} unterschieden werden. Bild \ref{fig:2.4} stellt die Signal- und Abtastwerte für ein Beispiel dar.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Abtastwerte für ein harmonisches Signal mit der Frequenz \(f_{01} = 1\,\text{kHz}\) und \(f_{02} = 11\,\text{kHz}\)}]{./media/2_2_abtastwerte_fr_ein_harmonisches.png}
+  \caption{Abtastwerte für ein harmonisches Signal mit der Frequenz \(f_{01} = 1\,\text{kHz}\) und \(f_{02} = 11\,\text{kHz}\)}
+  \label{fig:2.4}
+\end{figure}
+
+Das Signal wird mit einer Frequenz \(f_{A} = 10\,\text{kHz}\) abgetastet. Die Abtastwerte sind für ein Signal mit einer Frequenz \(f_{1}\)~=~1~kHz und einem Signal mit einer Frequenz \(f_{2} = 11\,\text{kHz}\) identisch.
+
+Der hier für harmonische Schwingungen dargestellte Sachverhalt gilt auch für nicht harmonische Signale, da sie sich mit der Fourier-Transformation auf harmonische Signale zurückführen lassen. Dieser Effekt macht es erforderlich, den Abtastvorgang mathematisch zu beschreiben und Bedingungen für den Abtastvorgang zu definieren, unter denen ein abgetastetes Signal rekonstruiert werden kann.
+
+\section{Ideale Abtastung und ideale Rekonstruktion}\label{sec:2.3}
+
+Für die systemtheoretische Behandlung der digitalen Signalverarbeitung ist es erforderlich, die Abtastung und die Rekonstruktion des Signals mathematisch ideal zu beschreiben. Aus dieser Beschreibung wird anschließend das Abtasttheorem hergeleitet.
+
+\subsection{Mathematische Beschreibung der idealen Abtastung}\label{sec:mathematische-beschreibung-der-idealen-abtastung}
+
+Um die Abtastung eines Signals mathematisch beschreiben zu können, wird eine sogenannte Abtastfunktion \(a(t)\) definiert. Da bei der idealen Abtastung Werte des analogen Signals zu diskreten Zeitpunkten werden, bietet sich eine Folge von Impulsen als Abtastfunktion an. Diese Abtastfunktion \(a(t)\) ist mathematisch definiert als
+\begin{align}
+a(t) &= \sum_{k = - \infty}^{\infty}{\delta\left( t - k  T_{A} \right)} \label{eq:2.6}
+\end{align}
+Die Abtastfunktion wird mit dem analogen Signal \(x(t)\) multipliziert. Da die Impulsfolge nur zu den Zeitpunkten kT\textsubscript{A} ungleich null ist, genügt es, die Funktion \(x(t)\) nur zu diesen Zeitpunkten zu betrachten. Es ergibt sich als Darstellung für das ideal abgetastete Signal \(x_{A}(t)\)
+\begin{align}
+x_{A}(t) &= x(t)  a(t) = x(t)  \sum_{k = - \infty}^{\infty}{\delta\left( t - k  T_{A} \right)} = \sum_{k = - \infty}^{\infty}{x\left( k  T_{A} \right)  \delta\left( t - k  T_{A} \right)} \label{eq:2.7}
+\end{align}
+Bild \ref{fig:2.5} verdeutlicht die mathematische Beschreibung der Signale grafisch. Dabei werden die unendlich großen Impulse als Pfeile dargestellt, ihre Höhe repräsentiert das Gewicht des jeweiligen Impulses.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Signale im idealen Abtastprozess}]{./media/2_3_darstellung_der_signale_im_ideal.png}
+  \caption{Darstellung der Signale im idealen Abtastprozess}
+  \label{fig:2.5}
+\end{figure}
+
+Im Zeitbereich wird das Signal \(x(t)\) mit der Abtastfunktion \(a(t)\) multipliziert. Der Multiplikation im Zeitbereich entspricht eine Faltung im Frequenzbereich. Damit muss im Frequenzbereich das Spektrum des Signals \(X(ω)\) mit dem Spektrum der Abtastfunktion \(A(ω)\) gefaltet werden. Hierfür wird zunächst das Spektrum der Abtastfunktion errechnet.
+\begin{align}
+\mathfrak{I}\left\{ a(t) \right\} &= \mathfrak{I}\left\{ \sum_{k = - \infty}^{\infty}{\delta\left( t - k  T_{A} \right)} \right\} \label{eq:2.8}
+\end{align}
+Die Gleichung kann als Fourier-Reihe dargestellt werden und in den folgenden Ausdruck umgeformt werden
+\begin{align}
+\mathfrak{I}\left\{ a(t) \right\} &= \mathfrak{I}\left\{ \sum_{k = - \infty}^{\infty}{\delta\left( t - k  T_{A} \right)} \right\} = \frac{2  \pi}{T_{A}}  \sum_{k = - \infty}^{\infty}{\delta\left( \omega - k  \frac{2  \pi}{T_{A}} \right)} = \frac{2  \pi}{T_{A}}  \sum_{k = - \infty}^{\infty}{\delta\left( \omega - k  \omega_{A} \right)} \label{eq:2.9}
+\end{align}
+Dies bedeutet, dass die Abtastfunktion auch im Frequenzbereich einer Impulsfolge entspricht, wobei der Abstand der Impulse proportional zur Abtastfrequenz
+\begin{align}
+\omega_{A} &= 2  \pi  f_{A} = \frac{2  \pi}{T_{A}} \label{eq:2.10}
+\end{align}
+ist. Über die Faltungsbeziehung ergibt sich für die abgetastete Funktion \(x_{A}(t)\) im Frequenzbereich
+\begin{align}
+{X_{A} \left(\omega \right)} &=  {\frac{1}{2 \pi }  \left(X\left(\omega \right)*\left(\frac{2 \pi }{T_{A} }  \sum _{k=-\infty }^{\infty }\delta \left(\omega -k \frac{2 \pi }{T_{A} } \right) \right)\right)} \\
+{} &=  {\frac{1}{T_{A} }  \sum _{k=-\infty }^{\infty }X\left(\omega -k \frac{2 \pi }{T_{A} } \right) =\frac{1}{T_{A} }  \sum _{k=-\infty }^{\infty }X\left(\omega -k \omega _{A} \right) }
+ \label{eq:2.11}
+\end{align}
+Eine Abtastung mit der idealen Abtastfunktion führt demnach zu einer in \(ω_{A}\) periodischen Fortsetzung des Spektrums \(X(ω)\) des kontinuierlichen Zeitsignals \(x(t)\) und zu einer Multiplikation mit dem\\
+Faktor 1/\(T_{A}\). Bild \ref{fig:2.6} stellt die Spektren im idealen Abtastprozess schematisch dar.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Spektren im idealen Abtastprozess}]{./media/2_4_darstellung_der_spektren_im_idea.png}
+  \caption{Darstellung der Spektren im idealen Abtastprozess}
+  \label{fig:2.6}
+\end{figure}
+
+Die periodische Wiederholung des Spektrums ist dafür verantwortlich, dass die Abtastwerte von zu langsam abgetasteten Signalen mit den Frequenzen \(f_{0}\) und \(f_{0}\) + nf\textsubscript{A} nicht unterschieden werden können. Die mathematische Herleitung bestätigt damit den in Bild \ref{fig:2.4} dargestellten Sachverhalt.
+
+Der ursprüngliche Frequenzbereich des Signals \(x(t)\) mit dem Frequenzbereich - \(ω_{G}\) ≤ ω ≤ \(ω_{G}\) wird als Basisband des Signals bezeichnet. Durch den Abtastvorgang wird das Basisband periodisch in \(ω_{A}\) wiederholt.
+
+\subsection{Ideale Rekonstruktion eines Signals}\label{sec:ideale-rekonstruktion-eines-signals}
+
+Da bei der idealen Abtastung das Spektrum eines Signals periodisch wiederholt und mit dem Faktor 1/\(T_{A}\) multipliziert wird, liegt es auf der Hand, die Wiederholung des Spektrums durch eine entsprechende Filterung zu eliminieren. Durch eine hier ideal angenommene Tiefpass-Funktion mit einer Grenzfrequenz von \(ω_{A}\)/2 kann das sogenannte Basisband, also das ursprüngliche Spektrum der Zeitfunktion, isoliert werden. Bild \ref{fig:2.7} verdeutlicht den Filterprozess.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Rekonstruktion des Spektrums der Zeitfunktion durch ideale Tiefpass-Filterung,\\
+idealisierte Tiefpass-Funktion gestrichelt dargestellt}]{./media/image22.png}
+  \caption{Rekonstruktion des Spektrums der Zeitfunktion durch ideale Tiefpass-Filterung,\\
+idealisierte Tiefpass-Funktion gestrichelt dargestellt}
+  \label{fig:2.7}
+\end{figure}
+
+Mathematisch gesehen muss das Spektrum mit einer idealen Tiefpass-Filterfunktion und dem Faktor \(T_{A}\) multipliziert werden. Das Spektrum ergibt sich damit zu
+\begin{align}
+{X\left(\omega \right)} &=  {G_{TP} \left(\omega \right) X_{A} \left(\omega \right)=T_{A}  \left(\sigma \left(\omega +\frac{\omega _{A} }{2} \right)-\sigma \left(\omega -\frac{\omega _{A} }{2} \right)\right) \frac{1}{T_{A} }  \sum _{k=-\infty }^{\infty }X\left(\omega -k \omega _{A} \right) } \\
+{} &=  {\left(\sigma \left(\omega +\frac{\omega _{A} }{2} \right)-\sigma \left(\omega -\frac{\omega _{A} }{2} \right)\right) \sum _{k=-\infty }^{\infty }X\left(\omega -k \omega _{A} \right) }
+ \label{eq:2.12}
+\end{align}
+Die ideale Rekonstruktion kann auch im Zeitbereich durchgeführt werden. Der Multiplikation im Frequenzbereich entspricht im Zeitbereich die Faltung der entsprechenden Zeitfunktionen. Die Impulsantwort \(g_{TP}(t)\) der Filterfunktion \(G_{TP}(ω)\) ist nach den Rechenregeln der Fourier-Transformation
+\begin{align}
+g_{TP}(t) &= \frac{T_{A}}{\pi}  \frac{\sin\left( \frac{\omega_{A}}{2}  t \right)}{t} = \frac{2}{\omega_{A}}  \frac{\sin\left( \frac{\omega_{A}}{2}  t \right)}{t} \label{eq:2.13}
+\end{align}
+Die Impulsantwort des Tiefpasses ist in Bild \ref{fig:2.8} dargestellt. Zum Zeitpunkt \(t = 0\) ist die Funktion 1, zu den Zeitpunkten kT\textsubscript{A} ist die Funktion null.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Impulsantwort des idealen Tiefpass-Filters zur Rekonstruktion}]{./media/2_5_impulsantwort_des_idealen_tiefpa.png}
+  \caption{Impulsantwort des idealen Tiefpass-Filters zur Rekonstruktion}
+  \label{fig:2.8}
+\end{figure}
+
+Das Signal \(x(t)\) berechnet sich über das Faltungsintegral. Da die Faltung einer Funktion \(x(t)\) mit einem Impuls an der Stelle \(t_{0}\) die Funktion an die Stelle x(t - \(t_{0}\)) verschiebt, ergibt sich
+\begin{align}
+{x\left(t\right)} &=  {g_{TP} \left(t\right)*x_{A} \left(t\right)=\frac{T_{A} }{\pi }  \frac{\sin \left(\frac{\omega _{A} }{2}  t\right)}{t} *\sum _{k=-\infty }^{\infty }x\left(k T_{A} \right) \delta \left(t-T_{A}  k\right) } \\
+{} &=  {\frac{T_{A} }{\pi }  \sum _{k=-\infty }^{\infty }x\left(k T_{A} \right) \frac{\sin \left(\frac{\omega _{A} }{2}  t\right)}{t} *\delta \left(t-T_{A}  k\right) =\frac{T_{A} }{\pi }  \sum _{k=-\infty }^{\infty }x\left(k T_{A} \right) \frac{\sin \left(\frac{\omega _{A} }{2}  \left(t-T_{A}  k\right)\right)}{t-T_{A}  k}  }
+ \label{eq:2.14}
+\end{align}
+Das Signal setzt sich aus der Summe von Termen \(g_{TP}(t)\) zusammen, die jeweils um kT\textsubscript{A} verschoben sind und mit dem Gewicht x(kT\textsubscript{A}) multipliziert werden. Bild \ref{fig:2.9} stellt die Rekonstruktion im Zeitbereich dar.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Rekonstruktion eines ideal abgetasteten Signals im Zeitbereich}]{./media/2_6_rekonstruktion_eines_ideal_abget.png}
+  \caption{Rekonstruktion eines ideal abgetasteten Signals im Zeitbereich}
+  \label{fig:2.9}
+\end{figure}
+
+Das Ergebnis der Überlagerung entspricht erwartungsgemäß der ursprüngliche Zeitfunktion \(x(t)\).
+
+\subsection{Abtasttheorem nach Shannon}\label{sec:abtasttheorem-nach-shannon}
+
+In den vorangegangenen Abschnitten wird gezeigt, dass sich das Spektrum eines abgetasteten Signals periodisch mit der Abtastfrequenz \(ω_{A}\) fortsetzt. Diese periodische Wiederholung ist Grundlage für die Herleitung des Abtasttheorems nach Shannon.
+
+Gegeben sei ein bandbegrenztes Signal \(x(t)\), das abgetastet werden soll. Durch die Physik des Systems ist die Bandbreite des Signals auf Frequenzen ω ≤ \(ω_{MAX}\) begrenzt. Bei der Abtastung des Signals wird das Spektrum der Zeitfunktion, wie in Bild \ref{fig:2.7} dargestellt, periodisch in \(ω_{A}\) wiederholt. Durch eine hier ideal angenommene Tiefpass-Funktion kann das sogenannte Basisband, also das ursprüngliche Spektrum der Zeitfunktion, isoliert werden. Bild \ref{fig:2.7} verdeutlicht den Filterprozess.
+
+Ist die Abtastzeit \(T_{A}\) zu groß, wird \(ω_{A}\) zu klein und die einzelnen Spektren der abgetasteten Funktion überlagern sich. Signalverzerrungen, die sich beim Abtasten durch Überlagerung der Spektren ergeben, werden als Aliasing bezeichnet. Damit die einzelnen Spektren voneinander getrennt bleiben, muss nach Bild \ref{fig:2.7} die Bedingung
+\begin{align}
+\omega_{MAX} < \omega_{A} - \omega_{MAX} \label{eq:2.15}
+\end{align}
+beziehungsweise
+\begin{align}
+\omega_{A} &= 2  \pi  \frac{1}{T_{A}} > 2  \omega_{MAX} \label{eq:2.16}
+\end{align}
+erfüllt sein. Dieses Ergebnis wird als Abtasttheorem bezeichnet. Die Abtastfrequenz \(ω_{A}\) muss mehr als doppelt so groß sein wie die Bandbreite \(ω_{MAX}\) des abzutastenden Signals. Damit muss für die Abtastzeit \(T_{A}\) gelten:
+\begin{align}
+T_{A} < \frac{\pi}{\omega_{MAX}} \label{eq:2.17}
+\end{align}
+Bild \ref{fig:2.10} zeigt die Spektren abgetasteter Signale für genügend große Abtastfrequenz, gerade ausreichende und zu kleine Abtastfrequenz.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Spektren abgetasteter Signale für genügend große Abtastfrequenz XA1(ω), gerade ausreichende\\
+Abtastfrequenz XA2(ω) und für zu kleine Abtastfrequenz XA3(ω)}]{./media/image27.png}
+  \caption{Spektren abgetasteter Signale für genügend große Abtastfrequenz XA1(ω), gerade ausreichende\\
+Abtastfrequenz XA2(ω) und für zu kleine Abtastfrequenz XA3(ω)}
+  \label{fig:2.10}
+\end{figure}
+
+Im ersten Fall \(X_{A1}(ω)\) wird mit einer Abtastfrequenz gearbeitet, die deutlich größer ist als das Abtasttheorem vorschreibt. Dieser Fall wird als Oversampling bezeichnet. Durch die hohe Abtastfrequenz werden das Spektrum im Basisband und die nächsthöheren Spektren deutlich voneinander getrennt, sodass mit einem Tiefpass-Filter mit vergleichsweise flachem Übergang zwischen Sperr- und Durchlass-Bereich gearbeitet werden kann.
+
+Im zweiten Fall \(X_{A2}(ω)\) wird das Abtasttheorem gerade eingehalten. Es zeigt sich aber, dass die Rekonstruktion nur mit einem idealen Tiefpass-Filter erfolgen kann, der technisch nicht realisiert werden kann. Dieser Fall entspricht dem theoretischen Grenzfall des Abtasttheorems.
+
+Im Fall einer zu kleinen Abtastfrequenz \(X_{A3}(ω)\) überlagern sich die Spektren. Das Signal kann selbst mit einem idealen Tiefpass-Filter nicht fehlerfrei rekonstruiert werden. Es kommt zu Signalverzerrungen oder Aliasing.
+
+\begin{example}{Abtastrate einer Sound-Karte}
+\label{beispiel-abtastrate-einer-sound-karte}
+
+Sound-Karten von Computern besitzen einen Analog-Digital-Wandler (ADC). Er wandelt das analoge Signal in ein digitales Signal um. Bei Sound-Karten ist zum einen die Auflösung des ADC wichtig, da sie die Quantisierungsfehler und damit das Rauschen bestimmt. Zweiter wesentlicher Faktor ist die Abtastrate.
+
+\manualFigure
+  [alt={Sound-Karte für Personal Computer}]
+  {./media/image28.png}
+  {Sound-Karte für Personal Computer}
+  {}
+
+
+Eine Abtastfrequenz \(f_{A} = 44\,\text{kHz}\) ermöglicht die Aufnahme und Wiedergabe bis zu einer theoretischen Bandbreite von
+\begin{align}
+f_{MAX} &= \frac{f_{A}}{2} = 22\ kHz \label{eq:2.18}
+\end{align}
+Mit der Sound-Karte können damit Musiksignale mit einer maximalen Frequenz von 22~kHz verarbeitet werden.
+
+\end{example}
+
+\subsection{Bandbegrenzung des abzutastenden Signals}\label{sec:bandbegrenzung-des-abzutastenden-signals}
+
+Das Abtasttheorem geht davon aus, dass das Signal bandbegrenzt ist. Reale Signale haben in praktischen Anwendungen aber im Allgemeinen keine harte Bandbegrenzung. Vielmehr ergibt sich ihre Bandbreite aus dem Tiefpassverhalten des Systems, das das Signal generiert, und dem Spektrum von überlagerten Störungen. Um den Einfluss der mangelhaften Bandbegrenzung zu reduzieren, kann ein analoger Tiefpass wie zum Beispiel ein RC-Glied zur Filterung eingesetzt werden. Er verhindert, dass sich in dem Spektrum höhere Frequenzanteile befinden als erwartet, und reduziert damit den Einfluss von Störungen. Das Tiefpass-Filter wird aufgrund seiner Funktion als Anti-Aliasing-Filter bezeichnet. Die Wirkung des Anti-Aliasing-Filters wird in Bild \ref{fig:2.12} veranschaulicht.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Wirkung des Anti-Aliasing-Filters auf die Bandbegrenzung des Spektrums \(X(ω)\) des Signals \(x(t)\)}]{./media/2_7_wirkung_des_antialiasingfilters.png}
+  \caption{Wirkung des Anti-Aliasing-Filters auf die Bandbegrenzung des Spektrums \(X(ω)\) des Signals \(x(t)\)}
+  \label{fig:2.12}
+\end{figure}
+
+Das Signal \(x(t)\) hat ein Spektrum, dessen Information im Nutzbereich - \(ω_{N}\) \textless{} ω \textless{} \(ω_{N}\) liegt. Es besitzt aber zum Beispiel aufgrund von Störungen ein breiteres Spektrum. Damit existieren auch oberhalb der als maximal angenommenen Bandbreite \(ω_{G}\) Spektralanteile. Durch den Einsatz eines Tiefpass-Filters, das den Frequenzbereich ω \textless{} - \(ω_{N}\) und den Bereich ω \textgreater{} \(ω_{N}\) dämpft, ergibt sich bei dem neu entstandenen Signal ein Spektrum \(X_{TP}(ω)\), das im Nutzbereich dem des ursprünglichen Signals entspricht, im übrigen Bereich aber stärker gedämpft ist. Dieses Signal kann wegen der geringeren Bandbreite \(ω_{GTP}\) \textless{} \(ω_{G}\) mit einer geringeren Frequenz abgetastet werden und der Rauschanteil wird durch die Bandbegrenzung reduziert.
+
+In technischen Anwendungen wird deshalb praktisch immer ein Eingangstiefpass eingesetzt, das das Spektrum des Eingangssignals auf die notwendige Bandbreite begrenzt. Die Spezifikation von Filtern und ihr Entwurf werden im Teil A dieser Buchreihe diskutiert.
+
+\begin{example}{Abtastung Drucksensor im Steuergerät}
+\label{beispiel-abtastung-drucksensor-im-steuergeruxe4t}
+
+Für die Regelung des Ladedrucks von Turboladern werden Drucksensoren eingesetzt.
+
+\manualFigure
+  [alt={Drucksensor zur Messung des Ladedrucks (Bosch)}]
+  {./media/image30.png}
+  {Drucksensor zur Messung des Ladedrucks (Bosch)}
+  {}
+
+
+Der Drucksensor, der den Ladedruck misst, besitzt laut Datenblatt eine Zeitkonstante \(T = 0.1\,\text{ms}\). Das entspricht einer 3~dB-Grenzfrequenz von
+\begin{align}
+\omega_{G} &= \frac{1}{T} = 10\ krad/s \label{eq:2.19}
+\end{align}
+Das Motor-Steuergerät tastet das Signal mit einer Abtastzeit \(T_{A}\) von 1~ms ab. Es ergibt sich eine Abtastfrequenz von
+\begin{align}
+\omega_{A} &= \frac{2  \pi}{T_{A}} = 6.283\text{ k}rad/s \label{eq:2.20}
+\end{align}
+Wird die Grenzfrequenz \(ω_{G}\) als maximale Frequenz \(ω_{MAX}\) angesehen, wird das Abtasttheorem nicht erfüllt. Außerdem sind dem Sensorsignal Störungen überlagert, die Spektralanteile weit oberhalb der Grenzfrequenz besitzen können. Zur Vermeidung von Aliasing-Effekten wird ein Anti-Aliasing-Filter eingesetzt. Es weist eine Zeitkonstante von \(T_{TP} = 0.6\,\text{ms}\) auf, was einer 3~dB-Grenzfrequenz von
+\begin{align}
+\omega_{TP} &= \frac{1}{0.6\ ms} = \text{1.67 }krad/s < 3.14\ krad/s = \frac{\omega_{A}}{2} \label{eq:2.21}
+\end{align}
+entspricht. Durch den Einsatz des Tiefpass-Filters wird bei derselben Abtastrate das Abtasttheorem eingehalten. Das Filter hat eine Dämpfung von - 20~dB pro Dekade. Die sich aus der endlichen Steilheit ergebenden Effekte werden in einer Übungsaufgabe diskutiert.
+
+\end{example}
+
+\section{Reale Abtastung und Rekonstruktion}\label{sec:2.4}
+
+Die zuvor vorgestellte ideale Abtastfunktion \(a(t)\) ist nicht realisierbar, da ideale Impulse technisch nicht erzeugt werden können. Dies liegt an der unendlich kurzen Dauer sowie der unendlichen Steilheit und Höhe von Impulsen. Aus dieser Überlegung ergeben sich die reale Abtastung und die reale Rekonstruktion von Signalen.
+
+\subsection{Reale Abtastung eines Signals}\label{sec:reale-abtastung-eines-signals}
+
+Reale beziehungsweise technisch realisierbare Abtastsysteme brauchen eine Wandlungszeit \(T_{W}\), um aus dem analogen Signal ein zeitdiskretes Signal zu generieren. Die Wandlungszeit ergibt sich zum Beispiel aus einem Ladungstransport oder einem Approximationsprozess, bei dem das Signal als Mittelwert über einen Zeitraum \(T_{W}\) durch Integration bestimmt wird. Das real abgetastete Signal \(x_{AW}(t)\) wird deshalb mit dem Ausdruck
+\begin{align}
+x_{AW}(t) &= \frac{1}{T_{W}}  \int_{t - T_{W}}^{t}{x(\tau)d\tau}  \sum_{k = - \infty}^{\infty}{\delta\left( t - k  T_{A} \right)} = x_{M}(t)  \sum_{k = - \infty}^{\infty}{\delta\left( t - k  T_{A} \right)} \label{eq:2.22}
+\end{align}
+beschrieben. Es handelt sich um das Produkt von dem gleitenden Mittelwert \(x_{M}(t)\) und der idealen Abtastfunktion \(a(t)\) im Zeitbereich. Zur Berechnung des Spektrums \(X_{AW}(ω)\) müssen die Spektren der beiden Signale berechnet werden. Dazu wird das Integral in zwei Summanden zerlegt.
+\begin{align}
+x_{M}(t) &= \frac{1}{T_{W}}  \int_{t - T_{W}}^{t}{x(\tau)d\tau} = \frac{1}{T_{W}}  \left( \int_{- \infty}^{t}{x(\tau)d\tau} - \int_{- \infty}^{t - T_{W}}{x(t)dt} \right) \label{eq:2.23}
+\end{align}
+Mit der Integrations- und Verschiebungsregel ergibt sich das zugehörige Spektrum.
+\begin{align}
+{X_{M} \left(\omega \right)} &=  {\frac{1}{T_{W} }  \left(\frac{1}{j \omega }  X\left(\omega \right)+\pi  X\left(0\right) \delta \left(\omega \right)\right) \left(1-e^{-j \omega  T_{W} } \right)} \\
+{} &=  {\frac{1}{T_{W} }  \left(\frac{1}{j \omega }  X\left(\omega \right)+\pi  X\left(0\right) \delta \left(\omega \right)\right) 2 j \sin \left(\frac{\omega  T_{W} }{2} \right) e^{-\frac{j \omega  T_{W} }{2} } } \\
+{} & {} & {\frac{2}{\omega  T_{W} }  \sin \left(\frac{\omega  T_{W} }{2} \right) X\left(\omega \right) e^{-\frac{j \omega  T_{W} }{2} } +\frac{\pi  X\left(0\right)}{T_{W} }  \delta \left(\omega \right) 2 j \sin \left(\frac{\omega  T_{W} }{2} \right) e^{-\frac{j \omega  T_{W} }{2} } }
+ \label{eq:2.24}
+\end{align}
+Da der letzte Summand in Gleichung (\ref{eq:2.24}) null ist, gilt:
+\begin{align}
+X_{M}(\omega) &= \frac{2}{\omega  T_{W}}  \sin\left( \frac{\omega  T_{W}}{2} \right)  X(\omega)  e^{- \frac{j  \omega  T_{W}}{2}} \label{eq:2.25}
+\end{align}
+Mit dem Spektrum der idealen Abtastfunktion \(a(t)\) aus Gleichung (\ref{eq:2.9}) und der Multiplikationsregel kann das Spektrum des real abgetasteten Signals berechnet werden zu
+\begin{align}
+{X{}_{AW} \left(\omega \right)} &=  {\frac{1}{2 \pi }  \left(\frac{2}{\omega  T_{W} }  \sin \left(\frac{\omega  T_{W} }{2} \right) X\left(\omega \right) e^{-\frac{j \omega  T_{W} }{2} } \right)*\left(\frac{2 \pi }{T_{A} }  \sum _{k=-\infty }^{\infty }\delta \left(\omega -k \omega _{A} \right) \right)} \\
+{} &=  {\frac{1}{T_{A} }  \sum _{k=-\infty }^{\infty }\frac{2}{\left(\omega -k \omega _{A} \right) T_{W} }  \sin \left(\frac{\left(\omega -k \omega _{A} \right) T_{W} }{2} \right) X\left(\omega -k \omega _{A} \right) e^{-\frac{j \left(\omega -k \omega _{A} \right) T_{W} }{2} }  }
+ \label{eq:2.26}
+\end{align}
+Wie bei der idealen Abtastung wird das Spektrum mit 1/\(T_{A}\) skaliert und periodisch in \(ω_{A}\) wiederholt. Allerdings wird das Spektrum des zeitkontinuierlichen Signals vor der periodischen Wiederholung mit einem Frequenzgang multipliziert, der sich aus der gleitenden Mittelung ergibt. Dieser Vorgang wird in Bild \ref{fig:2.14} für Wandlungszeiten von \(T_{W} = T_{A}\) und \(T_{W} = 0\).1T\textsubscript{A} dargestellt. Die Auswirkung auf das Spektrum im Basisband steigt mit steigender Wandlungszeit. In Analog-Digital-Wandlern wird der Effekt durch geringe Wandlungszeiten klein gehalten und durch den Einsatz inverser Filter kompensiert.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung des Spektrums eines realen Abtastprozesses\\
+für unterschiedliche Wandlungszeiten \(T_{W} = T_{A}\) und \(T_{W} = 0\).1T\textsubscript{A}}]{./media/image33.png}
+  \caption{Darstellung des Spektrums eines realen Abtastprozesses\\
+für unterschiedliche Wandlungszeiten \(T_{W} = T_{A}\) und \(T_{W} = 0\).1T\textsubscript{A}}
+  \label{fig:2.14}
+\end{figure}
+
+\subsection{Reale Rekonstruktion eines Signals}\label{sec:reale-rekonstruktion-eines-signals}
+
+Nach der Abtastung liegen einzelne Abtastwerte vor, die das Signal zu den entsprechenden Abtastzeiten charakterisieren. Für einige Anwendungen ist es notwendig, diese zeitdiskreten Signale wieder in zeitkontinuierliche Signale zu wandeln. Die bereits diskutierte ideale Rekonstruktion eines Signals ist wegen des ideal angenommenen Tiefpass-Filters nicht kausal und kann deshalb technisch nicht realisiert werden. Eine technisch realisierbare Rekonstruktion des ursprünglichen Signals aus den Abtastwerten wird in zwei Schritten realisiert:
+
+\begin{itemize}
+\item
+  Erzeugung eines stufenförmigen Ausgangssignals mit einem Halteglied
+\item
+  Tiefpass-Filterung
+\end{itemize}
+
+Die beiden Schritte werden im Zeit- und Frequenzbereich beschrieben. Zur Übersicht stellt Bild \ref{fig:2.15} den Signalfluss einer realen Signalrekonstruktion bei idealer Signalabtastung dar.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Signalfluss zur realen Rekonstruktion}]{./media/2_8_signalfluss_zur_realen_rekonstru.png}
+  \caption{Signalfluss zur realen Rekonstruktion}
+  \label{fig:2.15}
+\end{figure}
+
+\subsubsection{Erzeugung eines stufenförmigen Ausgangssignals mit einem Halteglied}\label{sec:erzeugung-eines-stufenfuxf6rmigen-ausgangssignals-mit-einem-halteglied}
+
+Die einzelnen Abtastwerte stellen das Signal zu den entsprechenden Abtastzeiten dar. Das\\
+Halteglied H hält den aktuell gültigen Wert des digitalen Systems am Ausgang fest, bis der nächste Abtastwert zur Verfügung steht. Dadurch steht zu jedem Zeitpunkt t ein Ausgangssignal zur Verfügung und das Signal ist wieder zeitkontinuierlich. Bild \ref{fig:2.16} zeigt an einem Beispiel das abgetastete Signal \(x_{A}(t)\) und das Signal \(x_{H}(t)\) nach dem Halteglied.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Rekonstruktion eines abgetasteten Signals mit Halteglied}]{./media/2_9_rekonstruktion_eines_abgetastete.png}
+  \caption{Rekonstruktion eines abgetasteten Signals mit Halteglied}
+  \label{fig:2.16}
+\end{figure}
+
+Im Zeitbereich kann das kontinuierliche Signal nach dem Halteglied analog zur realen Wandlung mit Rechteckfunktionen beschrieben werden.
+\begin{align}
+w(t) &= \left( \sigma(t) - \sigma\left( t - T_{A} \right) \right) \label{eq:2.27}
+\end{align}
+Das Signal nach dem Halteglied kann wieder als Faltung ausgedrückt werden.
+\begin{align}
+{x_{H} \left(t\right)} &=  {\sum _{k=-\infty }^{\infty }x_{A} \left(k T_{A} \right)  \left(\sigma \left(t-k T_{A} \right)-\sigma \left(t-\left(k+1\right) T_{A} \right)\right)} \\
+{} &=  {\left(\sum _{k=-\infty }^{\infty }x\left(k T_{A} \right) \delta \left(t-k T_{A} \right) \right)*\left(\sigma \left(t\right)-\sigma \left(t-T_{A} \right)\right)}
+ \label{eq:2.28}
+\end{align}
+Der Faltung der Signale im Zeitbereich entspricht die Multiplikation der Spektren im Frequenzbereich. Das Spektrum des Signals nach dem Halteglied ergibt sich damit aus dem Produkt des Spektrums \(X_{A}(ω)\) und dem Frequenzgang des Halteglieds \(H(ω)\).
+\begin{align}
+H(\omega) &= \frac{2}{\omega}  \sin\left( \frac{\omega  T_{A}}{2} \right)  e^{- j  \frac{\omega  T_{A}}{2}} \label{eq:2.29}
+\end{align}
+Bild \ref{fig:2.17} zeigt das Spektrum des abgetasteten Signals \(x_{A}(t)\) und dem Signal \(x_{H}(t)\) nach dem Halteglied.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Betrag des Spektrums vom abgetasteten Signal \(x_{A}(t)\) und vom Signal \(x_{H}(t)\) nach dem Halteglied}]{./media/2_10_betrag_des_spektrums_vom_abgeta.png}
+  \caption{Betrag des Spektrums vom abgetasteten Signal \(x_{A}(t)\) und vom Signal \(x_{H}(t)\) nach dem Halteglied}
+  \label{fig:2.17}
+\end{figure}
+
+Durch das Halteglied wird das Spektrum gedämpft. Diese Dämpfung wirkt sich aber vor allem auf die periodische Fortsetzung des Spektrums aus.
+
+\subsubsection{Filterung des stufenförmigen Signals}\label{sec:filterung-des-stufenfuxf6rmigen-signals}
+
+Zur Vermeidung von Signalsprüngen im rekonstruierten Signal wird das Spektrum nach dem Halteglied mit einem geeigneten Filter gefiltert. Mit dem Frequenzgang des Filters \(G_{R}(ω)\) ergibt sich der Frequenzgang des rekonstruierten Signals \(x_{R}(t)\) zu
+\begin{align}
+X_{R}(\omega) &= X_{A}(\omega)  \frac{2}{\omega}  \sin\left( \frac{\omega  T_{A}}{2} \right)  e^{- j  \frac{\omega  T_{A}}{2}}  G_{R}(\omega) \label{eq:2.30}
+\end{align}
+Idealerweise würde das Filter die Abweichungen im Basisband des Nutzsignals - \(ω_{N}\) \textless{} ω \textless{} \(ω_{N}\) kompensieren und die Frequenzanteile ober- und unterhalb des Basisbandes vollständig eliminieren. Bild \ref{fig:2.18} verdeutlicht diesen Ansatz.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Ideales Filter zur Rekonstruktion eines abgetasteten Signals}]{./media/2_11_ideales_filter_zur_rekonstrukti.png}
+  \caption{Ideales Filter zur Rekonstruktion eines abgetasteten Signals}
+  \label{fig:2.18}
+\end{figure}
+
+Dieses ideale Filter ist wegen der idealen Flankensteilheit nicht realisierbar. Reale Filter beschränken sich auf eine endliche Flankensteilheit. Eine Möglichkeit, die erforderliche Flankensteilheit zu senken, ist eine Steigerung der Abtastrate \(f_{A}\). Dieser Vorgang wird als Überabtastung oder Oversampling bezeichnet. Durch die höhere Abtastrate werden zwei Effekte erzielt:
+
+\begin{itemize}
+\item
+  Die Trennung der periodischen Spektren ist größer. Dadurch kann die Ordnung des Filters zur Signal-Rekonstruktion reduziert werden.
+\item
+  Mit höherer Abtastrate liegt der Nutzbereich des Signals immer mehr im flachen Bereich der Übertragungsfunktion des Halteglieds, sodass eine Kompensation des Frequenzgangs des Halteglieds nicht weiter notwendig ist.
+\end{itemize}
+
+Die zum Halteglied inverse Charakteristik im Durchlassbereich kann über ein digitales Filter erreicht werden, der als Teil der digitalen Signalverarbeitung realisiert wird.
+
+\subsection{Totzeit bei der realen Signalabtastung}\label{sec:totzeit-bei-der-realen-signalabtastung}
+
+In den vorangegangenen Abschnitten wird der Abtastvorgang hinsichtlich der Auswirkung auf den Betrag des Spektrums diskutiert. Die Übertragungsfunktionen weisen aber immer auch eine Phasenverschiebung auf. Die gesamte Phasenverschiebung ergibt sich bei der realen Abtastung nach den obigen Darstellungen aus den Totzeiten des Wandlers und des Halteglieds.
+\begin{align}
+T_{T} &= \frac{T_{W}}{2} + \frac{T_{A}}{2} \label{eq:2.31}
+\end{align}
+Dazu kommen die Phase des Anti-Aliasing-Filters und des Tiefpass-Filters zur Signalrekonstruktion, sodass gegenüber dem Eingangssignal eine teilweise erhebliche Signalverzögerung entsteht. Die Zeitverzögerung sowie das Einschwingverhalten des rekonstruierten Signals werden an einem Beispiel verdeutlicht.
+
+\begin{example}{Signalrekonstruktion}
+\label{beispiel-signalrekonstruktion}
+
+Ein Signal der Form
+\begin{align}
+x(t) &= 5  e^{- 0.1  t^{2}}  \left( 1 + 0.5  \sin(t) \right)  \left( \sigma(t + 5) - \sigma(t - 5) \right) \label{eq:2.32}
+\end{align}
+wird mit einer Abtastzeit von \(T_{A} = 1\) abgetastet, das System besitzt eine Wandlungszeit von \(T_{W} = 1\). Es entstehen die in Tabelle \ref{tab:2.1} dargestellten Abtastwerte.
+
+\begin{center}
+  \captionof{table}{Tabellarische Übersicht über Signaleigenschaften für Signalfolgen}
+  \label{tab:2.1}
+  \begin{tabular}{llllllllllll}
+    \toprule
+    \textbf{T / \(T_{A}\)} & - 5 & - 4 & - 3 & - 2 & - 1 & 0 & 1 & 2 & 3 & 4 & 5 \\
+    \midrule
+    \textbf{x(kT\textsubscript{A})} & 0.607 & 1.392 & 1.889 & 1.828 & 2.621 & 5.000 & 6.428 & 4.875 & 2.176 & 0.628 & 0.214 \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+Die Abtastwerte werden über ein Halteglied und einen Tiefpass mit einer Zeitkonstante \(T_{TP} = 0.5\) rekonstruiert. Bild \ref{fig:2.19} zeigt das analoge Signal \(x(t)\) und das durch Abtastung und Rekonstruktion erzeugte Signal \(x_{TP}(t)\) bei Verwendung eines Tiefpasses erster Ordnung.
+
+\manualFigure
+  [alt={Vergleich eines Zeitsignals \(x(t)\) und der realen Rekonstruktion\\
+des abgetasteten Signals mit einem Tiefpass erster Ordnung}]
+  {./media/image39.png}
+  {Vergleich eines Zeitsignals \(x(t)\) und der realen Rekonstruktion\\
+des abgetasteten Signals mit einem Tiefpass erster Ordnung}
+  {\label{fig:2.19}}
+
+
+Das rekonstruierte Signal weist eine Verzögerung von
+\begin{align}
+T_{T} &= \frac{T_{W}}{2} + \frac{T_{A}}{2} = \frac{T_{A}}{2} + \frac{T_{A}}{2} = T_{A} \label{eq:2.33}
+\end{align}
+auf. Außerdem ist das Einschwingen des Tiefpasses nach jedem Quantisierungsschritt zu erkennen.
+
+\end{example}
+
+Diese Signalverzögerung \(T_{T}\) ist insbesondere bei Regelungssystemen kritisch anzusehen. Auch in dieser Beziehung ist eine hohe Abtastrate, die wegen kleiner Abtastzeit und Wandlungszeit zu einer Verringerung der Totzeit führt, vorteilhaft.
+\begin{application}{Systemtheorie Online}
+  Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die \emph{Applikation Signalabtastung und Signalrekonstruktion} grafisch, welche Effekte durch Anti-Aliasing-Filter, reale Abtastung und reale Rekonstruktion entstehen.
+  \tcblower
+  \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
+\end{application}

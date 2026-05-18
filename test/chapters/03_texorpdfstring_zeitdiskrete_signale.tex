@@ -1,0 +1,743 @@
+\chapter{\texorpdfstring{Zeitdiskrete Signale }{Zeitdiskrete Signale }}\label{zeitdiskrete-signale}
+
+Die Systemtheorie beschreibt Systeme unter anderem durch den Zusammenhang von Signalen am Systemeingang und Systemausgang. In Teil A dieser Buchreihe sind Beispiele für unterschiedliche zeitkontinuierliche Signalformen dargestellt. Außerdem sind dort Eigenschaften und Rechenregeln für zeitkontinuierliche Signale beschrieben. In diesem Kapitel werden zeitdiskrete Signale behandelt.
+
+Im ersten Abschnitt wird die Klassifizierung von zeitkontinuierlichen Signalen auf zeitdiskrete Signalfolgen übertragen.
+
+Für die Charakterisierung von zeitdiskreten Systemen können Testfolgen als Eingangssignal eingesetzt werden, die eine besonders anschauliche Interpretation des Ausgangssignals ermöglichen. Bei zeitdiskreten Systemen ist dabei die Impulsfolge von großer Bedeutung, weil sie sich als reale Signalfolge darstellen lässt und eine anschauliche Interpretation der Systemantwort ermöglicht. Die Impulsfolge und ähnliche Folgen werden im zweiten Teil dieses Kapitels diskutiert und das Rechnen mit diesen Testfolgen an Beispielen erläutert.
+
+Auch für zeitdiskrete LTI-Systeme gilt das Superpositionsprinzip. Kann ein Eingangssignal aus einer Linearkombination bekannter Signalfolgen beschrieben werden, ergibt sich das Ausgangssignal aus derselben Linearkombination der zugehörigen Ausgangssignale. Deshalb wird im dritten Teil dieses Kapitels das Rechnen mit Signalfolgen vorgestellt.
+
+Die Reaktion eines zeitdiskreten Systems kann vielfach über Kosinus- und Exponentialfolgen beschrieben werden. Beide Folgen können zu komplexen Exponentialfolgen zusammengefasst werden. Komplexe Exponentialfolgen werden dazu verwendet, das Einschwingverhalten von Systemen effizient zu beschreiben. Der vierte Teil dieses Kapitels widmet sich daher harmonischen Schwingungsfolgen sowie reellen und komplexen Exponentialfolgen.
+
+Die hier dargestellten Signaleigenschaften und Rechenmethoden sind denen im zeitkontinuierlichen Bereich sehr ähnlich. Sie sind hier trotzdem ausführlich aufgeführt, um einen Quereinstieg in das Thema der zeitdiskreten Systeme zu ermöglichen.
+
+\section{Klassen und Eigenschaften von Signalen}\label{sec:3.1}
+
+In Teil A dieser Buchreihe werden verschiedene Signalklassen dargestellt. Die dort vorgestellten Signalklassen und Eigenschaften beziehen sich auf zeitkontinuierliche Signale. Mit der Abtastung von Signalen werden Signale zeitquantisiert. Wie bereits in Kapitel 2 dargestellt wird, wird bei der Beschreibung der abgetasteten Signale die Amplituden-Quantisierung gerne vernachlässigt, sodass im vorliegenden Teil B dieser Buchreihe zeitdiskrete Systeme mit kontinuierlicher Amplitude behandelt werden. Diese Signale sind in Bild \ref{fig:3.1} oben rechts dargestellt.
+
+Zeitdiskrete Signale sind nur zu bestimmten Zeitpunkten definiert. Es existieren keine Übergänge zwischen zwei aufeinanderfolgenden Werten. Im Fall der Abtastung eines zeitkontinuierlichen\\
+Signals \(x(t)\) ergibt sich die Zahlenfolge \(x[k]\) des abgetasteten Signals zu
+\begin{align}
+x[ k] &= x\left( k  T_{A} \right) \label{eq:3.1}
+\end{align}
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung wertkontinuierlicher und wertdiskreter Signale in zeitkontinuierlicher und zeitdiskreter Form}]{./media/3_1_darstellung_wertkontinuierlicher.png}
+  \caption{Darstellung wertkontinuierlicher und wertdiskreter Signale in zeitkontinuierlicher und zeitdiskreter Form}
+  \label{fig:3.1}
+\end{figure}
+
+Da die Signale nicht mehr kontinuierlich sind, werden sie als Folgen oder Signalfolgen \(x[k]\) bezeichnet. Mit den eckigen Klammern wird der Unterschied zwischen zeitkontinuierlichen Signalen \(x(t)\) und Signalfolgen \(x[k]\) grafisch verdeutlich. Bild \ref{fig:3.2} zeigt ein Beispiel für eine Signalfolge.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung einer Signalfolge \(x[k]\)}]{./media/3_2_darstellung_einer_signalfolge_xk.png}
+  \caption{Darstellung einer Signalfolge \(x[k]\)}
+  \label{fig:3.2}
+\end{figure}
+
+Da die Signalfolge \(x[k]\) nur zu definierten Zeitpunkten kT\textsubscript{A} definiert ist, können mathematische Operationen wie Integral und Differential nicht ausgeführt werden. Sie müssen durch entsprechende Operationen für Folgen ersetzt werden. Im ersten Abschnitt dieses Kapitels werden die wesentlichen bisher für zeitkontinuierliche Signale beschriebenen Signaleigenschaften und Rechenoperationen auf zeitdiskrete Signale übertragen.
+
+\subsection{Determinierte und zufällige Signalfolgen}\label{sec:determinierte-und-zufuxe4llige-signalfolgen}
+
+Determinierte Signalfolgen lassen sich durch eine mathematische Vorschrift in ihrem zeitlichen Verlauf angeben. Sie können implizit oder explizit definiert sein. Bei einer explizit definierten Signalfolge lässt sich der zu einem Index k gehörende Wert direkt ablesen. Ein Beispiel dafür ist eine abklingende Sinusfolge (0 \textless{} r \textless{} 1).
+\begin{align}
+x[ k] &= 10  r^{k}  \sin\left( \Omega_{0}  k \right) \label{eq:3.2}
+\end{align}
+Bei der impliziten Definition einer Signalfolge ist der Signalwert zwar eindeutig bestimmt, er muss aber zunächst durch weitere Umformungen bestimmt werden. Ein Beispiel für eine implizit definierte Signalfolge ist die Definition über eine Differenzengleichung
+\begin{align}
+x[ k - 1] + 3  x[ k - 2] &= 5  x[ k] \label{eq:3.3}
+\end{align}
+mit der Anfangsbedingung \(x[0]\) = \(x_{0}\) und \(x[1]\) = \(x_{1}\). Zufällige Signalfolgen können nicht exakt angegeben werden, für sie sind lediglich statistische Eigenschaften bekannt. Sowohl Rauschen als auch Audio- oder Video-Signale sind zufällige Signale. Bild \ref{fig:3.3} zeigt jeweils ein Beispiel für ein determiniertes und ein zufälliges Signal. Zufällige Signale und Signalfolgen werden in Teil C dieser Buchreihe behandelt.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Beispiele für determinierte und zufällige Signalfolgen}]{./media/3_3_beispiele_fr_determinierte_und_z.png}
+  \caption{Beispiele für determinierte und zufällige Signalfolgen}
+  \label{fig:3.3}
+\end{figure}
+
+\subsection{Zeitlich begrenzte und kausale Signalfolgen}\label{sec:zeitlich-begrenzte-und-kausale-signalfolgen}
+
+Auch bei Signalfolgen wird oft mit einer zeitlichen Begrenzung gearbeitet, weil eine Signalfolge nur einen begrenzten Zeitraum lang beobachtet werden kann und weil zum Beispiel Impulsfolgen für die Charakterisierung von Systemen verwendet werden. Bild \ref{fig:3.4} zeigt zeitlich begrenzte Signalfolgen.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung einer beidseitig zeitbegrenzten und einer kausalen Signalfolge}]{./media/3_4_darstellung_einer_beidseitig_zei.png}
+  \caption{Darstellung einer beidseitig zeitbegrenzten und einer kausalen Signalfolge}
+  \label{fig:3.4}
+\end{figure}
+
+Beidseitig zeitbegrenzte Signalfolgen sind Signale, die nur für einen Bereich \(k_{1}\) ≤ k \textless{} \(k_{2}\) von null verschieden sind. Einige Signale sind nur einseitig begrenzt, zum Beispiel ist ein für \(k = k_{1}\) stattfindender Sprung nur einseitig zeitbegrenzt. Da diese Signalfolgen rechts auf dem Zeitstrahl von null verschieden sind, werden sie als rechtsseitige Signalfolgen bezeichnet. Eine spezielle rechtsseitige Signalfolge ist die kausale Signalfolge, für die gilt:
+\begin{align}
+x[ k] &= 0\text{   für k } < \text{ 0} \label{eq:3.4}
+\end{align}
+Damit gelten die Definitionen zeitkontinuierlicher Signale sinngemäß auch für Signalfolgen.
+
+\subsection{Quadratisch summierbare Signalfolgen}\label{sec:3.1.3}
+
+Für die Existenz von unendlichen Reihen zum Beispiel bei der Fourier-Transformation von Folgen oder der sogenannten z-Transformation ist der Begriff der Leistungs- und Energiesignalfolge wesentlich. Wie bei zeitkontinuierlichen Signalen wird von der Vorstellung ausgegangen, dass die an einem Widerstand umgesetzte Leistung proportional zum Quadrat der anliegenden Spannung \(u(t)\) beziehungsweise proportional zum Quadrat des durchfließenden Stromes \(i(t)\) ist.
+\begin{align}
+p_{el}(t) &= \frac{u^{2}(t)}{R} = i^{2}(t)  R \label{eq:3.5}
+\end{align}
+Für zeitkontinuierliche Signale wird damit die Energie eines Signals berechnet zu
+\begin{align}
+E &= \int_{- \infty}^{\infty}{p_{el}(t)\ dt} = \int_{- \infty}^{\infty}{\frac{u^{2}(t)}{R}\ dt} = \int_{- \infty}^{\infty}{i^{2}(t)  R\ dt} \label{eq:3.6}
+\end{align}
+und vereinfachend zu der normierten Beschreibung
+\begin{align}
+E &= \int_{- \infty}^{\infty}{\left| x(t) \right|^{2}\ dt} \label{eq:3.7}
+\end{align}
+übergegangen. Da für zeitdiskrete Signalfolgen keine Integration durchgeführt werden kann, wird für Signalfolgen die Summe
+\begin{align}
+E &= \sum_{k = - \infty}^{\infty}\left| x[ k] \right|^{2} \label{eq:3.8}
+\end{align}
+als Energie definiert. Mit dieser Definition können Signalfolgen wie zeitkontinuierliche Signale in Energiesignalfolgen und Leistungssignalfolgen eingestuft werden:
+
+\subsubsection{Energiesignalfolgen}\label{sec:energiesignalfolgen}
+
+Energiesignalfolgen haben eine von Null verschiedene und endliche Gesamtenergie in dem Intervall von - ∞ \textless{} k \textless{} ∞. Die mathematische Bedingung für Energiesignalfolgen lautet:
+\begin{align}
+0 < \sum_{k = - \infty}^{\infty}\left| x[ k] \right|^{2} < \infty \label{eq:3.9}
+\end{align}
+Diese Bedingung ist für jede zeitbegrenzte und amplitudenbegrenzte Folge erfüllt. Folgen, die gleichzeitig zeit- und amplitudenbegrenzt sind, sind damit immer Energiesignalfolgen.
+
+\subsubsection{Leistungssignalfolgen}\label{sec:leistungssignalfolgen}
+
+Leistungssignalfolgen haben dagegen eine von Null verschiedene und endliche mittlere Leistung. Mathematisch ergibt sich folgende Definition für Leistungssignalfolgen:
+\begin{align}
+0 \leq \lim_{K \rightarrow \infty}\frac{1}{K}  \sum_{k = - K}^{K}\left| x[ k] \right|^{2} < \infty \label{eq:3.10}
+\end{align}
+Für Signalfolgen mit einer begrenzten Amplitude bedeutet das, dass sie nicht zeitbegrenzt sein müssen. Ihre Energie ist zwar unendlich, ihre Energie im Intervall von - K bis K ist aber begrenzt.
+
+Signalfolgen, die weder Energie- noch Leistungssignalfolgen sind, spielen in der Systemtheorie praktisch keine Rolle, da technische Vorgänge grundsätzlich mit endlichen Größen verbunden sind.
+
+\subsection{Symmetrieeigenschaften von Signalfolgen}\label{sec:symmetrieeigenschaften-von-signalfolgen}
+
+Die Bestimmung von Signaleigenschaften und Transformationen von Signalfolgen kann wie bei zeitkontinuierlichen Signalen durch Ausnutzen von Symmetrien vereinfacht werden. Deshalb werden Symmetrieeigenschaften diskutiert, mit denen Signalfolgen in gerade und ungerade Signalfolgen eingeteilt werden können. Gerade Signalfolgen sind für alle k symmetrisch zur Achse \(k = 0\). Für eine gerade Signalfolge gilt deshalb die Bedingung:
+\begin{align}
+x[ k] &= x[ - k] \label{eq:3.11}
+\end{align}
+Eine kosinusförmige Signalfolge mit einem Nullphasenwinkel ϕ = 0 ist ein Beispiel für eine gerade Signalfolge, denn es gilt:
+\begin{align}
+x[ k] &= \cos\left( \frac{2  \pi}{T_{0}}  T_{A}  k \right) = \cos\left( - \frac{2  \pi}{T_{0}}  T_{A}  k \right) = x[ - k] \label{eq:3.12}
+\end{align}
+Ungerade Signalfolgen sind für alle k punktsymmetrisch zu dem Koordinatenursprung (0\textbar0). Dies kann mathematisch ausgedrückt werden als
+\begin{align}
+x[ k] &= - x[ - k] \label{eq:3.13}
+\end{align}
+Eine sinusförmige Signalfolge ist ein Beispiel für eine ungerade Signalfolge, denn es gilt:
+\begin{align}
+x[ k] &= \sin\left( \frac{2  \pi}{T_{0}}  T_{A}  k \right) = - \sin\left( - \frac{2  \pi}{T_{0}}  T_{A}  k \right) = - x[ - k] \label{eq:3.14}
+\end{align}
+Bild \ref{fig:3.5} zeigt Kosinus- und Sinusfolgen als Beispiele für gerade und ungerade Signalfolgen.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Kosinus- und Sinusfolgen als Beispiele für gerade und ungerade Signalfolgen}]{./media/3_5_kosinus_und_sinusfolgen_als_beis.png}
+  \caption{Kosinus- und Sinusfolgen als Beispiele für gerade und ungerade Signalfolgen}
+  \label{fig:3.5}
+\end{figure}
+
+Es existieren Signalfolgen, die weder gerade, noch ungerade sind, sie weisen keine Symmetrie auf. Jede beliebige Signalfolge lässt sich aber in einen geraden und einen ungeraden Anteil aufspalten.
+\begin{align}
+x[ k] &= x_{G}[ k] + x_{U}[ k] \label{eq:3.15}
+\end{align}
+wobei sich die beiden Anteile ergeben aus
+\begin{align}
+x_{G}[ k] &= \frac{1}{2}  \left( x[ k] + x[ - k] \right) \label{eq:3.16}
+\end{align}
+und
+\begin{align}
+x_{U}[ k] &= \frac{1}{2}  \left( x[ k] - x[ - k] \right) \label{eq:3.17}
+\end{align}
+Bild \ref{fig:3.6} verdeutlicht die Zerlegung eines Signals in einen geraden und einen ungeraden Anteil an einem Beispiel.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Zerlegung einer Signalfolge in geraden und ungeraden Anteil}]{./media/3_6_zerlegung_einer_signalfolge_in_g.png}
+  \caption{Zerlegung einer Signalfolge in geraden und ungeraden Anteil}
+  \label{fig:3.6}
+\end{figure}
+
+\subsection{Zusammenfassung Eigenschaften von Signalfolgen}\label{sec:zusammenfassung-eigenschaften-von-signalfolgen}
+
+Zur besseren Übersicht sind in Tabelle \ref{tab:3.1} die diskutierten Eigenschaften für Signalfolgen dargestellt.
+
+\begin{summary}[label=tab:3.1]{Tabellarische Übersicht über Signaleigenschaften für Signalfolgen}
+\begin{center}
+  \begin{tabular}{ll}
+    \toprule
+    Signaleigenschaft & Mathematische Beschreibung \\
+    \midrule
+    Explizit definierte Signalfolge & 
+Folgenwert kann direkt abgelesen werden, 
+zum Beispiel
+
+\[x\lbrack k\rbrack = 10  r^{k}  \sin\left( \Omega_{0}  k \right)\] \\
+    Implizit definierte Signalfolge & 
+Folgenwert muss berechnet werden, 
+zum Beispiel
+
+\[x\lbrack k - 1\rbrack + 3  x\lbrack k - 2\rbrack = 5  x\lbrack k\rbrack\]
+
+mit Anfangsbedingungen \\
+    Begrenzte Signalfolge & \(x\lbrack k\rbrack = 0\text{   }für\ k < k_{1}\ und/oder\ k > k_{2}\) \\
+    Kausale Signalfolge & \(x\lbrack k\rbrack = 0\text{   }für\ k < 0\) \\
+    Energiesignalfolge & \(0 < \sum_{k = - \infty}^{\infty}\left| x\lbrack k\rbrack \right|^{2} < \infty\) \\
+    Leistungssignalfolge & \(0 \leq \lim_{K \rightarrow \infty}\frac{1}{K}  \sum_{k = - K}^{K}\left| x\lbrack k\rbrack \right|^{2} < \infty\) \\
+    Gerade Signalfolge & .\(x\lbrack k\rbrack = x\lbrack - k\rbrack\). \\
+    Ungerade Signalfolge & \(x\lbrack k\rbrack = - x\lbrack - k\rbrack\) \\
+    Gerader Anteil & \(x_{G}\lbrack k\rbrack = \frac{1}{2}  \left( x\lbrack k\rbrack + x\lbrack - k\rbrack \right)\) \\
+    Ungerader Anteil & \(x_{U}\lbrack k\rbrack = \frac{1}{2}  \left( x\lbrack k\rbrack - x\lbrack - k\rbrack \right)\) \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\end{summary}
+
+\section{Sprung- und Impulsfolgen}\label{sec:3.2}
+
+Auch bei der Beschreibung und Interpretation von zeitdiskreten Systemen werden Impuls- und Sprungantworten verwendet. Deshalb werden in diesem Abschnitt Sprung- und Impulsfolgen vorgestellt, weitere Signalfolgen daraus abgeleitet und das Rechnen mit Impulsfolgen vertieft.
+
+\subsection{Impulsfolge}\label{sec:3.2.1}
+
+Die Impulsfolge ist im Gegensatz zur Impulsfunktion nicht als Grenzwert definiert, sondern durch die Bedingung
+\begin{align}
+\delta[ k] = \left\{ \begin{aligned}
+ & 1	\text{f}\text{ü}\text{r k = 0} \\
+ & 0	\text{f}\text{ü}\text{r ganzzahlige k} \neq 0
+\end{aligned} \right.\ \label{eq:3.18}
+\end{align}
+Im Vergleich zur Impulsfunktion ist die Impulsfolge nicht unendlich hoch, sondern hat eine Höhe, die beim kontinuierlichen System dem Gewicht der Impulsfunktion entspricht. Diese Definition erleichtert das Rechnen mit der Impulsfolge im Vergleich zur Impulsfunktion. Bild \ref{fig:3.7} stellt die Impulsfolge grafisch dar.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Impulsfolge \(δ[k]\)}]{./media/3_7_darstellung_der_impulsfolge_k.png}
+  \caption{Darstellung der Impulsfolge \(δ[k]\)}
+  \label{fig:3.7}
+\end{figure}
+
+Die Impulsfolge wird für die Charakterisierung von Systemen verwendet. Die Impulsfolge ist sowohl zeitlich, als auch von der Amplitude begrenzt. Sie ist eine Energiesignalfolge. Da die Impulsfolge für k \textless{} 0 null ist, ist sie eine kausale Folge. Da praktisch alle Werte der Impulsfolge null sind bis auf den Wert, an dem das Argument der Impulsfolge zu null wird, ergibt sich die Summe über die Impulsfolge zu
+\begin{align}
+\sum_{k = - \infty}^{\infty}{\delta[ k]} &= 1 \label{eq:3.19}
+\end{align}
+Mit der Impulsfolge werden zwei wichtige Methoden realisiert, die für die Darstellung abgetasteter Signale notwendig sind.
+
+\textbf{\hfill\break
+}
+
+\subsubsection{Ausblendeigenschaft der Impulsfolge}\label{sec:ausblendeigenschaft-der-impulsfolge}
+
+Mit Hilfe der Impulsfolge können einzelne Werte einer Folge \(x[k]\) selektiert werden.
+\begin{align}
+\sum_{k = - \infty}^{\infty}{x[ k]  \delta\left[ k - k_{0} \right]} &= x\left[ k_{0} \right] \label{eq:3.20}
+\end{align}
+Diese Bedingung ergibt sich daraus, dass die Impulsfolge für alle Werte von k zu null wird, außer für den Wert \(k = k_{0}\). Für \(k = k_{0}\) nimmt die Impulsfolge den Wert 1 an, die Folge \(x[k]\) hat für \(k = k_{0}\) den Wert x{[}\(k_{0}\){]}.
+
+\subsubsection{Periodische Impulsfolge}\label{sec:periodische-impulsfolge}
+
+Insbesondere bei der Darstellung periodischer Signale wird die periodische Impulsfolge eingesetzt.
+\begin{align}
+x[ k] &= \sum_{n = - \infty}^{\infty}{\delta\left[ k - n  K_{0} \right]} \label{eq:3.21}
+\end{align}
+Jede Impulsfolge ist an allen Stellen null, bis auf die Stelle k = nK\textsubscript{0}. Durch die Summe entsteht eine in K periodische Impulsfolge, die in Bild \ref{fig:3.8} dargestellt ist. Sie wird auch als Impulskamm bezeichnet.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der in \(K_{0} = 5\) periodischen Impulsfolge}]{./media/3_8_darstellung_der_in_k0_5_periodis.png}
+  \caption{Darstellung der in \(K_{0} = 5\) periodischen Impulsfolge}
+  \label{fig:3.8}
+\end{figure}
+
+\subsection{Sprungfolge}\label{sec:sprungfolge}
+
+Die Sprungfolge \(σ[k]\) ist identisch zur Sprungfunktion im zeitkontinuierlichen Bereich definiert als
+\begin{align}
+\sigma[ k] = \left\{ \begin{aligned}
+ & 0	für\ k < 0 \\
+ & 1	für\ k \geq 0
+\end{aligned} \right.\ \label{eq:3.22}
+\end{align}
+Wie im zeitkontinuierlichen Bereich ist die Sprungfolge eine wichtige Testfolge. Bild \ref{fig:3.9} stellt die Sprungfolge dar.
+
+Die Sprungfolge wird zum Beispiel dafür verwendet, ideale Einschaltvorgänge zu beschreiben. Die Sprungfolge ist zeitlich nicht begrenzt und ist damit keine Energiesignalfolge. Wegen ihrer begrenzten Amplitude ist die Bedingung für eine Leistungssignalfolge erfüllt. Da die Sprungfolge für k \textless{} 0 null ist, ist sie eine kausale Folge.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der diskreten Sprungfolge \(σ[k]\)}]{./media/3_9_darstellung_der_diskreten_sprung.png}
+  \caption{Darstellung der diskreten Sprungfolge \(σ[k]\)}
+  \label{fig:3.9}
+\end{figure}
+
+Sprung- und Impulsfolge können in Abhängigkeit voneinander dargestellt werden. So kann die Sprungfolge als Summe einzelner verschobener Impulse dargestellt werden.
+\begin{align}
+\sigma[ k] &= \sum_{\kappa = 0}^{\infty}{\delta[ k - \kappa]} \label{eq:3.23}
+\end{align}
+Andererseits ist die Impulsfolge die Differenz zweier Sprungfolgen, die um einen Index \(k_{0} = 1\) gegeneinander verschoben sind.
+\begin{align}
+\delta[ k] &= \sigma[ k] - \sigma[ k - 1] \label{eq:3.24}
+\end{align}
+Aus dem Vergleich mit der Abhängigkeit der zeitkontinuierlichen Sprung- und Impulsfunktion ergibt sich ein weiterer interessanter Aspekt: Die Sprungfunktion kann als Integral der Impulsfunktion dargestellt werden. Im zeitdiskreten Bereich wird das Integral durch die Summe ersetzt.
+\begin{align}
+\sigma[ k] &= \sum_{\kappa = - \infty}^{k}{\delta[\kappa]} \label{eq:3.25}
+\end{align}
+In zeitkontinuierlichen Bereich ist die Impulsfunktion die Ableitung der Sprungfunktion. Im zeitdiskreten Bereich wird die Ableitung durch den Differenzenquotienten ersetzt, sodass gilt:
+\begin{align}
+\delta[ k] &= \frac{\sigma[ k] - \sigma[ k - 1]}{k - (k - 1)} = \sigma[ k] - \sigma[ k - 1] \label{eq:3.26}
+\end{align}
+Im zeitdiskreten Bereich gehen also das Integral in eine Summe und die Ableitung in einen Differenzenquotienten über.
+
+\subsection{\texorpdfstring{Integral abgetasteter Signale }{Integral abgetasteter Signale }}\label{integral-abgetasteter-signale}
+
+Ideal abgetastete Signale können als Summe gewichteter Impulse dargestellt werden.
+\begin{align}
+x_{A}(t) &= \sum_{k = - \infty}^{\infty}{x\left( k  T_{A} \right)  \delta\left( t - k  T_{A} \right)} = \sum_{k = - \infty}^{\infty}{x[ k]  \delta\left( t - k  T_{A} \right)} \label{eq:3.27}
+\end{align}
+Insbesondere bei der Berechnung des Spektrums abgetasteter Signale werden Integrale berechnet, in denen ideal abgetasteten Signale vorkommen. Als Vorbereitung dazu wird das Integral abgetasteter Signale berechnet.
+\begin{align}
+\int_{\tau = - \infty}^{t}{x_{A}(\tau)d\tau} &= \int_{\tau = - \infty}^{t}{\sum_{\kappa = - \infty}^{\infty}{x[\kappa]  \delta\left( \tau - \kappa  T_{A} \right)}d\tau} = \sum_{\kappa = - \infty}^{\infty}{x[\kappa]  \int_{\tau = - \infty}^{t}{\delta\left( \tau - \kappa  T_{A} \right)d\tau}} \label{eq:3.28}
+\end{align}
+Um von dem zeitkontinuierlichen Integralausdruck zu einer Summe zu kommen, wird die Zeitvariable normiert.
+\begin{align}
+\tau &= T_{A}  \eta \label{eq:3.29}
+\end{align}
+Aus der Substitutionsregel folgt
+\begin{align}
+d\tau &= T_{A}  d\eta \label{eq:3.30}
+\end{align}
+Für die Zeitpunkte t = kT\textsubscript{A} ergibt sich
+\begin{align}
+\sum_{\kappa = - \infty}^{\infty}{x[\kappa]\int_{\eta = - \infty}^{k}{\delta(\eta - \kappa)  T_{A}d\eta}} &= \sum_{\kappa = - \infty}^{\infty}{x[\kappa]  T_{A}  \int_{\eta = - \infty}^{k}{\delta(\eta - \kappa)d\kappa}} \label{eq:3.31}
+\end{align}
+Das Integral bewirkt, dass nur Werte aufsummiert werden, die kleiner oder gleich k sind. Damit kann der Ausdruck umgeformt werden zu
+\begin{align}
+\sum_{\kappa = - \infty}^{\infty}{x[\kappa]  T_{A}  \int_{\eta = - \infty}^{k}{\delta(\eta - \kappa)d\kappa}} &= T_{A}  \sum_{\kappa = - \infty}^{k}{x[\kappa]  \delta[ k - \kappa]} \label{eq:3.32}
+\end{align}
+Der Vergleich zeigt, dass bei der Berechnung von Integralen ideal abgetasteter Signale neben der Summe der Abtastwerte die Abtastzeit berücksichtigt werden muss.
+
+Tabelle \ref{tab:3.2} vergleicht die Definition und die Eigenschaften der Impulsfolge und der Impulsfunktion tabellarisch miteinander.
+
+\begin{table}
+  \centering
+  \caption{Vergleich Impulsfunktion und Impulsfolge}
+  \label{tab:3.2}
+  \begin{tabular}{llll}
+    \toprule
+    Eigenschaft & Zeitkontinuierlicher Bereich & Zeitdiskreter Bereich \\
+    \midrule
+    Definition des Impulses & \(\delta(t) = \lim_{\varepsilon \rightarrow 0}\ \frac{1}{\varepsilon}  \left( \sigma\left( t + \frac{\varepsilon}{2} \right) - \sigma\left( t - \frac{\varepsilon}{2} \right) \right)\) & \(\delta\lbrack k\rbrack = \left\{ \begin{aligned}
+ & 1	\text{f}\text{ü}\text{r k = 0} \\
+    & 0	\text{f}\text{ü}\text{r k } \neq \text{ 0}
+\end{aligned} \right.\ \) \\
+    Integration & \(\int_{- \infty}^{\infty}{\delta(\tau)\ d\tau} = 1\) & \(\sum_{k = - \infty}^{\infty}{\delta\lbrack k\rbrack} = 1\) \\
+    Ausblendeigenschaft & \(\int_{- \infty}^{\infty}{x(t)  \delta\left( t - t_{0} \right)\ dt} = x\left( t_{0} \right)\) & \(\sum_{k = - \infty}^{\infty}{x\lbrack k\rbrack  \delta\left\lbrack k - k_{0} \right\rbrack} = x\left\lbrack k_{0} \right\rbrack\) \\
+    Impuls als Ableitung des Sprungs & \(\delta(t) = \frac{d\sigma}{dt}\) & \(\delta\lbrack k\rbrack = \sigma\lbrack k\rbrack - \sigma\lbrack k - 1\rbrack\) \\
+    Sprung als Integral des Impulses & \(\sigma(t) = \int_{- \infty}^{t}{\delta(\tau)\ d\tau}\) & \(\sigma\lbrack k\rbrack = \sum_{\kappa = - \infty}^{k}{\delta\lbrack\kappa\rbrack}\) \\
+    Integral eines abgetasteten Signals & \multicolumn{2}{l}{%
+\(\int_{\tau = - \infty}^{t}{x_{A}(\tau)d\tau} = T_{A}  \sum_{\kappa = - \infty}^{k}{x\lbrack\kappa\rbrack  \delta\lbrack k - \kappa\rbrack}\)} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Rechteckfolge}\label{sec:rechteckfolge}
+
+Die Rechteckfolge ist abschnittsweise definiert als
+\begin{align}
+x[ k] = \left\{ \begin{aligned}
+ & 0	für\ k < - K \\
+ & 1\ 	für\  - K \leq k < K + 1 \\
+ & 0	für\ K + 1\  \leq \ k\ 
+\end{aligned} \right.\ \label{eq:3.33}
+\end{align}
+Die Rechteckfolge ist eine Folge mit endlicher Amplitude und endlicher Dauer. Die Bedingung für eine Energiesignalfolge ist deshalb erfüllt. Die Rechteckfolge nach Gleichung (\ref{eq:3.33}) ist keine kausale Folge, da sie für k \textless{} 0 nicht null ist. Durch eine Verschiebung um K nach rechts wird die Folge kausal. Beide Folgen sind in Bild \ref{fig:3.10} dargestellt.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Rechteckfolge und verschobene Rechteckfolge}]{./media/3_10_rechteckfolge_und_verschobene_r.png}
+  \caption{Rechteckfolge und verschobene Rechteckfolge}
+  \label{fig:3.10}
+\end{figure}
+
+Die Rechteckfolge kann neben der abschnittsweisen Definition auch als Summe zweier Sprungfolgen dargestellt werden, die um - K beziehungsweise K + 1 verschoben sind.
+\begin{align}
+x[ k] &= \sigma[ k + K] - \sigma\left[ k - (K + 1) \right] = \sigma[ k + K] - \sigma[ k - K - 1] \label{eq:3.34}
+\end{align}
+\subsection{Signum-Folge}\label{sec:signum-folge}
+
+Die Signum-Folge sgn{[}k{]} ist abschnittsweise definiert als
+\begin{align}
+x[ k] = {sgn}[ k] = \left\{ \begin{aligned}
+ & - 1	für\ k < 0 \\
+ & + 1	\text{f}\text{ü}\text{r k} \geq \text{0 }
+\end{aligned} \right.\ \label{eq:3.35}
+\end{align}
+Auch die Signum-Folge kann mit Hilfe der Sprungfolge dargestellt werden.
+\begin{align}
+x[ k] &= {sgn}[ k] = 2  \sigma[ k] - 1 \label{eq:3.36}
+\end{align}
+Bild \ref{fig:3.11} stellt die Signum-Folge grafisch dar. Sie dauert unendlich lange an und ist deshalb keine Energiesignalfolge. Wegen ihrer konstanten Amplitude ist die Bedingung für eine Leistungssignalfolge erfüllt. Die Signum-Folge ist nicht kausal und kann durch eine zeitliche Verschiebung auch nicht kausal werden.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Signum-Folge sgn{[}k{]}}]{./media/3_11_signumfolge_sgnk.png}
+  \caption{Signum-Folge sgn{[}k{]}}
+  \label{fig:3.11}
+\end{figure}
+
+\subsection{Rampenfolge}\label{sec:rampenfolge}
+
+Die Rampenfolge ist wie im zeitkontinuierlichen Bereich definiert als
+\begin{align}
+x[ k] = \left\{ \begin{aligned}
+ & 0	für\ k < 0 \\
+ & k	\text{f}\text{ü}\text{r k } \geq \text{ 0 }
+\end{aligned} \right.\ \label{eq:3.37}
+\end{align}
+Bild \ref{fig:3.12} stellt die Rampenfolge grafisch dar.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Rampenfolge}]{./media/3_12_rampenfolge.png}
+  \caption{Rampenfolge}
+  \label{fig:3.12}
+\end{figure}
+
+Die Rampenfolge kann als Summation über die Sprungfolge beschrieben werden. Dabei muss jedoch beachtet werden, dass die Rampenfolge an der Stelle \(k = 0\) null ist. Deshalb muss die Rampenfolge dargestellt werden als
+\begin{align}
+x[ k] &= \sum_{\kappa = - \infty}^{k - 1}{\sigma[\kappa]} = \sum_{\kappa = - \infty}^{k}{\sigma[\kappa - 1]} \label{eq:3.38}
+\end{align}
+Auswerten der Summengleichung führt zu der Darstellung
+\begin{align}
+x[ k] &= k  \sigma[ k] \label{eq:3.39}
+\end{align}
+Die Rampenfolge hat weder eine begrenzte Amplitude noch eine begrenzte Zeitdauer, sie ist weder Energie- noch Leistungssignalfolge. Eine ideale Rampenfolge kann in realen Systemen deshalb nur für ein begrenztes Intervall realisiert werden. Da die Rampenfolge für k \textless{} 0 null ist, ist sie eine kausale Signalfolge.
+
+\subsection{Dreieckfolge}\label{sec:dreieckfolge}
+
+Die Dreieckfolge ist in Bild \ref{fig:3.13} dargestellt und definiert als
+\begin{align}
+x[ k] = \left\{ \begin{aligned}
+ & 0	für\ k < - K \\
+ & 1 + k/K	\text{f}\text{ü}\text{r -K} \leq \ k < 0 \\
+ & 1 - k/K	\text{f}\text{ü}\text{r 0} \leq k < K \\
+ & 0\text{   }	\text{f}\text{ü}\text{r }k \geq K
+\end{aligned} \right.\ \label{eq:3.40}
+\end{align}
+Die Dreieckfolge kann auf unterschiedliche Art aus den bereits dargestellten Folgen gewonnen werden, zum Beispiel durch Überlagerung von drei Rampenfolgen.
+\begin{align}
+x[ k] &= \frac{k + K}{K}  \sigma[ k + K] - \frac{2  k}{K}  \sigma[ k] + \frac{k - K}{K}  \sigma[ k - K] \label{eq:3.41}
+\end{align}
+\begin{figure}
+  \centering
+  \includegraphics[alt={Dreieckfolge und kausale Dreieckfolge}]{./media/3_13_dreieckfolge_und_kausale_dreiec.png}
+  \caption{Dreieckfolge und kausale Dreieckfolge}
+  \label{fig:3.13}
+\end{figure}
+
+Die Dreieckfolge ist eine Folge mit endlicher Amplitude und endlicher Dauer. Die Bedingung für eine Energie- und Leistungssignalfolge ist erfüllt. Wie die Rechteckfolge beginnt die Rampenfolge bereits für k = - K. Sie ist deshalb nicht kausal, kann aber durch Verschiebung um K nach rechts in eine kausale Folge überführt werden.
+
+\subsection{Zusammenfassung Testfolgen}\label{sec:zusammenfassung-testfolgen}
+
+In Tabelle \ref{tab:3.3} sind die wesentlichen Testfolgen und ihre Darstellungsmöglichkeiten mit der Sprungfolge zusammengefasst.
+
+\begin{summary}[label=tab:3.3]{Tabellarische Zusammenfassung von Testfolgen und ihrer Beschreibung mit Sprungfolgen}
+\begin{center}
+  \begin{tabular}{ll}
+    \toprule
+    Testfolgen & 
+Mathematische Beschreibung 
+durch Sprungfolgen \\
+    \midrule
+    Impulsfolge & \(\delta\lbrack k\rbrack = \sigma\lbrack k\rbrack - \sigma\lbrack k - 1\rbrack\) \\
+    Sprungfolge & \(\sigma\lbrack k\rbrack = \sum_{\kappa = - \infty}^{k}{\delta\lbrack\kappa\rbrack}\) \\
+    Rechteckfolge der Länge 2K + 1 & \(x\lbrack k\rbrack = \sigma\lbrack k + K\rbrack - \sigma\lbrack k - K - 1\rbrack\) \\
+    Signum-Folge & \(x\lbrack k\rbrack = {sgn}\lbrack k\rbrack = 2  \sigma\lbrack k\rbrack - 1\) \\
+    Rampenfolge & \(x\lbrack k\rbrack = k  \sigma\lbrack k\rbrack = \sum_{\kappa = - \infty}^{k}{\sigma\lbrack\kappa - 1\rbrack}\) \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\end{summary}
+
+\section{Rechnen mit Folgen}\label{sec:3.3}
+
+Die Berechnung der Ausgangsfolge eines linearen Systems kann auf bekannte Ausgangsfolgen zurückgeführt werden, wenn die Eingangsfolge auf bekannten Folgen basiert. Dazu ist es notwendig, die Folgen mit Hilfe der in diesem Abschnitt dargestellten Rechenmethoden umrechnen zu können.
+
+\subsection{Operationen mit Folgen}\label{sec:operationen-mit-folgen}
+
+Für die Umrechnung von Folgen sind mathematische Operationen notwendig. Die wichtigsten elementaren Operationen sind im Folgenden zusammengefasst und an dem Beispiel der Folge
+\begin{align}
+x[ k] &= 10  r^{k}  \sin\left( \Omega_{0}  k \right) \label{eq:3.42}
+\end{align}
+grafisch dargestellt.
+
+\subsubsection{Skalierung der Amplitude}\label{sec:skalierung-der-amplitude}
+
+Die Folge ax{[}k{]} ist gegenüber der Folge \(x[k]\) verstärkt (a \textgreater{} 1) beziehungsweise gedämpft (0 \textless{} a \textless{} 1). Bild \ref{fig:3.14} zeigt die Folge \(x[k]\) und die um einen Faktor 0.5~gedämpfte Signalfolge 0.5x{[}k{]}.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Folge \(x[k]\) und der skalierten Folge 0.5x{[}k{]}}]{./media/3_14_darstellung_der_folge_xk_und_de.png}
+  \caption{Darstellung der Folge \(x[k]\) und der skalierten Folge 0.5x{[}k{]}}
+  \label{fig:3.14}
+\end{figure}
+
+\subsubsection{Zeitliche Verschiebung}\label{sec:zeitliche-verschiebung}
+
+Die Folge x{[}k - \(k_{0}\){]} ist gegenüber der Folge \(x[k]\) nach rechts (\(k_{0}\) \textgreater{} 0) beziehungsweise nach links\\
+(\(k_{0}\) \textless{} 0) verschoben. Bild \ref{fig:3.15} zeigt die Folge \(x[k]\) und die um \(k_{0} = 5\) verschobene Folge \(x[k -- 5]\).
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Folge \(x[k]\) und der um \(k_{0} = 5\) nach rechts verschobenen Folge \(x[k -- 5]\)}]{./media/3_15_darstellung_der_folge_xk_und_de.png}
+  \caption{Darstellung der Folge \(x[k]\) und der um \(k_{0} = 5\) nach rechts verschobenen Folge \(x[k -- 5]\)}
+  \label{fig:3.15}
+\end{figure}
+
+Das Vorgehen wird am einfachsten deutlich, wenn über den Folgenindex k argumentiert wird. Die Folge \(x[k]\) weist zum Zeitpunkt \(k = 1\) den maximalen Wert auf. Da der Index k in der Folge\\
+\(x[k -- 5]\) um 5 verringert wird, weist die Folge \(x[k -- 5]\) erst an der Stelle \(k = 6\) den maximalen Wert auf.
+
+\subsubsection{Spiegelung}\label{sec:spiegelung}
+
+Die Spiegelung einer Folge an der Stelle \(k = 0\) kann mathematisch durch die Folge \(x[-k]\) dargestellt werden. Bild \ref{fig:3.16} zeigt die Folge \(x[k]\) und die gespiegelte Folge \(x[-k]\).
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Folge \(x[k]\) und der an \(k = 0\) gespiegelte Folge \(x[- k]\)}]{./media/3_16_darstellung_der_folge_xk_und_de.png}
+  \caption{Darstellung der Folge \(x[k]\) und der an \(k = 0\) gespiegelte Folge \(x[- k]\)}
+  \label{fig:3.16}
+\end{figure}
+
+Auch hier kann über den Folgenindex argumentiert werden. Die Folge \(x[k]\) weist an der Stelle \(k = 1\) den Folgenwert \(x[1]\) = 7.6 auf. Die Folge \(x[-k]\) besitzt denselben Folgenwert an der Stelle k = - 1.
+
+\subsubsection{Zeitliche Skalierung}\label{sec:zeitliche-skalierung}
+
+Bei Signalfolgen kann eine Stauchung oder Dehnung des Signals nicht beliebig vorgenommen werden, da die dazu notwenigen Abtastwerte nicht vorliegen. Ohne zusätzliche Interpolationsschritte ist es bei der zeitlichen Skalierung nur möglich, ganzzahlige Faktoren a \textgreater{} 1 einzusetzen. Diese Skalierung führt zu einer Stauchung der Signalfolge. Bild \ref{fig:3.17} zeigt die Folge \(x[k]\) und die zeitlich skalierte Folge \(x[2k]\).
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Folge \(x[k]\) und der gestauchten Signalfolge \(x[2k]\)}]{./media/3_17_darstellung_der_folge_xk_und_de.png}
+  \caption{Darstellung der Folge \(x[k]\) und der gestauchten Signalfolge \(x[2k]\)}
+  \label{fig:3.17}
+\end{figure}
+
+Wieder wird der Begriff der Stauchung am einfachsten deutlich, wenn über das Argument der Folge \(x[ak]\) argumentiert wird.
+
+\subsection{Überlagerung grundlegender Folgen}\label{sec:uxfcberlagerung-grundlegender-folgen}
+
+Die vorgestellten Folgen und Rechenregeln ermöglichen die Synthese weiterer Testfolgen durch eine Überlagerung grundlegender Folgen. An einem Beispiel wird das Rechnen mit grundlegenden Folgen verdeutlicht. Die Signalfolge aus Bild \ref{fig:3.18} soll als Kombination grundlegender Folgen dargestellt werden.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung einer Folge \(x[k]\) als Summe grundlegender Folgen}]{./media/3_18_darstellung_einer_folge_xk_als.png}
+  \caption{Darstellung einer Folge \(x[k]\) als Summe grundlegender Folgen}
+  \label{fig:3.18}
+\end{figure}
+
+Bei der Beschreibung der Folge \(x[k]\) sind insbesondere die Stellen von Bedeutung, an denen sich die Steigung der Folge ändert. Aus Bild \ref{fig:3.18} kann abgelesen werden, dass das die Stellen 0, 2, 6, 8 und 10~sind.
+
+An der Stelle \(k = 0\) beginnt die Folge mit der Steigung 1. Die Folge \(x_{1}\){[}k{]}, die dieses Verhalten beschreibt, lautet:
+\begin{align}
+x_{1}[ k] &= k  \sigma[ k] \label{eq:3.43}
+\end{align}
+An der Stelle \(k = 2\) ändert sich die Steigung der Folge um -- 2. Der Faktor 2 ergibt sich dabei aus der Kompensation der vor dieser Stelle vorhandenen Steigung 1 und der nach der Stelle gewünschten Steigung -- 1. Zu der Folge \(x_{1}\){[}k{]} muss die Folge \(x_{2}\){[}k{]} addiert werden, die aber erst an der Stelle \(k = 2\) einen Einfluss haben darf. Um die Folge für k \textless{} 2 auszublenden, wird die Sprungfolge verwendet.
+\begin{align}
+x_{2}[ k] &= - 2  (k - 2)  \sigma[ k - 2] \label{eq:3.44}
+\end{align}
+Das Vorgehen wiederholt sich mit unterschiedlichen Steigungsänderungen an den Stellen 6, 8 und 10, und es ergeben sich die Folgen
+\begin{align}
+x_{3}[ k] &= (k - 6)  \sigma[ k - 6] \label{eq:3.45} \\
+x_{4}[ k] &= (k - 8)  \sigma[ k - 8] \label{eq:3.46} \\
+x_{5}[ k] &= - (k - 10)  \sigma[ k - 10] \label{eq:3.47}
+\end{align}
+Die Folge \(x[k]\) kann damit als Überlagerung der Teilfolgen \(x_{1}\){[}k{]} bis \(x_{5}\){[}k{]} dargestellt werden.
+\begin{align}
+{x[ k] = k  \sigma[ k] - 2  (k - 2)  \sigma[ k - 2] + (k - 6)  \sigma[ k - 6]
+}{+ (k - 8)  \sigma[ k - 8] - (k - 10)  \sigma[ k - 10]} \label{eq:3.48}
+\end{align}
+Durch den Einsatz der Sprungfolgen ist gewährleistet, dass die jeweilige Folge erst ab einem definierten Zeitpunkt berücksichtigt wird. Sie ermöglicht damit die sequenzielle Synthese der Folge \(x[k]\).
+
+\subsection{Zusammenfassung Rechenoperationen mit Folgen}\label{sec:zusammenfassung-rechenoperationen-mit-folgen}
+
+In Tabelle \ref{tab:3.4} sind die besprochenen Rechenregeln zusammengefasst. Sie ermöglichen die Zerlegung von Signalfolgen in bekannte Signalanteile. Das Rechnen mit Folgen ist deshalb Grundlage für eine erfolgreiche Anwendung von Korrespondenztafeln der z- und Fourier-Transformation, die in Kapitel \hyperref[_Toc177369030]{0} und \hyperref[section]{1} beschrieben wird.
+
+\begin{summary}[label=tab:3.4]{Tabellarische Zusammenfassung der Rechenoperationen für Folgen}
+\begin{center}
+  \begin{tabular}{ll}
+    \toprule
+    Operation & Mathematische Beschreibung \\
+    \midrule
+    Skalierung der Amplitude & \(y\lbrack k\rbrack = a  x\lbrack k\rbrack\) \\
+    Verschiebung um \(k_{0}\) nach rechts & \(y\lbrack k\rbrack = x\left\lbrack k - k_{0} \right\rbrack\) \\
+    Stauchung (a \textgreater{} 1 und ganzzahlig) & \(y\lbrack k\rbrack = x\lbrack a  k\rbrack\) \\
+    Spiegelung & \(y\lbrack k\rbrack = x\lbrack - k\rbrack\) \\
+    Aktivieren an der Stelle \(k_{0}\) & \(y\lbrack k\rbrack = x\lbrack k\rbrack  \sigma\left\lbrack k - k_{0} \right\rbrack\) \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\end{summary}
+
+\section{\texorpdfstring{Folgen zur Beschreibung von zeitdiskreten Einschwingvorgängen }{Folgen zur Beschreibung von zeitdiskreten Einschwingvorgängen }}\label{sec:3.4}
+
+Ausgangssignale zeitdiskreter Systeme lassen sich vielfach mit Hilfe von harmonischen Folgen und Exponentialfolgen beschreiben. Sie werden im Folgenden vorgestellt.
+
+\subsection{Periodische und harmonische Folgen}\label{sec:periodische-und-harmonische-folgen}
+
+Periodische Folgen sind dadurch gekennzeichnet, dass sich der Folgenwert periodisch nach einem Intervall der Länge K wiederholt. Bild \ref{fig:3.19} zeigt eine einfache periodische Signalfolge:
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Beispiel für eine periodische Signalfolge mit einer Periode \(K = 8\)}]{./media/3_19_beispiel_fr_eine_periodische_si.png}
+  \caption{Beispiel für eine periodische Signalfolge mit einer Periode \(K = 8\)}
+  \label{fig:3.19}
+\end{figure}
+
+Für periodische Folgen und ganzzahlige Werte n gilt:
+\begin{align}
+x[ k] &= x[ k + n  K] \label{eq:3.49}
+\end{align}
+Neben den Folgen, die das Ein-, Aus- oder Umschalten modellieren, sind in der Systemtheorie periodische, harmonische Signalfolgen von großer Bedeutung. Als Beispiel soll hier eine Kosinusfolge diskutiert werden. Sie ist definiert als
+\begin{align}
+x[ k] &= A  \cos\left( \Omega_{0}  k + \varphi \right) = A  \cos\left( \Omega_{0}  \left( k + k_{0} \right) \right) \label{eq:3.50}
+\end{align}
+wobei A die Amplitude der Schwingung, ϕ der Nullphasenwinkel und \(Ω_{0}\) die normierte Kreisfrequenz ist. Die Normierung wird in Kapitel \ref{sec:7.1.2} ausführlich diskutiert. Die normierte Kreisfrequenz ergibt sich aus dem Ansatz, dass die Folgenwerte \(x[k]\) an den Zeitpunkten kT\textsubscript{A} mit der Funktion \(x(t)\) übereinstimmen sollen.
+\begin{align}
+x[ k] &= A  \cos\left( \Omega_{0}  k + \varphi \right) = A  \cos\left( \omega_{0}  k  T_{A} + \varphi \right) = x\left( k  T_{A} \right) \label{eq:3.51}
+\end{align}
+Ein Vergleich der beiden Kosinusfunktionen führt zu einer Normierung der Kreisfrequenz mit der Abtastzeit \(T_{A}\).
+\begin{align}
+\Omega_{0} &= \omega_{0}  T_{A} \label{eq:3.52}
+\end{align}
+Da der Folgenindex k im Gegensatz zu Zeit t dimensionslos ist, besitzt die normierte Kreisfrequenz die Einheit rad. Bild \ref{fig:3.20} verdeutlicht diese Definitionen an einem Beispiel:
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Kosinusfolge mit einer Periode \(K = 10\), einer Amplitude von 5 und\\
+einem Nullphasenwinkel von - 2/5π}]{./media/image60.png}
+  \caption{Kosinusfolge mit einer Periode \(K = 10\), einer Amplitude von 5 und\\
+einem Nullphasenwinkel von - 2/5π}
+  \label{fig:3.20}
+\end{figure}
+
+In dem Beispiel beträgt die Amplitude 5. Die Kosinusfolge hat zwei aufeinanderfolgende Minima bei k = - 3 und \(k = 7\), woraus sich eine Periode von \(K = 10\) und eine normierte Kreisfrequenz
+\begin{align}
+\Omega_{0} &= \frac{2  \pi}{10} \label{eq:3.53}
+\end{align}
+ergibt. Die Nullphase ϕ ist nicht unmittelbar aus dem Diagramm ablesbar. Sie wird über die Verschiebung \(k_{0}\) berechnet:
+\begin{align}
+k_{0} &= \frac{\varphi}{2  \pi}  10 = - 2\ \label{eq:3.54}
+\end{align}
+Für das Beispiel ergibt sich damit der Nullphasenwinkel ϕ = - 2/5π.
+
+\subsubsection{Zeigerdarstellung von harmonischen Signalfolgen}\label{sec:zeigerdarstellung-von-harmonischen-signalfolgen}
+
+In der Elektrotechnik hat sich für die Berechnung von harmonisch angeregten Schaltungen die Zeigerdarstellung durchgesetzt. Sie beruht auf der Eulerschen Formel.
+\begin{align}
+e^{j  \varphi} &= \cos(\varphi) + j  \sin(\varphi) \label{eq:3.55}
+\end{align}
+Damit kann eine Kosinusfolge der Form
+\begin{align}
+x[ k] &= A  \cos\left( \Omega_{0}  k + \varphi \right) \label{eq:3.56}
+\end{align}
+als Realteil einer komplexen Folge
+\begin{align}
+z[ k] &= A  e^{j  \left( \Omega_{0}  k + \varphi \right)} = A  e^{j  \varphi}  e^{j  \Omega_{0}  k} = A  \left( \cos\left( \Omega_{0}  k + \varphi \right) + j  \sin\left( \Omega_{0}  k + \varphi \right) \right) \label{eq:3.57}
+\end{align}
+aufgefasst werden. Diese mathematische Darstellung kann durch einen Zeiger der Länge A verdeutlicht werden, der in der komplexen Ebene um den Koordinatenursprung rotiert. Die Zeit für eine volle Umdrehung ist die Periode K. Die eigentlich interessierende Größe ist die Projektion des Zeigers auf die reelle Achse, sie stellt die Folge \(x[k]\) dar. Zum Zeitpunkt \(k = 0\) gilt
+\begin{align}
+z[ 0] &= A  e^{j  \varphi} = A  \cos(\varphi) + j  A  \sin(\varphi) \label{eq:3.58}
+\end{align}
+Zur Verdeutlichung zeigt Bild \ref{fig:3.21} die Zeigerdarstellung in der komplexen Ebene.
+
+\includegraphics[width=3.13386in,height=5.04724in]{./media/image61.png}
+
+\protect\phantomsection\label{fig:3.21}{}Bild .: Darstellung einer harmonischen Schwingungsfolge als Zeigerdiagramm
+
+\subsubsection{Darstellung von Signalfolgen als Überlagerung komplexer Schwingungsfolgen}\label{sec:darstellung-von-signalfolgen-als-uxfcberlagerung-komplexer-schwingungsfolgen}
+
+Durch Umformung der Eulerschen Formel ergibt sich für Kosinusfolgen die Darstellung
+\begin{align}
+\cos(\varphi) &= \frac{1}{2}  \left( e^{j  \varphi} + e^{- j  \varphi} \right) \label{eq:3.59}
+\end{align}
+Damit lässt sich die Kosinusfolge darstellen als
+\begin{align}
+x[ k] &= A  \cos\left( \Omega_{0}  k + \varphi \right) = \frac{A}{2}  \left( e^{j  \left( \Omega_{0}  k + \varphi \right)} + e^{- j  \left( \Omega_{0}  k + \varphi \right)} \right) \label{eq:3.60}
+\end{align}
+Der erste Summand beschreibt einen komplexen Zeiger, der sich in der komplexen Ebene mit einer normierten Kreisfrequenz \(Ω_{0}\) in mathematisch positiver Richtung dreht. Der zweite Summand beschreibt einen zweiten komplexen Zeiger, der zu jedem Zeitpunkt konjugiert komplex zum Ersten ist. Er dreht sich mit derselben Winkelgeschwindigkeit wie der erste Zeiger, aber in entgegengesetzter Richtung.
+
+Die komplexe Exponentialfolge stellt reelle Folgen mit Hilfe komplexer Zahlen dar. Es ist eine effiziente Beschreibungsform, die gleichermaßen Amplitude und Phase beschreibt. Physikalisch gesehen existieren komplexe Signale nicht.
+\begin{application}{Komplexe Exponentialfolge}
+  Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Komplexe Exponentialfolge} die Darstellung von harmonischen Signalen mit Zeigern, die in der komplexen Ebene rotieren.
+  \tcblower
+  \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
+\end{application}
+\subsection{Exponentialfolge}\label{sec:exponentialfolge}
+
+Bei der Diskussion von zeitdiskreten Systemen wird sich zeigen, dass die Exponentialfolge
+\begin{align}
+x[ k] &= A  r_{0}^{k}  \sigma[ k] \label{eq:3.61}
+\end{align}
+die Einschwingvorgänge vieler linearer zeitdiskreter Systeme beschreibt. Bild \ref{fig:3.22} stellt das Verhalten der Exponentialfolge für unterschiedliche reelle Parameter \(r_{0}\) und k \textgreater{} 0 dar:
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung der Exponentialfolge für unterschiedliche Parameter \(r_{0}\)}]{./media/3_20_darstellung_der_exponentialfolg.png}
+  \caption{Darstellung der Exponentialfolge für unterschiedliche Parameter \(r_{0}\)}
+  \label{fig:3.22}
+\end{figure}
+
+Die Exponentialfolge beginnt für alle Parameter \(r_{0}\) an der Stelle \(x[0]\) = A. Für reelle Parameter\\
+0 \textless{} \(r_{0}\) \textless{} 1 nähert sich die Exponentialfolge der Asymptote \(x = 0\). Für \(r_{0} = 1\) bleibt die Exponentialfolge konstant bei \(x = A\). Für \(r_{0}\) \textgreater{} 1~steigt die Exponentialfolge mit wachsendem Folgenindex k.
+
+Mit Exponentialfolgen der Form \(e^{j \bullet \mathrm{\Omega}_{0} \bullet k}\) können harmonische Schwingungen beschrieben werden. Durch die Kombination beider Exponentialfolgen können Kosinusfolgen mit exponentiell abklingender Amplitude als Summe zweier Exponentialfolgen dargestellt werden.
+\begin{align}
+{x\left[k\right]} &=  {A r_{0}^{k}  \cos \left(\Omega _{0}  k\right) \sigma \left[k\right]=\frac{1}{2}  A r_{0}^{k}  \left(e^{j \Omega _{0}  k} +e^{-j \Omega _{0}  k} \right) \sigma \left[k\right]} \\
+{} &=  {\frac{1}{2}  A \left(\left(r_{0}  e^{j \Omega _{0} } \right)^{k} +\left(r_{0}  e^{-j \Omega _{0} } \right)^{k} \right) \sigma \left[k\right]=\frac{1}{2}  A \left(\lambda _{0}^{k} +\left(\lambda _{0}^{*} \right)^{k} \right) \sigma \left[k\right]}
+ \label{eq:3.62}
+\end{align}
+Die Kosinusfolge mit exponentiell abklingender Amplitude ist in Bild \ref{fig:3.23} dargestellt. Dabei sind die Einhüllenden der Kosinusfolge als gestrichelte Linie eingezeichnet.
+
+\begin{figure}
+  \centering
+  \includegraphics[alt={Darstellung einer Exponentialfolge mit abklingender Amplitude}]{./media/3_21_darstellung_einer_exponentialfo.png}
+  \caption{Darstellung einer Exponentialfolge mit abklingender Amplitude}
+  \label{fig:3.23}
+\end{figure}
+
+Je nach Lage des Wertes \(λ_{0}\) = \({r_{0}  e}^{j \bullet \mathrm{\Omega}_{0}}\) in der komplexen Ebene ergeben sich ein charakteristisches Verhalten der komplexen Exponentialfolge. Bei der Diskussion von Systemeigenschaften linearer Systeme wird die Interpretation reeller und komplexer Exponentialfolgen weiter vertieft.
+\begin{application}{Komplexe Exponentialfolge}
+  Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Komplexe Exponentialfolge} den Zusammenhang zwischen der Lage des Wertes \(λ_{0}\) = \({r_{0}  e}^{j \bullet \mathrm{\Omega}_{0} \bullet k}\) in der komplexen Ebene und dem Verhalten der Schwingung.
+  \tcblower
+  \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
+\end{application}
+\subsection{Zusammenfassung zur Beschreibung von zeitdiskreten Einschwingvorgängen}\label{sec:zusammenfassung-zur-beschreibung-von-zeitdiskreten-einschwingvorguxe4ngen}
+
+Die Systemreaktion linearer zeitdiskreter Systeme ist in vielen Anwendungen eine abklingende harmonische Schwingungsfolge. Zur mathematischen Beschreibung werden in Tabelle \ref{tab:3.5} Folgen zusammengestellt.
+
+\begin{table}
+  \centering
+  \caption{Folgen zur Beschreibung von Einschwingvorgängen}
+  \label{tab:3.5}
+  \begin{tabular}{ll}
+    \toprule
+    Folge & Mathematische Beschreibung \\
+    \midrule
+    Periodische Folge der Periodendauer K & \(x\lbrack k\rbrack = x\lbrack k + n  K\rbrack\) \\
+    Harmonische Folge & \(x\lbrack k\rbrack = A  \cos\left( \Omega_{0}  k + \varphi \right) = A  \cos\left( \Omega_{0}  \left( k + k_{0} \right) \right)\) \\
+    Eulersche Formel & \(e^{j  \varphi} = \cos(\varphi) + j  \sin(\varphi)\) \\
+    Darstellung der Kosinusfolge über 
+die Eulersche Formel
+ & \(\cos\left( \Omega_{0}  k \right) = \frac{1}{2}  \left( e^{j  \Omega_{0}  k} + e^{- j  \Omega_{0}  k} \right)\) \\
+    Darstellung der Sinusfolge über 
+die Eulersche Formel
+ & \(\sin\left( \Omega_{0}  k \right) = \frac{1}{2  j}  \left( e^{j  \Omega_{0}  k} - e^{- j  \Omega_{0}  k} \right)\) \\
+    Exponentialfolge mit komplexem Argument & \(\lambda_{0}^{k} = \left( r_{0}  e^{j  \Omega_{0}} \right)^{k} = r_{0}^{k}  e^{j  \Omega_{0}  k}\) \\
+    Beschreibung einer gedämpften Schwingungsfolge 
+über eine Exponentialfolge 
+mit komplexem Argument
+ & \pandocbounded{\includegraphics[keepaspectratio]{./media/image65.wmf}} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\protect\phantomsection\label{_Toc241453879}{}
