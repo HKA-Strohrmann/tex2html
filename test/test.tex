@@ -1,12 +1,57 @@
 \documentclass{book}
 
-\usepackage{tcolorbox}
-\newtcolorbox{boxinfo}{}
+% \usepackage[german-de]{babel}
+% \addto\extrasgerman{\sisetup{locale = DE}}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% \usepackage{libertine}                % text font
+\usepackage[libertine]{newtxmath}     % matching math font
+\let\newtxlaplace\laplace
+\let\laplace\relax
+
+\usepackage{trfsigns}  % replicae imageof from uncide-math
+\let\origof\Laplace
+\let\imageof\laplace
+\let\multimap\Fourier
+\let\multimapinv\fourier
+\newcommand{\vlongdash}{\dft{N}}
+\newcommand{\longdashv}{\DFT{N}}
+
+\let\laplace\newtxlaplace
+
+% \usepackage{newunicodechar} % requires utf8 input encoding
+% \newunicodechar{Ω}{\ensuremath{\Omega}}
+% \newunicodechar{ω}{\ensuremath{\omega}}
+% \newunicodechar{±}{\ensuremath{\pm}}
+% \newunicodechar{π}{\ensuremath{\pi}}
+% \newunicodechar{Δ}{\ensuremath{\Delta}}
+% \newunicodechar{α}{\ensuremath{\alpha}}
+% \newunicodechar{β}{\ensuremath{\beta}}
+% \newunicodechar{δ}{\ensuremath{\delta}}
+% \newunicodechar{κ}{\ensuremath{\kappa}}
+% \newunicodechar{λ}{\ensuremath{\lambda}}
+% \newunicodechar{σ}{\ensuremath{\sigma}}
+% \newunicodechar{ϕ}{\ensuremath{\varphi}}
+% \newunicodechar{∆}{\ensuremath{\Delta}}
+% \newunicodechar{∙}{\ensuremath{\bullet}}
+% \newunicodechar{√}{\ensuremath{\surd}}
+% \newunicodechar{∞}{\ensuremath{\infty}}
+% \newunicodechar{≠}{\ensuremath{\neq}}
+% \newunicodechar{≤}{\ensuremath{\leq}}
+% \newunicodechar{≥}{\ensuremath{\geq}}
+% \newunicodechar{▪}{\ensuremath{\blacksquare}}
+% \newunicodechar{ }{\ } % Fixes non-breaking space
 
 \begin{document}
 
-\begin{boxinfo}
-\textbf{Note:} This is a boxed note.
-\end{boxinfo}
+% \begin{boxinfo}
+% \textbf{Note:} This is a boxed note.
+% \end{boxinfo}
+
+hallo Ω \origof. Oder \(\imageof\)
+
+\[x(t)\origof X(Ω)\]
 
 \end{document}

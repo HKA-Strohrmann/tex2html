@@ -1,0 +1,14 @@
+# unicode-math.sty.ltxml
+use LaTeXML::Package;
+use strict;
+use warnings;
+
+# the opratores from trfsigns have been renamed to match unicode-math
+# \origof uses U+22B6 (ORIGINAL OF: ⊶)
+DefMath('\origof', "\x{22B6}", role => 'RELOP');
+
+# If you also need the inverse transform, you can use U+22B7 (IMAGE OF: ⊷)
+DefMath('\imageof', "\x{22B7}", role => 'RELOP');
+
+# Always end LaTeXML binding files with a true value
+1;

@@ -21,8 +21,8 @@ copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\media" -
 copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\svg-inkscape" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
 copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\combined.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
 
-
-uv run tex2html --input test/test.tex --output test/html/
+cd test
+uv run tex2html "test.tex" --output-file "html/test.html"
 ```
 
 ## To Do
