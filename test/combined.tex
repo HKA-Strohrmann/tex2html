@@ -1,5 +1,13 @@
 
 %___________________________________________________________________
+% Build options
+
+\newif\ifenglish
+\englishfalse
+% \englishtrue
+
+
+%___________________________________________________________________
 % Load Class
 
 
@@ -26,10 +34,6 @@
 % Language Setting
 % set to \englishtrue for English output.
 
-
-\newif\ifenglish
-\englishfalse
-% \englishtrue
 
 \ifenglish
     \newcommand{\LangExample}{Example}
@@ -58,36 +62,40 @@
 
 %___________________________________________________________________
 % Compiler Configuration
-%! use ifpdf to detect html or pdf copiliation !
+%! use "ifpdf" to detect copiliation for html or pdf output!
+%! use "PFTeX" "LuaTeX" to detect compiler and load appropriate packages and fonts.
 
 
 \usepackage{iftex}
 
 \usepackage{amssymb, amsmath}    % must be loaded before unicode-math
-\ifpdf
-    \usepackage{trfsigns}   % must be loaded before textcomp
-\fi
-% allow trfsigns and newtxmath to provide a laplace symbol.
-\let\trfLaplace\Laplace
-\let\trflaplace\laplace
-\let\laplace\undefined
-\let\Laplace\undefined
 
 \ifPDFTeX
+    % \ifenglish
+        % \usepackage[english]{babel}
+    % \else
+        \usepackage[german-de]{babel}
+        % \addto\extrasgerman{\sisetup{locale = DE}}
+    % \fi
     \ifpdf
-        \ifenglish
-            \usepackage[english]{babel}
-        \else
-            \usepackage[german]{babel}
-        \fi
-    
-
         \usepackage[T1]{fontenc}
-        \usepackage[utf8]{inputenc}
 
         \usepackage{libertine}                % text font
         \usepackage[libertine]{newtxmath}     % matching math font
-        
+        \let\newtxlaplace\laplace
+        \let\laplace\relax
+        % replicae unicode-math macros like imageof.
+        % becauuse newtxmath provides a different "laplace" than trfsigns, temporarily rename it to avoid conflicts.
+        \usepackage{trfsigns}  
+        \let\origof\Laplace
+        \let\laplace\relax % unbound laplace from trfsigns
+        \let\imageof\laplace
+        \let\multimap\Fourier
+        \let\multimapinv\fourier
+        \newcommand{\vlongdash}{\dft{N}}
+        \newcommand{\longdashv}{\DFT{N}}
+        \let\laplace\newtxlaplace
+
         \usepackage{newunicodechar} % requires utf8 input encoding
         \newunicodechar{Ω}{\ensuremath{\Omega}}
         \newunicodechar{ω}{\ensuremath{\omega}}
@@ -117,6 +125,7 @@
     \usepackage{unicode-math}
 
     \defaultfontfeatures{
+        Scale=MatchLowercase,
         Ligatures=TeX,      % enable kerning for better spacing between letters
         Kerning=On          % replace sequences (fi) with a single glyph
     }
@@ -174,8 +183,7 @@
     \usepackage{tcolorbox}
 \fi
 
-
-\usepackage[nopatch=footnote]{microtype}            % font expansion
+\usepackage[nopatch=footnote]{microtype}            % font expansion, must be loaded after babel/polyglossia!
 
 \usepackage{booktabs}                               % better table vlines
 \usepackage{tabularx}                               % tables with pagewidth
@@ -205,25 +213,31 @@
         autostyle=true,
         english=american
     ]{csquotes}                             % quote environment
+    \usepackage[
+        detect-all,
+        locale=EN
+    ]{siunitx}
 \else
     \usepackage[
         autostyle=true,
         german=quotes
     ]{csquotes}                             % quote environment
+    \usepackage[
+        detect-all,
+        locale=DE
+    ]{siunitx}
 \fi
 
+\usepackage{tasks}
+
+
 % \usepackage[
-%     backend=biber,
-%     style=ieee,
-% ]{biblatex}                                          % source control
-
-
+% ]{bibtex}                                          % source control
+% biblatex is newer but not supported by latexml
 
 \usepackage{xurl}                                 % better url line breaks, must be loaded before hyperref
 \usepackage{hyperref}                               % add hyperlinks
-\usepackage[
-    open,
-]{bookmark}         % fix bookmarks in pdf when using hyperref
+\usepackage[open]{bookmark}         % fix bookmarks in pdf when using hyperref
 
 
 %___________________________________________________________________
@@ -260,7 +274,7 @@
     runcolor=FacLightBlue,
 }
 
-% \setcounter{tocdepth}{1} % include only sections in toc, no subsections
+\setcounter{tocdepth}{1} % include only sections in toc, no subsections
 
 \renewcommand{\arraystretch}{1.3} % increase row spacing in tables
 
@@ -270,7 +284,6 @@
 
 \setlength{\jot}{1em}       % increase spacing between lines in multiline equations
 
-
 % Images grow until width or height limit is reached.
 \setkeys{Gin}{
     keepaspectratio,
@@ -278,17 +291,15 @@
     width=\imagewidth,
 }
 
+\UseMicrotypeSet[protrusion]{basicmath}
+
+\urlstyle{same} % default font for urls
+
 
 %___________________________________________________________________
 % Custom Boxes
 
 \ifpdf
-
-\newcounter{example}
-\newcounter{exercise}
-\newcounter{application}
-\newcounter{video}
-\newcounter{summary}
 
 \tcbuselibrary{most}
 \tcbset{mybox/.style={
@@ -299,121 +310,54 @@
     coltitle=white,
     fonttitle=\bfseries\sffamily,
     arc=2mm,
+    before upper=\notag,    % no eq number in amsmath env. only works for single line!
 }}
 
 \newtcolorbox[
     auto counter,
     number within=chapter,
-    list inside=loe,
 ]{example}[2][]{
     mybox=FacGreen,
     title={\faCalculator\quad \LangExample~\thetcbcounter: #2},
     #1,
-    list text={#2},
-    step=example,
 }
 
 \newtcolorbox[
     auto counter,
     number within=chapter,
-    list inside=lox,
 ]{exercise}[2][]{
     mybox=FacDarkBlue,
     title={\faPen\quad \LangExercise~\thetcbcounter: #2},
     #1,
-    list text={#2},
-    step=exercise,
 }
 
 \newtcolorbox[
     auto counter,
     number within=chapter,
-    list inside=loa,
 ]{application}[2][]{
     mybox=FacTeal,
     title={\faCogs\quad \LangApplication~\thetcbcounter: #2},
     #1,
-    list text={#2},
-    step=application,
 }
 
 \newtcolorbox[
     auto counter,
     number within=chapter,
-    list inside=lov,
 ]{video}[2][]{
     mybox=FacPurple,
     title={\faPlayCircle\quad \LangVideo~\thetcbcounter: #2},
     #1,
-    list text={#2},
-    step=video,
 }
 
 \newtcolorbox[
     auto counter,
     number within=chapter,
-    list inside=los,
 ]{summary}[2][]{
     mybox=HkaRed,
     title={\faBook\quad \LangSummary~\thetcbcounter: #2},
     #1,
-    list text={#2},
-    step=summary
 }
-
-
-\DeclareNewTOC[
-    type=examplebox,
-    listname={\LangExampleList},
-    extension=loe,
-    setup=totoc,
-]{loe}
-
-\DeclareNewTOC[
-    type=exercisebox,
-    listname={\LangExerciseList},
-    extension=lox,
-    setup=totoc,
-]{lox}
-
-\DeclareNewTOC[
-    type=applicationbox,
-    listname={\LangApplicationList},
-    extension=loa,
-    setup=totoc,
-]{loa}
-
-\DeclareNewTOC[
-    type=videobox,
-    listname={\LangVideoList},
-    extension=lov,
-    setup=totoc,
-]{lov}
-
-\DeclareNewTOC[
-    type=summarybox,
-    listname={\LangSummaryList},
-    extension=los,
-    setup=totoc,
-]{los}
-
-% Compact list spacing for custom tcolorbox lists.
-\unsettoc{loe}{noparskip}
-\unsettoc{lox}{noparskip}
-\unsettoc{loa}{noparskip}
-\unsettoc{lov}{noparskip}
-\unsettoc{los}{noparskip}
-
 \fi
-
-% Prints a list only if the corresponding counter exists and is non-empty.
-% TODO: make this work as expected
-\newcommand{\printlistifnotempty}[2]{%
-    % \iftotal{#1}s
-    %     #2
-    % \fi
-    #2
-}
 
 
 %___________________________________________________________________
@@ -428,46 +372,47 @@
 \title{Digitale Signalverarbeitung}
 
 \author{
-    Manfred Strohrmann\thanks{
+    Manfred Strohrmann%
+    \thanks{
         \href{mailto:manfred.strohrmann@h-ka.de}{manfred.strohrmann@h-ka.de}
     }
 }
 \date{\today}
 
 \ifpdf
-\titlehead{
-    \includesvg[height=3cm]{./media/HKA_EIT_Logo_Gesamt-h_RGB.svg}
-}
-\subject{Signale und Systeme: Part 2}
+    \titlehead{
+        \includesvg[height=3cm]{HKA_EIT_Logo_Gesamt-h_RGB.svg}
+    }
+    \subject{Signale und Systeme: Part 2}
 
-\subtitle{Betrachtung von zeitdiskreten Signalen}
+    \subtitle{Betrachtung von zeitdiskreten Signalen}
 
-\publishers{
-    Herausgegeben von:\\
-    Manfred Strohrmann
-}
+    \publishers{
+        Herausgegeben von:\\
+        Manfred Strohrmann
+    }
 
-% Requires a two-sided layout.
-\uppertitleback{
-    14. Ausgabe, Version 14.0.1, Stand: 2024-05-01
-    \medskip
+    % Requires a two-sided layout.
+    \uppertitleback{
+        14. Ausgabe, Version 14.0.1, Stand: 2024-05-01
+        \medskip
 
-    Dieses Skript und begleitende Materialien finden Sie unter: \\
-    \url{https://www.h-ka.de/eit/Digitale-Signalverarbeitung}
-}
-\lowertitleback{
-    Copyright \textcopyright\ 2010 Manfred Strohrmann,
-    \medskip
+        Dieses Skript und begleitende Materialien finden Sie unter: \\
+        \url{https://www.h-ka.de/eit/Digitale-Signalverarbeitung}
+    }
+    \lowertitleback{
+        Copyright \textcopyright\ 2010 Manfred Strohrmann,
+        \medskip
 
-    Published by Manfred Strohrmann. Alle Rechte vorbehalten.
-    \medskip
+        Published by Manfred Strohrmann. Alle Rechte vorbehalten.
+        \medskip
 
-    Dieses Skript wird als Lehrmaterial für die Vorlesung Digitale Signalverarbeitung an der Hochschule Karlsruhe verwendet. Das Skript wird unter der folgenden Lizenz veröffentlicht: CC BY-NC-ND 4.0 (\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}).
-}
-% \dedication{
-%     \itshape
-%     Dem akademischen Nachwuchs gewidmet, der die Filter von morgen entwirft.
-% }
+        Dieses Skript wird als Lehrmaterial für die Vorlesung Digitale Signalverarbeitung an der Hochschule Karlsruhe verwendet. Das Skript wird unter der folgenden Lizenz veröffentlicht: CC BY-NC-ND 4.0 (\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}).
+    }
+    % \dedication{
+    %     \itshape
+    %     Dem akademischen Nachwuchs gewidmet, der die Filter von morgen entwirft.
+    % }
 \fi
 
 
@@ -483,13 +428,11 @@
 % Custom Commands
 
 
-\newcommand{\manualFigure}[4][]{%
+\newenvironment{fixedfigure}{
     \begin{center}
-        \addvspace{0.5\intextsep}
-        \includegraphics[#1]{#2}
-        \captionof{figure}{#3}
-        #4
-        \addvspace{0.5\intextsep}
+    \addvspace{0.5\intextsep}
+}{
+    \addvspace{0.5\intextsep}
     \end{center}
 }
 
@@ -505,7 +448,7 @@
 % Compatibility stub for pandoc-generated content.
 \makeatletter
 \newcommand{\pandocbounded}[1]{
-    \@latex@warning{Unsupported command 'pandocbounded' used. This is usually done to include an image that is currently not supported. Replace the image file with a supported format and replace the function call.}
+    \@latex@warning{Unsupported command 'pandocbounded' used. This is usually done to include an unsupported image format. Replace the image file with a supported format and remove this function call.}
     \textcolor{red}{\texttt{pandocbounded} is unsupported. Please remove this!}
 }
 \makeatother
@@ -524,21 +467,21 @@
 \ifpdf
     \maketitle
     \tableofcontents
-    \listoftoc{los}
 \fi
 
+Test
 
-\input{chapters/01_einleitung.tex}
-\input{chapters/02_signalabtastung_und_rekonstruktion.tex}
-\input{chapters/03_texorpdfstring_zeitdiskrete_signale.tex}
-\input{chapters/04_zeitdiskrete_systeme_im_zeitbereich.tex}
-\input{chapters/05_z_transformation_von_signalen.tex}
-\input{chapters/06_zeitdiskrete_systeme_im_z_bereich.tex}
-\input{chapters/07_spektrum_von_signalfolgen.tex}
-\input{chapters/08_label_sec_section.tex}
-\input{chapters/09_frequenzgang_zeitdiskreter_systeme.tex}
-\input{chapters/10_entwurf_zeitdiskreter_systeme.tex}
-\input{chapters/11_label_sec_section_1.tex}
+% \input{chapters/01_einleitung.tex}
+% \input{chapters/02_signalabtastung_und_rekonstruktion.tex}
+% \input{chapters/03_texorpdfstring_zeitdiskrete_signale.tex}
+% \input{chapters/04_zeitdiskrete_systeme_im_zeitbereich.tex}
+% \input{chapters/05_z_transformation_von_signalen.tex}
+% \input{chapters/06_zeitdiskrete_systeme_im_z_bereich.tex}
+% \input{chapters/07_spektrum_von_signalfolgen.tex}
+% \input{chapters/08_label_sec_section.tex}
+% \input{chapters/09_frequenzgang_zeitdiskreter_systeme.tex}
+% \input{chapters/10_entwurf_zeitdiskreter_systeme.tex}
+% \input{chapters/11_label_sec_section_1.tex}
 \input{chapters/12_diskrete_fourier_transformation.tex}
 \input{chapters/13_label_sec_section_2.tex}
 \input{chapters/14_zeitdiskrete_systeme_im_zustandsraum.tex}
@@ -551,13 +494,9 @@
 \backmatter
 \appendix   % switches to heading letter numbering
 
-\ifpdf
-    \printlistifnotempty{figure}{\listoffigures}
-    \printlistifnotempty{table}{\listoftables}
-    \printlistifnotempty{examples}{\listoftoc{loe}}
-    \printlistifnotempty{exercise}{\listoftoc{lox}}
-    \printlistifnotempty{application}{\listoftoc{loa}}
-    \printlistifnotempty{video}{\listoftoc{lov}}
-\fi
+% \ifpdf
+%     \listoffigures
+%     \listoftables
+% \fi
 
 \end{document}

@@ -31,12 +31,10 @@ y[ k] &= (1 - GF)  u[ k] + GF  y[ k - 1] \label{eq:4.1}
 \end{align}
 Dabei gilt für den Gedächtnisfaktor GF die Bedingung 0 \textless{} GF \textless{} 1. Das aktuelle Ausgangssignal ergibt sich aus dem aktuellen Eingangssignal und dem um einen Takt zurückliegenden Ausgangssignal. Für kleine Werte von GF folgt das Ausgangssignal dem Eingangssignal, für große Werte ändert sich das Ausgangsignal nur sehr langsam. Bild 4.1 zeigt diesen Zusammenhang für einen Sprung am Eingang.
 
-\manualFigure
-  [alt={Ausgangssignal eines zeitdiskreten Tiefpass-Filters für einen Sprung am Eingang}]
-  {./media/image66.png}
-  {Ausgangssignal eines zeitdiskreten Tiefpass-Filters für einen Sprung am Eingang}
-  {}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Ausgangssignal eines zeitdiskreten Tiefpass-Filters für einen Sprung am Eingang}]{new media/4_1_ausgangssignal_eines_zeitdiskret.png}
+  \captionof{figure}{Ausgangssignal eines zeitdiskreten Tiefpass-Filters für einen Sprung am Eingang}
+\end{fixedfigure}
 
 Die Systemantworten erinnern an das Ausgangssignal eines Tiefpasses. Es wird sich zeigen, dass diese rekursive Form die digitale Approximation eines Tiefpasses erster Ordnung ist.
 
@@ -49,14 +47,13 @@ Zur Verringerung von Störeffekten kann der Mittelwert einiger aufeinanderfolgen
 \begin{align}
 y[ k] &= \frac{1}{5}  \left( u[ k] + u[ k - 1] + u[ k - 2] + u[ k - 3] + u[ k - 4] \right) \label{eq:4.2}
 \end{align}
-ein gleitendes Mittelwertfilter mit 5~Abtastwerten beschrieben. Die Ausgangsfolge ist in diesem Fall nur von aktuellen und vergangenen Werten des Eingangssignals abhängig. Durch die Mittelwertbildung weist die Ausgangsfolge \(y[k]\) einerseits eine geringere Variation auf als die Eingangsfolge \(u[k]\). Durch die Bildung des Mittelwertes von fünf Abtastwerten erreicht das Signal andererseits später seinen Endwert. Beide Effekte sind in Bild \ref{fig:4.2} verdeutlicht.
+ein gleitendes Mittelwertfilter mit 5 Abtastwerten beschrieben. Die Ausgangsfolge ist in diesem Fall nur von aktuellen und vergangenen Werten des Eingangssignals abhängig. Durch die Mittelwertbildung weist die Ausgangsfolge \(y[k]\) einerseits eine geringere Variation auf als die Eingangsfolge \(u[k]\). Durch die Bildung des Mittelwertes von fünf Abtastwerten erreicht das Signal andererseits später seinen Endwert. Beide Effekte sind in Bild \ref{fig:4.2} verdeutlicht.
 
-\manualFigure
-  [alt={Ausgangssignal eines zeitdiskreten Systems mit gleitender Mittelung}]
-  {./media/image67.png}
-  {Ausgangssignal eines zeitdiskreten Systems mit gleitender Mittelung}
-  {\label{fig:4.2}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Ausgangssignal eines zeitdiskreten Systems mit gleitender Mittelung}]{new media/4_2_ausgangssignal_eines_zeitdiskret.png}
+  \captionof{figure}{Ausgangssignal eines zeitdiskreten Systems mit gleitender Mittelung}
+  \label{fig:4.2}
+\end{fixedfigure}
 
 \end{example}
 \begin{application}{Zeitdiskrete Systeme}
@@ -71,12 +68,11 @@ Die beiden vorangegangenen Beispiele sind Algorithmen, die zum Beispiel als Prog
 
 Bei der Integration von CMOS-Schaltungen ist es aufwendig und teuer, präzise und temperaturstabile Widerstände herzustellen. Die Herstellung von stabilen Kondensatoren ist dagegen vergleichsweise günstig. Deshalb werden in der CMOS-Technik Switched-Capacitor-Schaltungen verwendet. Als Beispiel zeigt Bild \ref{fig:4.3} einen invertierenden Integrierer in Switched-Capacitor-Technik.
 
-\manualFigure
-  [alt={Invertierender Integrierer in Switched-Capacitor-Technik}]
-  {./media/image68.png}
-  {Invertierender Integrierer in Switched-Capacitor-Technik}
-  {\label{fig:4.3}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Invertierender Integrierer in Switched-Capacitor-Technik}]{new media/4_3_invertierender_integrierer_in_sw.png}
+  \captionof{figure}{Invertierender Integrierer in Switched-Capacitor-Technik}
+  \label{fig:4.3}
+\end{fixedfigure}
 
 Zu Beginn jeden Taktes wird der Kondensator \(C_{E}\) aufgeladen. Nach Umschalten des Schalters wird der Kondensator \(C_{E}\) mit dem Knoten A des Operationsverstärkers verbunden, der auf Ground-Potential liegt. Der Kondensator wird dabei entladen. Da der Operationsverstärker einen sehr großen Innenwiderstand besitzt, fließt die Ladung nicht über den Operationsverstärker ab, sondern zum Kondensator \(C_{A}\). Bei jedem Takt wird also dem Integrierer eine Ladung der Größe \(q_{E}\){[}k{]} zugeführt.
 \begin{align}
@@ -106,7 +102,7 @@ Das Verhalten der Ein- und Ausgangsgrößen eines realisierbaren, zeitkontinuier
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Approximation des Integrals eines zeitkontinuierlichen Signals durch ein Trapez}]{./media/4_1_approximation_des_integrals_eine.png}
+  \includegraphics[alt={Approximation des Integrals eines zeitkontinuierlichen Signals durch ein Trapez}]{new media/4_4_approximation_des_integrals_eine.png}
   \caption{Approximation des Integrals eines zeitkontinuierlichen Signals durch ein Trapez}
   \label{fig:4.4}
 \end{figure}
@@ -121,11 +117,11 @@ y[ k] &= f\left( y[ k - 1],y[ k - 2],...,u[ k],u[ k - 1],u[ k - 2],... \right) \
 \end{align}
 Die Beschreibung linearer, zeitinvarianter Systeme führt zu linearen Differenzengleichungen mit konstanten Koeffizienten, die allgemein dargestellt werden können als
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.9}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.9}
 \end{align}
 beziehungsweise mit \(c_{0}\) = 1
 \begin{align}
-y[ k] &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:4.10}
+y[ k] &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum\limits_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:4.10}
 \end{align}
 Die Güte der Approximation verbessert sich mit sinkender Abtastzeit \(T_{A}\). Allerdings ist die Abtastzeit aus der Anwendung vorgegeben. Auch der Signalverlauf hat einen Einfluss auf die Approximationsgüte. Nichtlineare Kurvenverläufe und hochfrequente Signalanteile wirken sich negativ auf die Approximationsgüte aus.
 
@@ -134,12 +130,10 @@ Die Güte der Approximation verbessert sich mit sinkender Abtastzeit \(T_{A}\). 
 
 Bild \ref{fig:3.1} zeigt einen RC-Tiefpass mit Spannungsquelle \(u_{E}\), Widerstand R und Kapazität C.
 
-\manualFigure
-  [alt={RC-Tiefpass}]
-  {./media/image70.pdf}
-  {RC-Tiefpass}
-  {}
-
+\begin{fixedfigure}
+  \includegraphics[alt={RC-Tiefpass}]{new media/4_5_rctiefpass.pdf}
+  \captionof{figure}{RC-Tiefpass}
+\end{fixedfigure}
 
 Die zugehörige lineare Differentialgleichung für die Ausgangsspannung \(u_{A}(t)\) lautet:
 \begin{align}
@@ -167,14 +161,13 @@ u_{A}[ k] &= \frac{T_{A}  u_{E}[ k] + T_{A}  u_{E}[ k - 1] - T_{A}  u_{A}[ k - 1
 \end{align}
 Die aktuelle Ausgangsspannung \(u_{A}\){[}k{]} berechnet sich aus dem aktuellen und einem vergangenen Wert der Eingangsspannung \(u_{E}\){[}k{]} und einem vergangenen Wert der Ausgangsspannung \(u_{A}\){[}k{]}. Bild \ref{fig:4.6} zeigt den Vergleich zwischen dem zeitkontinuierlichen und dem zeitdiskreten System bei unterschiedlichen Abtastzeiten.
 
-\manualFigure
-  [alt={Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = 100~µs)}]
-  {./media/image71.png}
-  {Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = 100~µs)}
-  {\label{fig:4.6}}
+\begin{fixedfigure}
+  \includegraphics[alt={Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = \qty{100}{\micro\second})}]{new media/4_6_vergleich_zwischen_zeitkontinuie.png}
+  \captionof{figure}{Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = \qty{100}{\micro\second})}
+  \label{fig:4.6}
+\end{fixedfigure}
 
-
-Die Abtastzeit von \(T_{A} = 10\,\text{µs}\) ist deutlich kleiner als die Zeitkonstante des Systems mit \(T = 100\,\text{µs}\). Aus diesem Grund ist die Approximationsgüte im links dargestellten Fall hoch. Die im rechten Bildteil diskutierte Abtastzeit von \(T_{A} = 100\,\text{µs}\) entspricht der Zeitkonstante des Systems. Aus diesem Grund ist die Approximation der Ableitung mit einem Differenzenquotienten unzureichend, die Approximationsgüte ist deutlich schlechter als bei einer Abtastzeit von \(T_{A} = 10\,\text{µs}\). Das Beispiel zeigt, dass zeitkontinuierliche Systeme zeitdiskret nachgebildet werden können. Die lineare Differentialgleichung erster Ordnung
+Die Abtastzeit von \(T_{A} = \qty{10}{\micro\second}\) ist deutlich kleiner als die Zeitkonstante des Systems mit \(T = \qty{100}{\micro\second}\). Aus diesem Grund ist die Approximationsgüte im links dargestellten Fall hoch. Die im rechten Bildteil diskutierte Abtastzeit von \(T_{A} = \qty{100}{\micro\second}\) entspricht der Zeitkonstante des Systems. Aus diesem Grund ist die Approximation der Ableitung mit einem Differenzenquotienten unzureichend, die Approximationsgüte ist deutlich schlechter als bei einer Abtastzeit von \(T_{A} = \qty{10}{\micro\second}\). Das Beispiel zeigt, dass zeitkontinuierliche Systeme zeitdiskret nachgebildet werden können. Die lineare Differentialgleichung erster Ordnung
 \begin{align}
 u_{A}(t) + R  C  \frac{du_{A}}{dt} &= u_{E}(t) \label{eq:4.17}
 \end{align}
@@ -232,12 +225,11 @@ Wird das System mit der oben beschriebenen Linearkombination angeregt, ergibt si
 \end{align}
 Bild \ref{fig:4.7} zeigt Ein- und Ausgangssignale eines linearen Systems, das mit den Signalen \(u_{1}\){[}k{]}, \(u_{2}\){[}k{]} und \(u[k]\) = \(u_{1}\){[}k{]} + \(u_{2}\){[}k{]} angeregt wird.
 
-\manualFigure
-  [alt={Reaktion eines linearen Systems auf die Anregung mit einer Linearkombination von Signalen}]
-  {./media/image73.png}
-  {Reaktion eines linearen Systems auf die Anregung mit einer Linearkombination von Signalen}
-  {\label{fig:4.7}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Reaktion eines linearen Systems auf die Anregung mit einer Linearkombination von Signalen}]{new media/4_7_reaktion_eines_linearen_systems.png}
+  \captionof{figure}{Reaktion eines linearen Systems auf die Anregung mit einer Linearkombination von Signalen}
+  \label{fig:4.7}
+\end{fixedfigure}
 
 Auch das Ausgangssignal \(y[k]\) setzt sich aus der Summe der Ausgangsignale \(y_{1}\){[}k{]} und \(y_{2}\){[}k{]} zusammen.
 
@@ -263,12 +255,10 @@ y\left[ k - k_{0} \right] &= (1 - GF)  u\left[ k - k_{0} \right] + GF  y\left[ k
 \end{align}
 Wird das Eingangssignal um \(k_{0}\) verschoben, wird auch das Ausgangsignal um \(k_{0}\) verschoben.
 
-\manualFigure
-  [alt={Reaktion eines zeitinvarianten Systems auf die Anregung mit zeitverschobenen Signalen}]
-  {./media/image74.png}
-  {Reaktion eines zeitinvarianten Systems auf die Anregung mit zeitverschobenen Signalen}
-  {}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Reaktion eines zeitinvarianten Systems auf die Anregung mit zeitverschobenen Signalen}]{new media/4_8_reaktion_eines_zeitinvarianten_s.png}
+  \captionof{figure}{Reaktion eines zeitinvarianten Systems auf die Anregung mit zeitverschobenen Signalen}
+\end{fixedfigure}
 
 \end{example}
 
@@ -280,13 +270,13 @@ Die Darstellungen in diesem Skript beschränken sich bis auf wenige Ausnahmen au
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Bild 4.9: Lineares zeitinvariantes System}]{./media/4_2_bild_49_lineares_zeitinvariantes.pdf}
+  \includegraphics[alt={Bild 4.9: Lineares zeitinvariantes System}]{new media/4_9_bild_49_lineares_zeitinvariantes.pdf}
   \caption{Bild 4.9: Lineares zeitinvariantes System}
 \end{figure}
 
 Systeme, die mit einer linearen Differenzengleichung mit konstanten Koeffizienten beschrieben werden können, erfüllen die Bedingungen nach Linearität und Zeitinvarianz. Ausgehend von der Differenzengleichung
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.28}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.28}
 \end{align}
 werden die Eigenschaften der Linearität und Zeitinvarianz hergeleitet.
 
@@ -294,8 +284,8 @@ werden die Eigenschaften der Linearität und Zeitinvarianz hergeleitet.
 
 Ausgangspunkt für den Beweis der Linearität sind zwei Signalkombinationen \(u_{1}\){[}k{]} und \(y_{1}\){[}k{]} sowie \(u_{2}\){[}k{]} und \(y_{2}\){[}k{]}, für die gilt
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y_{1}[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u_{1}[ k - l]} \label{eq:4.29} \\
-\sum_{n = 0}^{N}{c_{n}  y_{2}[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u_{2}[ k - l]} \label{eq:4.30}
+\sum\limits_{n = 0}^{N}{c_{n}  y_{1}[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u_{1}[ k - l]} \label{eq:4.29} \\
+\sum\limits_{n = 0}^{N}{c_{n}  y_{2}[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u_{2}[ k - l]} \label{eq:4.30}
 \end{align}
 Für eine beliebige Linearkombination
 \begin{align}
@@ -303,14 +293,14 @@ u[ k] &= \nu_{1}  u_{1}[ k] + \nu_{2}  u_{2}[ k] \label{eq:4.31}
 \end{align}
 gilt dann die Gleichung
 \begin{align}
-{\sum _{l=0}^{L}d_{l}  u\left[k-l\right] } &=  {\sum _{l=0}^{L}d_{l}  \nu _{1}  u_{1} \left[k-l\right]+d_{l}  \nu _{2}  u_{2} \left[k-l\right] } \\
-{} &=  {\nu _{1}  \sum _{l=0}^{L}d_{l}  u_{1} \left[k-l\right] +\nu _{2}  \sum _{l=0}^{L}d_{l}  u_{2} \left[k-l\right] }
+{\sum\limits _{l=0}^{L}d_{l}  u\left[k-l\right] } &=  {\sum\limits _{l=0}^{L}d_{l}  \nu _{1}  u_{1} \left[k-l\right]+d_{l}  \nu _{2}  u_{2} \left[k-l\right] } \\
+{} &=  {\nu _{1}  \sum\limits _{l=0}^{L}d_{l}  u_{1} \left[k-l\right] +\nu _{2}  \sum\limits _{l=0}^{L}d_{l}  u_{2} \left[k-l\right] }
  \label{eq:4.32}
 \end{align}
 Für jede der beiden Summen kann der Ausdruck aus (\ref{eq:4.29}) beziehungsweise (\ref{eq:4.30}) eingesetzt werden, und es ergibt sich
 \begin{align}
-{\sum _{l=0}^{L}d_{l}  u\left[k-l\right] } &=  {\nu _{1}  \sum _{n=0}^{N}c_{n}  y_{1} \left[k-n\right] +\nu _{2}  \sum _{n=0}^{N}c_{n}  y_{2} \left[k-n\right] } \\
-{} &=  {\sum _{n=0}^{N}c_{n}  \left(\nu _{1}  y_{1} \left[k-n\right]+\nu _{2}  y_{2} \left[k-n\right]\right) =\sum _{n=0}^{N}c_{n}  y\left[k-n\right] }
+{\sum\limits _{l=0}^{L}d_{l}  u\left[k-l\right] } &=  {\nu _{1}  \sum\limits _{n=0}^{N}c_{n}  y_{1} \left[k-n\right] +\nu _{2}  \sum\limits _{n=0}^{N}c_{n}  y_{2} \left[k-n\right] } \\
+{} &=  {\sum\limits _{n=0}^{N}c_{n}  \left(\nu _{1}  y_{1} \left[k-n\right]+\nu _{2}  y_{2} \left[k-n\right]\right) =\sum\limits _{n=0}^{N}c_{n}  y\left[k-n\right] }
  \label{eq:4.33}
 \end{align}
 Eine Linearkombination von Eingangssignalen führt damit zu der identischen Linearkombination von Ausgangssignalen, sodass das System ein lineares System ist.
@@ -319,26 +309,26 @@ Eine Linearkombination von Eingangssignalen führt damit zu der identischen Line
 
 Wie oben bereits beschrieben sind lineare Differenzengleichungen mit konstanten Koeffizienten stets zeitinvariant. Wird in der Differenzengleichung
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.34}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.34}
 \end{align}
 der Folgenindex sowohl bei Eingangs- als auch Ausgangssignalen um \(k_{0}\) verschoben, bleibt die Differenzengleichung weiter gültig.
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y\left[ k - k_{0} - n \right]} &= \sum_{l = 0}^{L}{d_{l}  u\left[ k - k_{0} - l \right]} \label{eq:4.35}
+\sum\limits_{n = 0}^{N}{c_{n}  y\left[ k - k_{0} - n \right]} &= \sum\limits_{l = 0}^{L}{d_{l}  u\left[ k - k_{0} - l \right]} \label{eq:4.35}
 \end{align}
 \subsection{Kausalität}\label{sec:kausalituxe4t}
 
 Wesentliche Voraussetzung für die Realisierbarkeit eines Systems ist die Forderung, dass die Werte der Ausgangssignale zu einem gegebenen Zeitpunkt nur von Werten der Eingangssignale zu diesem oder einem früheren Zeitpunkt abhängen, nicht jedoch etwa von zukünftigen Werten. Dieses Verhalten wird für zeitkontinuierliche Systeme als die Eigenschaft der Kausalität eines Systems definiert, die auch im diskreten Fall wesentlich ist. Liegt eine Systembeschreibung über eine Differenzengleichung vor, kann die Kausalität direkt bewertet werden.
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.36}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.36}
 \end{align}
 Ist der Koeffizient \(c_{0}\) ≠ 0, kann ohne Beschränkung der Allgemeinheit die Annahme \(c_{0} = 1\) getroffen werden. Ist das nicht der Fall, wird die Gleichung durch \(c_{0}\) dividiert. Mit dieser Annahme kann die Differenzengleichung nach \(y[k]\) aufgelöst werden, und es ergibt sich
 \begin{align}
-y[ k] &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:4.37}
+y[ k] &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum\limits_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:4.37}
 \end{align}
 Da alle Indizes l und n größer gleich null sind, ist ein System, das durch eine lineare Differenzengleichung der Form aus Gleichung (\ref{eq:4.37}) beschrieben werden kann, ein kausales System. Ist in der Differenzengleichung (\ref{eq:4.36}) der Koeffizient \(c_{0} = 0\), kann nicht nach \(y[k]\) aufgelöst werden. Wird nach\\
 \(y[k - 1]\) aufgelöst, ergibt sich die Gleichung
 \begin{align}
-y[ k - 1] &= \frac{1}{c_{1}}  \left( \sum_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum_{n = 2}^{N}{c_{n}  y[ k - n]} \right) \label{eq:4.38}
+y[ k - 1] &= \frac{1}{c_{1}}  \left( \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum\limits_{n = 2}^{N}{c_{n}  y[ k - n]} \right) \label{eq:4.38}
 \end{align}
 Damit ist der Ausgangswert \(y[k - 1]\) von dem zukünftigen Eingangswert \(u[k]\) abhängig. Das System ist demnach für \(c_{0} = 0\) nicht kausal.
 
@@ -357,14 +347,13 @@ y_{2}[ k] &= \frac{1}{5}  \left( u[ k + 2] + u[ k + 1] + u[ k] + u[ k - 1] + u[ 
 \end{align}
 ist nicht mehr kausal, weist aber - wie später gezeigt wird - keine zeitliche Verzögerung auf. Oft werden in der Datenverarbeitung erst alle Messwerte aufgenommen und anschließend ausgewertet. In diesem Fall liegen auch zukünftige Werte vor. Die Kausalität von Systemen ist in diesem Fall nicht zwingend erforderlich. Bild \ref{fig:4.10} stellt die Sprungantwort eines kausalen und eines nicht kausalen Systems zur Berechnung eines gleitenden Mittelwertes dar.
 
-\manualFigure
-  [alt={Sprungantwort eines kausalen und eines nicht kausalen Systems\\
-zur Berechnung eines gleitenden Mittelwertes}]
-  {./media/image78.png}
-  {Sprungantwort eines kausalen und eines nicht kausalen Systems\\
+\begin{fixedfigure}
+  \includegraphics[alt={Sprungantwort eines kausalen und eines nicht kausalen Systems\\
+zur Berechnung eines gleitenden Mittelwertes}]{new media/4_10_sprungantwort_eines_kausalen_un.png}
+  \captionof{figure}{Sprungantwort eines kausalen und eines nicht kausalen Systems\\
 zur Berechnung eines gleitenden Mittelwertes}
-  {\label{fig:4.10}}
-
+  \label{fig:4.10}
+\end{fixedfigure}
 
 Es ist deutlich zu erkennen, dass das nicht kausale System reagiert, bevor der Sprung des Eingangssignals stattgefunden hat, während das kausale Signal erst nach der eigentlichen Anregung reagiert.
 
@@ -392,18 +381,17 @@ beschrieben. Wird die Anregung \(u[k]\) zu null, bleibt der Wert \(y_{2}\){[}k{]
 \begin{align}
 y_{3}[ k] &= \frac{1}{2}  u[ k] + \frac{11}{10}  y_{3}[ k - 1] \label{eq:4.43}
 \end{align}
-definiert. Bereits an der Differenzengleichung wird deutlich, dass auch nach Ende der Anregung der Wert \(y[k]\) einen Faktor 1.1~größer ist als der Werte \(y[k - 1]\) im Takt zuvor. Die Systemantwort divergiert. Das System ist damit instabil. Bild \ref{fig:4.11} zeigt die Sprungantworten der unterschiedlichen Systeme. Alle Systeme werden mit einer Rechteckfolge
+definiert. Bereits an der Differenzengleichung wird deutlich, dass auch nach Ende der Anregung der Wert \(y[k]\) einen Faktor 1.1 größer ist als der Werte \(y[k - 1]\) im Takt zuvor. Die Systemantwort divergiert. Das System ist damit instabil. Bild \ref{fig:4.11} zeigt die Sprungantworten der unterschiedlichen Systeme. Alle Systeme werden mit einer Rechteckfolge
 \begin{align}
 u[ k] &= \sigma[ k] - \sigma[ k - 10] \label{eq:4.44}
 \end{align}
 angeregt, die eine endliche Energie aufweist.
 
-\manualFigure
-  [alt={Sprungantwort eines asymptotisch stabilen, grenzstabilen und instabilen Systems}]
-  {./media/image79.png}
-  {Sprungantwort eines asymptotisch stabilen, grenzstabilen und instabilen Systems}
-  {\label{fig:4.11}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Sprungantwort eines asymptotisch stabilen, grenzstabilen und instabilen Systems}]{new media/4_11_sprungantwort_eines_asymptotisc.png}
+  \captionof{figure}{Sprungantwort eines asymptotisch stabilen, grenzstabilen und instabilen Systems}
+  \label{fig:4.11}
+\end{fixedfigure}
 
 Bei dem asymptotisch stabilen System klingt die Systemantwort ab, wenn das Eingangssignal zu null wird. Bei dem grenzstabilen System bleibt die Systemantwort konstant, wenn die Anregung zu null wird. Bei dem instabilen System wächst das Ausgangssignal stetig an, auch nachdem die Anregung zu null wird.
 
@@ -453,7 +441,7 @@ in der aktuellen Position \\
 
 \protect\phantomsection\label{_Ref369028047}{}
 
-\section{Lösung linearer Differenzengleichungen mit konstanten Koeffizienten}\label{sec:luxf6sung-linearer-differenzengleichungen-mit-konstanten-koeffizienten}
+\section{Lösung linearer Differenzengleichungen mit konstanten Koeffizienten}\label{sec:4.3}
 
 Die dargestellten Beispiele haben ein Systemverhalten, das über lineare Differenzengleichungen N-ter Ordnung mit konstanten Koeffizienten beschrieben wird. Zur Berechnung des Ausgangssignals im Zeitbereich stehen unterschiedliche Methoden zur Verfügung, die in diesem Kapitel vorgestellt werden.
 
@@ -461,17 +449,17 @@ Die dargestellten Beispiele haben ein Systemverhalten, das über lineare Differe
 
 Die Differenzengleichung N-ter Ordnung mit konstanten Koeffizienten lautet in ihrer allgemeinen Form
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.45}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.45}
 \end{align}
 Ohne Beschränkung der Allgemeinheit wird die Annahme \(c_{0} = 1\) getroffen. Mit dieser Annahme kann die Gleichung umgeformt werden zu
 \begin{align}
-y[ k] &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:4.46}
+y[ k] &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum\limits_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:4.46}
 \end{align}
 Das aktuelle Ausgangssignal ergibt sich allgemein aus dem aktuellen Wert des Eingangssignals sowie den vergangenen Werten des Ein- und Ausgangssignals. Die Ausgangssignale der oben dargestellten Systeme werden mit Hilfe dieser rekursiven Darstellung berechnet.
 
 Für numerische Berechnungen reicht dieses Lösungsverfahren für lineare Differenzengleichungen mit konstanten Koeffizienten vollständig aus. Die rekursive Form hat aber den Nachteil, dass keine geschlossene Form des Ausgangssignals angegeben werden kann. Sie ist deshalb nicht geeignet für eine Analyse von Eigenschaften wie Schwingungsneigung und Stabilität. Deshalb werden in diesem Abschnitt Verfahren zur analytischen Berechnung der Systemantwort beschrieben.
 
-\subsection{Explizite Lösung über die Vier-Schritt-Methode}\label{sec:explizite-luxf6sung-uxfcber-die-vier-schritt-methode}
+\subsection{Explizite Lösung über die Vier-Schritt-Methode}\label{sec:4.3.2}
 
 Für die Diskussion von Systemeigenschaften ist es notwendig, eine geschlossene Darstellung des Ausgangssignals zu erhalten. Für die Lösung von linearen Differenzengleichungen mit konstanten Koeffizienten gibt es eine sogenannte Vier-Schritt-Methode. Sie besteht aus den Schritten
 
@@ -490,7 +478,7 @@ Für die Diskussion von Systemeigenschaften ist es notwendig, eine geschlossene 
 
 Zur Berechnung der allgemeinen homogenen Lösung wird das Eingangssignal auf null gesetzt. Es ergibt sich die homogene Differenzengleichung
 \begin{align}
-y_{H}[ k] + \sum_{n = 1}^{N}{c_{n}  y_{H}[ k - n]} &= 0 \label{eq:4.47}
+y_{H}[ k] + \sum\limits_{n = 1}^{N}{c_{n}  y_{H}[ k - n]} &= 0 \label{eq:4.47}
 \end{align}
 Mit dem Ansatz
 \begin{align}
@@ -498,11 +486,11 @@ y_{H}[ k] &= Y_{0}  \lambda^{k} \label{eq:4.48}
 \end{align}
 kann die homogene Lösung gefunden werden. Einsetzen des Ansatzes führt zu der Gleichung
 \begin{align}
-Y_{0}  \lambda^{k} + Y_{0}  \sum_{n = 1}^{N}{c_{n}  Y_{0}  \lambda^{k - n}} &= 0 \label{eq:4.49}
+Y_{0}  \lambda^{k} + Y_{0}  \sum\limits_{n = 1}^{N}{c_{n}  Y_{0}  \lambda^{k - n}} &= 0 \label{eq:4.49}
 \end{align}
 beziehungsweise
 \begin{align}
-\lambda^{k} + \sum_{n = 1}^{N}{c_{n}  \lambda^{k - n}} &= 0 \label{eq:4.50}
+\lambda^{k} + \sum\limits_{n = 1}^{N}{c_{n}  \lambda^{k - n}} &= 0 \label{eq:4.50}
 \end{align}
 Sie wird als charakteristische Gleichung bezeichnet, weil mit ihr die für das System charakteristischen Parameter \(λ_{n}\) bestimmt werden. Da es sich bei dem System um ein lineares System handelt, ergibt sich die allgemeine homogene Lösung aus der Linearkombination der berechneten Nullstellen \(λ_{n}\).
 \begin{align}
@@ -547,7 +535,7 @@ Die Konstante \(Y_{0}\) wird in Schritt 4 durch Anfangsbedingungen festgelegt.
 
 Im nächsten Schritt muss eine partikuläre Lösung der Differenzengleichung
 \begin{align}
-y_{P}[ k] + \sum_{n = 1}^{N}{c_{n}  y_{P}[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.59}
+y_{P}[ k] + \sum\limits_{n = 1}^{N}{c_{n}  y_{P}[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:4.59}
 \end{align}
 bestimmt werden. Als Ansatz für \(y_{P}\){[}k{]} wird ein Signal verwendet, das in Abhängigkeit vom Eingangssignal gewählt wird.
 
@@ -589,7 +577,7 @@ Damit kann der Koeffizient \(Y_{0}(k)\) rekursiv beschrieben werden als
 \begin{align}
 Y_{0}(k) &= Y_{0}(k - 1) + \frac{(1 - GF)}{GF^{k}}  \sigma[ k] \label{eq:4.63}
 \end{align}
-Da nur eine beliebige partikuläre Lösung erforderlich ist, kann \(Y_{0}\)(- 1) = 0~gesetzt werden. Damit sind auch alle Konstanten \(Y_{0}(k)\) mit k \textless{} 1 null. Für k \textgreater{} - 1 ergibt sich
+Da nur eine beliebige partikuläre Lösung erforderlich ist, kann \(Y_{0}\)(- 1) = 0 gesetzt werden. Damit sind auch alle Konstanten \(Y_{0}(k)\) mit k \textless{} 1 null. Für k \textgreater{} - 1 ergibt sich
 \begin{align}
 Y_{0}(0) &= (1 - GF) \label{eq:4.64} \\
 Y_{0}(1) &= (1 - GF) + \frac{(1 - GF)}{GF} \label{eq:4.65}
@@ -645,14 +633,13 @@ y[ k] &= \left( 1 - GF^{k + 1} \right)  \sigma[ k] \label{eq:4.73}
 \end{align}
 Bild \ref{fig:4.12} vergleicht das Ausgangssignal der rekursiven Berechnung mit dem der analytischen Berechnung.
 
-\manualFigure
-  [alt={Vergleich zwischen rekursiver und analytischer Berechnung des Ausgangssignals\\
-eines rekursiven Tiefpasses für GF = 0.9}]
-  {./media/image80.png}
-  {Vergleich zwischen rekursiver und analytischer Berechnung des Ausgangssignals\\
+\begin{fixedfigure}
+  \includegraphics[alt={Vergleich zwischen rekursiver und analytischer Berechnung des Ausgangssignals\\
+eines rekursiven Tiefpasses für GF = 0.9}]{new media/4_12_vergleich_zwischen_rekursiver_u.png}
+  \captionof{figure}{Vergleich zwischen rekursiver und analytischer Berechnung des Ausgangssignals\\
 eines rekursiven Tiefpasses für GF = 0.9}
-  {\label{fig:4.12}}
-
+  \label{fig:4.12}
+\end{fixedfigure}
 
 Erwartungsgemäß stimmen die beiden Berechnungen überein.
 
@@ -670,13 +657,13 @@ Das Vorgehen bei der Vier-Schritt-Methode zur Lösung linearer Differenzengleich
     \midrule
     1 & Lösung der homogenen Differenzengleichung
 
-\(\sum_{n = 0}^{N}{c_{n}  y\lbrack k - n\rbrack} = 0\)
+\(\sum\limits_{n = 0}^{N}{c_{n}  y\lbrack k - n\rbrack} = 0\)
 
 über Ansatz
 
 \(y_{H}\lbrack k\rbrack = Y_{0}  \lambda^{k}\) \\
     & durch Lösen der charakteristischen Gleichung \\
-    & \(\lambda^{k} + \sum_{n = 1}^{N}{a_{n}  \lambda^{k - n}} = 0\) \\
+    & \(\lambda^{k} + \sum\limits_{n = 1}^{N}{a_{n}  \lambda^{k - n}} = 0\) \\
     & Allgemeine Lösung in Abhängigkeit der Vielfachheit \\
     & \(y_{H}\lbrack k\rbrack = Y_{1}  \lambda_{1}^{k} + Y_{2}  k  \lambda_{1}^{k} + ... + Y_{P}  k^{P - 1}  \lambda_{1}^{k} + Y_{P + 1}  \lambda_{2}^{k} + ... + Y_{N}  \lambda_{N - P + 1}^{k}\) \\
     2 & Bestimmung einer partikulären Lösung \(y_{P}\){[}k{]}
@@ -749,11 +736,11 @@ Das Ausgangssignal eines zeitdiskreten Systems ist von dem Anfangszustand abhän
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Sprungantwort \(h[k]\) und Impulsantwort \(g[k]\) als Ausgangssignal eines energiefreien Systems}]{./media/4_3_sprungantwort_hk_und_impulsantwo.pdf}
+  \includegraphics[alt={Sprungantwort \(h[k]\) und Impulsantwort \(g[k]\) als Ausgangssignal eines energiefreien Systems}]{new media/4_13_sprungantwort_hk_und_impulsantw.pdf}
   \caption{Sprungantwort \(h[k]\) und Impulsantwort \(g[k]\) als Ausgangssignal eines energiefreien Systems}
 \end{figure}
 
-Für das Beispiel des rekursiven Filters wird in Abschnitt \ref{sec:4.3.2} die Antwort des energiefreien Systems auf einen Sprung der Höhe 1~mit der Bedingung \(y[k = - 1]\) = 0 berechnet.
+Für das Beispiel des rekursiven Filters wird in Abschnitt \ref{sec:4.3.2} die Antwort des energiefreien Systems auf einen Sprung der Höhe 1 mit der Bedingung \(y[k = - 1]\) = 0 berechnet.
 \begin{align}
 y[ k] &= \left( 1 - GF^{k + 1} \right)  \sigma[ k] \label{eq:4.78}
 \end{align}
@@ -787,7 +774,7 @@ Bild \ref{fig:4.14} stellt das Superpositionsprinzip für das Beispiel des rekur
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Überlagerung der Systemreaktion \(y[k]\) = \(y_{1}\){[}k{]} + \(y_{2}\){[}k{]} bei überlagertem Eingangssignal \(u[k]\) = \(u_{1}\){[}k{]} + \(u_{2}\){[}k{]}}]{./media/4_4_berlagerung_der_systemreaktion_y.png}
+  \includegraphics[alt={Überlagerung der Systemreaktion \(y[k]\) = \(y_{1}\){[}k{]} + \(y_{2}\){[}k{]} bei überlagertem Eingangssignal \(u[k]\) = \(u_{1}\){[}k{]} + \(u_{2}\){[}k{]}}]{new media/4_14_berlagerung_der_systemreaktion.png}
   \caption{Überlagerung der Systemreaktion \(y[k]\) = \(y_{1}\){[}k{]} + \(y_{2}\){[}k{]} bei überlagertem Eingangssignal \(u[k]\) = \(u_{1}\){[}k{]} + \(u_{2}\){[}k{]}}
   \label{fig:4.14}
 \end{figure}
@@ -804,11 +791,11 @@ Das Superpositionsprinzip erlaubt eine Zerlegung des Eingangssignals in eine Lin
 
 Mathematisch kann die Faltungssumme über das Superpositionsprinzip hergeleitet werden. Die Systemreaktion eines energiefreien Systems auf einen Impuls am Eingang ist die Impulsantwort \(g[k]\). Ein beliebiges Eingangssignal \(u[k]\) kann mit der Ausblendeigenschaft der Impulsfolge als gewichtete Summe von Impulsen beschrieben werden.
 \begin{align}
-u[ k] &= \sum_{\kappa = - \infty}^{\infty}{u[\kappa]  \delta[ k - \kappa]} \label{eq:4.85}
+u[ k] &= \sum\limits_{\kappa = - \infty}^{\infty}{u[\kappa]  \delta[ k - \kappa]} \label{eq:4.85}
 \end{align}
 Die Systemantwort \(y[k]\) auf ein solches Eingangssignal ergibt sich aus derselben Linearkombination von Impulsantworten
 \begin{align}
-y[ k] &= \sum_{\kappa = - \infty}^{\infty}{u[\kappa]  g[ k - \kappa]} = u[ k]*g[ k] \label{eq:4.86}
+y[ k] &= \sum\limits_{\kappa = - \infty}^{\infty}{u[\kappa]  g[ k - \kappa]} = u[ k]*g[ k] \label{eq:4.86}
 \end{align}
 Diese Operation wird als Faltungssumme oder auch diskrete Faltung bezeichnet.
 
@@ -825,9 +812,9 @@ g[ k] &= \frac{1}{5}  \left( \delta[ k] + \delta[ k - 1] + \delta[ k - 2] + \del
 \end{align}
 und das Ausgangssignal zu einem beliebigen Eingangssignal kann durch die Faltungssumme berechnet werden
 \begin{align}
-{y\left[k\right]} &=  {\sum _{\kappa =-\infty }^{\infty }u\left[\kappa \right] g\left[k-\kappa \right] } \\
-{} &=  {\sum _{\kappa =-\infty }^{\infty }u\left[\kappa \right] \frac{1}{5}  \left(\delta \left[k-\kappa \right]+\delta \left[k-\kappa -1\right]+\delta \left[k-\kappa -2\right]+\delta \left[k-\kappa -3\right]+\delta \left[k-\kappa -4\right]\right) } \\
-{} &=  {\frac{1}{5}  \sum _{\kappa =0}^{4}u\left[k-\kappa \right] }
+{y\left[k\right]} &=  {\sum\limits _{\kappa =-\infty }^{\infty }u\left[\kappa \right] g\left[k-\kappa \right] } \\
+{} &=  {\sum\limits _{\kappa =-\infty }^{\infty }u\left[\kappa \right] \frac{1}{5}  \left(\delta \left[k-\kappa \right]+\delta \left[k-\kappa -1\right]+\delta \left[k-\kappa -2\right]+\delta \left[k-\kappa -3\right]+\delta \left[k-\kappa -4\right]\right) } \\
+{} &=  {\frac{1}{5}  \sum\limits _{\kappa =0}^{4}u\left[k-\kappa \right] }
  \label{eq:4.89}
 \end{align}
 \end{example}
@@ -845,35 +832,31 @@ g[ k] &= 2  \sigma[ k] - \sigma[ k - 2] - \sigma[ k - 4] \label{eq:4.90}
 \end{align}
 Die Folgen sind in Bild \ref{fig:4.15} grafisch dargestellt.
 
-\manualFigure
-  [alt={Folgen \(u[k]\) und \(g[k]\) für das Beispiel zur grafischen Interpretation der Faltungssumme}]
-  {./media/image85.png}
-  {Folgen \(u[k]\) und \(g[k]\) für das Beispiel zur grafischen Interpretation der Faltungssumme}
-  {\label{fig:4.15}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Folgen \(u[k]\) und \(g[k]\) für das Beispiel zur grafischen Interpretation der Faltungssumme}]{new media/4_15_folgen_uk_und_gk_fr_das_beispie.png}
+  \captionof{figure}{Folgen \(u[k]\) und \(g[k]\) für das Beispiel zur grafischen Interpretation der Faltungssumme}
+  \label{fig:4.15}
+\end{fixedfigure}
 
 Die Faltung ist über eine Summenformel definiert. Sie kann umgeformt werden zu
 \begin{align}
-u[ k]*g[ k] &= \sum_{\kappa = - \infty}^{\infty}{u[\kappa]  g[ k - \kappa]} = \sum_{\kappa = - \infty}^{\infty}{u[\kappa]  g\left[ - (\kappa - k) \right]} \label{eq:4.91}
+u[ k]*g[ k] &= \sum\limits_{\kappa = - \infty}^{\infty}{u[\kappa]  g[ k - \kappa]} = \sum\limits_{\kappa = - \infty}^{\infty}{u[\kappa]  g\left[ - (\kappa - k) \right]} \label{eq:4.91}
 \end{align}
 Mit dieser Darstellung fällt die Interpretation einfacher: Die Folge \(g[κ]\) wird an der Achse \(κ = 0\) gespiegelt und um k nach rechts verschoben. Dann wird das Produkt der einzelnen Folgenwerte addiert. Bild \ref{fig:4.16} stellt die unterschiedlichen Phasen der grafischen Faltung dar.
 
-\manualFigure
-  [alt={Grafische Veranschaulichung der Faltung zweier Folgen zu verschiedenen Stadien}]
-  {./media/image86.png}
-  {Grafische Veranschaulichung der Faltung zweier Folgen zu verschiedenen Stadien}
-  {\label{fig:4.16}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Grafische Veranschaulichung der Faltung zweier Folgen zu verschiedenen Stadien}]{new media/4_16_grafische_veranschaulichung_der.png}
+  \captionof{figure}{Grafische Veranschaulichung der Faltung zweier Folgen zu verschiedenen Stadien}
+  \label{fig:4.16}
+\end{fixedfigure}
 
 Für negative Folgenindizes k überschneiden sich die beiden Folgen nicht. Zum Zeitpunkt \(k = 0\) überschneiden sich die beiden Folgen an genau einer Stelle \(κ = 0\). Das Ergebnis ist damit \(y[0]\) = 2. Für\\
 \(k = 1\) ergibt sich eine Überschneidung der ersten beiden Werte. Nach Bildung des Produktes werden die Ergebnisse addiert und es ergibt sich \(y[1]\)= 2 + 2 = 4. So wird für die übrigen Werte von k fortgefahren. Für k ≥ 3 überschneidet sich die Folge x komplett mit der Folge g, sodass sich der Wert des Ausgangssignals nicht weiter ändert.
 
-\manualFigure
-  [alt={Ergebnis der Faltung zweier Folgen}]
-  {./media/image87.png}
-  {Ergebnis der Faltung zweier Folgen}
-  {}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Ergebnis der Faltung zweier Folgen}]{new media/4_17_ergebnis_der_faltung_zweier_fol.png}
+  \captionof{figure}{Ergebnis der Faltung zweier Folgen}
+\end{fixedfigure}
 
 Aus der Grafik kann abgelesen werden, dass das Signal \(y[k]\) ab \(k = 3\) konstant bleibt.
 
@@ -910,16 +893,16 @@ Aufteilen der Faltungssumme in sinnvolle Bereiche
 
 Zur Vereinfachung der Berechnung von Faltungssummen können Rechenregeln angewendet werden, die im Folgenden kurz dargestellt sind. Aus der grafischen Darstellung zur Faltung wird deutlich, dass die Faltung eine kommutative Operation ist. Der mathematische Nachweis ergibt sich aus einer Indextransformation.
 \begin{align}
-x_{1}[ k]*x_{2}[ k] &= \sum_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{2}[ k - \kappa]} = \sum_{k - \kappa = - \infty}^{\infty}{x_{1}[ k - \kappa]  x_{2}[\kappa]} \label{eq:4.92}
+x_{1}[ k]*x_{2}[ k] &= \sum\limits_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{2}[ k - \kappa]} = \sum\limits_{k - \kappa = - \infty}^{\infty}{x_{1}[ k - \kappa]  x_{2}[\kappa]} \label{eq:4.92}
 \end{align}
 Da sich die Summe von - ∞ bis + ∞ erstreckt, ist eine Verschiebung um k und eine Spiegelung nicht relevant, und es ergibt sich
 \begin{align}
-x_{1}[ k]*x_{2}[ k] &= \sum_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{2}[ k - \kappa]} = \sum_{\kappa = - \infty}^{\infty}{x_{1}[ k - \kappa]  x_{2}[\kappa]} = x_{2}[ k]*x_{1}[ k] \label{eq:4.93}
+x_{1}[ k]*x_{2}[ k] &= \sum\limits_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{2}[ k - \kappa]} = \sum\limits_{\kappa = - \infty}^{\infty}{x_{1}[ k - \kappa]  x_{2}[\kappa]} = x_{2}[ k]*x_{1}[ k] \label{eq:4.93}
 \end{align}
 Das Distributivgesetz ergibt sich aus der Linearität der Summe.
 \begin{align}
-{\left( x_{1}[ k] + x_{2}[ k] \right)*x_{3}[ k] = \sum_{\kappa = - \infty}^{\infty}{\left( x_{1}[\kappa] + x_{2}[\kappa] \right)  x_{3}[ k - \kappa]}
-}{= \sum_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{3}[ k - \kappa]} + x_{2}[\kappa]  x_{3}[ k - \kappa] = x_{1}[ k]*x_{3}[ k] + x_{2}[ k]*x_{3}[ k]} \label{eq:4.94}
+{\left( x_{1}[ k] + x_{2}[ k] \right)*x_{3}[ k] = \sum\limits_{\kappa = - \infty}^{\infty}{\left( x_{1}[\kappa] + x_{2}[\kappa] \right)  x_{3}[ k - \kappa]}
+}{= \sum\limits_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{3}[ k - \kappa]} + x_{2}[\kappa]  x_{3}[ k - \kappa] = x_{1}[ k]*x_{3}[ k] + x_{2}[ k]*x_{3}[ k]} \label{eq:4.94}
 \end{align}
 Das Assoziativgesetz wird hier nur genannt und nicht bewiesen. Es lautet:
 \begin{align}
@@ -927,7 +910,7 @@ Das Assoziativgesetz wird hier nur genannt und nicht bewiesen. Es lautet:
 \end{align}
 Bei der grafischen Faltung wird gezeigt, dass der von null verschiedene Überlappungsbereich für kausale Folge immer im Zahlenbereich von 0 \ldots{} k liegt. Aus diesem Grund muss die Faltung auch nur in diesem Bereich ausgeführt werden, sodass für die Faltung zweier kausaler Folgen gilt:
 \begin{align}
-\sum_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{2}[ k - \kappa]} &= \sum_{\kappa = 0}^{k}{x_{1}[\kappa]  x_{2}[ k - \kappa]} \label{eq:4.96}
+\sum\limits_{\kappa = - \infty}^{\infty}{x_{1}[\kappa]  x_{2}[ k - \kappa]} &= \sum\limits_{\kappa = 0}^{k}{x_{1}[\kappa]  x_{2}[ k - \kappa]} \label{eq:4.96}
 \end{align}
 Aus der Eigenschaft folgt außerdem, dass die Faltung zweier kausaler Folgen zu einer kausalen Folge führt. Die Rechenregeln für die Faltung mit einer Impulsfolge werden in Abschnitt \ref{sec:3.2.1} bei der Einführung von Impulsfolgen behandelt.
 
@@ -942,7 +925,7 @@ Aus der Eigenschaft folgt außerdem, dass die Faltung zweier kausaler Folgen zu 
     Assoziativgesetz & \(\left( x_{1}\lbrack k\rbrack*x_{2}\lbrack k\rbrack \right)*x_{3}\lbrack k\rbrack = x_{1}\lbrack k\rbrack*\left( x_{2}\lbrack k\rbrack*x_{3}\lbrack k\rbrack \right)\) \\
     Faltung kausaler Folgen 
 führt zu einer kausalen Folge
- & \(\sum_{\kappa = - \infty}^{\infty}{x_{1}\lbrack\kappa\rbrack  x_{2}\lbrack k - \kappa\rbrack} = \sum_{\kappa = 0}^{k}{x_{1}\lbrack\kappa\rbrack  x_{2}\lbrack k - \kappa\rbrack}\) \\
+ & \(\sum\limits_{\kappa = - \infty}^{\infty}{x_{1}\lbrack\kappa\rbrack  x_{2}\lbrack k - \kappa\rbrack} = \sum\limits_{\kappa = 0}^{k}{x_{1}\lbrack\kappa\rbrack  x_{2}\lbrack k - \kappa\rbrack}\) \\
     Faltung mit einem Impuls & \(\delta\lbrack k\rbrack*x\lbrack k\rbrack = x\lbrack k\rbrack\) \\
     Faltung mit einem Impuls an der Stelle \(k_{0}\) & \(\delta\left\lbrack k - k_{0} \right\rbrack*x\lbrack k\rbrack = x\left\lbrack k - k_{0} \right\rbrack\) \\
     \bottomrule
@@ -954,7 +937,7 @@ führt zu einer kausalen Folge
 
 In Abschnitt \ref{sec:4.2.3} wird die Stabilität von Systemen aus physikalischer Sicht definiert. Mit dem Wissen, dass sich bei einem LTI-System die Systemantwort \(y[k]\) aus dem Faltungsintegral ergibt, kann die Stabilitätsbewertung auf die Impulsantwort \(g[k]\) zurückgeführt werden. Dabei wird davon ausgegangen, dass das System für den Zeitraum 0 \textless{} k ≤ \(k_{0}\) angeregt wird. Für den Zeitraum k ≥ \(k_{0}\) nach der Anregung wird das Verhalten der Systemantwort \(y[k]\) analysiert.
 \begin{align}
-y[ k] &= \sum_{\kappa = 0}^{k_{0}}{u[\kappa]  g[ k - \kappa]} \label{eq:4.97}
+y[ k] &= \sum\limits_{\kappa = 0}^{k_{0}}{u[\kappa]  g[ k - \kappa]} \label{eq:4.97}
 \end{align}
 Aus der physikalischen Bedingung an Stabilität leitet sich die Forderung ab, dass bei einer zeitlich begrenzten Anregung das Ausgangssignal den Grenzwert
 \begin{align}
@@ -962,7 +945,7 @@ Aus der physikalischen Bedingung an Stabilität leitet sich die Forderung ab, da
 \end{align}
 aufweisen muss. Ist der Betrag des Eingangssignals beschränkt, kann er mit \textbar \(u[κ]\)\textbar{} \textless{} \(u_{MAX}\) abgeschätzt werden, und der Betrag des Ausgangssignals kann abgeschätzt werden mit
 \begin{align}
-\left| y[ k] \right| \leq \sum_{\kappa = 0}^{k_{0}}{\left| u[\kappa] \right|  \left| g[ k - \kappa] \right|} \leq u_{MAX}  \sum_{\kappa = 0}^{k_{0}}\left| g[ k - \kappa] \right| \label{eq:4.99}
+\left| y[ k] \right| \leq \sum\limits_{\kappa = 0}^{k_{0}}{\left| u[\kappa] \right|  \left| g[ k - \kappa] \right|} \leq u_{MAX}  \sum\limits_{\kappa = 0}^{k_{0}}\left| g[ k - \kappa] \right| \label{eq:4.99}
 \end{align}
 Es handelt sich um eine Summe von \(k_{0}\) + 1 Folgegliedern. Die Summe wird zu null, wenn der Betrag der Impulsantwort \(g[k]\) gegen null konvergiert.
 \begin{align}
@@ -970,7 +953,7 @@ Es handelt sich um eine Summe von \(k_{0}\) + 1 Folgegliedern. Die Summe wird zu
 \end{align}
 Ein System ist damit stabil, wenn die Impulsantwort gegen null konvergiert, es ist instabil, wenn die Impulsantwort divergiert. Einen Sonderfall stellen Impulsantworten \(g[k]\) dar, die für k → ∞ einem konstanten Wert \(g_{0}\) zustreben. Bei diesen Systemen konvergiert das Ausgangssignal für k ≥ \(k_{0}\) gegen einen konstanten Wert.
 \begin{align}
-\lim_{k \rightarrow \infty}y[ k] &= \lim_{k \rightarrow \infty}\sum_{\kappa = 0}^{k_{0}}{u[\kappa]  g[ k - \kappa]} = g_{0}  \sum_{\kappa = 0}^{k_{0}}{x[\kappa]} = y_{0} \label{eq:4.101}
+\lim_{k \rightarrow \infty}y[ k] &= \lim_{k \rightarrow \infty}\sum\limits_{\kappa = 0}^{k_{0}}{u[\kappa]  g[ k - \kappa]} = g_{0}  \sum\limits_{\kappa = 0}^{k_{0}}{x[\kappa]} = y_{0} \label{eq:4.101}
 \end{align}
 Systeme, deren Impulsantworten \(g[k]\) für k → ∞ einem konstanten Wert \(g_{0}\) zustreben, entsprechen damit den Bedingungen grenzstabiler Systeme. Dasselbe gilt für Systeme, deren Impulsantwort für\\
 k → ∞ mit konstanter Amplitude schwingt. Der Zusammenhang zwischen Impulsantwort und Stabilität linearer, zeitinvarianter Systeme ist in Tabelle \ref{tab:4.7} zusammengefasst.

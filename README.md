@@ -16,13 +16,17 @@ uv sync
 ## Test
 
 ```bash
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\chapters" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\media" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\svg-inkscape" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\combined.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\chapters" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\new media" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\combined.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
 
 cd test
 uv run tex2html "test.tex" --output-file "html/test.html"
+```
+
+```bash
+latexmk -C --outdir="_build" && latexmk -pdf -interaction=nonstopmode -synctex=1 -file-line-error --shell-escape --outdir="_build" combined.tex
+latexmk -C --outdir="_build" && latexmk -lualatex -pdf -interaction=nonstopmode -synctex=1 -file-line-error --shell-escape --outdir="_build" combined.tex
 ```
 
 ## To Do

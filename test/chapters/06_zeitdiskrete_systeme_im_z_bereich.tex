@@ -8,13 +8,13 @@ Die Interpretation der unterschiedlichen Systeme führt zur Einteilung in System
 
 In der Praxis wird die Simulation und Interpretation zeitdiskreter Systeme mit Programmen wie MATLAB und Simulink durchgeführt. Die dazu erforderlichen Befehle und Methoden werden kurz vorgestellt und an Beispielen verdeutlicht.
 
-\section{Lösung von Differenzengleichungen mit der z-Transformation}\label{sec:luxf6sung-von-differenzengleichungen-mit-der-z-transformation}
+\section{Lösung von Differenzengleichungen mit der z-Transformation}\label{sec:6.1}
 
 Differenzengleichungen beschreiben das Verhalten zeitdiskreter Systeme ähnlich, wie Differentialgleichungen das Verhalten zeitkontinuierlicher Systeme beschreiben. Differenzengleichungen können im Zeitbereich gelöst werden. Das Verfahren dazu wird in Kapitel \hyperref[_Toc241453879]{0} vorgestellt. Es besteht aus mehreren Schritten und ist insbesondere bei Berücksichtigung von Anfangsbedingungen aufwendig. Eine effizientere Möglichkeit zur Lösung von Differenzengleichungen wird mit der z-Transformation erreicht. Das Vorgehen wird in Bild \ref{fig:6.1} skizziert.
 
 \begin{figure}
   \centering
-  \includesvg{./media/6_1_verfahren_zur_lsung_von_differen.svg}
+  \includesvg{new media/6_1_verfahren_zur_lsung_von_differen.svg}
   \caption{Verfahren zur Lösung von Differenzengleichungen mit der z-Transformation}
   \label{fig:6.1}
 \end{figure}
@@ -26,19 +26,19 @@ z-Bereich gelöst wird. Mit Hilfe der Rücktransformation über Partialbruchzerl
 
 Zur Lösung der Differenzengleichung wird von der allgemeinen Form ausgegangen
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.1}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.1}
 \end{align}
 Mit der Verschiebungsregel nach rechts ergibt sich die z-Transformierte der Gleichung zu
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  Y(z)  z^{- n}} &= \sum_{l = 0}^{L}{d_{l}  U(z)  z^{- l}} \label{eq:6.2}
+\sum\limits_{n = 0}^{N}{c_{n}  Y(z)  z^{- n}} &= \sum\limits_{l = 0}^{L}{d_{l}  U(z)  z^{- l}} \label{eq:6.2}
 \end{align}
 Nach Ausklammern der beiden z-Transformierten \(Y(z)\) und \(U(z)\)
 \begin{align}
-Y(z)  \sum_{n = 0}^{N}{c_{n}  z^{- n}} &= U(z)  \sum_{l = 0}^{L}{d_{l}  z^{- l}} \label{eq:6.3}
+Y(z)  \sum\limits_{n = 0}^{N}{c_{n}  z^{- n}} &= U(z)  \sum\limits_{l = 0}^{L}{d_{l}  z^{- l}} \label{eq:6.3}
 \end{align}
 kann die Gleichung nach der z-Transformierten des Ausgangssignals \(Y(z)\) aufgelöst werden.
 \begin{align}
-Y(z) &= \frac{\sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum_{n = 0}^{N}{c_{n}  z^{- n}}}  U(z) \label{eq:6.4}
+Y(z) &= \frac{\sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum\limits_{n = 0}^{N}{c_{n}  z^{- n}}}  U(z) \label{eq:6.4}
 \end{align}
 Die Lösung im z-Bereich ist eine gebrochen rationale Funktion, die mit Hilfe der Partialbruchzerlegung und den bekannten Korrespondenzen in den Zeitbereich zurück transformiert werden kann. Dieses Vorgehen wird an der Differenzengleichung eines rekursiven Tiefpasses verdeutlicht.
 
@@ -71,12 +71,11 @@ y[ k] &= \left( ( - GF)  GF^{k}  \sigma[ k] + \sigma[ k] \right)  U_{0} = \left(
 \end{align}
 Ein Vergleich mit der über die Faltungssumme berechneten Systemantwort in Bild \ref{fig:6.2} zeigt identische Ausgangssignale.
 
-\manualFigure
-  [alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung (\(U_{0} = 1\))}]
-  {./media/image114.png}
-  {Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung (\(U_{0} = 1\))}
-  {\label{fig:6.2}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung (\(U_{0} = 1\))}]{new media/6_2_ausgangssignal_eines_rekursiven.png}
+  \captionof{figure}{Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung (\(U_{0} = 1\))}
+  \label{fig:6.2}
+\end{fixedfigure}
 
 \end{example}
 
@@ -84,15 +83,15 @@ Ein Vergleich mit der über die Faltungssumme berechneten Systemantwort in Bild 
 
 Zur Lösung linearer Differenzengleichungen mit Anfangsbedingungen wird wieder von der allgemeinen Form der Differenzengleichung ausgegangen
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.11}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.11}
 \end{align}
 Aufgrund der Zeitinvarianz kann das System um N nach links verschoben werden. Es ergibt sich die Gleichung
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n + N]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l + N]} \label{eq:6.12}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n + N]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l + N]} \label{eq:6.12}
 \end{align}
 Da das Argument der Folge \(y[k -- n + N]\) damit immer größer gleich k ist, muss bei der Transformation der Gleichung in den z-Bereich die Verschiebungsregel nach links angewendet werden. Im z-Bereich ergibt sich die Gleichung
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  \left( Y(z)  z^{N - n} - z^{N - n}  \sum_{k = 0}^{N - n - 1}{y[ k]  z^{- k}} \right)} &= \sum_{l = 0}^{L}{d_{l}  \left( U(z)  z^{N - l} - z^{N - l}  \sum_{k = 0}^{N - l - 1}{u[ k]  z^{- k}} \right)} \label{eq:6.13}
+\sum\limits_{n = 0}^{N}{c_{n}  \left( Y(z)  z^{N - n} - z^{N - n}  \sum\limits_{k = 0}^{N - n - 1}{y[ k]  z^{- k}} \right)} &= \sum\limits_{l = 0}^{L}{d_{l}  \left( U(z)  z^{N - l} - z^{N - l}  \sum\limits_{k = 0}^{N - l - 1}{u[ k]  z^{- k}} \right)} \label{eq:6.13}
 \end{align}
 Dieses Vorgehen ähnelt sehr der Lösung von Differentialgleichungen mit Anfangsbedingungen bei der Laplace-Transformation. In der allgemeinen Form erscheint es aufwendig. Bei praktischer Anwendung bestehen die Summen mit den Anfangswerten aber oft nur aus einzelnen Werten, sodass sich die Gleichung stark vereinfacht.
 
@@ -111,7 +110,7 @@ Die Transformation in den z-Bereich ergibt
 \begin{align}
 z  Y(z) - z  y[ 0] - GF  Y(z) &= (1 - GF)  \left( z  U(z) - z  u[ 0] \right) \label{eq:6.16}
 \end{align}
-Durch Einsetzen von \(U(z)\) und \(u[0]\) = 0~sowie Umformung
+Durch Einsetzen von \(U(z)\) und \(u[0]\) = 0 sowie Umformung
 \begin{align}
 (z - GF)  Y(z) &= (1 - GF)  \left( \frac{z^{2}}{z - 1}  U_{0} - z  U_{0} \right) + z  y[ 0] = (1 - GF)  U_{0}  \left( \frac{z^{2}}{z - 1} \right) + z  y[ 0] \label{eq:6.17}
 \end{align}
@@ -125,14 +124,13 @@ y[ k] &= \left( 1 - GF^{k + 1} \right)  U_{0}  \sigma[ k] + y[ 0]  GF^{k}  \sigm
 \end{align}
 Die Anfangsbedingung klingt ähnlich wie im zeitkontinuierlichen Bereich exponentiell ab. Bild \ref{fig:6.3} stellt die beiden Signalanteile dar.
 
-\manualFigure
-  [alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8\\
-bei einem Eingangssprung und Anfangsbedingung \(y[0]\) = 2}]
-  {./media/image115.png}
-  {Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8\\
+\begin{fixedfigure}
+  \includegraphics[alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8\\
+bei einem Eingangssprung und Anfangsbedingung \(y[0]\) = 2}]{new media/6_3_ausgangssignal_eines_rekursiven.png}
+  \captionof{figure}{Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8\\
 bei einem Eingangssprung und Anfangsbedingung \(y[0]\) = 2}
-  {\label{fig:6.3}}
-
+  \label{fig:6.3}
+\end{fixedfigure}
 
 \end{example}
 
@@ -151,7 +149,7 @@ Lösung einer Differenzengleichung} \\
     \midrule
     & ohne Anfangsbedingungen & mit Anfangsbedingungen \\
     1 & Differenzengleichung & Verschobene Differenzengleichung \\
-    & \(\sum_{n = 0}^{N}{c_{n}  y\lbrack k - n\rbrack} = \sum_{l = 0}^{L}{d_{l}  u\lbrack k - l\rbrack}\) & \(\sum_{n = 0}^{N}{c_{n}  y\lbrack k - n + N\rbrack} = \sum_{l = 0}^{L}{d_{l}  u\lbrack k - l + N\rbrack}\) \\
+    & \(\sum\limits_{n = 0}^{N}{c_{n}  y\lbrack k - n\rbrack} = \sum\limits_{l = 0}^{L}{d_{l}  u\lbrack k - l\rbrack}\) & \(\sum\limits_{n = 0}^{N}{c_{n}  y\lbrack k - n + N\rbrack} = \sum\limits_{l = 0}^{L}{d_{l}  u\lbrack k - l + N\rbrack}\) \\
     2 & \multicolumn{2}{l}{%
 Transformation der Differenzengleichung in den z-Bereich unter Verwendung der entsprechenden Verschiebungsregel} \\
     3 & \multicolumn{2}{l}{%
@@ -166,15 +164,15 @@ Rücktransformation mit Hilfe der Partialbruchzerlegung und den bekannten Korres
 
 Im zeitkontinuierlichen Bereich werden Systeme durch die Übertragungsfunktion \(G(s)\) charakterisiert. Sie ergibt sich aus der Laplace-Transformierten der Differentialgleichung bei verschwindenden Anfangsbedingungen. Dasselbe Verfahren wird auch bei zeitdiskreten Systemen angewendet. Zur Berechnung der z-Transformierten \(Y(z)\) kann die Verschiebungsregel verwendet werden. Im Fall verschwindender Anfangsbedingungen ergibt sich aus der Differenzengleichung
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.20}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.20}
 \end{align}
 die Darstellung im z-Bereich zu
 \begin{align}
-Y(z)  \sum_{n = 0}^{N}{c_{n}  z^{- n}} &= U(z)  \sum_{l = 0}^{L}{d_{l}  z^{- l}} \label{eq:6.21}
+Y(z)  \sum\limits_{n = 0}^{N}{c_{n}  z^{- n}} &= U(z)  \sum\limits_{l = 0}^{L}{d_{l}  z^{- l}} \label{eq:6.21}
 \end{align}
 Alternativ kann die Berechnung über die Faltungsregel durchgeführt werden. Aus der Faltung im Zeitbereich
 \begin{align}
-y[ k] &= \sum_{\kappa = 0}^{k}{g[\kappa]  u[ k - \kappa]} = \sum_{\kappa = 0}^{k}{g[ k - \kappa]  u[\kappa]} \label{eq:6.22}
+y[ k] &= \sum\limits_{\kappa = 0}^{k}{g[\kappa]  u[ k - \kappa]} = \sum\limits_{\kappa = 0}^{k}{g[ k - \kappa]  u[\kappa]} \label{eq:6.22}
 \end{align}
 folgt im z-Bereich
 \begin{align}
@@ -182,7 +180,7 @@ Y(z) &= G(z)  U(z) \label{eq:6.23}
 \end{align}
 Durch einen Vergleich der beiden Darstellungen ergibt sich die Übertragungsfunktion für zeitdiskrete Systeme aus der Gleichung
 \begin{align}
-Y(z) &= G(z)  U(z) = \frac{\sum_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum_{n = 0}^{N}{c_{n}  z^{- n}}}  U(z) \label{eq:6.24}
+Y(z) &= G(z)  U(z) = \frac{\sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum\limits_{n = 0}^{N}{c_{n}  z^{- n}}}  U(z) \label{eq:6.24}
 \end{align}
 Die Übertragungsfunktion beschreibt den Zusammenhang zwischen Ein- und Ausgangssignal im z-Bereich.
 
@@ -190,19 +188,19 @@ Die Übertragungsfunktion beschreibt den Zusammenhang zwischen Ein- und Ausgangs
 
 Wie später gezeigt wird, ist das Ergebnis eines Filterentwurfs eine Übertragungsfunktion \(G(z)\), die die definierten Filtereigenschaften besitzt. Um den Filter zum Beispiel in Form eines Mikro-Controller-Programms realisieren zu können, muss die Übertragungsfunktion
 \begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{\sum_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum_{n = 0}^{N}{c_{n}  z^{- n}}} \label{eq:6.25}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{\sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum\limits_{n = 0}^{N}{c_{n}  z^{- n}}} \label{eq:6.25}
 \end{align}
 in eine Differenzengleichung umgeformt werden. Durch Ausmultiplizieren der beiden Brüche ergibt sich die Gleichung
 \begin{align}
-Y(z)  \sum_{n = 0}^{N}{c_{n}  z^{- n}} &= U(z)  \sum_{l = 0}^{L}{d_{l}  z^{- l}} \label{eq:6.26}
+Y(z)  \sum\limits_{n = 0}^{N}{c_{n}  z^{- n}} &= U(z)  \sum\limits_{l = 0}^{L}{d_{l}  z^{- l}} \label{eq:6.26}
 \end{align}
 Sie kann mit der Verschiebungsregel in den Zeitbereich zurücktransformiert werden.
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.27}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.27}
 \end{align}
 Es wird deutlich, dass die Koeffizienten von Differenzengleichung und Übertragungsfunktion identisch sind. Zur Realisierung eines Filters wird der aktuelle Ausgangswert aus den vergangenen Ein- und Ausgangswerten berechnet. Dabei kann ohne Einschränkung der Allgemeinheit \(c_{0} = 1\) gesetzt werden.
 \begin{align}
-y[ k] &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:6.28}
+y[ k] &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum\limits_{n = 1}^{N}{c_{n}  y[ k - n]} \label{eq:6.28}
 \end{align}
 Die Gleichung ist Grundlage für die technische Realisierung zeitdiskreter Systeme.
 
@@ -249,7 +247,7 @@ Y(z) &= G(z)  U(z) = G(z)  \frac{z}{z - 1} = H(z) \label{eq:6.36}
 \end{align}
 Diese Gleichung kann mit der Summationsregel rücktransformiert werden, und es ergibt sich
 \begin{align}
-h[ k] &= \sum_{\kappa = 0}^{k}{g[\kappa]} \label{eq:6.37}
+h[ k] &= \sum\limits_{\kappa = 0}^{k}{g[\kappa]} \label{eq:6.37}
 \end{align}
 Die Sprungantwort ergibt sich aus der Summe der einzelnen Folgenwerte der Impulsantwort. Dieses Ergebnis entspricht sinngemäß den Eigenschaften zeitkontinuierlicher Systeme. Dort ist die Sprungantwort \(h(t)\) das Integral der Impulsantwort \(g(t)\). Umgekehrt kann die Impulsantwort aus der Sprungantwort berechnet werden. Im z-Bereich gilt:
 \begin{align}
@@ -274,7 +272,7 @@ Die Verstärkung eines zeitdiskreten Systems ergibt sich aus dem Wert der Übert
     Eigenschaft & Zeitbereich & z-Bereich \\
     \midrule
     Impulsantwort & \(g\lbrack k\rbrack = h\lbrack k\rbrack - h\lbrack k - 1\rbrack\) & \(G(z) = H(z)  \left( 1 - z^{- 1} \right)\) \\
-    Sprungantwort & \(h\lbrack k\rbrack = \sum_{\kappa = 0}^{k}{g\lbrack\kappa\rbrack}\) & \(H(z) = G(z)  \frac{z}{z - 1}\) \\
+    Sprungantwort & \(h\lbrack k\rbrack = \sum\limits_{\kappa = 0}^{k}{g\lbrack\kappa\rbrack}\) & \(H(z) = G(z)  \frac{z}{z - 1}\) \\
     Verstärkung des Systems & \(\lim_{k \rightarrow \infty}h\lbrack k\rbrack\) & \(\lim_{z \rightarrow 1}(z - 1)  H(z) = G(1)\) \\
     \bottomrule
   \end{tabular}
@@ -290,7 +288,7 @@ h(t) &= \int_{0}^{t}{g(\tau)}d\tau \label{eq:6.42}
 \end{align}
 Die Sprungantwort des zeitdiskreten Systems ergibt sich aus der Summe
 \begin{align}
-h[ k] &= \sum_{\kappa = 0}^{k}{g[\kappa]} \label{eq:6.43}
+h[ k] &= \sum\limits_{\kappa = 0}^{k}{g[\kappa]} \label{eq:6.43}
 \end{align}
 Während das Integral die Fläche unter der Impulsantwort bis zum Punkt t repräsentiert, nähert die Summe die Fläche über Rechtecke. Die Breite der Rechtecke ist bei zeitdiskreten Systemen auf den Wert eins normiert. Aus diesem Grund gilt:
 \begin{align}
@@ -307,34 +305,33 @@ Auch nach dieser Korrektur sind die Sprungantworten nicht identisch, da die Flä
 
 Gegeben ist ein zeitkontinuierliches System mit der Impulsantwort
 \begin{align}
-g(t) &= 2  e^{- \frac{}{}\frac{t}{10\,\text{ms}}}  \sigma(t) \label{eq:6.46}
+g(t) &= 2  e^{- \frac{}{}\frac{t}{\qty{10}{\milli\second}}}  \sigma(t) \label{eq:6.46}
 \end{align}
-Das System wird mit einer Abtastzeit \(T_{A} = 1\,\text{ms}\) abgetastet. Es ergeben sich die Folgenwerte
+Das System wird mit einer Abtastzeit \(T_{A} = \qty{1}{\milli\second}\) abgetastet. Es ergeben sich die Folgenwerte
 \begin{align}
 g[ k] &= 2  e^{- \frac{k}{10}}  \sigma[ k] \label{eq:6.47}
 \end{align}
 Die Sprungantwort des zeitkontinuierlichen Systems lautet
 \begin{align}
-h(t) &= \int_{0}^{t}{2  e^{- \frac{\tau}{10\,\text{ms}}}d\tau} = - 20\,\text{ms}  \left. \ e^{- \frac{\tau}{10\,\text{ms}}} \right|_{0}^{t} = 20\,\text{ms}  \left( 1 - e^{- \frac{t}{10\,\text{ms}}} \right)  \sigma(t) \label{eq:6.48}
+h(t) &= \int_{0}^{t}{2  e^{- \frac{\tau}{\qty{10}{\milli\second}}}d\tau} = - \qty{20}{\milli\second}  \left. \ e^{- \frac{\tau}{\qty{10}{\milli\second}}} \right|_{0}^{t} = \qty{20}{\milli\second}  \left( 1 - e^{- \frac{t}{\qty{10}{\milli\second}}} \right)  \sigma(t) \label{eq:6.48}
 \end{align}
 Die Sprungantwort des zeitdiskreten Systems errechnet sich zu
 \begin{align}
-h[ k] &= \sum_{\kappa = 0}^{k}{2  e^{- \frac{\kappa}{10}}} = 2  {\sum_{\kappa = 0}^{k}\left( e^{- \frac{1}{10}} \right)}^{\kappa} = 2  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.49}
+h[ k] &= \sum\limits_{\kappa = 0}^{k}{2  e^{- \frac{\kappa}{10}}} = 2  {\sum\limits_{\kappa = 0}^{k}\left( e^{- \frac{1}{10}} \right)}^{\kappa} = 2  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.49}
 \end{align}
 Durch die Multiplikation der Sprungantwort mit der Abtastzeit \(T_{A}\) ergibt sich die Näherung
 \begin{align}
-h\left( k  T_{A} \right) \approx h[ k]  T_{A} &= 2\,\text{ms}  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.50}
+h\left( k  T_{A} \right) \approx h[ k]  T_{A} &= \qty{2}{\milli\second}  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.50}
 \end{align}
 Die Impuls- und Sprungantworten sind in Bild \ref{fig:6.4} dargestellt.
 
-\manualFigure
-  [alt={Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems\\
-mit identischen Impulsantworten \(g[k]\) = g(kT\textsubscript{A})}]
-  {./media/image116.png}
-  {Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems\\
+\begin{fixedfigure}
+  \includegraphics[alt={Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems\\
+mit identischen Impulsantworten \(g[k]\) = g(kT\textsubscript{A})}]{new media/6_4_vergleich_der_sprungantworten_ei.png}
+  \captionof{figure}{Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems\\
 mit identischen Impulsantworten \(g[k]\) = g(kT\textsubscript{A})}
-  {\label{fig:6.4}}
-
+  \label{fig:6.4}
+\end{fixedfigure}
 
 Es wird deutlich, dass die Sprungantworten nur näherungsweise gleich sind. Grund dafür ist die Approximation der Fläche unter der Impulsantwort mit den in Bild \ref{fig:6.4} eingezeichneten Rechtecken. Ein ausführlicher Vergleich zwischen zeitkontinuierlichen und zeitdiskreten Systemen wird in Kapitel \hyperref[_Ref411155749]{0} vorgenommen.
 
@@ -352,28 +349,28 @@ Bei der Diskussion der Übertragungsfunktion werden unterschiedliche Darstellung
 
 Die Übertragungsfunktion von zeitdiskreten LTI-Systemen kann auf unterschiedliche Art dargestellt werden. Die Beschreibung eines Systems mit der Differenzengleichung
 \begin{align}
-\sum_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.51}
+\sum\limits_{n = 0}^{N}{c_{n}  y[ k - n]} &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} \label{eq:6.51}
 \end{align}
 ist direkt mit einer Übertragungsfunktion der Form
 \begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{\sum_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum_{n = 0}^{N}{c_{n}  z^{- n}}} \label{eq:6.52}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{\sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum\limits_{n = 0}^{N}{c_{n}  z^{- n}}} \label{eq:6.52}
 \end{align}
 verknüpft. Um ein System mit Hilfe von Speichergliedern zu realisieren, wird die Gleichung nach \(Y(z)\) aufgelöst.
 \begin{align}
-Y(z) &= \sum_{l = 0}^{L}{d_{l}  U(z)  z^{- l}} - \sum_{n = 1}^{N}{c_{n}  Y(z)  z^{- n}} = d_{0}  U(z) + \sum_{n = 1}^{N}{\left( d_{n}  U(z) - c_{n}  Y(z) \right)  z^{- n}} \label{eq:6.53}
+Y(z) &= \sum\limits_{l = 0}^{L}{d_{l}  U(z)  z^{- l}} - \sum\limits_{n = 1}^{N}{c_{n}  Y(z)  z^{- n}} = d_{0}  U(z) + \sum\limits_{n = 1}^{N}{\left( d_{n}  U(z) - c_{n}  Y(z) \right)  z^{- n}} \label{eq:6.53}
 \end{align}
 Es ergibt sich die in Bild \ref{fig:6.5} gezeigte kanonische Darstellungsform von Systemen mit Speichergliedern.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}]{./media/6_2_kanonisches_blockschaltbild_eine.pdf}
+  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}]{new media/6_5_kanonisches_blockschaltbild_eine.pdf}
   \caption{Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}
   \label{fig:6.5}
 \end{figure}
 
 Durch Erweiterung der Übertragungsfunktion (\ref{eq:6.52}) mit \(z^{N}\) ergibt sich eine Übertragungsfunktion, bei der für \(d_{0}\) ≠ 0 Zähler- und Nennergrad identisch sind.
 \begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{z^{N}  \sum_{l = 0}^{L}{d_{l}  z^{- l}}}{z^{N}  \sum_{n = 0}^{N}{c_{n}  z^{- n}}} = \frac{\sum_{m = 0}^{M}{b_{m}  z^{m}}}{\sum_{n = 0}^{N}{a_{n}  z^{n}}} \label{eq:6.54}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{z^{N}  \sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{z^{N}  \sum\limits_{n = 0}^{N}{c_{n}  z^{- n}}} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  z^{n}}} \label{eq:6.54}
 \end{align}
 Diese Darstellungsform wird bei der Rücktransformation einer z-Transformierten \(G(z)\) durch Partialbruchzerlegung eingesetzt.
 
@@ -394,12 +391,11 @@ Y(z) &= U(z) + \left( 4  U(z) - 3  Y(z) - 2  Y(z)  z^{- 1} \right)  z^{- 1} \lab
 \end{align}
 Bild \ref{fig:6.6} zeigt die kanonische Darstellungsform des Systems mit Speichergliedern.
 
-\manualFigure
-  [alt={Kanonisches Blockschaltbild Systems mit der Differenzengleichung (\ref{eq:6.55})}]
-  {./media/image118.pdf}
-  {Kanonisches Blockschaltbild Systems mit der Differenzengleichung (\ref{eq:6.55})}
-  {\label{fig:6.6}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Kanonisches Blockschaltbild Systems mit der Differenzengleichung (\ref{eq:6.55})}]{new media/6_6_kanonisches_blockschaltbild_syst.pdf}
+  \captionof{figure}{Kanonisches Blockschaltbild Systems mit der Differenzengleichung (\ref{eq:6.55})}
+  \label{fig:6.6}
+\end{fixedfigure}
 
 Die Übertragungsfunktion hat im Zähler eine Ordnung von \(M = 1\) und im Nenner eine Ordnung\\
 \(N = 2\). Erweitern der Übertragungsfunktion mit z² führt zu der Darstellung
@@ -424,39 +420,39 @@ g[ k] &= \delta[ k] - 3  ( - 1)^{k - 1}  \sigma[ k - 1] + 4  ( - 2)^{k - 1}  \si
 
 Auch bei zeitkontinuierlichen Systemen kann die Übertragungsfunktion auf unterschiedliche Arten dargestellt werden. In Teil A dieser Buchreihe wird in Kapitel 5 ausgehend von einer Differentialgleichung N-ter Ordnung
 \begin{align}
-\sum_{n = 0}^{N}{a_{n}  \frac{d^{n}y}{dt^{n}}} &= \sum_{m = 0}^{M}{b_{m}  \frac{d^{m}u}{dt^{m}}} \label{eq:6.62}
+\sum\limits_{n = 0}^{N}{a_{n}  \frac{d^{n}y}{dt^{n}}} &= \sum\limits_{m = 0}^{M}{b_{m}  \frac{d^{m}u}{dt^{m}}} \label{eq:6.62}
 \end{align}
 die Übertragungsfunktion
 \begin{align}
-G(s) &= \frac{Y(s)}{U(s)} = \frac{\sum_{m = 0}^{M}{b_{m}  s^{m}}}{\sum_{n = 0}^{N}{a_{n}  s^{n}}} \label{eq:6.63}
+G(s) &= \frac{Y(s)}{U(s)} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  s^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  s^{n}}} \label{eq:6.63}
 \end{align}
 bestimmt. Die Interpretation des Systems erfolgt anhand dieser Darstellungsform mit Zähler- und Nennerpolynom. Da die Differentiation im Zeitbereich nicht kausal ist, kann diese Darstellungsform jedoch nicht zur Simulation zeitkontinuierlicher LTI-Systeme verwendet werden. Deshalb wird im Abschnitt 3.5 von Teil A dieser Buchreihe die Differentialgleichung N-mal integriert. Analog zu Gleichung (\ref{eq:6.52}) ergibt sich der Ausdruck
 \begin{align}
-G(s) &= \frac{Y(s)}{U(s)} = \frac{\sum_{m = 0}^{M}{b_{m}  s^{m}}}{\sum_{n = 0}^{N}{a_{n}  s^{n}}} = \frac{\frac{1}{s^{N}}  \sum_{m = 0}^{M}{b_{m}  s^{m}}}{\frac{1}{s^{N}}  \sum_{n = 0}^{N}{a_{n}  s^{n}}} = \frac{\sum_{m = 0}^{M}{b_{m}  s^{m - N}}}{\sum_{n = 0}^{N}{a_{n}  s^{n - N}}} = \frac{\sum_{l = 0}^{N}{d_{l}  s^{- l}}}{\sum_{n = 0}^{N}{c_{n}  s^{- n}}} \label{eq:6.64}
+G(s) &= \frac{Y(s)}{U(s)} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  s^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  s^{n}}} = \frac{\frac{1}{s^{N}}  \sum\limits_{m = 0}^{M}{b_{m}  s^{m}}}{\frac{1}{s^{N}}  \sum\limits_{n = 0}^{N}{a_{n}  s^{n}}} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  s^{m - N}}}{\sum\limits_{n = 0}^{N}{a_{n}  s^{n - N}}} = \frac{\sum\limits_{l = 0}^{N}{d_{l}  s^{- l}}}{\sum\limits_{n = 0}^{N}{c_{n}  s^{- n}}} \label{eq:6.64}
 \end{align}
 Ausmultiplizieren der Gleichung
 \begin{align}
-Y(s)  \sum_{n = 0}^{N}{c_{n}  s^{- n}} &= U(s)  \sum_{l = 0}^{N}{d_{l}  s^{- l}} \label{eq:6.65}
+Y(s)  \sum\limits_{n = 0}^{N}{c_{n}  s^{- n}} &= U(s)  \sum\limits_{l = 0}^{N}{d_{l}  s^{- l}} \label{eq:6.65}
 \end{align}
 und Auflösen nach \(Y(s)\) führt mit \(c_{0} = 1\) zu dem Ausdruck
 \begin{align}
-{Y\left(s\right)} &=  {U\left(s\right) \sum _{l=0}^{N}d_{l}  s^{-l}  -Y\left(s\right) \sum _{n=1}^{N}c_{n}  s^{-n}  } \\
-{} &=  {\sum _{l=0}^{N}d_{l}  U\left(s\right) s^{-l}  -\sum _{n=1}^{N}c_{n}  Y\left(s\right) s^{-n}  }
+{Y\left(s\right)} &=  {U\left(s\right) \sum\limits _{l=0}^{N}d_{l}  s^{-l}  -Y\left(s\right) \sum\limits _{n=1}^{N}c_{n}  s^{-n}  } \\
+{} &=  {\sum\limits _{l=0}^{N}d_{l}  U\left(s\right) s^{-l}  -\sum\limits _{n=1}^{N}c_{n}  Y\left(s\right) s^{-n}  }
  \label{eq:6.66}
 \end{align}
 Um die Integrierer zusammenfassen zu können, wird die erste Summe zerlegt.
 \begin{align}
-Y(s) &= \sum_{l = 0}^{N}{d_{l}  U(s)  s^{- l}} - \sum_{n = 1}^{N}{c_{n}  Y(s)  s^{- n}} = d_{0}  U(s) + \sum_{l = 1}^{N}{d_{l}  U(s)  s^{- l}} - \sum_{n = 1}^{N}{c_{n}  Y(s)  s^{- n}} \label{eq:6.67}
+Y(s) &= \sum\limits_{l = 0}^{N}{d_{l}  U(s)  s^{- l}} - \sum\limits_{n = 1}^{N}{c_{n}  Y(s)  s^{- n}} = d_{0}  U(s) + \sum\limits_{l = 1}^{N}{d_{l}  U(s)  s^{- l}} - \sum\limits_{n = 1}^{N}{c_{n}  Y(s)  s^{- n}} \label{eq:6.67}
 \end{align}
 Damit können die beiden übrigen Summen zusammengefasst werden.
 \begin{align}
-Y(s) &= d_{0}  U(s) + \sum_{n = 1}^{N}{\left( d_{l}  U(s) - c_{n}  Y(s) \right)  s^{- n}} \label{eq:6.68}
+Y(s) &= d_{0}  U(s) + \sum\limits_{n = 1}^{N}{\left( d_{l}  U(s) - c_{n}  Y(s) \right)  s^{- n}} \label{eq:6.68}
 \end{align}
 Es ergibt sich die in Bild \ref{fig:6.7} gezeigte kanonische Darstellungsform von Systemen mit Integrierern.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}]{./media/6_3_kanonisches_blockschaltbild_eine.pdf}
+  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}]{new media/6_7_kanonisches_blockschaltbild_eine.pdf}
   \caption{Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}
   \label{fig:6.7}
 \end{figure}
@@ -478,7 +474,7 @@ Damit lautet die Übertragungsfunktion
 \end{align}
 Auf Basis dieser Darstellung und den Polen des Systems
 \begin{align}
-\alpha_{1,2} &= - \frac{D}{2\,\text{m}} \pm \sqrt{\frac{D^{2}}{4\,\text{m}^{2}} - \frac{c}{m}} \label{eq:6.72}
+\alpha_{1,2} &= - \frac{D}{\qty{2}{\meter}} \pm \sqrt{\frac{D^{2}}{\qty{4}{\meter}^{2}} - \frac{c}{m}} \label{eq:6.72}
 \end{align}
 können die Systemeigenschaften diskutiert werden. Andererseits erfolgt die Systemsimulation über eine Darstellungsform
 \begin{align}
@@ -490,12 +486,11 @@ X(s) &= \frac{1}{m}  \left( \frac{1}{s^{2}}  F_{E}(s) - \frac{D}{s}  X(s) - \fra
 \end{align}
 Es ergibt sich das in Bild \ref{fig:6.8} dargestellte kanonische Blockschaltbild.
 
-\manualFigure
-  [alt={Kanonisches Blockschaltbild eines Feder-Masse-Dämpfer-Systems}]
-  {./media/image121.pdf}
-  {Kanonisches Blockschaltbild eines Feder-Masse-Dämpfer-Systems}
-  {\label{fig:6.8}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Kanonisches Blockschaltbild eines Feder-Masse-Dämpfer-Systems}]{new media/6_8_kanonisches_blockschaltbild_eine.pdf}
+  \captionof{figure}{Kanonisches Blockschaltbild eines Feder-Masse-Dämpfer-Systems}
+  \label{fig:6.8}
+\end{fixedfigure}
 
 \end{example}
 
@@ -513,23 +508,23 @@ Je nach Anwendungsfall wird die Darstellung mit Zähler- und Nennerpolynom oder 
     \toprule
     Anwendung & Zeitkontinuierliche Systeme & Zeitdiskrete Systeme \\
     \midrule
-    Mathematische Diskussion der Übertragungsfunktion & \(G(s) = \frac{\sum_{m = 0}^{M}{b_{m}  s^{m}}}{\sum_{n = 0}^{N}{a_{n}  s^{n}}}\) & \(G(z) = \frac{\sum_{m = 0}^{M}{b_{m}  z^{m}}}{\sum_{n = 0}^{N}{a_{n}  z^{n}}}\) \\
+    Mathematische Diskussion der Übertragungsfunktion & \(G(s) = \frac{\sum\limits_{m = 0}^{M}{b_{m}  s^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  s^{n}}}\) & \(G(z) = \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  z^{n}}}\) \\
     Darstellungsform zur 
 Realisierung der Systeme
- & \(G(s) = \frac{\sum_{l = 0}^{L}{d_{l}  s^{- l}}}{\sum_{n = 0}^{N}{c_{n}  s^{- n}}}\) & \(G(z) = \frac{\sum_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum_{n = 0}^{N}{c_{n}  z^{- n}}}\) \\
+ & \(G(s) = \frac{\sum\limits_{l = 0}^{L}{d_{l}  s^{- l}}}{\sum\limits_{n = 0}^{N}{c_{n}  s^{- n}}}\) & \(G(z) = \frac{\sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum\limits_{n = 0}^{N}{c_{n}  z^{- n}}}\) \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 Die folgende Diskussion der Übertragungsfunktion zeitdiskreter Systeme bezieht sich damit auf eine Übertragungsfunktion der Form
 \begin{align}
-G(z) &= \frac{\sum_{m = 0}^{M}{b_{m}  z^{m}}}{\sum_{n = 0}^{N}{a_{n}  z^{n}}} \label{eq:6.75}
+G(z) &= \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  z^{n}}} \label{eq:6.75}
 \end{align}
 \subsection{Pol-Nullstellen-Diagramme}\label{sec:pol-nullstellen-diagramme}
 
 Die Interpretation der Übertragungsfunktion erlaubt Aussagen über Stabilität, Schwingungsneigung und Sprungfähigkeit von Systemen. Ein wesentlicher Schritt zur Interpretation des Systems ist die Analyse der unterschiedlichen Pole \(α_{n}\) und der unterschiedlichen Nullstellen \(β_{m}\). Dazu wird die Übertragungsfunktion durch Linearfaktoren dargestellt.
 \begin{align}
-G(z) &= \frac{B(z)}{A(z)} = \frac{\sum_{m = 0}^{M}{b_{m}  z^{m}}}{\sum_{n = 0}^{N}{a_{n}  z^{n}}} = \frac{b_{M}}{a_{N}}  \frac{\left( z - \beta_{1} \right)^{M_{1}}  \left( z - \beta_{2} \right)^{M_{2}}  ...}{\left( z - \alpha_{1} \right)^{N_{1}}  \left( z - \alpha_{2} \right)^{N_{2}}  ...} \label{eq:6.76}
+G(z) &= \frac{B(z)}{A(z)} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  z^{n}}} = \frac{b_{M}}{a_{N}}  \frac{\left( z - \beta_{1} \right)^{M_{1}}  \left( z - \beta_{2} \right)^{M_{2}}  ...}{\left( z - \alpha_{1} \right)^{N_{1}}  \left( z - \alpha_{2} \right)^{N_{2}}  ...} \label{eq:6.76}
 \end{align}
 Die Pole \(α_{n}\) und Nullstellen \(β_{m}\) können zur besseren Übersicht in der komplexen Ebene dargestellt werden. Dabei werden Nullstellen mit einem Kreis und Pole mit einem Kreuz dargestellt, ihre Vielfachheit \(N_{n}\) und \(M_{m}\) wird in Klammern angegeben. Die Diagramme werden als Pol-Nullstellen-Diagramme oder als Pole-Zero-Maps bezeichnet.
 
@@ -547,12 +542,11 @@ G(z) &= \frac{Y(z)}{U(z)} = \frac{1 + 1.5  z^{- 1}}{1 - 0.2  z^{- 1} - 0.15  z^{
 auf. Sie besitzt die Nullstellen \(β_{1}\) = - 1.5 und \(β_{2} = 0\), sowie die reellen Polstellen \(α_{1}\) = - 0.3 und\\
 \(α_{2} = 0.5\). Es ergibt sich das in Bild \ref{fig:6.9} dargestellte Pol-Nullstellen-Diagramm.
 
-\manualFigure
-  [alt={Pol-Nullstellen-Diagramm des Systems aus Gleichung (\ref{eq:6.77})}]
-  {./media/image122.png}
-  {Pol-Nullstellen-Diagramm des Systems aus Gleichung (\ref{eq:6.77})}
-  {\label{fig:6.9}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Pol-Nullstellen-Diagramm des Systems aus Gleichung (\ref{eq:6.77})}]{new media/6_9_polnullstellendiagramm_des_syste.png}
+  \captionof{figure}{Pol-Nullstellen-Diagramm des Systems aus Gleichung (\ref{eq:6.77})}
+  \label{fig:6.9}
+\end{fixedfigure}
 
 Das Pol-Nullstellen-Diagramm bietet einen guten Überblick über die Lage der Pole und Nullstellen in der komplexen Ebene.
 
@@ -562,7 +556,7 @@ Das Pol-Nullstellen-Diagramm bietet einen guten Überblick über die Lage der Po
 
 Zur Überprüfung der Kausalität eines Systems mit der Übertragungsfunktion
 \begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{\sum_{m = 0}^{M}{b_{m}  z^{m}}}{\sum_{n = 0}^{N}{a_{n}  z^{n}}} = \frac{\sum_{m = 0}^{M}{b_{m}  z^{m - N}}}{\sum_{n = 0}^{N}{a_{n}  z^{n - N}}} \label{eq:6.79}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m}}}{\sum\limits_{n = 0}^{N}{a_{n}  z^{n}}} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m - N}}}{\sum\limits_{n = 0}^{N}{a_{n}  z^{n - N}}} \label{eq:6.79}
 \end{align}
 werden Zähler- und Nennerpolynom durch \(z^{N}\) dividiert. Ausmultiplizieren und Auflösen der Summen führt zur Gleichung
 \begin{align}
@@ -628,7 +622,7 @@ Sie springt an der Stelle \(k = 0\) auf den Wert 2.
 
 Besitzt die Übertragungsfunktion einfache reelle Pole \(α_{n}\) ≠ 0, kann sie über die Partialbruchzerlegung dargestellt werden als
 \begin{align}
-G(z) &= \sum_{n = 1}^{N}\frac{A_{n}}{z - \alpha_{n}} \label{eq:6.90}
+G(z) &= \sum\limits_{n = 1}^{N}\frac{A_{n}}{z - \alpha_{n}} \label{eq:6.90}
 \end{align}
 Jeder einzelne Partialbruch hat die Form
 \begin{align}
@@ -640,7 +634,7 @@ g_{n}[ k] &= A_{n}  \alpha_{n}^{k - 1}  \sigma[ k - 1] \label{eq:6.92}
 \end{align}
 Die Summe der einzelnen Partialbrüche entspricht deshalb im Zeitbereich der Folge
 \begin{align}
-g[ k] &= \sum_{n = 1}^{N}{A_{n}  \alpha_{n}^{k - 1}  \sigma[ k - 1]} \label{eq:6.93}
+g[ k] &= \sum\limits_{n = 1}^{N}{A_{n}  \alpha_{n}^{k - 1}  \sigma[ k - 1]} \label{eq:6.93}
 \end{align}
 Der Betrag der Pole \(α_{n}\) entscheidet über die Frage, ob die Impulsantwort konvergent oder divergent ist und damit über die Stabilität des Systems.
 
@@ -660,12 +654,11 @@ g[ k] &= g_{1}[ k] + g_{2}[ k] = 2  0.5^{k - 1}  \sigma[ k - 1] + 1.5^{k - 1}  \
 \end{align}
 In Bild \ref{fig:6.10} sind die Lage der Pole und Nullstelle sowie die Impulsantwort des Systems dargestellt.
 
-\manualFigure
-  [alt={Lage der Pol- und Nullstellen sowie und Impulsantwort bei einfachen reellen Polen}]
-  {./media/image123.png}
-  {Lage der Pol- und Nullstellen sowie und Impulsantwort bei einfachen reellen Polen}
-  {\label{fig:6.10}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Lage der Pol- und Nullstellen sowie und Impulsantwort bei einfachen reellen Polen}]{new media/6_10_lage_der_pol_und_nullstellen_so.png}
+  \captionof{figure}{Lage der Pol- und Nullstellen sowie und Impulsantwort bei einfachen reellen Polen}
+  \label{fig:6.10}
+\end{fixedfigure}
 
 Der Pol an der Stelle \(α_{1} = 0.5\) liegt innerhalb des Einheitskreises, der korrespondierende Teil der Impulsantwort \(g_{1}\){[}k{]} ist konvergent. Der Pol an der Stelle \(α_{2} = 1.5\) liegt außerhalb des Einheitskreises und führt zu einem divergenten Anteil \(g_{2}\){[}k{]} an der Impulsantwort. Die Summe der Impulsantworten ist damit divergent. Sobald ein Pol der Übertragungsfunktion außerhalb des Einheitskreises liegt, divergiert die Impulsantwort, und das System ist instabil. Ausführlich wird die Stabilität von Systemen in Abschnitt \ref{sec:6.3.11} diskutiert.
 
@@ -675,7 +668,7 @@ Der Pol an der Stelle \(α_{1} = 0.5\) liegt innerhalb des Einheitskreises, der 
 
 Liegt ein N-facher Pol an der Stelle α ≠ 0 vor, ergibt sich für die Partialbruchzerlegung dieses Teils der Übertragungsfunktion der Ansatz
 \begin{align}
-G(z) &= \frac{B(z)}{(z - \alpha)^{N}} = \sum_{n = 1}^{N}\frac{A_{n}}{(z - \alpha)^{n}} \label{eq:6.96}
+G(z) &= \frac{B(z)}{(z - \alpha)^{N}} = \sum\limits_{n = 1}^{N}\frac{A_{n}}{(z - \alpha)^{n}} \label{eq:6.96}
 \end{align}
 Die Rücktransformation der einzelnen Summanden kann mit Korrespondenz 9 angegeben werden zu
 \begin{align}
@@ -686,7 +679,7 @@ n - 1
 \end{align}
 Zum Beispiel ergibt sich für einen zweifachen Pol
 \begin{align}
-g[ k] &= \sum_{n = 1}^{2}{A_{n}  \left( \begin{array}{r}
+g[ k] &= \sum\limits_{n = 1}^{2}{A_{n}  \left( \begin{array}{r}
 k - 1 \\
 n - 1
 \end{array} \right)  \alpha^{k - n}  \sigma[ k - n] = A_{1}  \alpha^{k - 1}  \sigma[ k - 1] + A_{2}  (k - 1)  \alpha^{k - 2}  \sigma[ k - 2]} \label{eq:6.98}
@@ -698,7 +691,7 @@ Die Impulsantwort ist unendlich lang, es handelt sich also um ein IIR-System. De
  & n - 1
 \end{aligned} \right) = \frac{(k - 1)!}{(n - 1)!  (k - 1 - n + 1)!} = \frac{(k - 1)!}{(n - 1)!  (k - n)!} \label{eq:6.99}
 \end{align}
-führt zu einem Polynom in k mit der Ordnung n - 1. Da die Exponentialfunktion für α ≠ 1~stärker steigt oder fällt als jede Potenz von k, ist die Stabilitätsbetrachtung von diesem Ausdruck unabhängig. Deshalb bestimmt auch in diesem Fall der Betrag des Pols α, ob die Impulsantwort gegen den Wert null konvergiert, und entscheidet damit über die Stabilität des Systems. Der Sonderfall eines Pols mit dem Betrag 1 wird in Abschnitt \ref{sec:6.3.11} diskutiert.
+führt zu einem Polynom in k mit der Ordnung n - 1. Da die Exponentialfunktion für α ≠ 1 stärker steigt oder fällt als jede Potenz von k, ist die Stabilitätsbetrachtung von diesem Ausdruck unabhängig. Deshalb bestimmt auch in diesem Fall der Betrag des Pols α, ob die Impulsantwort gegen den Wert null konvergiert, und entscheidet damit über die Stabilität des Systems. Der Sonderfall eines Pols mit dem Betrag 1 wird in Abschnitt \ref{sec:6.3.11} diskutiert.
 
 \begin{example}{Übertragungsfunktion mit mehrfachen reellen Polen}
 \label{beispiel-uxfcbertragungsfunktion-mit-mehrfachen-reellen-polen}
@@ -707,18 +700,17 @@ Die untenstehende Übertragungsfunktion \(G(z)\) soll interpretiert werden. Ihr 
 \begin{align}
 G(z) &= \frac{z + 1}{(z + 0.5)^{2}} = \frac{1}{z + 0.5} + \frac{0.5}{(z + 0.5)^{2}} = \frac{z}{z + 0.5}  z^{- 1} - \frac{- 0.5  z}{(z + 0.5)^{2}}  z^{- 1} \label{eq:6.100}
 \end{align}
-Zur Rücktransformation werden die Korrespondenzen 5 und 6~sowie der Verschiebungssatz verwendet.
+Zur Rücktransformation werden die Korrespondenzen 5 und 6 sowie der Verschiebungssatz verwendet.
 \begin{align}
 g[ k] &= g_{1}[ k] + g_{2}[ k] = ( - 0.5)^{k - 1}  \sigma[ k - 1] - (k - 1)  ( - 0.5)^{k - 1}  \sigma[ k - 2] \label{eq:6.101}
 \end{align}
 In Bild \ref{fig:6.11} sind die Lage der Nullstelle und Pole sowie die Impulsantwort des Systems dargestellt.
 
-\manualFigure
-  [alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei mehrfachem reellem Pol}]
-  {./media/image124.png}
-  {Lage der Nullstelle und Pole sowie die Impulsantwort bei mehrfachem reellem Pol}
-  {\label{fig:6.11}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei mehrfachem reellem Pol}]{new media/6_11_lage_der_nullstelle_und_pole_so.png}
+  \captionof{figure}{Lage der Nullstelle und Pole sowie die Impulsantwort bei mehrfachem reellem Pol}
+  \label{fig:6.11}
+\end{fixedfigure}
 
 Da der mehrfache Pol innerhalb des Einheitskreises liegt, ist das System stabil. Aufgrund des negativen Vorzeichens sind die beiden Teile der Impulsantwort alternierend, und es ergibt sich eine schwingende Impulsantwort. Besitzt die Übertragungsfunktion einen einfachen oder mehrfachen Pol mit negativem Vorzeichen,
 \begin{align}
@@ -742,7 +734,7 @@ auf. Damit das System reelle Koeffizienten \(a_{n}\) und \(b_{m}\) besitzt, müs
 \begin{align}
 {g\left[k\right]} &=  {A e^{j \varphi _{A} }  \left(r e^{j \varphi } \right)^{k-1}  \sigma \left[k-1\right]+A e^{-j \varphi _{A} }  \left(r e^{-j \varphi } \right)^{k-1}  \sigma \left[k-1\right]} \\
 {} &=  {A r^{k-1} \left(e^{j \varphi _{A} }  e^{j \varphi  \left(k-1\right)} +e^{-j \varphi _{A} }  e^{-j \varphi  \left(k-1\right)} \right) \sigma \left[k-1\right]} \\
-{} &=  {2\,\text{A} r^{k-1}  \cos \left(\varphi  \left(k-1\right)+\varphi _{A} \right) \sigma \left[k-1\right]}
+{} &=  {\qty{2}{\ampere} r^{k-1}  \cos \left(\varphi  \left(k-1\right)+\varphi _{A} \right) \sigma \left[k-1\right]}
  \label{eq:6.105}
 \end{align}
 Die Folge ist eine gedämpfte harmonische Folge. Die Phasenlage ϕ des Polpaares definiert, mit welcher Frequenz die Folge schwingt. Der Betrag der Pole r ist für das Abfallen beziehungsweise Ansteigen der Amplitude verantwortlich. Die Koeffizienten A und A* bestimmen über die Amplitude und Phasenlage der Impulsantwort. Die Impulsantwort ist wieder unendlich lang, es handelt sich also erwartungsgemäß um ein IIR-System.
@@ -760,12 +752,11 @@ g[ k] &= 2  \sqrt{2}  \left( \frac{1}{\sqrt{2}} \right)^{k - 1}  \cos\left( \fra
 \end{align}
 In Bild \ref{fig:6.12} sind die Lage der Pole und Nullstelle sowie die Impulsantwort des Systems dargestellt.
 
-\manualFigure
-  [alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei konjugiert komplexem Polpaar}]
-  {./media/image126.png}
-  {Lage der Nullstelle und Pole sowie die Impulsantwort bei konjugiert komplexem Polpaar}
-  {\label{fig:6.12}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei konjugiert komplexem Polpaar}]{new media/6_12_lage_der_nullstelle_und_pole_so.png}
+  \captionof{figure}{Lage der Nullstelle und Pole sowie die Impulsantwort bei konjugiert komplexem Polpaar}
+  \label{fig:6.12}
+\end{fixedfigure}
 
 Die Impulsantwort eines zeitdiskreten Systems mit konjugiert komplexem Polpaar schwingt. Liegen die Pole innerhalb des Einheitskreises nimmt die Amplitude der Schwingung ab.
 
@@ -776,7 +767,7 @@ Die Impulsantwort eines zeitdiskreten Systems mit konjugiert komplexem Polpaar s
 Wenn die Übertragungsfunktion \(G(z)\) nur Pole an der Stelle \(α = 0\) besitzt, sind alle Koeffizienten\\
 \(a_{n} = 0\) bis auf den Koeffizienten \(a_{N}\). Damit gilt
 \begin{align}
-G(z) &= \frac{\sum_{m = 0}^{M}{b_{m}  z^{m}}}{a_{N}  z^{N}} = \sum_{m = 0}^{M}{\frac{b_{m}}{a_{N}}  z^{m - N}} = \frac{b_{0}}{a_{N}}  z^{- N} + \frac{b_{1}}{a_{N}}  z^{1 - N} + ... + \frac{b_{M}}{a_{N}}  z^{M - N} \label{eq:6.108}
+G(z) &= \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m}}}{a_{N}  z^{N}} = \sum\limits_{m = 0}^{M}{\frac{b_{m}}{a_{N}}  z^{m - N}} = \frac{b_{0}}{a_{N}}  z^{- N} + \frac{b_{1}}{a_{N}}  z^{1 - N} + ... + \frac{b_{M}}{a_{N}}  z^{M - N} \label{eq:6.108}
 \end{align}
 Bei kausalen Systemen ist der Zählergrad M kleiner oder gleich dem Nennergrad N. Damit sind alle Exponenten der komplexen Variablen z kleiner oder gleich null, und es kann der Verschiebungssatz der z-Transformation angewendet werden. Die Impulsantwort ergibt sich damit zu
 \begin{align}
@@ -798,12 +789,11 @@ g[ k] &= \frac{1}{9}  \delta[ k] + \frac{2}{9}  \delta[ k - 1] + \frac{3}{9}  \d
 \end{align}
 Die Werte der Impulsantwort sind identisch zu den Koeffizienten des Filters. In Bild \ref{fig:6.13} sind die Lage der Pole und Nullstellen sowie die Impulsantwort des Systems dargestellt.
 
-\manualFigure
-  [alt={Pollage und Impulsantwort bei Polen im Koordinatenursprung}]
-  {./media/image127.png}
-  {Pollage und Impulsantwort bei Polen im Koordinatenursprung}
-  {\label{fig:6.13}}
-
+\begin{fixedfigure}
+  \includegraphics[alt={Pollage und Impulsantwort bei Polen im Koordinatenursprung}]{new media/6_13_pollage_und_impulsantwort_bei_p.png}
+  \captionof{figure}{Pollage und Impulsantwort bei Polen im Koordinatenursprung}
+  \label{fig:6.13}
+\end{fixedfigure}
 
 Die Impulsantwort hat N + 1 = 5 von null verschiedene Werte. Für k ≥ 5 bleibt die Impulsantwort null.
 
@@ -827,7 +817,7 @@ Die Nullstellen der Übertragungsfunktion \(G_{1}(z)\) werden zu Polen der inver
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Pollage für ein invertierbares und ein nicht invertierbares System}]{./media/6_4_pollage_fr_ein_invertierbares_un.png}
+  \includegraphics[alt={Pollage für ein invertierbares und ein nicht invertierbares System}]{new media/6_14_pollage_fr_ein_invertierbares_u.png}
   \caption{Pollage für ein invertierbares und ein nicht invertierbares System}
   \label{fig:6.14}
 \end{figure}
@@ -872,12 +862,12 @@ Zählergrad M = Nennergrad N \\
     \toprule
     Pollage & Impulsantwort \\
     \midrule
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{./media/image90.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{./media/image129.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{./media/image92.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Rechteck, Design enthält. Automatisch generierte Beschreibung}]{./media/image130.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{./media/image93.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot enthält. Automatisch generierte Beschreibung}]{./media/image131.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{./media/image101.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Rechteck, Diagramm enthält. Automatisch generierte Beschreibung}]{./media/image132.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Kreis, Screenshot enthält. Automatisch generierte Beschreibung}]{./media/image103.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung}]{./media/image133.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Kreis enthält. Automatisch generierte Beschreibung}]{./media/image105.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{./media/image134.png} \\
+    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/6_15_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new media/6_16_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/6_17_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Rechteck, Design enthält. Automatisch generierte Beschreibung}]{new media/6_18_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new media/6_19_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot enthält. Automatisch generierte Beschreibung}]{new media/6_20_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new media/6_21_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Rechteck, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/6_22_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Kreis, Screenshot enthält. Automatisch generierte Beschreibung}]{new media/6_23_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/6_24_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Kreis enthält. Automatisch generierte Beschreibung}]{new media/6_25_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/6_26_zusammenhang_zwischen_pollage_u.png} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -887,11 +877,11 @@ Zählergrad M = Nennergrad N \\
 Bei der Einführung des Begriffes der Stabilität in Abschnitt \ref{sec:4.4.4} wird gezeigt, dass asymptotisch stabile Systeme eine abklingende Impulsantwort aufweisen müssen. Die Übertragungsfunktion \(G(z)\) ist die z-Transformierte der Impulsantwort \(g[k]\). Deshalb kann die Stabilitätsbetrachtung auch im\\
 z-Bereich erfolgen. Liegen ausschließlich Pole mit einem Betrag \textbar \(α_{n}\)\textbar{} \textless{} 1 vor, konvergiert die Impulsantwort \(g[k]\) für k → ∞ gegen null. Das System ist asymptotisch stabil. Liegt mindestens ein Pol mit einem Betrag \textbar \(α_{n}\)\textbar{} \textgreater{} 1 vor, divergiert die Impulsantwort. Das System ist instabil. Bei einem Pol mit einem Betrag \textbar α\textbar{} = 1 entscheidet die Mehrfachheit über die Konvergenz. Zu der Übertragungsfunktion
 \begin{align}
-G(z) &= \frac{B(z)}{\left( z - e^{j  \varphi} \right)^{N}} = \sum_{n = 1}^{N}\frac{A_{n}}{\left( z - e^{j  \varphi} \right)^{n}} \label{eq:6.115}
+G(z) &= \frac{B(z)}{\left( z - e^{j  \varphi} \right)^{N}} = \sum\limits_{n = 1}^{N}\frac{A_{n}}{\left( z - e^{j  \varphi} \right)^{n}} \label{eq:6.115}
 \end{align}
 gehört die Impulsantwort
 \begin{align}
-g[ k] &= \sum_{n = 1}^{N}{A_{n}  \left( \begin{array}{r}
+g[ k] &= \sum\limits_{n = 1}^{N}{A_{n}  \left( \begin{array}{r}
 k - 1 \\
 n - 1
 \end{array} \right)  e^{j  \varphi  (k - n)}  \sigma[ k - n]} \label{eq:6.116}

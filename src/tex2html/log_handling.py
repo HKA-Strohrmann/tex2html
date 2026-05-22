@@ -15,7 +15,7 @@ def add_prefix_to_relative_links(prefix: str, html_file: str) -> None:
 
 
 MISSING_PACKAGE_PATTERN = re.compile(
-    r"missing file\[([^\]]+)\]",
+    r"missing files?\[([^\]]+)\]",
     flags=re.IGNORECASE,
 )
 
@@ -55,7 +55,7 @@ def list_undefined_macros(log_path: Path) -> list[str]:
         return []
 
     text = log_path.read_text()
-    pattern = re.compile(r"undefined macro\[([^\]]+)\]", flags=re.IGNORECASE)
+    pattern = re.compile(r"undefined macros?\[([^\]]+)\]", flags=re.IGNORECASE)
     matches = pattern.findall(text)
     
     macros = []

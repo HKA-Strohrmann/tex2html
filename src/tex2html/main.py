@@ -16,16 +16,13 @@ def main(
     output_file: Annotated[str, typer.Option("--output-file", help="Output file")] = "html/output.html",
 ) -> typer.Exit:
     """Convert a LaTeX file to HTML."""    
-
     input_path = Path(input_file)
-    if not input_path.exists():
-        raise typer.BadParameter(f"Input file '{input_path}' does not exist.")
-    if not input_path.is_file() or input_path.suffix != ".tex":
-        raise typer.BadParameter(f"Input must be a .tex file: {input_path}")
+    if not input_path.exists() or not input_path.is_file() or input_path.suffix != ".tex":
+        raise typer.BadParameter(f"Invalid input file '{input_path}'. Must be an existing .tex file.")
     
     output_path = Path(output_file)
-    if not output_path.suffix == ".html":
-        raise typer.BadParameter(f"Output file '{output_path}' is not a .html file.")
+    if output_path.suffix != ".html":
+        raise typer.BadParameter(f"Output file '{output_path}' must have a .html extension.")
     
     output_dir = output_path.parent
     if output_dir.exists():
@@ -34,9 +31,15 @@ def main(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     try:
-        result: LaTeXMLOutput = convert_latex_to_html(input_path, output_path, output_dir)
-        return typer.Exit(code=result.returncode or 0)
+        result = convert_latex_to_html(input_path, output_path, output_dir)
+        
+        if result.is_fatal:
+            return typer.Exit(code=result.returncode if result.returncode > 0 else 1)
+            
+        # Return 0 to the OS even if partial results exist, because the CLI "succeeded" 
+        # at its task of generating an output.
+        return typer.Exit(code=0)
 
     except Exception as e:
-        ui.console.print(f"[bold red]Unexpected Error:[/bold red] {e}")
+        ui.console.print(f"[bold red]Fatal Unexpected Error:[/bold red] {e}")
         return typer.Exit(code=2)
