@@ -28,3 +28,7 @@ uv run tex2html --input test/combined.tex --output test/html/
 ## To Do
 
 - Replace scrbook with book. KOMA is not supported by LaTeXML.
+- create binding for awesomefont5
+- --whatsout=fragment for embedding in other pages?
+- create binding to supress tcolorbox errors
+- --javascript=LaTeXML-maybeMathJax.js: The LaTeXML-maybeMathJax.js script loads MathJax for browsers without native MathML support, as a fallback rendering solution.
