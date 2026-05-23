@@ -172,18 +172,17 @@ Diese Übertragungsfunktion hat einen Konvergenzbereich von
 Da die Polstellen \(α_{n}\) zu einem stabilen zeitkontinuierlichen System gehören, liegen sie in der negativen Halbebene. Damit liegen die Pole der Übertragungsfunktion \(G(z)\) innerhalb des Einheitskreises. Beim sprunginvarianten Entwurf bleiben stabile Systeme demnach stabil.
 
 \begin{example}{Sprunginvarianter Entwurf eines Tiefpasses erster Ordnung}
-\label{beispiel-sprunginvarianter-entwurf-eines-tiefpasses-erster-ordnung}
+\label{example:beispiel-sprunginvarianter-entwurf-eines-tiefpasses-erster-ordnung}
 
 Der sprunginvariante Entwurf wird ebenfalls an einem Tiefpass erster Ordnung durchgeführt.
-\begin{align}
-G(s) &= \frac{1}{1 + T  s} = \frac{\omega_{G}}{s + \omega_{G}} \label{eq:9.20}
-\end{align}
+\begin{align*}
+G(s) &= \frac{1}{1 + T  s} = \frac{\omega_{G}}{s + \omega_{G}} 
+\end{align*}
 Mit dem Pol α = - \(ω_{G}\) ergibt sich beim sprunginvarianten Entwurf die Übertragungsfunktion des zeitdiskreten Systems zu
-\begin{align}
+\begin{align*}
 {G\left(z\right)} &=  {-\frac{\omega _{G} }{-\omega _{G} } +\frac{\omega _{G} }{-\omega _{G} }  \frac{z-1}{z-e^{-\omega _{G}  T_{A} } } =1-\frac{z-1}{z-e^{-\omega _{G}  T_{A} } } } \\
 {} &=  {\frac{z-e^{-\omega _{G}  T_{A} } -z+1}{z-e^{-\omega _{G}  T_{A} } } =\frac{1-e^{-\omega _{G}  T_{A} } }{z-e^{-\omega _{G}  T_{A} } } }
- \label{eq:9.21}
-\end{align}
+\end{align*}
 Bild \ref{fig:9.1} vergleicht das zeitkontinuierliche und das zeitdiskrete System im Zeitbereich für \(T = 5\) und\\
 \(T_{A} = 1\).
 
@@ -418,16 +417,16 @@ Umgekehrt kann die Variable z des zeitdiskreten Systems ersetzt werden durch
 z &= \frac{1}{1 - s  T_{A}} \label{eq:9.42}
 \end{align}
 \begin{example}{Entwurf eines Tiefpasses erster Ordnung nach dem Backward-Euler-Verfahren}
-\label{beispiel-entwurf-eines-tiefpasses-erster-ordnung-nach-dem-backward-euler-verfahren}
+\label{example:beispiel-entwurf-eines-tiefpasses-erster-ordnung-nach-dem-backward-euler-verfahren}
 
 Für ein PT1-Glied ergibt sich mit dieser Transformation die Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \left. \ G(s) \right|_{s = \frac{z - 1}{z  T_{A}}} = \frac{1}{1 + T  \frac{z - 1}{z  T_{A}}} = \frac{z  T_{A}}{z  T_{A} + T  z - T} = \frac{T_{A}}{T_{A} + T - T  z^{- 1}} \label{eq:9.43}
-\end{align}
+\begin{align*}
+G(z) &= \frac{Y(z)}{U(z)} = \left. \ G(s) \right|_{s = \frac{z - 1}{z  T_{A}}} = \frac{1}{1 + T  \frac{z - 1}{z  T_{A}}} = \frac{z  T_{A}}{z  T_{A} + T  z - T} = \frac{T_{A}}{T_{A} + T - T  z^{- 1}} 
+\end{align*}
 Das System könnte mit der Differenzengleichung
-\begin{align}
-y[ k] &= \frac{T_{A}  u[ k] + T  y[ k - 1]}{T_{A} + T} \label{eq:9.44}
-\end{align}
+\begin{align*}
+y[ k] &= \frac{T_{A}  u[ k] + T  y[ k - 1]}{T_{A} + T} 
+\end{align*}
 implementiert werden.
 
 \end{example}
@@ -478,16 +477,16 @@ beziehungsweise
 z &= 1 + s  T_{A} \label{eq:9.51}
 \end{align}
 \begin{example}{Entwurf eines Tiefpasses erster Ordnung nach dem Forward-Euler-Verfahren}
-\label{beispiel-entwurf-eines-tiefpasses-erster-ordnung-nach-dem-forward-euler-verfahren}
+\label{example:beispiel-entwurf-eines-tiefpasses-erster-ordnung-nach-dem-forward-euler-verfahren}
 
 Für ein PT1-Glied ergibt sich mit dieser Transformation die Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \left. \ G(s) \right|_{s = \frac{z - 1}{T_{A}}} = \frac{1}{1 + T  \frac{z - 1}{T_{A}}} = \frac{T_{A}}{T_{A} - T + T  z} = \frac{T_{A}  z^{- 1}}{\left( T_{A} - T \right)  z^{- 1} + T} \label{eq:9.52}
-\end{align}
+\begin{align*}
+G(z) &= \frac{Y(z)}{U(z)} = \left. \ G(s) \right|_{s = \frac{z - 1}{T_{A}}} = \frac{1}{1 + T  \frac{z - 1}{T_{A}}} = \frac{T_{A}}{T_{A} - T + T  z} = \frac{T_{A}  z^{- 1}}{\left( T_{A} - T \right)  z^{- 1} + T} 
+\end{align*}
 Das System könnte mit der Differenzengleichung
-\begin{align}
-y[ k] &= \frac{T_{A}  u[ k - 1] + \left( T - T_{A} \right)  y[ k - 1]}{T} \label{eq:9.53}
-\end{align}
+\begin{align*}
+y[ k] &= \frac{T_{A}  u[ k - 1] + \left( T - T_{A} \right)  y[ k - 1]}{T} 
+\end{align*}
 implementiert werden.
 
 \end{example}
@@ -548,17 +547,17 @@ Es ergibt sich ein Verfahren zum Entwurf eines zeitdiskreten Systems mit der bil
 \end{table}
 
 \begin{example}{Entwurf eines Tiefpasses erster Ordnung mit der bilinearen Transformation}
-\label{beispiel-entwurf-eines-tiefpasses-erster-ordnung-mit-der-bilinearen-transformation}
+\label{example:beispiel-entwurf-eines-tiefpasses-erster-ordnung-mit-der-bilinearen-transformation}
 
 Für ein PT1-Glied ergibt sich mit der bilinearen Transformation die Übertragungsfunktion
-\begin{align}
+\begin{align*}
 {G(z) = \frac{Y(z)}{U(z)} = \left. \ G(s) \right|_{s = \frac{2}{T_{A}}  \frac{z - 1}{z + 1}} = \frac{1}{1 + T  \frac{2}{T_{A}}  \frac{z - 1}{z + 1}} = \frac{z  T_{A} + T_{A}}{z  T_{A} + T_{A} + 2  T  z - 2  T}
-}{= \frac{z  T_{A} + T_{A}}{z  \left( T_{A} + 2  T \right) + T_{A} - 2  T} = \frac{T_{A} + T_{A}  z^{- 1}}{\left( T_{A} + 2  T \right) + \left( T_{A} - 2  T \right)z^{- 1}}} \label{eq:9.59}
-\end{align}
+}{= \frac{z  T_{A} + T_{A}}{z  \left( T_{A} + 2  T \right) + T_{A} - 2  T} = \frac{T_{A} + T_{A}  z^{- 1}}{\left( T_{A} + 2  T \right) + \left( T_{A} - 2  T \right)z^{- 1}}} 
+\end{align*}
 Das System könnte mit der Differenzengleichung
-\begin{align}
-y[ k] &= \frac{T_{A}  u[ k] + T_{A}  u[ k - 1] - \left( T_{A} - 2  T \right)  y[ k - 1]}{T_{A} + 2  T} \label{eq:9.60}
-\end{align}
+\begin{align*}
+y[ k] &= \frac{T_{A}  u[ k] + T_{A}  u[ k - 1] - \left( T_{A} - 2  T \right)  y[ k - 1]}{T_{A} + 2  T} 
+\end{align*}
 implementiert werden.
 
 \end{example}
@@ -607,12 +606,12 @@ Die Frequenz wird durch die bilineare Transformation nicht linear, sondern verze
 Die Visualisierung der Verzerrung ist im Bereich kleiner Frequenzen gering und steigt mit steigender Frequenz an. Sie ist mathematisch eindeutig und kann beim Systementwurf berücksichtigt werden. Dazu erfolgt der Systementwurf mit einer Spezifikation, die die bei der Diskretisierung stattfindende Frequenzverschiebung berücksichtigt. Das Verfahren wird in Abschnitt \ref{sec:9.2.4} beschrieben.
 
 \begin{example}{Zeitdiskrete Beschreibung des Aufheizverhaltens eines Transistors}
-\label{beispiel-zeitdiskrete-beschreibung-des-aufheizverhaltens-eines-transistors}
+\label{example:beispiel-zeitdiskrete-beschreibung-des-aufheizverhaltens-eines-transistors}
 
 Das Aufheizverhalten eines Transistors kann über die Differentialgleichung
-\begin{align}
-C_{TH}  \frac{dT}{dt} &= p_{EL}(t) - \frac{1}{R_{TH}}  T(t) \label{eq:9.66}
-\end{align}
+\begin{align*}
+C_{TH}  \frac{dT}{dt} &= p_{EL}(t) - \frac{1}{R_{TH}}  T(t) 
+\end{align*}
 beschrieben werden. Dabei bezeichnet T die Temperaturdifferenz zur Umgebungstemperatur gemessen in K, \(C_{TH}\) ist die thermische Wärmekapazität, \(R_{TH}\) der thermische Widerstand und \(p_{EL}\) die elektrische Leistung in W, die den Transistor aufheizt. In der Anordnung beträgt die thermische Kapazität\\
 \(C_{TH} = 0.2\) Ws/K und der thermische Widerstand \(R_{TH} = 5\) K/W.
 
@@ -620,63 +619,62 @@ Das Aufheizverhalten soll in Abhängigkeit der elektrischen Leistung \(p_{EL}(t)
 t \textless{} 0 ist die elektrische Leistung \(p_{EL}(t)\) = 0, für t \textgreater{} 0 ist die elektrische Leistung zunächst eine beliebige Funktion der Zeit.
 
 Transformation der Differentialgleichung in den Laplace-Bereich führt unter Berücksichtigung der Differentiationsregel und wegen der verschwindenden Anfangsbedingungen zu
-\begin{align}
-\left( R_{TH}  C_{TH}  s + 1 \right)  T(s) &= R_{TH}  P_{EL}(s) \label{eq:9.67}
-\end{align}
+\begin{align*}
+\left( R_{TH}  C_{TH}  s + 1 \right)  T(s) &= R_{TH}  P_{EL}(s) 
+\end{align*}
 Aus der Gleichung im Laplace-Bereich ergibt sich die Übertragungsfunktion
-\begin{align}
-\frac{T(s)}{P_{EL}(s)} &= \frac{R_{TH}}{R_{TH}  C_{TH}  s + 1} \label{eq:9.68}
-\end{align}
+\begin{align*}
+\frac{T(s)}{P_{EL}(s)} &= \frac{R_{TH}}{R_{TH}  C_{TH}  s + 1} 
+\end{align*}
 Mit der bilinearen Transformation ergibt sich aus der Übertragungsfunktion im Laplace-Bereich die Übertragungsfunktion im z-Bereich zu
-\begin{align}
+\begin{align*}
 {\frac{T\left(z\right)}{P_{EL} \left(z\right)} } &=  {\left. \frac{R_{TH} }{R_{TH}  C_{TH}  s+1} \right|_{s=\frac{2}{T_{A} }  \frac{z-1}{z+1} } =\frac{R_{TH} }{R_{TH}  C_{TH}  \frac{2}{T_{A} }  \frac{z-1}{z+1} +1} } \\
 {} &=  {\frac{R_{TH}  T_{A}  \left(z+1\right)}{R_{TH}  C_{TH}  2 \left(z-1\right)+T_{A}  \left(z+1\right)} } \\
 {} &=  {\frac{R_{TH}  T_{A}  z+R_{TH}  T_{A} }{\left(R_{TH}  C_{TH}  2+T_{A} \right) z+\left(T_{A} -R_{TH}  C_{TH}  2\right)} } \\
 {} &=  {\frac{R_{TH}  T_{A} +R_{TH}  T_{A}  z^{-1} }{\left(R_{TH}  C_{TH}  2+T_{A} \right) z+\left(T_{A} -R_{TH}  C_{TH}  2\right) z^{-1} } }
- \label{eq:9.69}
-\end{align}
+\end{align*}
 Nach dem Ausmultiplizieren
-\begin{align}
+\begin{align*}
 {T(z)  \left( R_{TH}  C_{TH}  2 + T_{A} \right) + T(z)  \left( T_{A} - R_{TH}  C_{TH}  2 \right)  z^{- 1}
-}{= R_{TH}  T_{A}  P_{EL}(z) + R_{TH}  T_{A}  z^{- 1}  P_{EL}(z)} \label{eq:9.70}
-\end{align}
+}{= R_{TH}  T_{A}  P_{EL}(z) + R_{TH}  T_{A}  z^{- 1}  P_{EL}(z)} 
+\end{align*}
 kann das System als Differenzengleichung dargestellt werden
-\begin{align}
+\begin{align*}
 {T[ k]  \left( R_{TH}  C_{TH}  2 + T_{A} \right) + T[ k - 1]  \left( T_{A} - R_{TH}  C_{TH}  2 \right)
-}{= R_{TH}  T_{A}  p_{EL}[ k] + R_{TH}  T_{A}  p_{EL}[ k - 1]} \label{eq:9.71}
-\end{align}
+}{= R_{TH}  T_{A}  p_{EL}[ k] + R_{TH}  T_{A}  p_{EL}[ k - 1]} 
+\end{align*}
 Auflösen nach \(T[k]\) ergibt
-\begin{align}
-T[ k] &= \frac{R_{th}  T_{A}  p_{el}[ k] + R_{th}  T_{A}  p_{el}[ k - 1] - T[ k - 1]  \left( T_{A} - R_{th}  C_{th}  2 \right)}{R_{th}  C_{th}  2 + T_{A}} \label{eq:9.72}
-\end{align}
+\begin{align*}
+T[ k] &= \frac{R_{th}  T_{A}  p_{el}[ k] + R_{th}  T_{A}  p_{el}[ k - 1] - T[ k - 1]  \left( T_{A} - R_{th}  C_{th}  2 \right)}{R_{th}  C_{th}  2 + T_{A}} 
+\end{align*}
 Auf Basis der - \qty{20}{\decibel}-Grenzfrequenz des analogen Systems wird die Abtastzeit \(T_{A}\) bestimmt. Das zeitkontinuierliche System hat einen einfachen reellen Pol in der negativen Halbebene, es ist demnach stabil. Deshalb ergibt sich der Frequenzgang zu
-\begin{align}
-G(\omega) &= \left. \ \frac{T(s)}{P_{EL}(s)} \right|_{s = j  \omega} = \frac{R_{TH}}{R_{TH}  C_{TH}  j  \omega + 1} \label{eq:9.73}
-\end{align}
+\begin{align*}
+G(\omega) &= \left. \ \frac{T(s)}{P_{EL}(s)} \right|_{s = j  \omega} = \frac{R_{TH}}{R_{TH}  C_{TH}  j  \omega + 1} 
+\end{align*}
 Um die - \qty{20}{\decibel} Grenzfrequenz ausrechnen zu können, wird zunächst der Amplitudengang an der Stelle \(ω = 0\) bestimmt.
-\begin{align}
-A(0) &= R_{TH} \label{eq:9.74}
-\end{align}
+\begin{align*}
+A(0) &= R_{TH} 
+\end{align*}
 Daraus ergibt sich die Grenzfrequenz aus der Bedingung
-\begin{align}
-A\left( \omega_{G} \right) &= \left| \frac{R_{TH}}{R_{TH}  C_{TH}  j  \omega_{G} + 1} \right| = \frac{A(0)}{10} = \frac{R_{TH}}{10} \label{eq:9.75}
-\end{align}
+\begin{align*}
+A\left( \omega_{G} \right) &= \left| \frac{R_{TH}}{R_{TH}  C_{TH}  j  \omega_{G} + 1} \right| = \frac{A(0)}{10} = \frac{R_{TH}}{10} 
+\end{align*}
 Daraus ergibt sich die Bedingung
-\begin{align}
-100 &= R_{TH}^{2}  C_{TH}^{2}  \omega_{G}^{2} + 1 \label{eq:9.76}
-\end{align}
+\begin{align*}
+100 &= R_{TH}^{2}  C_{TH}^{2}  \omega_{G}^{2} + 1 
+\end{align*}
 Die Grenzfrequenz muss positiv sein, damit ergibt sich mit den Zahlenwerten aus der Aufgabenstellung
-\begin{align}
-\omega_{G} &= \frac{\sqrt{100 - 1}}{R_{th}  C_{th}} = \frac{\sqrt{99}}{\qty{1}{\second}} = 9.9499\ \frac{rad}{s} \approx 10\ \frac{rad}{s} \label{eq:9.77}
-\end{align}
+\begin{align*}
+\omega_{G} &= \frac{\sqrt{100 - 1}}{R_{th}  C_{th}} = \frac{\sqrt{99}}{\qty{1}{\second}} = 9.9499\ \frac{rad}{s} \approx 10\ \frac{rad}{s} 
+\end{align*}
 Mit der berechneten Grenzfrequenz ergibt sich für die Abtastfrequenz
-\begin{align}
-\omega_{A} &= 2  \omega_{G} = 20\ \frac{rad}{s} = \frac{2  \pi}{T_{A}} \label{eq:9.78}
-\end{align}
+\begin{align*}
+\omega_{A} &= 2  \omega_{G} = 20\ \frac{rad}{s} = \frac{2  \pi}{T_{A}} 
+\end{align*}
 und damit für die Abtastzeit
-\begin{align}
-T_{A} &= \frac{2  \pi}{20}\ s = \frac{\pi}{10}\ s \label{eq:9.79}
-\end{align}
+\begin{align*}
+T_{A} &= \frac{2  \pi}{20}\ s = \frac{\pi}{10}\ s 
+\end{align*}
 Zur Berechnung des Ausgangssignals \(T(k)\) muss das Eingangssignal diskretisiert und die Differenzengleichung unter Berücksichtigung der Anfangsbedingung rekursiv berechnet werden. Es ergibt sich folgendes Einschwingverhalten.
 
 \begin{fixedfigure}
@@ -738,25 +736,25 @@ und die beiden normierten Kreisfrequenzen \(Ω_{P0}\) und \(Ω_{0}\) sind identi
 Die nichtlineare Frequenzverzerrung wird mit Prewarping nicht generell aufgehoben, aber an der Stelle \(ω_{0}\) kompensiert.
 
 \begin{example}{Entwurf eines Tiefpasses erster Ordnung mit der bilinearen Transformation und Prewarping}
-\label{beispiel-entwurf-eines-tiefpasses-erster-ordnung-mit-der-bilinearen-transformation-und-prewarping}
+\label{example:beispiel-entwurf-eines-tiefpasses-erster-ordnung-mit-der-bilinearen-transformation-und-prewarping}
 
 Für ein PT1-Glied ergibt sich mit der bilinearen Transformation mit Prewarping die Übertragungsfunktion
-\begin{align}
+\begin{align*}
 {G(z) = \frac{Y(z)}{U(z)} = \left. \ G(s) \right|_{s = V  \frac{z - 1}{z + 1}} = \frac{1}{1 + T  V  \frac{z - 1}{z + 1}} = \frac{z + 1}{z + 1 + T  V  z - T  V}
-}{= \frac{z + 1}{z  (1 + T  V) + 1 - T  V}} \label{eq:9.88}
-\end{align}
+}{= \frac{z + 1}{z  (1 + T  V) + 1 - T  V}} 
+\end{align*}
 Das System könnte mit der Differenzengleichung
-\begin{align}
-y[ k] &= \frac{u[ k] + u[ k - 1] - (1 - T  V)  y[ k - 1]}{1 + T  V} \label{eq:9.89}
-\end{align}
+\begin{align*}
+y[ k] &= \frac{u[ k] + u[ k - 1] - (1 - T  V)  y[ k - 1]}{1 + T  V} 
+\end{align*}
 implementiert werden. Der Faktor V wird so gewählt, dass die 3-dB-Grenzfrequenzen des zeitkontinuierlichen und des zeitdiskreten Filters identisch sind. Mit \(ω_{G} = 1\)/\qty{2}{\radian\per\second} und \(T_{A} = \qty{1}{\second}\) ergibt sich für V der Wert
-\begin{align}
-V &= \frac{\omega_{G}}{tan\left( \frac{\omega_{G}  T_{A}}{2} \right)} = \frac{1}{2  tan\left( \frac{1}{4} \right)} = \text{1.9582} \label{eq:9.90}
-\end{align}
+\begin{align*}
+V &= \frac{\omega_{G}}{tan\left( \frac{\omega_{G}  T_{A}}{2} \right)} = \frac{1}{2  tan\left( \frac{1}{4} \right)} = \text{1.9582} 
+\end{align*}
 Damit lautet die Übertragungsfunktion für das mit Prewarping entworfene zeitdiskrete Filter
-\begin{align}
-G(z) &= \frac{z + 1}{z  (1 + V  T) + 1 - V  T} = \frac{z + 1}{\text{4.9163}  z - \text{2.9163}} \label{eq:9.91}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z + 1}{z  (1 + V  T) + 1 - V  T} = \frac{z + 1}{\text{4.9163}  z - \text{2.9163}} 
+\end{align*}
 Das Ergebnis kann mit der Berechnung der Amplitudengänge verifiziert werden.
 
 \begin{fixedfigure}
@@ -1319,16 +1317,16 @@ der Nebenmaxima \(a_{REL}\) \\
 Die Daten zeigen, dass es eine ideale Fensterfunktion nicht gibt. Das Spektrum des Rechteckfensters ist schmal, aber es weist vergleichsweise hohe Nebenmaxima auf. Demgegenüber haben die Spektren von Hann- und Hamming-Fenster relativ kleine Nebenmaxima, die Hauptmaxima sind aber breiter als bei dem Rechteckfenster. Für praktische Anwendungen bietet das Hamming-Fenster einen guten Kompromiss zwischen Breite des Hauptmaximums und relativer Amplitude des Nebenmaximums.
 
 \begin{example}{Entwicklung eines Tiefpass-Filters mit Hamming-Fenster}
-\label{beispiel-entwicklung-eines-tiefpass-filters-mit-hamming-fenster}
+\label{example:beispiel-entwicklung-eines-tiefpass-filters-mit-hamming-fenster}
 
 Das Verfahren wird an dem Beispiel eines Tiefpass-Filters mit einer Grenzfrequenz von \(ω_{G} = 1000\) rad/s und einer Abtastzeit von \(T_{A} = \qty{1}{\milli\second}\) angewendet. Die Ordnung des Filters wird auf \(N = 12\) festgelegt. Damit ergibt sich eine Gruppenlaufzeit \(T_{G} = t_{0}\) = \qty{6}{\milli\second}.
-\begin{align}
-g[ k] &= \frac{\sin\left( \omega_{G}  \left( k  T_{A} - 6  T_{A} \right) \right)}{\pi  \left( k  T_{A} - 6  T_{A} \right)} = \frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)} \label{eq:9.135}
-\end{align}
+\begin{align*}
+g[ k] &= \frac{\sin\left( \omega_{G}  \left( k  T_{A} - 6  T_{A} \right) \right)}{\pi  \left( k  T_{A} - 6  T_{A} \right)} = \frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)} 
+\end{align*}
 Die Impulsantwort \(g[k]\) wird mit dem um \(k = 6\) nach rechts verschobenen Hamming-Fenster multipliziert, und es ergibt sich die gefensterte Impulsantwort
-\begin{align}
-g_{w}[ k] &= \frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)}  \left( 0.54 + 0.46  \cos\left( \frac{2  \pi  (k - 6)}{N} \right) \right) \label{eq:9.136}
-\end{align}
+\begin{align*}
+g_{w}[ k] &= \frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)}  \left( 0.54 + 0.46  \cos\left( \frac{2  \pi  (k - 6)}{N} \right) \right) 
+\end{align*}
 Bild \ref{fig:9.33} vergleicht die Impulsantworten für die Filterentwürfe mit Rechteck- und Hamming-Fenster miteinander.
 
 \begin{fixedfigure}
@@ -1340,13 +1338,13 @@ Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = 1\) krad/s, \(N = 12\)}
 \end{fixedfigure}
 
 Die überlagerte Fensterfunktion des Hamming-Fensters verändert die Filterkoeffizienten. Anfangswert \(g_{w}\){[}0{]} und Endwert \(g_{w}\){[}12{]} werden dadurch zu null. Aus der Impulsantwort kann direkt die Übertragungsfunktion bestimmt werden. Das mit dem Hamming-Fenster entwickelte System hat die Übertragungsfunktion
-\begin{align}
-G_{W}(z) &= \sum\limits_{k = 0}^{12}{g_{w}[ k]  z^{- k}} = \sum\limits_{k = 0}^{12}{\frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)}  \left( 0.54 + 0.46  \cos\left( \frac{2  \pi  (k - 6)}{N} \right) \right)  z^{- k}} \label{eq:9.137}
-\end{align}
+\begin{align*}
+G_{W}(z) &= \sum\limits_{k = 0}^{12}{g_{w}[ k]  z^{- k}} = \sum\limits_{k = 0}^{12}{\frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)}  \left( 0.54 + 0.46  \cos\left( \frac{2  \pi  (k - 6)}{N} \right) \right)  z^{- k}} 
+\end{align*}
 Da FIR-Systeme immer stabil sind, ergibt sich der Frequenzgang zu
-\begin{align}
-G_{W}(\Omega) &= \sum\limits_{k = 0}^{12}{g_{w}[ k]  e^{- j  \Omega  k}} = \sum\limits_{k = 0}^{12}{\frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)}  \left( 0.54 + 0.46  \cos\left( \frac{2  \pi  (k - 6)}{N} \right) \right)  e^{- j  \Omega  k}} \label{eq:9.138}
-\end{align}
+\begin{align*}
+G_{W}(\Omega) &= \sum\limits_{k = 0}^{12}{g_{w}[ k]  e^{- j  \Omega  k}} = \sum\limits_{k = 0}^{12}{\frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)}  \left( 0.54 + 0.46  \cos\left( \frac{2  \pi  (k - 6)}{N} \right) \right)  e^{- j  \Omega  k}} 
+\end{align*}
 Die zu den Impulsantworten gehörenden Frequenzgänge werden in Bild \ref{fig:9.34} miteinander verglichen.
 
 \begin{fixedfigure}
@@ -1749,12 +1747,12 @@ Diese Gleichung führt zu der Direktstruktur 1 für zeitdiskrete Systeme, die in
 Ein Vergleich von Gleichung \eqref{eq:9.161} und des Blockschaltbildes zeigt, dass die Direktstruktur 1 und die Gleichung dieselbe Übertragungsfunktion besitzen. Bei der Darstellung dieser Struktur werden Zählergrad M und Nennergrad N gleichgesetzt. Ist das nicht der Fall, werden die entsprechenden Koeffizienten \(d_{m}\) beziehungsweise \(c_{n}\) zu null gesetzt und das Blockdiagramm gegebenenfalls vereinfacht.
 
 \begin{example}{Implementierung eines Systems als Direktstruktur 1}
-\label{beispiel-implementierung-eines-systems-als-direktstruktur-1}
+\label{example:beispiel-implementierung-eines-systems-als-direktstruktur-1}
 
 Als Beispiel wird ein System mit der Übertragungsfunktion \(G(z)\) in Direktstruktur 1 dargestellt.
-\begin{align}
-G(z) &= \frac{z^{- 1} - 1.25  z^{- 2} + 0.25  z^{- 3}}{1 - 1.5  z^{- 1} + z^{- 2} - 0.25  z^{- 3}} \label{eq:9.162}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{- 1} - 1.25  z^{- 2} + 0.25  z^{- 3}}{1 - 1.5  z^{- 1} + z^{- 2} - 0.25  z^{- 3}} 
+\end{align*}
 Einsetzen der Koeffizienten aus der gebrochen rationalen Funktion führt zu dem in Bild \ref{fig:9.48} dargestellten Blockschaltbild.
 
 \begin{fixedfigure}
@@ -1781,12 +1779,12 @@ Diese Gleichung führt zu einer Realisierungsform mit minimaler Anzahl von Speic
 \end{figure}
 
 \begin{example}{Implementierung eines Systems als transponierte Direktstruktur 2}
-\label{beispiel-implementierung-eines-systems-als-transponierte-direktstruktur-2}
+\label{example:beispiel-implementierung-eines-systems-als-transponierte-direktstruktur-2}
 
 Als Beispiel wird ein System mit der Übertragungsfunktion \(G(z)\) in transponierter Direktstruktur 2 dargestellt.
-\begin{align}
-G(z) &= \frac{z^{- 1} - 1.25  z^{- 2} + 0.25  z^{- 3}}{1 - 1.5  z^{- 1} + z^{- 2} - 0.25  z^{- 3}} \label{eq:9.164}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{- 1} - 1.25  z^{- 2} + 0.25  z^{- 3}}{1 - 1.5  z^{- 1} + z^{- 2} - 0.25  z^{- 3}} 
+\end{align*}
 Einsetzen der Koeffizienten führt zu dem in Bild \ref{fig:9.50} dargestellten Signalflussgraphen.
 
 \begin{fixedfigure}
@@ -1816,12 +1814,12 @@ Um Systeme mit reellen Koeffizienten zu erhalten, werden Systeme zweiter Ordnung
 Der Vorteil der Biquads liegt darin, dass Änderungen der Koeffizienten sich nur auf das Pol- oder Nullstellenpaar auswirken, das mit ihm dargestellt wird. Dadurch wird das Gesamtsystem numerisch stabiler und übersichtlicher.
 
 \begin{example}{Implementierung eines Systems als Kaskadenstruktur}
-\label{beispiel-implementierung-eines-systems-als-kaskadenstruktur}
+\label{example:beispiel-implementierung-eines-systems-als-kaskadenstruktur}
 
 Als Beispiel wird wieder ein System mit der Übertragungsfunktion \(G(z)\) dargestellt. Die Übertragungsfunktion kann in zwei Faktoren zerlegt werden.
-\begin{align}
-G(z) &= \frac{z^{- 1} - z^{- 2}}{1 - 1.2  z^{- 1} + 0.7  z^{- 2} - 0.1  z^{- 3}} = \frac{1 + 1.25z^{- 1} + 0.25  z^{- 2}}{1 - z^{- 1} + 0.5  z^{- 2}}  \frac{1}{1 - 0.5  z^{- 1}} \label{eq:9.166}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{- 1} - z^{- 2}}{1 - 1.2  z^{- 1} + 0.7  z^{- 2} - 0.1  z^{- 3}} = \frac{1 + 1.25z^{- 1} + 0.25  z^{- 2}}{1 - z^{- 1} + 0.5  z^{- 2}}  \frac{1}{1 - 0.5  z^{- 1}} 
+\end{align*}
 Die Darstellung führt zu dem in Blockschaltbild mit Biquads, das in Bild \ref{fig:9.52} dargestellt ist.
 
 \begin{fixedfigure}
@@ -1852,12 +1850,12 @@ Für ein System vierter Ordnung ergibt sich damit eine Parallelschaltung zweier 
 Alle Biquads erhalten das Eingangssignal zum gleichen Zeitpunkt. Dadurch wird das parallele Rechnen der Systemantwort möglich.
 
 \begin{example}{Implementierung eines Systems als Parallelstruktur}
-\label{beispiel-implementierung-eines-systems-als-parallelstruktur}
+\label{example:beispiel-implementierung-eines-systems-als-parallelstruktur}
 
 Als Beispiel wird wieder ein System mit der Übertragungsfunktion \(G(z)\) dargestellt. Die Übertragungsfunktion kann in zwei Summanden mit reellen Koeffizienten zerlegt werden.
-\begin{align}
-G(z) &= \frac{z^{- 1} - z^{- 2}}{1 - 1.2  z^{- 1} + 0.7  z^{- 2} - 0.1  z^{- 3}} = \frac{1.5  z^{- 1} + 1  z^{- 2}}{1 - z^{- 1} + 0.5  z^{- 2}} + \frac{\text{-0.5}}{1 - 0.5  z^{- 1}} \label{eq:9.168}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{- 1} - z^{- 2}}{1 - 1.2  z^{- 1} + 0.7  z^{- 2} - 0.1  z^{- 3}} = \frac{1.5  z^{- 1} + 1  z^{- 2}}{1 - z^{- 1} + 0.5  z^{- 2}} + \frac{\text{-0.5}}{1 - 0.5  z^{- 1}} 
+\end{align*}
 Die Darstellung führt zu dem Blockschaltbild mit Biquads, das in Bild \ref{fig:9.54} dargestellt ist.
 
 \begin{fixedfigure}
@@ -1888,12 +1886,12 @@ Es ergibt sich eine vergleichsweise einfache Realisierung, die als transversale 
 Das Eingangssignal durchläuft die gesamte Signalkette, sodass Fehler durch gerundete Korrekturen bei jedem Summanden nur einmal vorkommen können und keine Fehlerkumulation auftritt.
 
 \begin{example}{Implementierung eines Systems als transversale Struktur}
-\label{beispiel-implementierung-eines-systems-als-transversale-struktur}
+\label{example:beispiel-implementierung-eines-systems-als-transversale-struktur}
 
 Als Beispiel wird der gleitende Mittelwert aus 4 Gliedern dargestellt. Er hat die Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{z^{3} + z^{2} + z + 1}{4  z^{3}} = \frac{1}{4}  \left( 1 + z^{- 1} + z^{- 2} + z^{- 3} \right) \label{eq:9.170}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{3} + z^{2} + z + 1}{4  z^{3}} = \frac{1}{4}  \left( 1 + z^{- 1} + z^{- 2} + z^{- 3} \right) 
+\end{align*}
 Es ergibt sich die in Bild \ref{fig:9.56} dargestellte Transversalstruktur.
 
 \begin{fixedfigure}

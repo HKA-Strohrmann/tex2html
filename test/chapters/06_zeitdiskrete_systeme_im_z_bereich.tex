@@ -43,32 +43,32 @@ Y(z) &= \frac{\sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}}{\sum\limits_{n = 0}^{N}{c
 Die Lösung im z-Bereich ist eine gebrochen rationale Funktion, die mit Hilfe der Partialbruchzerlegung und den bekannten Korrespondenzen in den Zeitbereich zurück transformiert werden kann. Dieses Vorgehen wird an der Differenzengleichung eines rekursiven Tiefpasses verdeutlicht.
 
 \begin{example}{Rekursiver Tiefpass ohne Anfangsbedingungen}
-\label{beispiel-rekursiver-tiefpass-ohne-anfangsbedingungen}
+\label{example:beispiel-rekursiver-tiefpass-ohne-anfangsbedingungen}
 
 Es soll die Reaktion eines rekursiven Tiefpasses auf einen Sprung der Eingangsgröße \(u[k]\) von der Höhe \(U_{0}\) berechnet werden. Das Eingangssignal besitzt die z-Transformierte
-\begin{align}
-U(z) &= \frac{z}{z - 1}  U_{0} \label{eq:6.5}
-\end{align}
+\begin{align*}
+U(z) &= \frac{z}{z - 1}  U_{0} 
+\end{align*}
 Das Übertragungsverhalten des rekursiven Tiefpasses wird mit der Differenzengleichung
-\begin{align}
-y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] \label{eq:6.6}
-\end{align}
+\begin{align*}
+y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] 
+\end{align*}
 beschrieben. Die Transformation der Gleichung in den z-Bereich ergibt
-\begin{align}
-Y(z)  \left( 1 - GF  z^{- 1} \right) &= (1 - GF)  \frac{z}{z - 1}  U_{0} \label{eq:6.7}
-\end{align}
+\begin{align*}
+Y(z)  \left( 1 - GF  z^{- 1} \right) &= (1 - GF)  \frac{z}{z - 1}  U_{0} 
+\end{align*}
 Auflösen nach der z-Transformierten des Ausgangssignals \(Y(z)\) führt zu
-\begin{align}
-Y(z) &= \frac{z}{z - GF}  (1 - GF)  \frac{z}{z - 1}  U_{0} \label{eq:6.8}
-\end{align}
+\begin{align*}
+Y(z) &= \frac{z}{z - GF}  (1 - GF)  \frac{z}{z - 1}  U_{0} 
+\end{align*}
 Mit Hilfe der Partialbruchzerlegung kann \(Y(z)\) dargestellt werden als
-\begin{align}
-Y(z) &= \frac{z}{z - GF}  (1 - GF)  \frac{z}{z - 1}  U_{0} = \left( ( - GF)  \frac{z}{z - GF} + \frac{z}{z - 1} \right)  U_{0} \label{eq:6.9}
-\end{align}
+\begin{align*}
+Y(z) &= \frac{z}{z - GF}  (1 - GF)  \frac{z}{z - 1}  U_{0} = \left( ( - GF)  \frac{z}{z - GF} + \frac{z}{z - 1} \right)  U_{0} 
+\end{align*}
 Die Darstellung mit Partialbrüchen ermöglicht die Rücktransformation in den Zeitbereich zu
-\begin{align}
-y[ k] &= \left( ( - GF)  GF^{k}  \sigma[ k] + \sigma[ k] \right)  U_{0} = \left( 1 - GF^{k + 1} \right)  U_{0}  \sigma[ k] \label{eq:6.10}
-\end{align}
+\begin{align*}
+y[ k] &= \left( ( - GF)  GF^{k}  \sigma[ k] + \sigma[ k] \right)  U_{0} = \left( 1 - GF^{k + 1} \right)  U_{0}  \sigma[ k] 
+\end{align*}
 Ein Vergleich mit der über die Faltungssumme berechneten Systemantwort in Bild \ref{fig:6.2} zeigt identische Ausgangssignale.
 
 \begin{fixedfigure}
@@ -96,32 +96,32 @@ Da das Argument der Folge \(y[k -- n + N]\) damit immer größer gleich k ist, m
 Dieses Vorgehen ähnelt sehr der Lösung von Differentialgleichungen mit Anfangsbedingungen bei der Laplace-Transformation. In der allgemeinen Form erscheint es aufwendig. Bei praktischer Anwendung bestehen die Summen mit den Anfangswerten aber oft nur aus einzelnen Werten, sodass sich die Gleichung stark vereinfacht.
 
 \begin{example}{RC-Tiefpass mit Anfangsbedingungen}
-\label{beispiel-rc-tiefpass-mit-anfangsbedingungen}
+\label{example:beispiel-rc-tiefpass-mit-anfangsbedingungen}
 
 Das Vorgehen wird wieder an der Differenzengleichung eines rekursiven Tiefpasses verdeutlicht.
-\begin{align}
-y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] \label{eq:6.14}
-\end{align}
+\begin{align*}
+y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] 
+\end{align*}
 Es soll die Reaktion des Tiefpasses auf einen Sprung der Eingangsgröße \(u[k]\) von der Höhe \(U_{0}\) und für die Anfangsbedingungen \(y[0]\) = 2 berechnet werden. Zur Berücksichtigung der Anfangsbedingungen muss bei der Transformation der Gleichung in den z-Bereich die Verschiebungsregel nach links angewendet werden. Eine Index-Transformation führt zu
-\begin{align}
-y[ k + 1] - GF  y[ k] &= (1 - GF)  u[ k + 1] \label{eq:6.15}
-\end{align}
+\begin{align*}
+y[ k + 1] - GF  y[ k] &= (1 - GF)  u[ k + 1] 
+\end{align*}
 Die Transformation in den z-Bereich ergibt
-\begin{align}
-z  Y(z) - z  y[ 0] - GF  Y(z) &= (1 - GF)  \left( z  U(z) - z  u[ 0] \right) \label{eq:6.16}
-\end{align}
+\begin{align*}
+z  Y(z) - z  y[ 0] - GF  Y(z) &= (1 - GF)  \left( z  U(z) - z  u[ 0] \right) 
+\end{align*}
 Durch Einsetzen von \(U(z)\) und \(u[0]\) = 0 sowie Umformung
-\begin{align}
-(z - GF)  Y(z) &= (1 - GF)  \left( \frac{z^{2}}{z - 1}  U_{0} - z  U_{0} \right) + z  y[ 0] = (1 - GF)  U_{0}  \left( \frac{z^{2}}{z - 1} \right) + z  y[ 0] \label{eq:6.17}
-\end{align}
+\begin{align*}
+(z - GF)  Y(z) &= (1 - GF)  \left( \frac{z^{2}}{z - 1}  U_{0} - z  U_{0} \right) + z  y[ 0] = (1 - GF)  U_{0}  \left( \frac{z^{2}}{z - 1} \right) + z  y[ 0] 
+\end{align*}
 ergibt sich die Lösung im z-Bereich
-\begin{align}
-Y(z) &= (1 - GF)  U_{0}  \left( \frac{z^{2}}{(z - 1)  (z - GF)} \right) + \frac{z}{z - GF}  y[ 0] \label{eq:6.18}
-\end{align}
+\begin{align*}
+Y(z) &= (1 - GF)  U_{0}  \left( \frac{z^{2}}{(z - 1)  (z - GF)} \right) + \frac{z}{z - GF}  y[ 0] 
+\end{align*}
 Der erste Term der z-Transformierten ist identisch zu dem Fall ohne Anfangsbedingungen in Gleichung \eqref{eq:6.8}. Der zweite Teil beschreibt das Systemverhalten aufgrund der Anfangsbedingung und kann mit der Korrespondenztafel in den Zeitbereich zurücktransformiert werden. Es ergibt sich das Ausgangssignal
-\begin{align}
-y[ k] &= \left( 1 - GF^{k + 1} \right)  U_{0}  \sigma[ k] + y[ 0]  GF^{k}  \sigma[ k] \label{eq:6.19}
-\end{align}
+\begin{align*}
+y[ k] &= \left( 1 - GF^{k + 1} \right)  U_{0}  \sigma[ k] + y[ 0]  GF^{k}  \sigma[ k] 
+\end{align*}
 Die Anfangsbedingung klingt ähnlich wie im zeitkontinuierlichen Bereich exponentiell ab. Bild \ref{fig:6.3} stellt die beiden Signalanteile dar.
 
 \begin{fixedfigure}
@@ -205,24 +205,24 @@ y[ k] &= \sum\limits_{l = 0}^{L}{d_{l}  u[ k - l]} - \sum\limits_{n = 1}^{N}{c_{
 Die Gleichung ist Grundlage für die technische Realisierung zeitdiskreter Systeme.
 
 \begin{example}{Systemrealisierung}
-\label{beispiel-systemrealisierung}
+\label{example:beispiel-systemrealisierung}
 
 Gegeben ist ein System mit der Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{0.5  z}{z - 0.5} = \frac{0.5}{1 - 0.5  z^{- 1}} \label{eq:6.29}
-\end{align}
+\begin{align*}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{0.5  z}{z - 0.5} = \frac{0.5}{1 - 0.5  z^{- 1}} 
+\end{align*}
 Ausmultiplizieren
-\begin{align}
-Y(z)  \left( 1 - 0.5  z^{- 1} \right) &= 0.5  U(z) \label{eq:6.30}
-\end{align}
+\begin{align*}
+Y(z)  \left( 1 - 0.5  z^{- 1} \right) &= 0.5  U(z) 
+\end{align*}
 und Rücktransformation ergibt mit der Verschiebungsregel
-\begin{align}
-y[ k] - 0.5  y[ k - 1] &= 0.5  u[ k] \label{eq:6.31}
-\end{align}
+\begin{align*}
+y[ k] - 0.5  y[ k - 1] &= 0.5  u[ k] 
+\end{align*}
 Zur Realisierung des Filters als Algorithmus muss die Gleichung nach \(y[k]\) aufgelöst werden. Das aktuelle Ausgangssignal des Filters errechnet sich damit zu
-\begin{align}
-y[ k] &= \frac{1}{2}  \left( u[ k] + y[ k - 1] \right) \label{eq:6.32}
-\end{align}
+\begin{align*}
+y[ k] &= \frac{1}{2}  \left( u[ k] + y[ k - 1] \right) 
+\end{align*}
 Diese Gleichung kann zum Beispiel als Software in einem Controller oder als zeitdiskrete Schaltung realisiert werden.
 
 \end{example}
@@ -301,28 +301,28 @@ h[ k]  T_{A} \approx h\left( k  T_{A} \right) \label{eq:6.45}
 Auch nach dieser Korrektur sind die Sprungantworten nicht identisch, da die Fläche unter der zeitkontinuierlichen Impulsantwort im zeitdiskreten Fall nur über Rechtecke approximiert wird.
 
 \begin{example}{Vergleich von Sprungantworten}
-\label{beispiel-vergleich-von-sprungantworten}
+\label{example:beispiel-vergleich-von-sprungantworten}
 
 Gegeben ist ein zeitkontinuierliches System mit der Impulsantwort
-\begin{align}
-g(t) &= 2  e^{- \frac{}{}\frac{t}{\qty{10}{\milli\second}}}  \sigma(t) \label{eq:6.46}
-\end{align}
+\begin{align*}
+g(t) &= 2  e^{- \frac{}{}\frac{t}{\qty{10}{\milli\second}}}  \sigma(t) 
+\end{align*}
 Das System wird mit einer Abtastzeit \(T_{A} = \qty{1}{\milli\second}\) abgetastet. Es ergeben sich die Folgenwerte
-\begin{align}
-g[ k] &= 2  e^{- \frac{k}{10}}  \sigma[ k] \label{eq:6.47}
-\end{align}
+\begin{align*}
+g[ k] &= 2  e^{- \frac{k}{10}}  \sigma[ k] 
+\end{align*}
 Die Sprungantwort des zeitkontinuierlichen Systems lautet
-\begin{align}
-h(t) &= \int_{0}^{t}{2  e^{- \frac{\tau}{\qty{10}{\milli\second}}}d\tau} = - \qty{20}{\milli\second}  \left. \ e^{- \frac{\tau}{\qty{10}{\milli\second}}} \right|_{0}^{t} = \qty{20}{\milli\second}  \left( 1 - e^{- \frac{t}{\qty{10}{\milli\second}}} \right)  \sigma(t) \label{eq:6.48}
-\end{align}
+\begin{align*}
+h(t) &= \int_{0}^{t}{2  e^{- \frac{\tau}{\qty{10}{\milli\second}}}d\tau} = - \qty{20}{\milli\second}  \left. \ e^{- \frac{\tau}{\qty{10}{\milli\second}}} \right|_{0}^{t} = \qty{20}{\milli\second}  \left( 1 - e^{- \frac{t}{\qty{10}{\milli\second}}} \right)  \sigma(t) 
+\end{align*}
 Die Sprungantwort des zeitdiskreten Systems errechnet sich zu
-\begin{align}
-h[ k] &= \sum\limits_{\kappa = 0}^{k}{2  e^{- \frac{\kappa}{10}}} = 2  {\sum\limits_{\kappa = 0}^{k}\left( e^{- \frac{1}{10}} \right)}^{\kappa} = 2  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.49}
-\end{align}
+\begin{align*}
+h[ k] &= \sum\limits_{\kappa = 0}^{k}{2  e^{- \frac{\kappa}{10}}} = 2  {\sum\limits_{\kappa = 0}^{k}\left( e^{- \frac{1}{10}} \right)}^{\kappa} = 2  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} 
+\end{align*}
 Durch die Multiplikation der Sprungantwort mit der Abtastzeit \(T_{A}\) ergibt sich die Näherung
-\begin{align}
-h\left( k  T_{A} \right) \approx h[ k]  T_{A} &= \qty{2}{\milli\second}  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.50}
-\end{align}
+\begin{align*}
+h\left( k  T_{A} \right) \approx h[ k]  T_{A} &= \qty{2}{\milli\second}  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} 
+\end{align*}
 Die Impuls- und Sprungantworten sind in Bild \ref{fig:6.4} dargestellt.
 
 \begin{fixedfigure}
@@ -375,20 +375,20 @@ G(z) &= \frac{Y(z)}{U(z)} = \frac{z^{N}  \sum\limits_{l = 0}^{L}{d_{l}  z^{- l}}
 Diese Darstellungsform wird bei der Rücktransformation einer z-Transformierten \(G(z)\) durch Partialbruchzerlegung eingesetzt.
 
 \begin{example}{Darstellungsformen von Übertragungsfunktionen}
-\label{beispiel-darstellungsformen-von-uxfcbertragungsfunktionen}
+\label{example:beispiel-darstellungsformen-von-uxfcbertragungsfunktionen}
 
 Gegeben ist ein System mit der Differenzengleichung
-\begin{align}
-y[ k] + 3  y[ k - 1] + 2  y[ k - 2] &= u[ k] + 4  u[ k - 1] \label{eq:6.55}
-\end{align}
+\begin{align*}
+y[ k] + 3  y[ k - 1] + 2  y[ k - 2] &= u[ k] + 4  u[ k - 1] 
+\end{align*}
 und der daraus resultierenden Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{1 + 4  z^{- 1}}{1 + 3  z^{- 1} + 2  z^{- 2}} \label{eq:6.56}
-\end{align}
+\begin{align*}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{1 + 4  z^{- 1}}{1 + 3  z^{- 1} + 2  z^{- 2}} 
+\end{align*}
 Auflösen nach \(Y(z)\) ergibt
-\begin{align}
-Y(z) &= U(z) + \left( 4  U(z) - 3  Y(z) - 2  Y(z)  z^{- 1} \right)  z^{- 1} \label{eq:6.57}
-\end{align}
+\begin{align*}
+Y(z) &= U(z) + \left( 4  U(z) - 3  Y(z) - 2  Y(z)  z^{- 1} \right)  z^{- 1} 
+\end{align*}
 Bild \ref{fig:6.6} zeigt die kanonische Darstellungsform des Systems mit Speichergliedern.
 
 \begin{fixedfigure}
@@ -399,21 +399,21 @@ Bild \ref{fig:6.6} zeigt die kanonische Darstellungsform des Systems mit Speiche
 
 Die Übertragungsfunktion hat im Zähler eine Ordnung von \(M = 1\) und im Nenner eine Ordnung\\
 \(N = 2\). Erweitern der Übertragungsfunktion mit z² führt zu der Darstellung
-\begin{align}
-G(z) &= \frac{z^{2} + 4  z}{z^{2} + 3  z + 2} \label{eq:6.58}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{2} + 4  z}{z^{2} + 3  z + 2} 
+\end{align*}
 Zähler- und Nennerpolynom haben denselben Grad \(N = 2\). Nach Polynomdivision ergibt sich eine echt gebrochen rationale Funktion
-\begin{align}
-G(z) &= \frac{z^{2} + 4  z}{z^{2} + 3  z + 2} = 1 + \frac{z - 2}{z^{2} + 3  z + 2} \label{eq:6.59}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{2} + 4  z}{z^{2} + 3  z + 2} = 1 + \frac{z - 2}{z^{2} + 3  z + 2} 
+\end{align*}
 Sie kann als Summe von Partialbrüchen dargestellt
-\begin{align}
-G(z) &= 1 + \frac{z - 2}{z^{2} + 3  z + 2} = 1 - \frac{3}{z + 1} + \frac{4}{z + 2} = 1 - 3  \frac{z}{z + 1}  z^{- 1} + 4  \frac{z}{z + 2}  z^{- 1} \label{eq:6.60}
-\end{align}
+\begin{align*}
+G(z) &= 1 + \frac{z - 2}{z^{2} + 3  z + 2} = 1 - \frac{3}{z + 1} + \frac{4}{z + 2} = 1 - 3  \frac{z}{z + 1}  z^{- 1} + 4  \frac{z}{z + 2}  z^{- 1} 
+\end{align*}
 und in den Zeitbereich zurücktransformiert werden.
-\begin{align}
-g[ k] &= \delta[ k] - 3  ( - 1)^{k - 1}  \sigma[ k - 1] + 4  ( - 2)^{k - 1}  \sigma[ k - 1] \label{eq:6.61}
-\end{align}
+\begin{align*}
+g[ k] &= \delta[ k] - 3  ( - 1)^{k - 1}  \sigma[ k - 1] + 4  ( - 2)^{k - 1}  \sigma[ k - 1] 
+\end{align*}
 \end{example}
 
 \subsubsection{Darstellungsformen zeitkontinuierlicher LTI-Systeme}\label{sec:darstellungsformen-zeitkontinuierlicher-lti-systeme}
@@ -458,32 +458,32 @@ Es ergibt sich die in Bild \ref{fig:6.7} gezeigte kanonische Darstellungsform vo
 \end{figure}
 
 \begin{example}{Darstellungsformen der Übertragungsfunktion für ein Feder-Masse-Dämpfer-Systems}
-\label{beispiel-darstellungsformen-der-uxfcbertragungsfunktion-fuxfcr-ein-feder-masse-duxe4mpfer-systems}
+\label{example:beispiel-darstellungsformen-der-uxfcbertragungsfunktion-fuxfcr-ein-feder-masse-duxe4mpfer-systems}
 
 Die unterschiedlichen Darstellungsformen für zeitkontinuierliche Systeme werden anhand eines Feder-Masse-Dämpfer-Systems mit der Differentialgleichung
-\begin{align}
-F_{E}(t) &= m  \frac{d^{2}x}{dt^{2}} + D  \frac{dx}{dt} + c  x(t) \label{eq:6.69}
-\end{align}
+\begin{align*}
+F_{E}(t) &= m  \frac{d^{2}x}{dt^{2}} + D  \frac{dx}{dt} + c  x(t) 
+\end{align*}
 verdeutlicht. Eingangssignal ist der Kraftverlauf \(F_{E}(t)\), Ausgangssignal ist die Auslenkung \(x(t)\). Transformation in den Laplace-Bereich ergibt bei verschwindenden Anfangsbedingungen die Gleichung
-\begin{align}
-F_{E}(s) &= m  s^{2}  X(s) + D  s  X(s) + c  X(s) \label{eq:6.70}
-\end{align}
+\begin{align*}
+F_{E}(s) &= m  s^{2}  X(s) + D  s  X(s) + c  X(s) 
+\end{align*}
 Damit lautet die Übertragungsfunktion
-\begin{align}
-\frac{X(s)}{F_{E}(s)} &= \frac{1}{m  s^{2} + D  s + c} = \frac{1}{m}  \frac{1}{s^{2} + \frac{D}{m}  s + \frac{c}{m}} \label{eq:6.71}
-\end{align}
+\begin{align*}
+\frac{X(s)}{F_{E}(s)} &= \frac{1}{m  s^{2} + D  s + c} = \frac{1}{m}  \frac{1}{s^{2} + \frac{D}{m}  s + \frac{c}{m}} 
+\end{align*}
 Auf Basis dieser Darstellung und den Polen des Systems
-\begin{align}
-\alpha_{1,2} &= - \frac{D}{\qty{2}{\meter}} \pm \sqrt{\frac{D^{2}}{\qty{4}{\meter}^{2}} - \frac{c}{m}} \label{eq:6.72}
-\end{align}
+\begin{align*}
+\alpha_{1,2} &= - \frac{D}{\qty{2}{\meter}} \pm \sqrt{\frac{D^{2}}{\qty{4}{\meter}^{2}} - \frac{c}{m}} 
+\end{align*}
 können die Systemeigenschaften diskutiert werden. Andererseits erfolgt die Systemsimulation über eine Darstellungsform
-\begin{align}
-\frac{X(s)}{F_{E}(s)} &= \frac{\frac{1}{s^{2}}}{m + \frac{D}{s} + \frac{c}{s^{2}}} \label{eq:6.73}
-\end{align}
+\begin{align*}
+\frac{X(s)}{F_{E}(s)} &= \frac{\frac{1}{s^{2}}}{m + \frac{D}{s} + \frac{c}{s^{2}}} 
+\end{align*}
 Sie kann nach \(X(s)\) aufgelöst werden
-\begin{align}
-X(s) &= \frac{1}{m}  \left( \frac{1}{s^{2}}  F_{E}(s) - \frac{D}{s}  X(s) - \frac{c}{s^{2}}  X(s) \right) \label{eq:6.74}
-\end{align}
+\begin{align*}
+X(s) &= \frac{1}{m}  \left( \frac{1}{s^{2}}  F_{E}(s) - \frac{D}{s}  X(s) - \frac{c}{s^{2}}  X(s) \right) 
+\end{align*}
 Es ergibt sich das in Bild \ref{fig:6.8} dargestellte kanonische Blockschaltbild.
 
 \begin{fixedfigure}
@@ -529,16 +529,16 @@ G(z) &= \frac{B(z)}{A(z)} = \frac{\sum\limits_{m = 0}^{M}{b_{m}  z^{m}}}{\sum\li
 Die Pole \(α_{n}\) und Nullstellen \(β_{m}\) können zur besseren Übersicht in der komplexen Ebene dargestellt werden. Dabei werden Nullstellen mit einem Kreis und Pole mit einem Kreuz dargestellt, ihre Vielfachheit \(N_{n}\) und \(M_{m}\) wird in Klammern angegeben. Die Diagramme werden als Pol-Nullstellen-Diagramme oder als Pole-Zero-Maps bezeichnet.
 
 \begin{example}{Pol-Nullstellen-Diagramm}
-\label{beispiel-pol-nullstellen-diagramm}
+\label{example:beispiel-pol-nullstellen-diagramm}
 
 Ein System mit der Differenzengleichung
-\begin{align}
-y[ k] - 0.2  y[ k - 1] - 0.15  y[ k - 2] &= u[ k] + 1.5  u[ k - 1] \label{eq:6.77}
-\end{align}
+\begin{align*}
+y[ k] - 0.2  y[ k - 1] - 0.15  y[ k - 2] &= u[ k] + 1.5  u[ k - 1] 
+\end{align*}
 weist eine Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{1 + 1.5  z^{- 1}}{1 - 0.2  z^{- 1} - 0.15  z^{- 2}} = \frac{z^{2} + 1.5  z}{z^{2} - 0.2  z - 0.15} = \frac{z  (z + 1.5)}{(z - 0.5)  (z + 0.3)} \label{eq:6.78}
-\end{align}
+\begin{align*}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{1 + 1.5  z^{- 1}}{1 - 0.2  z^{- 1} - 0.15  z^{- 2}} = \frac{z^{2} + 1.5  z}{z^{2} - 0.2  z - 0.15} = \frac{z  (z + 1.5)}{(z - 0.5)  (z + 0.3)} 
+\end{align*}
 auf. Sie besitzt die Nullstellen \(β_{1}\) = - 1.5 und \(β_{2} = 0\), sowie die reellen Polstellen \(α_{1}\) = - 0.3 und\\
 \(α_{2} = 0.5\). Es ergibt sich das in Bild \ref{fig:6.9} dargestellte Pol-Nullstellen-Diagramm.
 
@@ -569,28 +569,28 @@ a_{N}  y[ k] + ... + a_{0}  y[ k - N] &= b_{M}  u[ k + M - N] + ... + b_{0}  u[ 
 Das System ist kausal, wenn \(y[k]\) nur von aktuellen und vergangenen Eingangswerten abhängt. Das ist der Fall, wenn die Bedingung M ≤ N erfüllt ist. Der Zählergrad der Übertragungsfunktion darf maximal so groß sein wie der Nennergrad, damit das System kausal ist.
 
 \begin{example}{Nicht kausales System}
-\label{beispiel-nicht-kausales-system}
+\label{example:beispiel-nicht-kausales-system}
 
 Gegeben ist ein System mit der Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \frac{3  z^{2} + z + 2}{2  z + 1} \label{eq:6.82}
-\end{align}
+\begin{align*}
+G(z) &= \frac{Y(z)}{U(z)} = \frac{3  z^{2} + z + 2}{2  z + 1} 
+\end{align*}
 Der Zählergrad \(M = 2\) ist größer als der Nennergrad \(N = 1\). Das System ist demnach nicht kausal. Umformen der Übertragungsfunktion führt zu
-\begin{align}
-Y(z)  (2  z + 1) &= U(z)  \left( 3  z^{2} + z + 2 \right) \label{eq:6.83}
-\end{align}
+\begin{align*}
+Y(z)  (2  z + 1) &= U(z)  \left( 3  z^{2} + z + 2 \right) 
+\end{align*}
 beziehungsweise
-\begin{align}
-Y(z)  \left( 2 + z^{- 1} \right) &= U(z)  \left( 3  z + 1 + 2  z^{- 1} \right) \label{eq:6.84}
-\end{align}
+\begin{align*}
+Y(z)  \left( 2 + z^{- 1} \right) &= U(z)  \left( 3  z + 1 + 2  z^{- 1} \right) 
+\end{align*}
 Rücktransformation führt bei verschwindenden Anfangsbedingungen zu der Differenzengleichung
-\begin{align}
-2  y[ k] + y[ k - 1] &= 3  u[ k + 1] + u[ k] + 2  u[ k - 1] \label{eq:6.85}
-\end{align}
+\begin{align*}
+2  y[ k] + y[ k - 1] &= 3  u[ k + 1] + u[ k] + 2  u[ k - 1] 
+\end{align*}
 Der aktuelle Ausgangswert
-\begin{align}
-y[ k] &= \frac{1}{2}  \left( 3  u[ k + 1] + u[ k] + 2  u[ k - 1] - y[ k - 1] \right) \label{eq:6.86}
-\end{align}
+\begin{align*}
+y[ k] &= \frac{1}{2}  \left( 3  u[ k + 1] + u[ k] + 2  u[ k - 1] - y[ k - 1] \right) 
+\end{align*}
 ist von dem zukünftigen Wert \(u[k+1]\) abhängig, das System ist damit nicht kausal.
 
 \end{example}
@@ -604,16 +604,16 @@ g[ k &= 0] = \frac{b_{M}}{a_{N}} \label{eq:6.87}
 Alle weiteren Summanden der Partialbruchzerlegung werden im Zeitbereich mit Sprungfunktionen der Form \(σ[k - 1]\) multipliziert und sind erst für k \textgreater{} 0 von null verschieden. Damit ist ein System nur dann sprungfähig, wenn der Zählergrad M gleich dem Nennergrad N ist.
 
 \begin{example}{Sprungfähiges System}
-\label{beispiel-sprungfuxe4higes-system}
+\label{example:beispiel-sprungfuxe4higes-system}
 
 Die Übertragungsfunktion \(G(z)\) soll interpretiert werden. Da der Zählergrad genauso groß ist wie der Nennergrad, wird eine Polynomdivision durchgeführt. Um auf einen Ausdruck der Korrespondenztafel zu kommen, muss der Restbruch mit z erweitert werden.
-\begin{align}
-G(z) &= \frac{2 + z^{- 1}}{1 - 0.2  z^{- 1}} = \frac{2  z + 1}{z - 0.2} = 2 + \frac{1.4}{z - 0.2} = 2 + \frac{1.4  z}{z - 0.2}  z^{- 1} \label{eq:6.88}
-\end{align}
+\begin{align*}
+G(z) &= \frac{2 + z^{- 1}}{1 - 0.2  z^{- 1}} = \frac{2  z + 1}{z - 0.2} = 2 + \frac{1.4}{z - 0.2} = 2 + \frac{1.4  z}{z - 0.2}  z^{- 1} 
+\end{align*}
 Damit kann die Impulsantwort mit der Korrespondenztafel und der Verschiebungsregel bestimmt werden zu
-\begin{align}
-g[ k] &= 2  \delta[ k] + 1.4  0.2^{k - 1}  \sigma[ k - 1] \label{eq:6.89}
-\end{align}
+\begin{align*}
+g[ k] &= 2  \delta[ k] + 1.4  0.2^{k - 1}  \sigma[ k - 1] 
+\end{align*}
 Sie springt an der Stelle \(k = 0\) auf den Wert 2.
 
 \end{example}
@@ -641,17 +641,17 @@ Der Betrag der Pole \(α_{n}\) entscheidet über die Frage, ob die Impulsantwort
 Die Impulsantwort beginnt bei sprungfähigen Systemen bei \(k = 0\) und bei nicht sprungfähigen Systemen bei \(k = 1\), und sie ist unendlich lang. Deshalb wird die Impulsantwort als Infinite-Impulse-Response und die Systeme als Infinite-Impulse-Response-Systeme (IIR-Systeme) bezeichnet. IIR-Systeme sind daran zu erkennen, dass zumindest ein Pol \(α_{n}\) der Übertragungsfunktion nicht im Koordinatenursprung liegt.
 
 \begin{example}{Übertragungsfunktion mit einfachen reellen Polen}
-\label{beispiel-uxfcbertragungsfunktion-mit-einfachen-reellen-polen}
+\label{example:beispiel-uxfcbertragungsfunktion-mit-einfachen-reellen-polen}
 
 Die untenstehende Übertragungsfunktion \(G(z)\) soll interpretiert werden. Ihr Zählergrad ist kleiner als der Nennergrad, und sie hat zwei einfache reelle Pole. Die Übertragungsfunktion kann in Partialbrüche zerlegt werden.
-\begin{align}
+\begin{align*}
 {G(z) = \frac{3  z^{- 1} - 3.5  z^{- 2}}{1 - 2  z^{- 1} + 0.75  z^{- 2}} = \frac{3  z - 3.5}{z^{2} - 2  z + 0.75} = \frac{3  z - 3.5}{(z - 0.5)  (z - 1.5)}
-}{= \frac{2}{z - 0.5} + \frac{1}{z - 1.5} = \frac{2  z}{z - 0.5}  z^{- 1} + \frac{z}{z - 1.5}  z^{- 1}} \label{eq:6.94}
-\end{align}
+}{= \frac{2}{z - 0.5} + \frac{1}{z - 1.5} = \frac{2  z}{z - 0.5}  z^{- 1} + \frac{z}{z - 1.5}  z^{- 1}} 
+\end{align*}
 Durch Rücktransformation errechnet sich die Impulsantwort zu
-\begin{align}
-g[ k] &= g_{1}[ k] + g_{2}[ k] = 2  0.5^{k - 1}  \sigma[ k - 1] + 1.5^{k - 1}  \sigma[ k - 1] \label{eq:6.95}
-\end{align}
+\begin{align*}
+g[ k] &= g_{1}[ k] + g_{2}[ k] = 2  0.5^{k - 1}  \sigma[ k - 1] + 1.5^{k - 1}  \sigma[ k - 1] 
+\end{align*}
 In Bild \ref{fig:6.10} sind die Lage der Pole und Nullstelle sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
@@ -694,16 +694,16 @@ Die Impulsantwort ist unendlich lang, es handelt sich also um ein IIR-System. De
 führt zu einem Polynom in k mit der Ordnung n - 1. Da die Exponentialfunktion für α ≠ 1 stärker steigt oder fällt als jede Potenz von k, ist die Stabilitätsbetrachtung von diesem Ausdruck unabhängig. Deshalb bestimmt auch in diesem Fall der Betrag des Pols α, ob die Impulsantwort gegen den Wert null konvergiert, und entscheidet damit über die Stabilität des Systems. Der Sonderfall eines Pols mit dem Betrag 1 wird in Abschnitt \ref{sec:6.3.11} diskutiert.
 
 \begin{example}{Übertragungsfunktion mit mehrfachen reellen Polen}
-\label{beispiel-uxfcbertragungsfunktion-mit-mehrfachen-reellen-polen}
+\label{example:beispiel-uxfcbertragungsfunktion-mit-mehrfachen-reellen-polen}
 
 Die untenstehende Übertragungsfunktion \(G(z)\) soll interpretiert werden. Ihr Zählergrad ist kleiner als der Nennergrad, und sie hat einen doppelten Pol an der Stelle α = - 0.5. Es ergibt sich die Partialbruchzerlegung
-\begin{align}
-G(z) &= \frac{z + 1}{(z + 0.5)^{2}} = \frac{1}{z + 0.5} + \frac{0.5}{(z + 0.5)^{2}} = \frac{z}{z + 0.5}  z^{- 1} - \frac{- 0.5  z}{(z + 0.5)^{2}}  z^{- 1} \label{eq:6.100}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z + 1}{(z + 0.5)^{2}} = \frac{1}{z + 0.5} + \frac{0.5}{(z + 0.5)^{2}} = \frac{z}{z + 0.5}  z^{- 1} - \frac{- 0.5  z}{(z + 0.5)^{2}}  z^{- 1} 
+\end{align*}
 Zur Rücktransformation werden die Korrespondenzen 5 und 6 sowie der Verschiebungssatz verwendet.
-\begin{align}
-g[ k] &= g_{1}[ k] + g_{2}[ k] = ( - 0.5)^{k - 1}  \sigma[ k - 1] - (k - 1)  ( - 0.5)^{k - 1}  \sigma[ k - 2] \label{eq:6.101}
-\end{align}
+\begin{align*}
+g[ k] &= g_{1}[ k] + g_{2}[ k] = ( - 0.5)^{k - 1}  \sigma[ k - 1] - (k - 1)  ( - 0.5)^{k - 1}  \sigma[ k - 2] 
+\end{align*}
 In Bild \ref{fig:6.11} sind die Lage der Nullstelle und Pole sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
@@ -713,13 +713,13 @@ In Bild \ref{fig:6.11} sind die Lage der Nullstelle und Pole sowie die Impulsant
 \end{fixedfigure}
 
 Da der mehrfache Pol innerhalb des Einheitskreises liegt, ist das System stabil. Aufgrund des negativen Vorzeichens sind die beiden Teile der Impulsantwort alternierend, und es ergibt sich eine schwingende Impulsantwort. Besitzt die Übertragungsfunktion einen einfachen oder mehrfachen Pol mit negativem Vorzeichen,
-\begin{align}
-G(z) &= \frac{z}{z - r_{0}  e^{j  \pi}} \label{eq:6.102}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z}{z - r_{0}  e^{j  \pi}} 
+\end{align*}
 wechselt das Vorzeichen der Impulsantwort des zeitdiskreten Systems. Die Impulsantwort schwingt mit der normierten Kreisfrequenz π.
-\begin{align}
-g[ k] &= r_{0}^{k}  e^{j  \pi  k}  \sigma[ k] = r_{0}^{k}  ( - 1)^{k}  \sigma[ k] \label{eq:6.103}
-\end{align}
+\begin{align*}
+g[ k] &= r_{0}^{k}  e^{j  \pi  k}  \sigma[ k] = r_{0}^{k}  ( - 1)^{k}  \sigma[ k] 
+\end{align*}
 Diese Systemeigenschaft besitzt im zeitkontinuierlichen Bereich kein Äquivalent.
 
 \end{example}
@@ -740,16 +740,16 @@ auf. Damit das System reelle Koeffizienten \(a_{n}\) und \(b_{m}\) besitzt, müs
 Die Folge ist eine gedämpfte harmonische Folge. Die Phasenlage ϕ des Polpaares definiert, mit welcher Frequenz die Folge schwingt. Der Betrag der Pole r ist für das Abfallen beziehungsweise Ansteigen der Amplitude verantwortlich. Die Koeffizienten A und A* bestimmen über die Amplitude und Phasenlage der Impulsantwort. Die Impulsantwort ist wieder unendlich lang, es handelt sich also erwartungsgemäß um ein IIR-System.
 
 \begin{example}{Übertragungsfunktion mit konjugiert komplexem Polpaar}
-\label{beispiel-uxfcbertragungsfunktion-mit-konjugiert-komplexem-polpaar}
+\label{example:beispiel-uxfcbertragungsfunktion-mit-konjugiert-komplexem-polpaar}
 
 Die z-Transformierte \(G(z)\) soll in den Zeitbereich zurücktransformiert werden. Ihr Zählergrad ist kleiner als der Nennergrad, und sie hat ein konjugiert komplexes Polpaar an der Stelle α = + 0.5 ± 0.5j. Es ergibt sich die Partialbruchzerlegung
-\begin{align}
-G(z) &= \frac{2  z}{z^{2} - z + 0.5} = \frac{1 - j}{z - 0.5 - 0.5  j} + \frac{1 + j}{z - 0.5 + 0.5  j} = \frac{\sqrt{2}  e^{- j  \pi/4}}{z - \frac{e^{j  \pi/4}}{\sqrt{2}}} + \frac{\sqrt{2}  e^{j  \pi/4}}{z - \frac{e^{- j  \pi/4}}{\sqrt{2}}} \label{eq:6.106}
-\end{align}
+\begin{align*}
+G(z) &= \frac{2  z}{z^{2} - z + 0.5} = \frac{1 - j}{z - 0.5 - 0.5  j} + \frac{1 + j}{z - 0.5 + 0.5  j} = \frac{\sqrt{2}  e^{- j  \pi/4}}{z - \frac{e^{j  \pi/4}}{\sqrt{2}}} + \frac{\sqrt{2}  e^{j  \pi/4}}{z - \frac{e^{- j  \pi/4}}{\sqrt{2}}} 
+\end{align*}
 Die Rücktransformation führt nach den Ausführungen oben zu der Impulsantwort
-\begin{align}
-g[ k] &= 2  \sqrt{2}  \left( \frac{1}{\sqrt{2}} \right)^{k - 1}  \cos\left( \frac{\pi}{4}  (k - 1) - \frac{\pi}{4} \right)  \sigma[ k - 1] \label{eq:6.107}
-\end{align}
+\begin{align*}
+g[ k] &= 2  \sqrt{2}  \left( \frac{1}{\sqrt{2}} \right)^{k - 1}  \cos\left( \frac{\pi}{4}  (k - 1) - \frac{\pi}{4} \right)  \sigma[ k - 1] 
+\end{align*}
 In Bild \ref{fig:6.12} sind die Lage der Pole und Nullstelle sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
@@ -776,17 +776,17 @@ g[ k] &= \frac{b_{0}}{a_{N}}  \delta[ k - N] + \frac{b_{1}}{a_{N}}  \delta[ k - 
 Die Impulsantwort besteht aus N + 1 Impulsen. Die Koeffizienten der Impulse entsprechen den Koeffizienten der Übertragungsfunktion \(G(z)\). Im Gegensatz zu den bisher behandelten Impulsantworten ist sie nur an N + 1 Stellen von null verschieden. Deshalb wird die Impulsantwort als Finite-Impulse-Response und die Systeme als Finite-Impulse-Response-Systeme (FIR-Systeme) bezeichnet.
 
 \begin{example}{N-facher Pol im Koordinatenursprung}
-\label{beispiel-n-facher-pol-im-koordinatenursprung}
+\label{example:beispiel-n-facher-pol-im-koordinatenursprung}
 
 Die Übertragungsfunktion \(G(z)\) soll in den Zeitbereich zurücktransformiert werden. Sie hat einen\\
 4-fachen Pol an der Stelle \(α = 0\). Das System besitzt eine endliche Impulsantwort.
-\begin{align}
-G(z) &= \frac{z^{4} + 2  z^{3} + 3  z^{2} + 2  z + 1}{9  z^{4}} = \frac{1}{9}  \left( 1 + 2  z^{- 1} + 3  z^{- 2} + 2  z^{- 3} + 1  z^{- 4} \right) \label{eq:6.110}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z^{4} + 2  z^{3} + 3  z^{2} + 2  z + 1}{9  z^{4}} = \frac{1}{9}  \left( 1 + 2  z^{- 1} + 3  z^{- 2} + 2  z^{- 3} + 1  z^{- 4} \right) 
+\end{align*}
 Mit dem Verschiebungssatz der z-Transformation ergibt sich im Zeitbereich die Folge
-\begin{align}
-g[ k] &= \frac{1}{9}  \delta[ k] + \frac{2}{9}  \delta[ k - 1] + \frac{3}{9}  \delta[ k - 2] + \frac{2}{9}  \delta[ k - 3] + \frac{1}{9}  \delta[ k - 4] \label{eq:6.111}
-\end{align}
+\begin{align*}
+g[ k] &= \frac{1}{9}  \delta[ k] + \frac{2}{9}  \delta[ k - 1] + \frac{3}{9}  \delta[ k - 2] + \frac{2}{9}  \delta[ k - 3] + \frac{1}{9}  \delta[ k - 4] 
+\end{align*}
 Die Werte der Impulsantwort sind identisch zu den Koeffizienten des Filters. In Bild \ref{fig:6.13} sind die Lage der Pole und Nullstellen sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
@@ -828,7 +828,8 @@ Beide Systeme sind stabil, da der Pol bei beiden Systemen im Einheitskreis liegt
 
 Bei der Interpretation von Übertragungsfunktionen werden unterschiedliche Systemeigenschaften aufgezeigt. Tabelle \ref{tab:6.4} fasst die an der Übertragungsfunktion ablesbaren Systemeigenschaften zusammen. Der Zusammenhang zwischen Pollage und Impulsantwort ist für einfache reelle Pole und für konjugiert komplexe Polpaare in Tabelle \ref{tab:6.5} dargestellt.
 
-\begin{summary}[label=tab:6.4]{Tabellarische Übersicht der an der Übertragungsfunktion ablesbaren Systemeigenschaften}
+\begin{summary}{Tabellarische Übersicht der an der Übertragungsfunktion ablesbaren Systemeigenschaften}
+\label{tab:6.4}
 \begin{center}
   \begin{tabular}{ll}
     \toprule
@@ -896,35 +897,35 @@ k - 1 \\
 Der Faktor steigt linear mit dem Folgenindex k. Er wird mit einer Exponentialfunktion multipliziert, deren Betrag konstant ist. Damit divergiert die Impulsantwort für eine Vielfachheit N ≥ 2.
 
 \begin{example}{Stabilitätsnachweis über Pollage}
-\label{beispiel-stabilituxe4tsnachweis-uxfcber-pollage}
+\label{example:beispiel-stabilituxe4tsnachweis-uxfcber-pollage}
 
 Ein System mit der Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{1}{z^{3} + 0.1  z^{2} - 0.25  z - 0.025} \label{eq:6.118}
-\end{align}
+\begin{align*}
+G(z) &= \frac{1}{z^{3} + 0.1  z^{2} - 0.25  z - 0.025} 
+\end{align*}
 soll auf Stabilität geprüft werden. Die Übertragungsfunktion des Systems kann in Linearfaktorschreibweise dargestellt werden.
-\begin{align}
-G(z) &= \frac{1}{(z + 0.5)  (z + 0.1)  (z - 0.5)} \label{eq:6.119}
-\end{align}
+\begin{align*}
+G(z) &= \frac{1}{(z + 0.5)  (z + 0.1)  (z - 0.5)} 
+\end{align*}
 Alle Pole weisen einen Betrag r \textless{} 1 auf, das System ist damit stabil.
 
 \end{example}
 
 \begin{example}{Stabilitätsprüfung eines Systems mit doppeltem Pol}
-\label{beispiel-stabilituxe4tspruxfcfung-eines-systems-mit-doppeltem-pol}
+\label{example:beispiel-stabilituxe4tspruxfcfung-eines-systems-mit-doppeltem-pol}
 
 Ein System mit der Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{1}{(z - 0.2)  (z + 1)^{2}} \label{eq:6.120}
-\end{align}
+\begin{align*}
+G(z) &= \frac{1}{(z - 0.2)  (z + 1)^{2}} 
+\end{align*}
 weist einen Pol an der Stelle \(α_{1} = 0.2\) und einen doppelten Pol an der Stelle \(α_{2}\) = - 1 auf. Es ergeben sich die Partialbruchdarstellung
-\begin{align}
-G(z) &= \frac{1}{(z - 0.2)  (z + 1)^{2}} = \frac{0.6944}{z - 0.2} - \frac{0.6944}{z + 1} + \frac{1.25}{(z + 1)^{2}} \label{eq:6.121}
-\end{align}
+\begin{align*}
+G(z) &= \frac{1}{(z - 0.2)  (z + 1)^{2}} = \frac{0.6944}{z - 0.2} - \frac{0.6944}{z + 1} + \frac{1.25}{(z + 1)^{2}} 
+\end{align*}
 und die Impulsantwort
-\begin{align}
-g[ k] &= 0.6944  0.2^{k - 1}  \sigma[ k - 1] - 0.6944  ( - 1)^{k - 1}  \sigma[ k - 1] + 1.25  (k - 1)  ( - 1)^{k - 1}  \sigma[ k - 1] \label{eq:6.122}
-\end{align}
+\begin{align*}
+g[ k] &= 0.6944  0.2^{k - 1}  \sigma[ k - 1] - 0.6944  ( - 1)^{k - 1}  \sigma[ k - 1] + 1.25  (k - 1)  ( - 1)^{k - 1}  \sigma[ k - 1] 
+\end{align*}
 Wegen des letzten Summenden divergiert die Impulsantwort. Er ergibt sich aus dem doppelten Pol \(α_{2}\) mit einem Betrag von \textbar \(α_{2}\)\textbar{} = 1. Das System ist instabil.
 
 \end{example}

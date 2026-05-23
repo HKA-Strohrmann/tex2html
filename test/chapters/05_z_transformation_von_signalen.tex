@@ -200,7 +200,8 @@ aufweist. Mit negativem Realteil ergibt sich eine Lage innerhalb des Einheitskre
   \tcblower
   \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
 \end{application}
-\begin{summary}[label=tab:5.1]{Tabellarische Übersicht über korrespondierende Elemente der s- und z-Ebene}
+\begin{summary}{Tabellarische Übersicht über korrespondierende Elemente der s- und z-Ebene}
+\label{tab:5.1}
 \begin{center}
   \begin{tabular}{ll}
     \toprule
@@ -308,16 +309,16 @@ und durch Anwendung des Distributivgesetzes
 wird die Linearitätseigenschaft bewiesen.
 
 \begin{example}{Linearität}
-\label{beispiel-linearituxe4t}
+\label{example:beispiel-linearituxe4t}
 
 Gesucht wird die z-Transformierte der Folge \(x[k]\)
-\begin{align}
-x[ k] &= 2  \sigma[ k] + 5  3^{k}  \sigma[ k] \label{eq:5.39}
-\end{align}
+\begin{align*}
+x[ k] &= 2  \sigma[ k] + 5  3^{k}  \sigma[ k] 
+\end{align*}
 Die z-Transformierten der Sprung- und Exponentialfolge sind bekannt. Damit ergibt sich \(X(z)\) zu
-\begin{align}
-X(z) &= 2  \frac{z}{z - 1} + 5  \frac{z}{z - 3} \label{eq:5.40}
-\end{align}
+\begin{align*}
+X(z) &= 2  \frac{z}{z - 1} + 5  \frac{z}{z - 3} 
+\end{align*}
 \end{example}
 
 \subsection{Verschiebung der Folge nach rechts}\label{sec:verschiebung-der-folge-nach-rechts}
@@ -331,16 +332,16 @@ Bereits bei der Herleitung der verschobenen Impuls- und Sprungfolge wird die Ver
 Diskrete Systeme lassen sich über Differenzengleichungen beschreiben. Aus diesem Grund ist die Verschiebungsregel von vergleichbarer Bedeutung wie die Differentiationsregel der Laplace-Transformation.
 
 \begin{example}{Verschiebung nach rechts}
-\label{beispiel-verschiebung-nach-rechts}
+\label{example:beispiel-verschiebung-nach-rechts}
 
 Eine Rechteckfolge von 0 bis 4 kann im Zeitbereich dargestellt werden als
-\begin{align}
-x[ k] &= \sigma[ k] - \sigma[ k - 5] \label{eq:5.42}
-\end{align}
+\begin{align*}
+x[ k] &= \sigma[ k] - \sigma[ k - 5] 
+\end{align*}
 Daraus ergibt sich mit der Verschiebungsregel die z-Transformierte zu
-\begin{align}
-X(z) &= \frac{z}{z - 1}  \left( 1 - z^{- 5} \right) \label{eq:5.43}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{z - 1}  \left( 1 - z^{- 5} \right) 
+\end{align*}
 \end{example}
 
 \subsection{Verschiebung der Folge nach links}\label{sec:verschiebung-der-folge-nach-links}
@@ -388,16 +389,16 @@ Eine Modulation einer Folge \(x[k]\) mit der Exponentialfolge \(λ^{k}\) lässt 
 Z\left\{ \lambda^{k}  x[ k] \right\} &= \sum\limits_{k = 0}^{\infty}{\lambda^{k}  x[ k]  z^{- k}} = \sum\limits_{k = 0}^{\infty}{x[ k]  \left( \frac{z}{\lambda} \right)^{- k}} = X\left( \frac{z}{\lambda} \right) \label{eq:5.51}
 \end{align}
 \begin{example}{Modulation}
-\label{beispiel-modulation}
+\label{example:beispiel-modulation}
 
 Die Modulationsregel kann zum Nachweis der z-Transformierten der Exponentialfolge angewendet werden. Die z-Transformierte der Sprungfolge ist bekannt. Die Exponentialfolge ergibt sich aus
-\begin{align}
-x[ k] &= \lambda^{k}  \sigma[ k] \label{eq:5.52}
-\end{align}
+\begin{align*}
+x[ k] &= \lambda^{k}  \sigma[ k] 
+\end{align*}
 Nach der Modulationsregel ist damit die z-Transformierte der Exponentialfolge
-\begin{align}
-X(z) &= \left. \ \frac{z}{z - 1} \right|_{z = \frac{z}{\lambda}} = \frac{\frac{z}{\lambda}}{\frac{z}{\lambda} - 1} = \frac{z}{z - \lambda} \label{eq:5.53}
-\end{align}
+\begin{align*}
+X(z) &= \left. \ \frac{z}{z - 1} \right|_{z = \frac{z}{\lambda}} = \frac{\frac{z}{\lambda}}{\frac{z}{\lambda} - 1} = \frac{z}{z - \lambda} 
+\end{align*}
 \end{example}
 
 \subsection{Lineare Gewichtung}\label{sec:lineare-gewichtung}
@@ -411,16 +412,16 @@ Multiplikation der Gleichung mit - z führt zu der gesuchten Rechenregel der lin
 Z\left\{ k  x[ k] \right\} &= \sum\limits_{k = 0}^{\infty}{k  x[ k]  z^{- k}} = - z  \frac{dX}{dz} \label{eq:5.55}
 \end{align}
 \begin{example}{Gewichtung}
-\label{beispiel-gewichtung}
+\label{example:beispiel-gewichtung}
 
 Die lineare Gewichtung wird dazu verwendet, die z-Transformierte der Rampenfolge
-\begin{align}
-x[ k] &= k  \sigma[ k] \label{eq:5.56}
-\end{align}
+\begin{align*}
+x[ k] &= k  \sigma[ k] 
+\end{align*}
 zu berechnen. Mit der Regel für die lineare Gewichtung und der z-Transformierten der Sprungfolge ergibt sich
-\begin{align}
-X(z) &= - z  \frac{d}{dz}\frac{z}{z - 1} = - z  \frac{z - 1 - z}{(z - 1)^{2}} = \frac{z}{(z - 1)^{2}} \label{eq:5.57}
-\end{align}
+\begin{align*}
+X(z) &= - z  \frac{d}{dz}\frac{z}{z - 1} = - z  \frac{z - 1 - z}{(z - 1)^{2}} = \frac{z}{(z - 1)^{2}} 
+\end{align*}
 \end{example}
 
 \subsection{Differenz}\label{sec:differenz}
@@ -430,16 +431,16 @@ Die Differenz zweier aufeinanderfolgender Werte entspricht der Ableitung im zeit
 Z\left\{ x[ k] - x[ k - 1] \right\} &= \left( 1 - z^{- 1} \right)  X(z) = \frac{z - 1}{z}  X(z) \label{eq:5.58}
 \end{align}
 \begin{example}{Differenz}
-\label{beispiel-differenz}
+\label{example:beispiel-differenz}
 
 Die Impulsfolge kann dargestellt werden als Differenz zweier Sprungfolgen:
-\begin{align}
-\delta[ k] &= \sigma[ k] - \sigma[ k - 1] \label{eq:5.59}
-\end{align}
+\begin{align*}
+\delta[ k] &= \sigma[ k] - \sigma[ k - 1] 
+\end{align*}
 Damit ergibt sich ihre z-Transformierte zu
-\begin{align}
-X(z) &= \frac{z - 1}{z}  \frac{z}{z - 1} = 1 \label{eq:5.60}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z - 1}{z}  \frac{z}{z - 1} = 1 
+\end{align*}
 Das Ergebnis stimmt mit der Berechnung über die Definitionsgleichung überein.
 
 \end{example}
@@ -459,25 +460,25 @@ Durch Umstellen ergibt sich die Summationsregel der z-Transformation
 Z\left\{ \sum\limits_{\kappa = 0}^{k}{x[\kappa]} \right\} &= \frac{z}{z - 1}  X(z) \label{eq:5.63}
 \end{align}
 \begin{example}{Summation}
-\label{beispiel-summation}
+\label{example:beispiel-summation}
 
 Die Sprungfolge kann als Summe über die Impulsfolge dargestellt werden.
-\begin{align}
-\sigma[ k] &= \sum\limits_{\kappa = 0}^{k}{\delta[\kappa]} \label{eq:5.64}
-\end{align}
+\begin{align*}
+\sigma[ k] &= \sum\limits_{\kappa = 0}^{k}{\delta[\kappa]} 
+\end{align*}
 Entsprechend ist der Zusammenhang zwischen den beiden z-Transformierten
-\begin{align}
-Z\left\{ \sigma[ k] \right\} &= Z\left\{ \sum\limits_{\kappa = 0}^{k}{\delta[\kappa]} \right\} = 1  \frac{z}{z - 1} = \frac{z}{z - 1} \label{eq:5.65}
-\end{align}
+\begin{align*}
+Z\left\{ \sigma[ k] \right\} &= Z\left\{ \sum\limits_{\kappa = 0}^{k}{\delta[\kappa]} \right\} = 1  \frac{z}{z - 1} = \frac{z}{z - 1} 
+\end{align*}
 Auch die Rampenfolge lässt sich als Summe über die Sprungfolge beschreiben. Dabei ist zu beachten, dass die Rampenfolge für \(k = 0\) den Wert 0 besitzt. Damit ergibt sich für die Summe der Startwert\\
 \(k = 1\) und die Summenformel der Rampenfolge lautet
-\begin{align}
-x[ k] &= \sum\limits_{\kappa = 0}^{k}{\sigma[\kappa - 1]} \label{eq:5.66}
-\end{align}
+\begin{align*}
+x[ k] &= \sum\limits_{\kappa = 0}^{k}{\sigma[\kappa - 1]} 
+\end{align*}
 Mit der Summations- und Verschiebungsregel ergibt sich die z-Transformierte zu
-\begin{align}
-X(z) &= \frac{z}{z - 1}  z^{- 1}  \frac{z}{z - 1} = \frac{z}{(z - 1)^{2}} \label{eq:5.67}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{z - 1}  z^{- 1}  \frac{z}{z - 1} = \frac{z}{(z - 1)^{2}} 
+\end{align*}
 Das Ergebnis stimmt mit der Berechnung über die lineare Gewichtung überein.
 
 \end{example}
@@ -517,16 +518,16 @@ x[ 0] &= \lim_{z \rightarrow \infty}X(z) \label{eq:5.72}
 Da bei der Herleitung des Anfangswertsatzes keine Einschränkung gemacht wird, kann diese Regel immer angewendet werden.
 
 \begin{example}{Anfangswertsatz}
-\label{beispiel-anfangswertsatz}
+\label{example:beispiel-anfangswertsatz}
 
 Die kausale Exponentialfolge besitzt die z-Transformierte
-\begin{align}
-X(z) &= \frac{z}{z - \lambda_{0}} \label{eq:5.73}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{z - \lambda_{0}} 
+\end{align*}
 Für den Grenzübergang z → ∞ ergibt sich der Anfangswert zu
-\begin{align}
-\lim_{z \rightarrow \infty}X(z) &= \lim_{z \rightarrow \infty}\frac{z}{z - \lambda_{0}} = \lim_{z \rightarrow \infty}\frac{1}{1 - \frac{\lambda_{0}}{z}} = 1 \label{eq:5.74}
-\end{align}
+\begin{align*}
+\lim_{z \rightarrow \infty}X(z) &= \lim_{z \rightarrow \infty}\frac{z}{z - \lambda_{0}} = \lim_{z \rightarrow \infty}\frac{1}{1 - \frac{\lambda_{0}}{z}} = 1 
+\end{align*}
 Das Ergebnis stimmt mit dem Wert \(x[0]\) im Zeitbereich überein.
 
 \end{example}
@@ -554,16 +555,16 @@ ergibt sich für \(z = 1\) der Endwertsatz der z-Transformation
 \lim_{k \rightarrow \infty}x[ k] &= \sum\limits_{\kappa = 0}^{\infty}{h[\kappa]}  1^{- \kappa} = H(1) = \lim_{z \rightarrow 1}\frac{z - 1}{z}  X(z) = \lim_{z \rightarrow 1}(z - 1)  X(z) \label{eq:5.79}
 \end{align}
 \begin{example}{Endwertsatz}
-\label{beispiel-endwertsatz}
+\label{example:beispiel-endwertsatz}
 
 Die kausale Exponentialfolge besitzt die z-Transformierte
-\begin{align}
-X(z) &= \frac{z}{z - \lambda_{0}} \label{eq:5.80}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{z - \lambda_{0}} 
+\end{align*}
 Mit dem Grenzübergang z → 1 des Ausdrucks
-\begin{align}
-\lim_{z \rightarrow 1}(z - 1)  \frac{z}{z - \lambda_{0}} &= 0 \label{eq:5.81}
-\end{align}
+\begin{align*}
+\lim_{z \rightarrow 1}(z - 1)  \frac{z}{z - \lambda_{0}} &= 0 
+\end{align*}
 ergibt sich der Endwert von \(x[k]\) für k → ∞ zu null. Das Ergebnis stimmt mit dem Grenzwert im Zeitbereich überein, wenn die Basis \(λ_{0}\) einen Betrag \textbar \(λ_{0}\)\textbar{} \textless{} 1 aufweist, also wenn ein Grenzwert existiert.
 
 \end{example}
@@ -708,16 +709,16 @@ x[ k] &= \frac{b_{M}}{a_{N}}  \delta[ k] \label{eq:5.88}
 Das folgende Beispiel verdeutlicht diesen Zusammenhang.
 
 \begin{example}{Zählergrad gleich Nennergrad}
-\label{beispiel-zuxe4hlergrad-gleich-nennergrad}
+\label{example:beispiel-zuxe4hlergrad-gleich-nennergrad}
 
 Die z-Transformierte \(X(z)\) soll in den Zeitbereich zurück transformiert werden. Da der Zählergrad genauso groß ist wie der Nennergrad, wird eine Polynomdivision durchgeführt. Um auf einen Ausdruck der Korrespondenztafel zu kommen, muss der Restbruch mit z erweitert werden.
-\begin{align}
-X(z) &= \frac{2  z - 3}{z - 3} = 2 + \frac{3}{z - 3} = 2 + \frac{3  z}{z - 3}  z^{- 1} \label{eq:5.89}
-\end{align}
+\begin{align*}
+X(z) &= \frac{2  z - 3}{z - 3} = 2 + \frac{3}{z - 3} = 2 + \frac{3  z}{z - 3}  z^{- 1} 
+\end{align*}
 Damit kann die Folge im Zeitbereich aus der Korrespondenztafel und der Verschiebungsregel bestimmt werden zu
-\begin{align}
-x[ k] &= 2  \delta[ k] + 3  3^{k - 1}  \sigma[ k - 1] \label{eq:5.90}
-\end{align}
+\begin{align*}
+x[ k] &= 2  \delta[ k] + 3  3^{k - 1}  \sigma[ k - 1] 
+\end{align*}
 \end{example}
 
 \textbf{\hfill\break
@@ -755,40 +756,40 @@ Die Summe der einzelnen Partialbrüche entspricht deshalb im Zeitbereich der Fol
 Z^{- 1}\left\{ \sum\limits_{n = 1}^{N}\frac{A_{n}}{z - \alpha_{n}} \right\} &= \sum\limits_{n = 1}^{N}{A_{n}  \alpha_{n}^{k - 1}  \sigma[ k - 1]} \label{eq:5.95}
 \end{align}
 \begin{example}{Partialbruchzerlegung für einfache Pole bei z ≠ 0}
-\label{beispiel-partialbruchzerlegung-fuxfcr-einfache-pole-bei-z-0}
+\label{example:beispiel-partialbruchzerlegung-fuxfcr-einfache-pole-bei-z-0}
 
 Die z-Transformierte \(X(z)\) soll in den Zeitbereich zurücktransformiert werden. Ihr Zählergrad ist kleiner als der Nennergrad, und sie hat zwei einfache Pole.
-\begin{align}
-X(z) &= \frac{z}{z^{2} + 3  z + 2} = \frac{z}{(z + 1)  (z + 2)} = \frac{A_{1}}{z + 1} + \frac{A_{2}}{z + 2} \label{eq:5.96}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{z^{2} + 3  z + 2} = \frac{z}{(z + 1)  (z + 2)} = \frac{A_{1}}{z + 1} + \frac{A_{2}}{z + 2} 
+\end{align*}
 Ausmultiplizieren der Gleichung führt zu
-\begin{align}
-z &= A_{1}  (z + 2) + A_{2}  (z + 1) \label{eq:5.97}
-\end{align}
+\begin{align*}
+z &= A_{1}  (z + 2) + A_{2}  (z + 1) 
+\end{align*}
 Einsetzen der Polstellen \(α_{1}\) = - 1 und \(α_{2}\) = - 2 führt zu
-\begin{align}
-A_{1} &= - 1 \label{eq:5.98}
-\end{align}
+\begin{align*}
+A_{1} &= - 1 
+\end{align*}
 und
-\begin{align}
-A_{2} &= 2 \label{eq:5.99}
-\end{align}
+\begin{align*}
+A_{2} &= 2 
+\end{align*}
 Alternativ hätte der Residuensatz ergeben
-\begin{align}
-A_{1} &= \left. \ \left( \frac{z}{(z + 1)  (z + 2)}  (z + 1) \right) \right|_{z = - 1} = \left. \ \left( \frac{z}{z + 2} \right) \right|_{z = - 1} = \frac{- 1}{- 1 + 2} = - 1 \label{eq:5.100}
-\end{align}
+\begin{align*}
+A_{1} &= \left. \ \left( \frac{z}{(z + 1)  (z + 2)}  (z + 1) \right) \right|_{z = - 1} = \left. \ \left( \frac{z}{z + 2} \right) \right|_{z = - 1} = \frac{- 1}{- 1 + 2} = - 1 
+\end{align*}
 und
-\begin{align}
-A_{2} &= \left. \ \left( \frac{z}{(z + 1)  (z + 2)}  (z + 2) \right) \right|_{z = - 2} = \left. \ \left( \frac{z}{z + 1} \right) \right|_{z = - 2} = \frac{- 2}{- 2 + 1} = 2 \label{eq:5.101}
-\end{align}
+\begin{align*}
+A_{2} &= \left. \ \left( \frac{z}{(z + 1)  (z + 2)}  (z + 2) \right) \right|_{z = - 2} = \left. \ \left( \frac{z}{z + 1} \right) \right|_{z = - 2} = \frac{- 2}{- 2 + 1} = 2 
+\end{align*}
 Sind die Koeffizienten der Partialbrüche bestimmt, kann die z-Transformierte mit den bekannten Korrespondenzen in den Zeitbereich zurücktransformiert werden.
-\begin{align}
-X(z) &= \frac{- 1}{z + 1} + \frac{2}{z + 2} = \frac{- z}{z + 1}  z^{- 1} + \frac{2  z}{z + 2}  z^{- 1} \label{eq:5.102}
-\end{align}
+\begin{align*}
+X(z) &= \frac{- 1}{z + 1} + \frac{2}{z + 2} = \frac{- z}{z + 1}  z^{- 1} + \frac{2  z}{z + 2}  z^{- 1} 
+\end{align*}
 Es ergibt sich die Folge
-\begin{align}
-x[ k] &= - 1  ( - 1)^{k - 1}  \sigma[ k - 1] + 2  ( - 2)^{k - 1}  \sigma[ k - 1] \label{eq:5.103}
-\end{align}
+\begin{align*}
+x[ k] &= - 1  ( - 1)^{k - 1}  \sigma[ k - 1] + 2  ( - 2)^{k - 1}  \sigma[ k - 1] 
+\end{align*}
 \end{example}
 
 \subsubsection{Partialbruchzerlegung für mehrfache Pole bei z ≠ 0}\label{sec:partialbruchzerlegung-fuxfcr-mehrfache-pole-bei-z-0}
@@ -819,48 +820,47 @@ n - 1
 \end{array} \right)  \alpha^{k - n}  \sigma[ k - n]} \label{eq:5.106}
 \end{align}
 \begin{example}{Partialbruchzerlegung für mehrfache Pole bei z ≠ 0}
-\label{beispiel-partialbruchzerlegung-fuxfcr-mehrfache-pole-bei-z-0}
+\label{example:beispiel-partialbruchzerlegung-fuxfcr-mehrfache-pole-bei-z-0}
 
 Die z-Transformierte \(X(z)\) soll in den Zeitbereich zurücktransformiert werden. Ihr Zählergrad ist kleiner als der Nennergrad und sie hat einen doppelten Pol an der Stelle \(α = 0.5\). Damit lautet der Ansatz für die Partialbruchzerlegung
-\begin{align}
-X(z) &= \frac{z}{(z - 0.5)^{2}} = \frac{A_{1}}{z - 0.5} + \frac{A_{2}}{(z - 0.5)^{2}} \label{eq:5.107}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{(z - 0.5)^{2}} = \frac{A_{1}}{z - 0.5} + \frac{A_{2}}{(z - 0.5)^{2}} 
+\end{align*}
 Ausmultiplizieren führt zu der Gleichung
-\begin{align}
-z &= A_{1}  (z - 0.5) + A_{2} \label{eq:5.108}
-\end{align}
+\begin{align*}
+z &= A_{1}  (z - 0.5) + A_{2} 
+\end{align*}
 Einsetzen der Zahlenwerte \(z = 0.5\) und \(z = 0\) ergibt
-\begin{align}
-A_{2} &= 0.5 \label{eq:5.109}
-\end{align}
+\begin{align*}
+A_{2} &= 0.5 
+\end{align*}
 und
-\begin{align}
-A_{1} &= 2  A_{2} = 1 \label{eq:5.110}
-\end{align}
+\begin{align*}
+A_{1} &= 2  A_{2} = 1 
+\end{align*}
 Alternativ könnte der Residuensatz verwendet werden:
-\begin{align}
-A_{1} &= \frac{d}{dz}\left. \ \left( X(z)  (z - 0.5)^{2} \right) \right|_{z = 0.5} = \left. \ \frac{dz}{dz} \right|_{z = 0.5} = 1 \label{eq:5.111}
-\end{align}
+\begin{align*}
+A_{1} &= \frac{d}{dz}\left. \ \left( X(z)  (z - 0.5)^{2} \right) \right|_{z = 0.5} = \left. \ \frac{dz}{dz} \right|_{z = 0.5} = 1 
+\end{align*}
 und
-\begin{align}
-A_{2} &= 1  \left. \ X(z)  (z - 0.5)^{2} \right|_{z = z_{\infty}} = \left. \ z \right|_{z = 0.5} = 0.5 \label{eq:5.112}
-\end{align}
+\begin{align*}
+A_{2} &= 1  \left. \ X(z)  (z - 0.5)^{2} \right|_{z = z_{\infty}} = \left. \ z \right|_{z = 0.5} = 0.5 
+\end{align*}
 Die Funktion \(X(z)\) kann damit in folgende Partialbrüche aufgeteilt werden:
-\begin{align}
-X(z) &= \frac{z}{(z - 0.5)^{2}} = \frac{1}{z - 0.5} + \frac{0.5}{(z - 0.5)^{2}} = \frac{z}{z - 0.5}  z^{- 1} + \frac{0.5  z}{(z - 0.5)^{2}}  z^{- 1} \label{eq:5.113}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{(z - 0.5)^{2}} = \frac{1}{z - 0.5} + \frac{0.5}{(z - 0.5)^{2}} = \frac{z}{z - 0.5}  z^{- 1} + \frac{0.5  z}{(z - 0.5)^{2}}  z^{- 1} 
+\end{align*}
 Zur Rücktransformation werden die Korrespondenzen 5 und 6 sowie der Verschiebungssatz verwendet.
-\begin{align}
-x[ k] &= 0.5^{k - 1}  \sigma[ k - 1] + (k - 1)  0.5^{k - 1}  \sigma[ k - 1] \label{eq:5.114}
-\end{align}
+\begin{align*}
+x[ k] &= 0.5^{k - 1}  \sigma[ k - 1] + (k - 1)  0.5^{k - 1}  \sigma[ k - 1] 
+\end{align*}
 Alternativ ist eine Rücktransformation mit Korrespondenz 9 möglich.
-\begin{align}
+\begin{align*}
 {x\left[k\right]} &=  {\left(\begin{array}{c} {k-1} \\
 {0} \end{array}\right) 0.5^{k-1-1+1}  \sigma \left[k-1-1+1\right]+0.5 \left(\begin{array}{c} {k-1} \\
 {1} \end{array}\right) 0.5^{k-1-2+1}  \sigma \left[k-1-2+1\right]} \\
 {} &=  {0.5^{k-1}  \sigma \left[k-1\right]+(k-1) 0.5^{k-1}  \sigma \left[k-2\right]}
- \label{eq:5.115}
-\end{align}
+\end{align*}
 Da der zweite Summand für \(k = 1\) zu null wird, sind beide Lösungen identisch.
 
 \end{example}
@@ -876,16 +876,16 @@ Da bei kausalen Signalen alle Exponenten der komplexen Variablen z immer M - N \
 x[ k] &= \frac{b_{0}}{a_{N}}  \delta[ k - N] + \frac{b_{1}}{a_{N}}  \delta[ k - N + 1] + ... + \frac{b_{M}}{a_{N}}  \delta[ k - N + M] \label{eq:5.117}
 \end{align}
 \begin{example}{N-facher Pol an der Stelle \(z = 0\)}
-\label{beispiel-n-facher-pol-an-der-stelle-z-0}
+\label{example:beispiel-n-facher-pol-an-der-stelle-z-0}
 
 Die z-Transformierte \(X(z)\) soll in den Zeitbereich zurücktransformiert werden. Sie hat einen 4-fachen Pol an der Stelle \(z = 0\).
-\begin{align}
-X(z) &= \frac{z^{4} + 2  z^{3} + 3  z^{2} + 2  z + 1}{9  z^{4}} = \frac{1}{9}  \left( 1 + 2  z^{- 1} + 3  z^{- 2} + 2  z^{- 3} + 1  z^{- 4} \right) \label{eq:5.118}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z^{4} + 2  z^{3} + 3  z^{2} + 2  z + 1}{9  z^{4}} = \frac{1}{9}  \left( 1 + 2  z^{- 1} + 3  z^{- 2} + 2  z^{- 3} + 1  z^{- 4} \right) 
+\end{align*}
 Mit dem Verschiebungssatz der z-Transformation ergibt sich im Zeitbereich die Folge
-\begin{align}
-x[ k] &= \frac{1}{9}  \delta[ k] + \frac{2}{9}  \delta[ k - 1] + \frac{3}{9}  \delta[ k - 2] + \frac{2}{9}  \delta[ k - 3] + \frac{1}{9}  \delta[ k - 4] \label{eq:5.119}
-\end{align}
+\begin{align*}
+x[ k] &= \frac{1}{9}  \delta[ k] + \frac{2}{9}  \delta[ k - 1] + \frac{3}{9}  \delta[ k - 2] + \frac{2}{9}  \delta[ k - 3] + \frac{1}{9}  \delta[ k - 4] 
+\end{align*}
 \end{example}
 
 \subsubsection{Zusammenfassung der Ansätze für die Partialbruchzerlegung}\label{sec:zusammenfassung-der-ansuxe4tze-fuxfcr-die-partialbruchzerlegung}
@@ -923,16 +923,16 @@ Funktionen können über Potenzreihen beschrieben werden. Für gebrochen rationa
 Die Darstellung von Funktionen \(X(z)\) über sogenannte Laurent-Reihen sowie die entsprechende Rücktransformation sind in {[}Oppe04{]} beschrieben.
 
 \begin{example}{Inverse z-Transformation über Reihenentwicklung}
-\label{beispiel-inverse-z-transformation-uxfcber-reihenentwicklung}
+\label{example:beispiel-inverse-z-transformation-uxfcber-reihenentwicklung}
 
 Die Funktion \(X(z)\) soll mit Hilfe einer Reihenentwicklung in den Zeitbereich transformiert werden. Durch Polynomdivision werden die Glieder der Potenzreihe berechnet zu
-\begin{align}
-X(z) &= \frac{z}{z + 0.5} = 1 + 0.5  z^{- 1} + 0.25  z^{- 2} + 0.125  z^{- 3} + 0.0625  z^{- 4} + ... \label{eq:5.121}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{z + 0.5} = 1 + 0.5  z^{- 1} + 0.25  z^{- 2} + 0.125  z^{- 3} + 0.0625  z^{- 4} + ... 
+\end{align*}
 Rücktransformation ergibt mit Anwendung der Verschiebungsregel
-\begin{align}
-x[ k] &= \delta[ k] + 0.5  \delta[ k - 1] + 0.25  \delta[ k - 2] + 0.125  \delta[ k - 3] + 0.0625  \delta[ k - 4] + ... \label{eq:5.122}
-\end{align}
+\begin{align*}
+x[ k] &= \delta[ k] + 0.5  \delta[ k - 1] + 0.25  \delta[ k - 2] + 0.125  \delta[ k - 3] + 0.0625  \delta[ k - 4] + ... 
+\end{align*}
 An diesem Beispiel zeigt sich, dass die Potenzreihe nicht endlich ist. Für eine exakte Lösung von \(x[k]\) müssten unendlich viele Glieder berechnet werden.
 
 \end{example}

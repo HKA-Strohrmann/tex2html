@@ -8,9 +8,15 @@
 
 
 %___________________________________________________________________
+% Detect Compiler
+% \RequirePackage can be used BEFORE \documentclass
+\RequirePackage{iftex}
+
+
+%___________________________________________________________________
 % Load Class
 
-
+\ifpdf
 \documentclass[
     paper=a4,
     parskip=half,          % vertical space between paragraphs
@@ -27,7 +33,24 @@
     open=any,              % chapters can start on left or right page
     fleqn,                 % align equations to the left
 ]{scrbook}
-
+\else
+\documentclass[
+    paper=a4,
+    parskip=half,          % vertical space between paragraphs
+    fontsize=11pt,
+    DIV=14,                % high page layout: more characters per line
+    headsepline=true,      % horizontal line below header
+    twoside=semi,          % semi two-sided page layout
+    BCOR=0em,              % binding correction
+    headinclude=true,      % include header in type area calculation
+    toc=index,
+    toc=listof,
+    toc=bibliography,
+    numbers=noendperiod,   % no dot after section numbers
+    open=any,              % chapters can start on left or right page
+    fleqn,                 % align equations to the left
+]{book}
+\fi
 
 %___________________________________________________________________
 % Language Setting
@@ -290,10 +313,15 @@
 
 
 \newcounter{example}[chapter]
+\renewcommand{\theexample}{\thechapter.\arabic{example}}
 \newcounter{exercise}[chapter]
+\renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
 \newcounter{application}[chapter]
+\renewcommand{\theapplication}{\thechapter.\arabic{application}}
 \newcounter{video}[chapter]
+\renewcommand{\thevideo}{\thechapter.\arabic{video}}
 \newcounter{summary}[chapter]
+\renewcommand{\thesummary}{\thechapter.\arabic{summary}}
 
 \newcommand{\tcblower}{\par\vspace{1ex}\hrule\vspace{1ex}\par}
 
@@ -302,7 +330,7 @@
     \par\noindent%
     \colorlet{shadecolor}{FacGreen!5}%
     \begin{shaded*}%
-    \noindent\textbf{\textcolor{FacGreen}{\faCalculator\quad \LangExample~\thechapter.\arabic{example}: #1}}%
+    \noindent\textbf{\textcolor{FacGreen}{\faCalculator\quad \LangExample~\theexample: #1}}%
     \par\smallskip%
 }{%
     \end{shaded*}\par%
@@ -312,7 +340,7 @@
     \par%
     \colorlet{shadecolor}{FacTeal!5}%
     \begin{shaded*}%
-    \noindent\textbf{\textcolor{FacTeal}{\faCogs\quad \LangApplication~\thechapter.\arabic{application}: #1}}%
+    \noindent\textbf{\textcolor{FacTeal}{\faCogs\quad \LangApplication~\theapplication: #1}}%
     \par\smallskip%
 }{%
     \end{shaded*}\par%
@@ -322,7 +350,7 @@
     \par%
     \colorlet{shadecolor}{FacDarkBlue!5}%
     \begin{shaded*}%
-    \noindent\textbf{\textcolor{FacDarkBlue}{\faPen\quad \LangExercise~\thechapter.\arabic{exercise}: #1}}%
+    \noindent\textbf{\textcolor{FacDarkBlue}{\faPen\quad \LangExercise~\theexercise: #1}}%
     \par\smallskip%
 }{%
     \end{shaded*}\par%
@@ -332,7 +360,7 @@
     \par%
     \colorlet{shadecolor}{FacPurple!5}%
     \begin{shaded*}%
-    \noindent\textbf{\textcolor{FacPurple}{\faVideo\quad \LangVideo~\thechapter.\arabic{video}: #1}}%
+    \noindent\textbf{\textcolor{FacPurple}{\faVideo\quad \LangVideo~\thevideo: #1}}%
     \par\smallskip%
 }{%
     \end{shaded*}\par%
@@ -342,7 +370,7 @@
     \par%
     \colorlet{shadecolor}{HkaRed!5}%
     \begin{shaded*}%
-    \noindent\textbf{\textcolor{HkaRed}{\faBook\quad \LangSummary~\thechapter.\arabic{summary}: #1}}%
+    \noindent\textbf{\textcolor{HkaRed}{\faBook\quad \LangSummary~\thesummary: #1}}%
     \par\smallskip%
 }{%
     \end{shaded*}\par%

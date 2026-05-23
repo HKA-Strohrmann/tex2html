@@ -30,7 +30,7 @@ Der Quantisierungsfehler ergibt sich aus der Differenz zwischen dem wertkontinui
 Die grundlegende Frage bei der zeitlichen Abtastung von Signalen ist, in welchen Zeitabständen \(T_{A}\) beziehungsweise mit welcher Abtastfrequenz \(f_{A}\) ein Signal erfasst werden muss. Die Bedeutung dieser Frage wird an einem Beispiel erläutert.
 
 \begin{example}{Abtastwerte}
-\label{beispiel-abtastwerte}
+\label{example:beispiel-abtastwerte}
 
 Bild \ref{fig:2.2} zeigt Abtastwerte eines Signals, das mit unterschiedlichen Abtastzeiten \(T_{A}\) abgetastet wird. Die Abtastwerte sind jeweils über Geradenabschnitte miteinander verbunden. Das Signal scheint davon abzuhängen, wie es abgetastet wird.
 
@@ -41,9 +41,9 @@ Bild \ref{fig:2.2} zeigt Abtastwerte eines Signals, das mit unterschiedlichen Ab
 \end{fixedfigure}
 
 Das zugrunde liegende Signal ist sinusförmig und wird mit der Funktion
-\begin{align}
-u(t) &= 1\ V  \sin(2  \pi  6  t) \label{eq:2.2}
-\end{align}
+\begin{align*}
+u(t) &= 1\ V  \sin(2  \pi  6  t) 
+\end{align*}
 beschrieben. Der Vergleich der Abtastwerte mit dem Signal \(u(t)\) in Bild \ref{fig:2.3} zeigt, dass alle in Bild \ref{fig:2.2} dargestellten abgetasteten Signale falsch oder zumindest irreführend sind.
 
 \begin{fixedfigure}
@@ -223,7 +223,7 @@ Im zweiten Fall \(X_{A2}(ω)\) wird das Abtasttheorem gerade eingehalten. Es zei
 Im Fall einer zu kleinen Abtastfrequenz \(X_{A3}(ω)\) überlagern sich die Spektren. Das Signal kann selbst mit einem idealen Tiefpass-Filter nicht fehlerfrei rekonstruiert werden. Es kommt zu Signalverzerrungen oder Aliasing.
 
 \begin{example}{Abtastrate einer Sound-Karte}
-\label{beispiel-abtastrate-einer-sound-karte}
+\label{example:beispiel-abtastrate-einer-sound-karte}
 
 Sound-Karten von Computern besitzen einen Analog-Digital-Wandler (ADC). Er wandelt das analoge Signal in ein digitales Signal um. Bei Sound-Karten ist zum einen die Auflösung des ADC wichtig, da sie die Quantisierungsfehler und damit das Rauschen bestimmt. Zweiter wesentlicher Faktor ist die Abtastrate.
 
@@ -233,9 +233,9 @@ Sound-Karten von Computern besitzen einen Analog-Digital-Wandler (ADC). Er wande
 \end{fixedfigure}
 
 Eine Abtastfrequenz \(f_{A} = \qty{44}{\kilo\hertz}\) ermöglicht die Aufnahme und Wiedergabe bis zu einer theoretischen Bandbreite von
-\begin{align}
-f_{MAX} &= \frac{f_{A}}{2} = 22\ kHz \label{eq:2.18}
-\end{align}
+\begin{align*}
+f_{MAX} &= \frac{f_{A}}{2} = 22\ kHz 
+\end{align*}
 Mit der Sound-Karte können damit Musiksignale mit einer maximalen Frequenz von \qty{22}{\kilo\hertz} verarbeitet werden.
 
 \end{example}
@@ -256,7 +256,7 @@ Das Signal \(x(t)\) hat ein Spektrum, dessen Information im Nutzbereich - \(ω_{
 In technischen Anwendungen wird deshalb praktisch immer ein Eingangstiefpass eingesetzt, das das Spektrum des Eingangssignals auf die notwendige Bandbreite begrenzt. Die Spezifikation von Filtern und ihr Entwurf werden im Teil A dieser Buchreihe diskutiert.
 
 \begin{example}{Abtastung Drucksensor im Steuergerät}
-\label{beispiel-abtastung-drucksensor-im-steuergeruxe4t}
+\label{example:beispiel-abtastung-drucksensor-im-steuergeruxe4t}
 
 Für die Regelung des Ladedrucks von Turboladern werden Drucksensoren eingesetzt.
 
@@ -266,17 +266,17 @@ Für die Regelung des Ladedrucks von Turboladern werden Drucksensoren eingesetzt
 \end{fixedfigure}
 
 Der Drucksensor, der den Ladedruck misst, besitzt laut Datenblatt eine Zeitkonstante \(T = \qty{0.1}{\milli\second}\). Das entspricht einer \qty{3}{\decibel}-Grenzfrequenz von
-\begin{align}
-\omega_{G} &= \frac{1}{T} = 10\ krad/s \label{eq:2.19}
-\end{align}
+\begin{align*}
+\omega_{G} &= \frac{1}{T} = 10\ krad/s 
+\end{align*}
 Das Motor-Steuergerät tastet das Signal mit einer Abtastzeit \(T_{A}\) von \qty{1}{\milli\second} ab. Es ergibt sich eine Abtastfrequenz von
-\begin{align}
-\omega_{A} &= \frac{2  \pi}{T_{A}} = 6.283\text{ k}rad/s \label{eq:2.20}
-\end{align}
+\begin{align*}
+\omega_{A} &= \frac{2  \pi}{T_{A}} = 6.283\text{ k}rad/s 
+\end{align*}
 Wird die Grenzfrequenz \(ω_{G}\) als maximale Frequenz \(ω_{MAX}\) angesehen, wird das Abtasttheorem nicht erfüllt. Außerdem sind dem Sensorsignal Störungen überlagert, die Spektralanteile weit oberhalb der Grenzfrequenz besitzen können. Zur Vermeidung von Aliasing-Effekten wird ein Anti-Aliasing-Filter eingesetzt. Es weist eine Zeitkonstante von \(T_{TP} = \qty{0.6}{\milli\second}\) auf, was einer \qty{3}{\decibel}-Grenzfrequenz von
-\begin{align}
-\omega_{TP} &= \frac{1}{0.6\ ms} = \text{1.67 }krad/s < 3.14\ krad/s = \frac{\omega_{A}}{2} \label{eq:2.21}
-\end{align}
+\begin{align*}
+\omega_{TP} &= \frac{1}{0.6\ ms} = \text{1.67 }krad/s < 3.14\ krad/s = \frac{\omega_{A}}{2} 
+\end{align*}
 entspricht. Durch den Einsatz des Tiefpass-Filters wird bei derselben Abtastrate das Abtasttheorem eingehalten. Das Filter hat eine Dämpfung von - \qty{20}{\decibel} pro Dekade. Die sich aus der endlichen Steilheit ergebenden Effekte werden in einer Übungsaufgabe diskutiert.
 
 \end{example}
@@ -415,12 +415,12 @@ T_{T} &= \frac{T_{W}}{2} + \frac{T_{A}}{2} \label{eq:2.31}
 Dazu kommen die Phase des Anti-Aliasing-Filters und des Tiefpass-Filters zur Signalrekonstruktion, sodass gegenüber dem Eingangssignal eine teilweise erhebliche Signalverzögerung entsteht. Die Zeitverzögerung sowie das Einschwingverhalten des rekonstruierten Signals werden an einem Beispiel verdeutlicht.
 
 \begin{example}{Signalrekonstruktion}
-\label{beispiel-signalrekonstruktion}
+\label{example:beispiel-signalrekonstruktion}
 
 Ein Signal der Form
-\begin{align}
-x(t) &= 5  e^{- 0.1  t^{2}}  \left( 1 + 0.5  \sin(t) \right)  \left( \sigma(t + 5) - \sigma(t - 5) \right) \label{eq:2.32}
-\end{align}
+\begin{align*}
+x(t) &= 5  e^{- 0.1  t^{2}}  \left( 1 + 0.5  \sin(t) \right)  \left( \sigma(t + 5) - \sigma(t - 5) \right) 
+\end{align*}
 wird mit einer Abtastzeit von \(T_{A} = 1\) abgetastet, das System besitzt eine Wandlungszeit von \(T_{W} = 1\). Es entstehen die in Tabelle \ref{tab:2.1} dargestellten Abtastwerte.
 
 \begin{center}
@@ -446,9 +446,9 @@ des abgetasteten Signals mit einem Tiefpass erster Ordnung}
 \end{fixedfigure}
 
 Das rekonstruierte Signal weist eine Verzögerung von
-\begin{align}
-T_{T} &= \frac{T_{W}}{2} + \frac{T_{A}}{2} = \frac{T_{A}}{2} + \frac{T_{A}}{2} = T_{A} \label{eq:2.33}
-\end{align}
+\begin{align*}
+T_{T} &= \frac{T_{W}}{2} + \frac{T_{A}}{2} = \frac{T_{A}}{2} + \frac{T_{A}}{2} = T_{A} 
+\end{align*}
 auf. Außerdem ist das Einschwingen des Tiefpasses nach jedem Quantisierungsschritt zu erkennen.
 
 \end{example}

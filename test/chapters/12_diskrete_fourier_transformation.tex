@@ -80,21 +80,21 @@ X_{n + N} &= \sum\limits_{k = 0}^{N - 1}{x[ k]  e^{- j  \left( 2  \pi  \frac{n +
 Die Diskrete-Fourier-Transformierte ist periodisch in N.
 
 \begin{example}{Rechteckfolge}
-\label{beispiel-rechteckfolge}
+\label{example:beispiel-rechteckfolge}
 
 Das Vorgehen bei der Diskreten-Fourier-Transformierten wird am Beispiel einer Rechteckfolge veranschaulicht. Sie besteht aus acht von null verschiedenen Abtastwerten und wird im Zeitraum von\\
 0 \ldots{} 15·\(T_{A}\) beobachtet. Außerhalb dieses Zeitraums ist die Folge null. Dadurch entspricht das gefensterte Signal \(x_{W}\){[}k{]} dem Signal \(x[k]\).
-\begin{align}
-x[ k] &= \sigma[ k - 2] - \sigma[ k - 7] \label{eq:10.13}
-\end{align}
+\begin{align*}
+x[ k] &= \sigma[ k - 2] - \sigma[ k - 7] 
+\end{align*}
 Die Frequenzen, an denen die Diskrete-Fourier-Transformierte berechnet wird, ergeben sich mit dem Index \(n = 0\) \ldots{} 15 zu
-\begin{align}
-\omega_{n} &= \frac{\Omega_{n}}{T_{A}} = \frac{2  \pi  n}{T_{A}  N} \label{eq:10.14}
-\end{align}
+\begin{align*}
+\omega_{n} &= \frac{\Omega_{n}}{T_{A}} = \frac{2  \pi  n}{T_{A}  N} 
+\end{align*}
 Die Diskrete-Fourier-Transformierte errechnet sich an diesen Stellen zu
-\begin{align}
-X_{n} &= \sum\limits_{k = 0}^{15}{x[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}} = \sum\limits_{k = 2}^{6}{1  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}}\ \label{eq:10.15}
-\end{align}
+\begin{align*}
+X_{n} &= \sum\limits_{k = 0}^{15}{x[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}} = \sum\limits_{k = 2}^{6}{1  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}}\ 
+\end{align*}
 Die Berechnung muss nicht unbedingt als analytische Rechnung ausgeführt werden, sie kann wegen der endlichen Summe auch numerisch erfolgen. Das Signal und der Betrag des Spektrums sind in Bild \ref{fig:10.1} dargestellt.
 
 \begin{fixedfigure}
@@ -104,9 +104,9 @@ Die Berechnung muss nicht unbedingt als analytische Rechnung ausgeführt werden,
 \end{fixedfigure}
 
 Die Diskrete-Fourier-Transformierte wird mit dem Spektrum \(X(Ω)\) verglichen, das sich aus der Fourier-Transformation der Folge ergibt.
-\begin{align}
-X(\Omega) &= \sum\limits_{k = 2}^{6}{1  e^{- j  k  \Omega}} = e^{- j  4  \Omega}  \frac{\sin\left( \frac{5  \Omega}{2} \right)}{\sin\left( \frac{\Omega}{2} \right)} \label{eq:10.16}
-\end{align}
+\begin{align*}
+X(\Omega) &= \sum\limits_{k = 2}^{6}{1  e^{- j  k  \Omega}} = e^{- j  4  \Omega}  \frac{\sin\left( \frac{5  \Omega}{2} \right)}{\sin\left( \frac{\Omega}{2} \right)} 
+\end{align*}
 Beide Spektren sind in Bild \ref{fig:10.2} dargestellt. Die periodische Fortsetzung der Diskreten-Fourier-Transformierten und die Fourier-Transformierte der Folge sind an den Punkten \(Ω_{n}\) identisch. Allerdings liefert die Diskrete-Fourier-Transformierte nicht den bislang interpretierten Frequenzbereich von - π \ldots{} π sondern das Spektrum im Bereich von 0 \ldots{} 2π. Wegen der Periodizität der Fourier-Transformierten können die Darstellungen jedoch ineinander überführt werden.
 
 \begin{fixedfigure}
@@ -144,12 +144,12 @@ Für eine gute spektrale Auflösung, also kleine Frequenzabstände Δω, muss di
 Die Auflösung kann demnach nur durch eine Verlängerung der Beobachtungszeit \(T_{B}\) verbessert werden.
 
 \begin{example}{Interpretation der Impulsantwort eines Systems 2. Ordnung mit komplexem Polpaar}
-\label{beispiel-interpretation-der-impulsantwort-eines-systems-2.-ordnung-mit-komplexem-polpaar}
+\label{example:beispiel-interpretation-der-impulsantwort-eines-systems-2.-ordnung-mit-komplexem-polpaar}
 
 An dem Beispiel der Impulsantwort eines Verzögerungsglieds zweiter Ordnung wird der praktische Nutzen der Diskreten-Fourier-Transformation verdeutlicht. Das Signal wird durch Abtastung der Impulsantwort eines PT2-Glieds mit der Übertragungsfunktion
-\begin{align}
-G(s) &= \frac{1}{1 + 2  d  T  s + T^{2}  s^{2}} \label{eq:10.20}
-\end{align}
+\begin{align*}
+G(s) &= \frac{1}{1 + 2  d  T  s + T^{2}  s^{2}} 
+\end{align*}
 mit \(T = \qty{31}{\milli\second}\) und \(d = 0.06\) erzeugt. Bild \ref{fig:10.3} zeigt die zeitkontinuierliche Impulsantwort.
 
 \begin{fixedfigure}
@@ -167,9 +167,9 @@ Die Impulsantwort wird für eine Dauer von \qty{2}{\second} mit \(T_{A} = \qty{1
 \end{fixedfigure}
 
 Die Signale werden mit einer Abtastzeit von \(T_{A} = \qty{0.001}{\second}\) abgetastet. Wegen der Symmetrie des Spektrums ist die maximal auswertbare Frequenz die halbe Abtastfrequenz
-\begin{align}
-\frac{\omega_{A}}{2} &= \frac{\pi}{T_{A}} = 3141\ rad/s \label{eq:10.21}
-\end{align}
+\begin{align*}
+\frac{\omega_{A}}{2} &= \frac{\pi}{T_{A}} = 3141\ rad/s 
+\end{align*}
 Bild \ref{fig:10.5} zeigt den Amplituden- und Phasengang in dem Spektralbereich von 0 \ldots{} \(ω_{A}\)/2 in logarithmischer Darstellung und zum Vergleich das Spektrum der zeitkontinuierlichen Funktion \(g(t)\). Dabei wird das über die DFT berechnete Spektrum mit der Abtastzeit \(T_{A}\) multipliziert, um die aus der Abtastung resultierende Skalierung zu kompensieren.
 
 \begin{fixedfigure}
@@ -416,25 +416,25 @@ Y_{n} &= \sum\limits_{k = 0}^{N - 1}{y[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  
 Statt eines Beweises wird die Dualität an einem Beispiel illustriert.
 
 \begin{example}{Dualität der Diskreten-Fourier-Transformation}
-\label{beispiel-dualituxe4t-der-diskreten-fourier-transformation}
+\label{example:beispiel-dualituxe4t-der-diskreten-fourier-transformation}
 
 Eine in N periodisch wiederholten Impulsfolge \(δ[k]\) kann als Summe dargestellt werden.
-\begin{align}
-x[ k] &= \sum\limits_{n = - \infty}^{\infty}{\delta[ k - n  N]}\ \label{eq:10.44}
-\end{align}
+\begin{align*}
+x[ k] &= \sum\limits_{n = - \infty}^{\infty}{\delta[ k - n  N]}\ 
+\end{align*}
 Die Diskrete-Fourier-Transformierte wird über einen Signalausschnitt der Länge N berechnet.
-\begin{align}
-X_{n} &= \sum\limits_{k = 0}^{N - 1}{x[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}}\  = \sum\limits_{k = 0}^{N - 1}{\delta[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}}\  = 1\ \label{eq:10.45}
-\end{align}
+\begin{align*}
+X_{n} &= \sum\limits_{k = 0}^{N - 1}{x[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}}\  = \sum\limits_{k = 0}^{N - 1}{\delta[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  k \right)}}\  = 1\ 
+\end{align*}
 Mit dieser Korrespondenz und der Dualität kann die Diskrete-Fourier-Transformierte der Folge\\
 \(y[k]\) = 1 berechnet werden. Es gilt der Zusammenhang
-\begin{align}
-y[ k] &= X_{k} = 1\ \label{eq:10.46}
-\end{align}
+\begin{align*}
+y[ k] &= X_{k} = 1\ 
+\end{align*}
 Mit der Dualität der Diskreten-Fourier-Transformierten ergibt sich
-\begin{align}
-Y_{n} &= N  x[ - k] = N  \sum\limits_{n = - \infty}^{\infty}{\delta\left[ - (k - n  N) \right]}\  = N  \sum\limits_{n = - \infty}^{\infty}{\delta[ - k + n  N]} \label{eq:10.47}
-\end{align}
+\begin{align*}
+Y_{n} &= N  x[ - k] = N  \sum\limits_{n = - \infty}^{\infty}{\delta\left[ - (k - n  N) \right]}\  = N  \sum\limits_{n = - \infty}^{\infty}{\delta[ - k + n  N]} 
+\end{align*}
 Bild \ref{fig:10.11} stellt die Diskreten-Fourier-Transformierten für die periodische Impuls- und die Einsfolge als Beispiel für Dualität dar. Es werden \(N = 16\) Abtastwerte ausgewertet.
 
 \begin{fixedfigure}
@@ -462,7 +462,7 @@ Sinngemäß entsprechen diese Regeln der Verschiebungsregel der Fourier-Transfor
 Bei den bislang diskutierten Transformationen entspricht die Faltung zweier Signale im Zeitbereich der Multiplikation der Fourier-Transformierten im Frequenzbereich. Diese Eigenschaft gilt auch für die Diskrete-Fourier-Transformation. Allerdings muss auch hier berücksichtigt werden, dass die Signale bei der Diskreten-Fourier-Transformation periodisch fortgesetzt werden. Die Auswirkung der periodischen Fortsetzung und Möglichkeiten zur Abhilfe werden an einem Beispiel diskutiert.
 
 \begin{example}{Periodische Faltung der Diskreten-Fourier-Transformation}
-\label{beispiel-periodische-faltung-der-diskreten-fourier-transformation}
+\label{example:beispiel-periodische-faltung-der-diskreten-fourier-transformation}
 
 Gegeben sind die beiden untenstehenden Folgen \(x_{1}\){[}k{]} und \(x_{2}\){[}k{]}.
 
@@ -472,9 +472,9 @@ Gegeben sind die beiden untenstehenden Folgen \(x_{1}\){[}k{]} und \(x_{2}\){[}k
 \end{fixedfigure}
 
 Die Faltung der beiden Signale
-\begin{align}
-y[ k] &= x_{1}[ k]*x_{2}[ k] \label{eq:10.49}
-\end{align}
+\begin{align*}
+y[ k] &= x_{1}[ k]*x_{2}[ k] 
+\end{align*}
 kann zum Beispiel als grafische Faltung ausgeführt werden. Für das Signal \(y[k]\) ergeben sich die in Tabelle \ref{tab:10.4} dargestellten Werte.
 
 \begin{center}
@@ -837,7 +837,7 @@ der Nebenmaxima \(a_{REL}\) \\
 Der Vergleich zeigt, dass es eine ideale Fensterfunktion nicht gibt. Das Spektrum des Rechteckfensters ist schmal, aber es weist vergleichsweise hohe Nebenmaxima auf. Demgegenüber haben die Spektren von Hann- und Hamming-Fenster relativ kleine Nebenmaxima, die Hauptmaxima sind aber breiter als bei dem Rechteckfenster. Für praktische Anwendungen bietet das Hamming-Fenster einen guten Kompromiss zwischen Breite des Hauptmaximums und relativer Amplitude des Nebenmaximums.
 
 \begin{example}{Vergleich verschiedener Fensterfunktionen bei der Diskreten-Fourier-Transformation}
-\label{beispiel-vergleich-verschiedener-fensterfunktionen-bei-der-diskreten-fourier-transformation}
+\label{example:beispiel-vergleich-verschiedener-fensterfunktionen-bei-der-diskreten-fourier-transformation}
 
 Als Beispiel wird eine harmonische Funktion mit der normierten Kreisfrequenz \(Ω_{0} = 2\)·π/7 abgetastet. Es werden \(N = 32\) Abtastwerte aufgenommen, wobei die Signale mit Rechteck-, Hann- und Hamming-Fenster multipliziert werden. Bild \ref{fig:10.26} zeigt die aufgenommenen Werte.
 

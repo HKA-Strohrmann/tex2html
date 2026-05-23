@@ -41,6 +41,27 @@ latexmk -C --outdir="_build" && latexmk -pdf -interaction=nonstopmode -synctex=1
 latexmk -C --outdir="_build" && latexmk -lualatex -pdf -interaction=nonstopmode -synctex=1 -file-line-error --shell-escape --outdir="_build" combined.tex
 ```
 
+## update version and make available
+
+on project root
+
+```
+uv version # current version
+uv version --bump minor # select (in order of magnitude) major, minor, patch
+
+uv tool install .
+```
+
+
+then, on a different file path you can use
+
+```
+uv tool upgrade tex2html
+tex2html "combined.tex" --output-file "html/combined.html"
+```
+
+
+
 ## To Do
 
 - Replace scrbook with book. KOMA is not supported by LaTeXML.

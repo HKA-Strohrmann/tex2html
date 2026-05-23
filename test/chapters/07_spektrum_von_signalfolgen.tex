@@ -17,30 +17,29 @@ x[ k] &= e^{j  \Omega_{0}  k} \label{eq:7.1}
 ein. Sie werden als Eigenfolgen des Systems bezeichnet. Bei einer Anregung mit diesen Folgen reagiert das System mit einer Folge gleicher normierter Frequenz \(Ω_{0}\) im Allgemeinen aber unterschiedlicher Amplitude und Phase.
 
 \begin{example}{Anregung eines Systems 1. Ordnung mit einer komplexen Exponentialfolge}
-\label{beispiel-anregung-eines-systems-1.-ordnung-mit-einer-komplexen-exponentialfolge}
+\label{example:beispiel-anregung-eines-systems-1.-ordnung-mit-einer-komplexen-exponentialfolge}
 
 Ein System mit der Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{z}{z - \lambda} \label{eq:7.2}
-\end{align}
+\begin{align*}
+G(z) &= \frac{z}{z - \lambda} 
+\end{align*}
 wird mit einem Signal
-\begin{align}
-x[ k] &= e^{j  \Omega_{0}  k}  \sigma[ k] \label{eq:7.3}
-\end{align}
+\begin{align*}
+x[ k] &= e^{j  \Omega_{0}  k}  \sigma[ k] 
+\end{align*}
 angeregt. Das Eingangssignal hat die z-Transformierte
-\begin{align}
-X(z) &= \frac{z}{z - e^{j  \Omega_{0}}} \label{eq:7.4}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z}{z - e^{j  \Omega_{0}}} 
+\end{align*}
 Die z-Transformierte des Ausgangssignals lautet nach den Darstellungen zur z-Transformation
-\begin{align}
-Y(z) &= G(z)  X(z) = \frac{z}{z - \lambda}  \frac{z}{z - e^{j  \Omega_{0}}} \label{eq:7.5}
-\end{align}
+\begin{align*}
+Y(z) &= G(z)  X(z) = \frac{z}{z - \lambda}  \frac{z}{z - e^{j  \Omega_{0}}} 
+\end{align*}
 Über Partialbruchzerlegung und Rücktransformation ergibt sich die Ausgangsfolge \(y[k]\) mit
-\begin{align}
+\begin{align*}
 {y\left[k\right]} &=  {\frac{\lambda ^{k+1} }{\lambda -e^{j \Omega _{0} } }  \sigma \left[k\right]+\frac{e^{j \Omega _{0} } }{e^{j \Omega _{0} } -\lambda }  e^{j \Omega _{0}  k}  \sigma \left[k\right]=\frac{\lambda ^{k+1} }{\lambda -e^{j \Omega _{0} } }  \sigma \left[k\right]+\left. G\left(z\right)\right|_{z=e^{j \Omega _{0} } }  e^{j \Omega _{0}  k}  \sigma \left[k\right]} \\
 {} &=  {\frac{\lambda ^{k+1} }{\lambda -e^{j \Omega _{0} } }  \sigma \left[k\right]+A\left(\Omega _{0} \right) e^{j \varphi \left(\Omega _{0} \right)}  e^{j \Omega _{0}  k}  \sigma \left[k\right]}
- \label{eq:7.6}
-\end{align}
+\end{align*}
 Das System reagiert auf die harmonische Anregung mit der Kreisfrequenz \(Ω_{0}\) abgesehen von Einschwingvorgängen mit einem harmonischen Signal derselben Kreisfrequenz. Für den Fall einer harmonischen Anregung müssen demnach nur das Verhältnis der Ein- und Ausgangsamplitude sowie die Phasenverschiebung bestimmt werden. Beide Größen sind von der normierten Kreisfrequenz \(Ω_{0}\) abhängig. Wie bei zeitkontinuierlichen Signalen wird das Verhältnis der Amplituden als Amplitudengang \(A(Ω)\) und die Phasenverschiebung als Phasengang ϕ(Ω) bezeichnet.
 
 \end{example}
@@ -269,22 +268,21 @@ Das Integral der komplexen Exponentialfunktion über eine volle Periode ist null
 Der Umgang mit der Rücktransformation wird an einem Beispiel vertieft.
 
 \begin{example}{Inverse Fourier-Transformation diskreter Folgen}
-\label{beispiel-inverse-fourier-transformation-diskreter-folgen}
+\label{example:beispiel-inverse-fourier-transformation-diskreter-folgen}
 
 Zu einem rechteckförmigen Spektrum der Form
-\begin{align}
-X(\Omega) &= \sigma\left( \Omega + \frac{\pi}{2} \right) - \sigma\left( \Omega - \frac{\pi}{2} \right) \label{eq:7.39}
-\end{align}
+\begin{align*}
+X(\Omega) &= \sigma\left( \Omega + \frac{\pi}{2} \right) - \sigma\left( \Omega - \frac{\pi}{2} \right) 
+\end{align*}
 soll die zugehörige Signalfolge \(x[k]\) berechnet werden. Dazu wird die Gleichung zur Rücktransformation verwendet. Für k ≠ 0 ergibt sich
-\begin{align}
+\begin{align*}
 {x\left[k\right]} &=  {\frac{1}{2 \pi }  \int _{-\pi }^{\pi }X\left(\Omega \right) e^{j \Omega  k} {\; }d\Omega  =\frac{1}{2 \pi }  \int _{-\pi /2}^{\pi /2}e^{j \Omega  k} {\; }d\Omega  =\frac{1}{2 \pi }  \left. \frac{1}{j k}  e^{j \Omega  k} \right|_{-\pi /2}^{\pi /2} } \\
 {} &=  {\frac{1}{2 \pi }  \frac{1}{j k}  2 j \sin \left(\frac{\pi }{2}  k\right)=\frac{1}{k \pi }  \sin \left(\frac{\pi }{2}  k\right)}
- \label{eq:7.40}
-\end{align}
+\end{align*}
 Für \(k = 0\) errechnet sich der Wert \(x[0]\) zu
-\begin{align}
-x[ 0] &= \frac{1}{2  \pi}  \int_{- \pi}^{\pi}{X\left( e^{j  \Omega} \right)  e^{j  \Omega  0}\ d\Omega} = \frac{1}{2  \pi}  \int_{- \pi/2}^{\pi/2}{1\ d\Omega} = \frac{\pi}{2  \pi} = \frac{1}{2} \label{eq:7.41}
-\end{align}
+\begin{align*}
+x[ 0] &= \frac{1}{2  \pi}  \int_{- \pi}^{\pi}{X\left( e^{j  \Omega} \right)  e^{j  \Omega  0}\ d\Omega} = \frac{1}{2  \pi}  \int_{- \pi/2}^{\pi/2}{1\ d\Omega} = \frac{\pi}{2  \pi} = \frac{1}{2} 
+\end{align*}
 Wie bei zeitkontinuierlichen Signalen kann aus dem Spektrum \(X(Ω)\) eine eindeutige Signalfolge \(x[k]\) berechnet werden. Bild \ref{fig:7.4} stellt die Signalfolge und ihre Fourier-Transformierte gegenüber.
 
 \begin{fixedfigure}
@@ -321,28 +319,26 @@ Diese Folge \(x[k]\) ist nach den Ausführungen in Abschnitt \ref{sec:3.1.3} kei
 Mit den Rechenregeln zur Fourier-Transformation von Signalfolgen lassen sich mit dieser Korrespondenz weitere Korrespondenzen herleiten.
 
 \begin{example}{Korrespondenz der Kosinusfolge}
-\label{beispiel-korrespondenz-der-kosinusfolge}
+\label{example:beispiel-korrespondenz-der-kosinusfolge}
 
 Bei der zeitkontinuierlichen Fourier-Transformation kann das Spektrum einer harmonischen Funktion über die Rücktransformation bestimmt werden. In diesem Beispiel wird diese Idee für Folgen aufgegriffen. Es wird die zu dem Spektrum
-\begin{align}
-X(\Omega) &= \sum\limits_{\nu = - \infty}^{\infty}{\delta\left( \Omega + \Omega_{0} + 2  \pi  \nu \right) + \delta\left( \Omega - \Omega_{0} + 2  \pi  \nu \right)} \label{eq:7.45}
-\end{align}
+\begin{align*}
+X(\Omega) &= \sum\limits_{\nu = - \infty}^{\infty}{\delta\left( \Omega + \Omega_{0} + 2  \pi  \nu \right) + \delta\left( \Omega - \Omega_{0} + 2  \pi  \nu \right)} 
+\end{align*}
 gehörige Signalfolge \(x[k]\) berechnet. Dabei liegt \(Ω_{0}\) in dem Bereich 0 \textless{} \(Ω_{0}\) \textless{} π. Für die Berechnung der entsprechenden Signalfolge \(x[k]\) wird die Gleichung zur Rücktransformation verwendet und der Ausdruck in zwei separate Integrale aufgeteilt.
-\begin{align}
+\begin{align*}
 {x\left[k\right]} &=  {\frac{1}{2 \pi }  \int _{-\pi }^{\pi }X\left(\Omega \right) e^{j \Omega  k} {\; }d\Omega  =\frac{1}{2 \pi }  \int _{-\pi }^{\pi }\left(\delta \left(\Omega +\Omega _{0} \right)+\delta \left(\Omega -\Omega _{0} \right)\right) e^{j \Omega  k} {\; }d\Omega  } \\
 {} &=  {\frac{1}{2 \pi }  \int _{-\pi }^{\pi }\delta \left(\Omega +\Omega _{0} \right) e^{j \Omega  k} {\; }d\Omega  +\frac{1}{2 \pi }  \int _{-\pi }^{\pi }\delta \left(\Omega -\Omega _{0} \right) e^{j \Omega  k} {\; }d\Omega  }
- \label{eq:7.46}
-\end{align}
+\end{align*}
 Jedes Integral kann mit der Ausblendeigenschaft der Impulsfunktion gelöst werden.
-\begin{align}
+\begin{align*}
 {x\left[k\right]} &=  {\frac{1}{2 \pi }  e^{-j \Omega _{0}  k}  \int _{-\pi }^{\pi }\delta \left(\Omega +\Omega _{0} \right){\; }d\Omega  +\frac{1}{2 \pi }  e^{j \Omega _{0}  k}  \int _{-\pi }^{\pi }\delta \left(\Omega -\Omega _{0} \right){\; }d\Omega  } \\
 {} &=  {\frac{1}{2 \pi }  \left(e^{j \Omega _{0}  k} +e^{-j \Omega _{0}  k} \right)=\frac{2}{2 \pi }  \cos \left(\Omega _{0}  k\right)=\frac{1}{\pi }  \cos \left(k \Omega _{0} \right)}
- \label{eq:7.47}
-\end{align}
+\end{align*}
 Damit ergibt sich die Korrespondenz zur Kosinusfolge zu
-\begin{align}
-F\left\{ \cos\left( k  \Omega_{0} \right) \right\} &= \pi  \sum\limits_{\nu = - \infty}^{\infty}{\delta\left( \Omega + \Omega_{0} + 2  \pi  \nu \right) + \delta\left( \Omega - \Omega_{0} + 2  \pi  \nu \right)} \label{eq:7.48}
-\end{align}
+\begin{align*}
+F\left\{ \cos\left( k  \Omega_{0} \right) \right\} &= \pi  \sum\limits_{\nu = - \infty}^{\infty}{\delta\left( \Omega + \Omega_{0} + 2  \pi  \nu \right) + \delta\left( \Omega - \Omega_{0} + 2  \pi  \nu \right)} 
+\end{align*}
 Bild \ref{fig:7.6} stellt eine Kosinusfolge mit \(Ω_{0} = π\)/3 und ihre Fourier-Transformierten dar.
 
 \begin{fixedfigure}
@@ -406,20 +402,20 @@ ist ungerade \\
 Die hier dargestellten Symmetrieregeln für reelle Signalfolgen werden an einem Beispiel verdeutlicht.
 
 \begin{example}{Fourier-Transformierten der kausalen Exponentialfolge}
-\label{beispiel-fourier-transformierten-der-kausalen-exponentialfolge}
+\label{example:beispiel-fourier-transformierten-der-kausalen-exponentialfolge}
 
 Es wird die Fourier-Transformierte der kausalen Exponentialfolge
-\begin{align}
-x[ k] &= \lambda^{k}  \sigma[ k] \label{eq:7.49}
-\end{align}
+\begin{align*}
+x[ k] &= \lambda^{k}  \sigma[ k] 
+\end{align*}
 diskutiert. Das Spektrum der kausalen Exponentialfolge berechnet sich zu
-\begin{align}
-X(\Omega) &= \frac{1}{1 - \lambda  e^{- j  \Omega}} = \frac{1}{1 - \lambda  \cos(\Omega) - j  \lambda  \sin(\Omega)} \label{eq:7.50}
-\end{align}
+\begin{align*}
+X(\Omega) &= \frac{1}{1 - \lambda  e^{- j  \Omega}} = \frac{1}{1 - \lambda  \cos(\Omega) - j  \lambda  \sin(\Omega)} 
+\end{align*}
 Die konjugiert symmetrische Fourier-Transformierte ergibt sich zu
-\begin{align}
-X^{*}( - \Omega) &= \frac{1}{1 - \lambda  \cos( - \Omega) + j  \lambda  \sin( - \Omega)} = \frac{1}{1 - \lambda  \cos(\Omega) - j  \lambda  \sin(\Omega)} \label{eq:7.51}
-\end{align}
+\begin{align*}
+X^{*}( - \Omega) &= \frac{1}{1 - \lambda  \cos( - \Omega) + j  \lambda  \sin( - \Omega)} = \frac{1}{1 - \lambda  \cos(\Omega) - j  \lambda  \sin(\Omega)} 
+\end{align*}
 Beide Transformierten stimmen erwartungsgemäß überein. Die Spektren der beiden Folgen sind in Bild \ref{fig:7.7} sowohl als Real- und Imaginärteil, als auch als Betrag und Phase dargestellt.
 
 \begin{fixedfigure}
@@ -450,12 +446,12 @@ Im Fall absolut summierbarer Reihen besitzen beide Folgen \(x_{1}\){[}k{]} und \
 Damit ist die Linearitätseigenschaft für Signalfolgen, die eine Fourier-Transformierte besitzen, bewiesen.
 
 \begin{example}{Linearität}
-\label{beispiel-linearituxe4t-1}
+\label{example:beispiel-linearituxe4t-1}
 
 Mit Hilfe der Linearität kann zum Beispiel die Fourier-Transformierte der Summe zweier kausaler Exponentialfolgen errechnet werden.
-\begin{align}
-F\left\{ 3  \frac{1}{2^{k}}  \sigma[ k] - 2  \frac{1}{5^{k}}  \sigma[ k] \right\} &= \frac{3}{1 - \frac{1}{2}  e^{- j  \Omega}} - \frac{2}{1 - \frac{1}{5}  e^{- j  \Omega}} = \frac{6}{2 - 1  e^{- j  \Omega}} - \frac{10}{5 - 1  e^{- j  \Omega}} \label{eq:7.54}
-\end{align}
+\begin{align*}
+F\left\{ 3  \frac{1}{2^{k}}  \sigma[ k] - 2  \frac{1}{5^{k}}  \sigma[ k] \right\} &= \frac{3}{1 - \frac{1}{2}  e^{- j  \Omega}} - \frac{2}{1 - \frac{1}{5}  e^{- j  \Omega}} = \frac{6}{2 - 1  e^{- j  \Omega}} - \frac{10}{5 - 1  e^{- j  \Omega}} 
+\end{align*}
 \end{example}
 
 \subsection{Verschiebung im Zeitbereich}\label{sec:verschiebung-im-zeitbereich}
@@ -472,19 +468,18 @@ Da die Summation von - ∞ bis + ∞ durchgeführt wird, kann der Index k um \(k
 Das Spektrum ändert nur seine Phase, der Betrag bleibt unverändert.
 
 \begin{example}{Verschiebung im Zeitbereich kombiniert mit Linearität}
-\label{beispiel-verschiebung-im-zeitbereich-kombiniert-mit-linearituxe4t}
+\label{example:beispiel-verschiebung-im-zeitbereich-kombiniert-mit-linearituxe4t}
 
 Als Beispiel wird die Fourier-Transformierte der in Bild \ref{fig:7.8} dargestellten Signalfolge berechnet. Sie berechnet sich aus der Differenz zweier Rechteckfolgen der Länge \(K = 5\), von denen die erste um\\
 \(k_{1} = 1\) nach rechts und die zweite Rechteckfolge um \(k_{2}\) = - 5 nach links verschoben ist.
-\begin{align}
-x[ k] &= \sigma[ k - 1] - \sigma[ k - 6] - \left( \sigma[ k + 5] - \sigma[ k] \right) \label{eq:7.57}
-\end{align}
+\begin{align*}
+x[ k] &= \sigma[ k - 1] - \sigma[ k - 6] - \left( \sigma[ k + 5] - \sigma[ k] \right) 
+\end{align*}
 Entsprechend ergibt sich die Fourier-Transformierte zu
-\begin{align}
+\begin{align*}
 {X\left(\Omega \right)} &=  {e^{-j \frac{4 \Omega }{2} }  \frac{\sin \left(\frac{5 \Omega }{2} \right)}{\sin \left(\frac{\Omega }{2} \right)}  e^{-j \Omega } -e^{-j \frac{4 \Omega }{2} }  \frac{\sin \left(\frac{5 \Omega }{2} \right)}{\sin \left(\frac{\Omega }{2} \right)}  e^{-j \left(-5\right) \Omega } } \\
 {} &=  {\frac{\sin \left(\frac{5 \Omega }{2} \right)}{\sin \left(\frac{\Omega }{2} \right)}  \left(e^{-j 3 \Omega } -e^{j 3 \Omega } \right)}
- \label{eq:7.58}
-\end{align}
+\end{align*}
 Der Betrag des Spektrums ist in Bild \ref{fig:7.8} dargestellt.
 
 \begin{fixedfigure}
@@ -505,16 +500,16 @@ Eine Verschiebung kann nicht nur im Zeitbereich, sondern auch im Frequenzbereich
 }{	 = \sum\limits_{k = - \infty}^{\infty}{x[ k]  e^{j  k  \Omega_{0}}  e^{- j  k  \Omega}} = F\left\{ x[ k]  e^{j  k  \Omega_{0}} \right\}} \label{eq:7.59}
 \end{align}
 \begin{example}{Frequenzverschiebung}
-\label{beispiel-frequenzverschiebung}
+\label{example:beispiel-frequenzverschiebung}
 
 Typisches Beispiel für eine Frequenzverschiebung ist eine Modulation. Dabei wird eine Folge \(x[k]\) mit einer harmonischen Folge multipliziert.
-\begin{align}
-y[ k] &= x[ k]  \cos\left( \Omega_{0}  k \right) = x[ k]  \frac{1}{2}  \left( e^{j  \Omega_{0}  k} + e^{- j  \Omega_{0}  k} \right) \label{eq:7.60}
-\end{align}
+\begin{align*}
+y[ k] &= x[ k]  \cos\left( \Omega_{0}  k \right) = x[ k]  \frac{1}{2}  \left( e^{j  \Omega_{0}  k} + e^{- j  \Omega_{0}  k} \right) 
+\end{align*}
 Durch die Multiplikation verschiebt sich das ursprüngliche Spektrum \(X(Ω)\) um \(Ω_{0}\) nach links und rechts.
-\begin{align}
-Y(\Omega) &= \frac{1}{2}  \left( X\left( \Omega + \Omega_{0} \right) + X\left( \Omega - \Omega_{0} \right) \right) \label{eq:7.61}
-\end{align}
+\begin{align*}
+Y(\Omega) &= \frac{1}{2}  \left( X\left( \Omega + \Omega_{0} \right) + X\left( \Omega - \Omega_{0} \right) \right) 
+\end{align*}
 Das Spektrum wird damit aus dem ursprünglichen Spektralbereich in einen Spektralbereich um ± \(Ω_{0}\) verschoben. Bild \ref{fig:7.9} stellt die Auswirkung einer Modulation auf den Spektralbereich grafisch dar.
 
 \begin{fixedfigure}
@@ -532,24 +527,24 @@ Ist das Spektrum \(X(Ω)\) einer Signalfolge \(x[k]\) bekannt, ergibt sich das S
 F\left\{ x[ - k] \right\} &= \sum\limits_{k = - \infty}^{\infty}{x[ - k]  e^{- j  \Omega  k}} = \sum\limits_{n = - \infty}^{\infty}{x[ n]  e^{j  \Omega  n}} = X( - \Omega) \label{eq:7.62}
 \end{align}
 \begin{example}{Zeitliche Spiegelung}
-\label{beispiel-zeitliche-spiegelung}
+\label{example:beispiel-zeitliche-spiegelung}
 
 Als Anwendungen der zeitlichen Spiegelung wird das Spektrum der Folge
-\begin{align}
-x[ k] &= \lambda^{|k|} \label{eq:7.63}
-\end{align}
+\begin{align*}
+x[ k] &= \lambda^{|k|} 
+\end{align*}
 für \textbar λ\textbar{} \textless{} 1 berechnet werden. Das Spektrum der einseitigen Exponentialfolge wird über die Definitionsgleichung berechnet.
-\begin{align}
-F\left\{ \lambda^{k}  \sigma[ k] \right\} &= \sum\limits_{k = 0}^{\infty}\left( \lambda  e^{- j  \Omega} \right)^{k} = \frac{1}{1 - \lambda  e^{- j  \Omega}}\ \label{eq:7.64}
-\end{align}
+\begin{align*}
+F\left\{ \lambda^{k}  \sigma[ k] \right\} &= \sum\limits_{k = 0}^{\infty}\left( \lambda  e^{- j  \Omega} \right)^{k} = \frac{1}{1 - \lambda  e^{- j  \Omega}}\ 
+\end{align*}
 Diese Folge wird achsensymmetrisch ergänzt. Das Signal ergibt sich durch die Summe einer kausalen Exponentialfunktion, der gespiegelten Funktion und einer Impulsfolge, die den Wert an der Stelle \(k = 0\) korrigiert.
-\begin{align}
-x[ k] &= \lambda^{k}  \sigma[ k] + \lambda^{- k}  \sigma[ - k] - \delta[ k] \label{eq:7.65}
-\end{align}
+\begin{align*}
+x[ k] &= \lambda^{k}  \sigma[ k] + \lambda^{- k}  \sigma[ - k] - \delta[ k] 
+\end{align*}
 Das Spektrum errechnet sich mit der Regel der zeitlichen Spiegelung und der Linearität zu
-\begin{align}
-X(\Omega) &= \frac{1}{1 - \lambda  e^{- j  \Omega}} + \frac{1}{1 - \lambda  e^{j  \Omega}} - 1 \label{eq:7.66}
-\end{align}
+\begin{align*}
+X(\Omega) &= \frac{1}{1 - \lambda  e^{- j  \Omega}} + \frac{1}{1 - \lambda  e^{j  \Omega}} - 1 
+\end{align*}
 Die Folge \(x[k]\) und der Betrag des Spektrums sind in Bild \ref{fig:7.10} dargestellt.
 
 \begin{fixedfigure}
@@ -586,16 +581,16 @@ Der Beweis ergibt sich aus einer Umformung der Definitionsgleichung.
 \frac{dX}{d\Omega} &= \frac{d}{d\Omega}\ \sum\limits_{k = - \infty}^{\infty}{x[ k]  e^{- j  \Omega  k}} = \sum\limits_{k = - \infty}^{\infty}{- j  k  x[ k]  e^{- j  \Omega  k}} = - j  \sum\limits_{k = - \infty}^{\infty}{k  x[ k]  e^{- j  \Omega  k}} \label{eq:7.70}
 \end{align}
 \begin{example}{Differentiation im Frequenzbereich}
-\label{beispiel-differentiation-im-frequenzbereich}
+\label{example:beispiel-differentiation-im-frequenzbereich}
 
 Die Rechenregel zur Differentiation im Frequenzbereich kann dazu verwendet werden, das Spektrum der Folge
-\begin{align}
-x[ k] &= k  \left( \sigma[ k + K] - \sigma\left[ k - (K + 1) \right] \right) = k  y[ k] \label{eq:7.71}
-\end{align}
+\begin{align*}
+x[ k] &= k  \left( \sigma[ k + K] - \sigma\left[ k - (K + 1) \right] \right) = k  y[ k] 
+\end{align*}
 zu berechnen. Mit der Regel für die Differentiation im Frequenzbereich und dem Spektrum der Rechteckfolge \(y[k]\) ergibt sich
-\begin{align}
-X(\Omega) &= - j  \frac{dY}{d\Omega} = - j  \frac{d}{d\Omega}\frac{\sin(K  \Omega)}{\sin\left( \frac{\Omega}{2} \right)} = - j  \frac{K  \cos(K  \Omega)  \sin\left( \frac{\Omega}{2} \right) - \frac{1}{2}  \cos\left( \frac{\Omega}{2} \right)  \sin(K  \Omega)}{\sin^{2}\left( \frac{\Omega}{2} \right)} \label{eq:7.72}
-\end{align}
+\begin{align*}
+X(\Omega) &= - j  \frac{dY}{d\Omega} = - j  \frac{d}{d\Omega}\frac{\sin(K  \Omega)}{\sin\left( \frac{\Omega}{2} \right)} = - j  \frac{K  \cos(K  \Omega)  \sin\left( \frac{\Omega}{2} \right) - \frac{1}{2}  \cos\left( \frac{\Omega}{2} \right)  \sin(K  \Omega)}{\sin^{2}\left( \frac{\Omega}{2} \right)} 
+\end{align*}
 \end{example}
 
 \subsection{Faltung im Zeitbereich}\label{sec:faltung-im-zeitbereich}
@@ -651,27 +646,26 @@ führt unter Anwendung der Verschiebungsregel im Frequenzbereich zu
 Die Multiplikation zweier Folgen im Zeitbereich führt demnach zu einer Faltung der entsprechenden Spektren im Frequenzbereich.
 
 \begin{example}{Fensterung als Multiplikation im Zeitbereich}
-\label{beispiel-fensterung-als-multiplikation-im-zeitbereich}
+\label{example:beispiel-fensterung-als-multiplikation-im-zeitbereich}
 
 Als Beispiel wird eine Kosinusfolge betrachtet, von der ein Ausschnitt über zwei Periodendauern vorliegt. Der Signalausschnitt ist in Bild \ref{fig:7.11} dargestellt und kann mathematisch beschrieben werden als
-\begin{align}
+\begin{align*}
 {y[ k]\  = \ w[ k]  x[ k] = \left( \sigma[ k + 10] - \sigma[ k - 11] \right)  \cos\left( \frac{2  \pi}{10}  k \right)
-}{= \left( \sigma[ k + 10] - \sigma[ k - 11] \right)  \cos\left( \frac{\pi}{5}  k \right)} \label{eq:7.82}
-\end{align}
+}{= \left( \sigma[ k + 10] - \sigma[ k - 11] \right)  \cos\left( \frac{\pi}{5}  k \right)} 
+\end{align*}
 Das Spektrum der Folge \(w[k]\) ergibt sich aus der berechneten Rechteckfolge und der Verschiebungsregel zu
-\begin{align}
-W(\Omega) &= \frac{\sin\left( \frac{21  \Omega}{2} \right)}{\sin\left( \frac{\Omega}{2} \right)} \label{eq:7.83}
-\end{align}
+\begin{align*}
+W(\Omega) &= \frac{\sin\left( \frac{21  \Omega}{2} \right)}{\sin\left( \frac{\Omega}{2} \right)} 
+\end{align*}
 Das Spektrum der Kosinusfolge \(x[k]\) wird berechnet zu
-\begin{align}
-X(\Omega) &= \pi  \left( \delta\left( \Omega + \frac{\pi}{5} \right) + \delta\left( \Omega - \frac{\pi}{5} \right) \right) \label{eq:7.84}
-\end{align}
+\begin{align*}
+X(\Omega) &= \pi  \left( \delta\left( \Omega + \frac{\pi}{5} \right) + \delta\left( \Omega - \frac{\pi}{5} \right) \right) 
+\end{align*}
 Die Multiplikation im Zeitbereich führt zu Faltung im Frequenzbereich. Die Faltung der beiden Spektren führt zu einer Verschiebung von \(W(Ω)\) an die Stellen der Impulse. Damit ergibt sich für das Spektrum \(Y(Ω)\)
-\begin{align}
+\begin{align*}
 {Y\left(\Omega \right)} &=  {\frac{1}{2 \pi }  \pi  \left(\frac{\sin \left(\frac{21 \left(\Omega +\frac{\pi }{5} \right)}{2} \right)}{\sin \left(\frac{\left(\Omega +\frac{\pi }{5} \right)}{2} \right)} +\frac{\sin \left(\frac{21 \left(\Omega -\frac{\pi }{5} \right)}{2} \right)}{\sin \left(\frac{\left(\Omega -\frac{\pi }{5} \right)}{2} \right)} \right)} \\
 {} &=  {\frac{1}{2}  \left(\frac{\sin \left(21 \left(\frac{\Omega }{2} +\frac{\pi }{10} \right)\right)}{\sin \left(\frac{\Omega }{2} +\frac{\pi }{10} \right)} +\frac{\sin \left(21 \left(\frac{\Omega }{2} -\frac{\pi }{10} \right)\right)}{\sin \left(\frac{\Omega }{2} -\frac{\pi }{10} \right)} \right)}
- \label{eq:7.85}
-\end{align}
+\end{align*}
 Signal und Betrag des Spektrums sind in Bild \ref{fig:7.11} dargestellt.
 
 \begin{fixedfigure}
@@ -737,44 +731,44 @@ Zur besseren Übersicht stellt Tabelle \ref{tab:7.4} die wesentlichen Eigenschaf
 Mit Hilfe der zusammengestellten Rechenregeln lassen sich weitere Korrespondenzen bestimmen.
 
 \begin{example}{Fourier-Transformierte der Sprungfolge}
-\label{beispiel-fourier-transformierte-der-sprungfolge}
+\label{example:beispiel-fourier-transformierte-der-sprungfolge}
 
 Die Rechenregeln der zeitdiskreten Fourier-Transformation werden angewendet, um die Korrespondenz der Sprungfolge zu bestimmen. Die Sprungfolge kann in zwei Anteile zerlegt werden, in die konstante Folge
-\begin{align}
-x_{1}[ k] &= 0.5 \label{eq:7.91}
-\end{align}
+\begin{align*}
+x_{1}[ k] &= 0.5 
+\end{align*}
 und die Folge
-\begin{align}
+\begin{align*}
 x_{2}[ k] = \left\{ \begin{aligned}
  & - 0.5	für\ k < 0 \\
  & + 0.5	für\ k \geq 0
-\end{aligned} \right.\ \label{eq:7.92}
-\end{align}
+\end{aligned} \right.\ 
+\end{align*}
 \begin{fixedfigure}
   \includegraphics[alt={Zerlegung der Sprungfolge in eine konstante Folge und eine Signum-Folge}]{new media/7_12_zerlegung_der_sprungfolge_in_ei.png}
   \captionof{figure}{Zerlegung der Sprungfolge in eine konstante Folge und eine Signum-Folge}
 \end{fixedfigure}
 
 Die Summe der beiden Folgen ergibt die Sprungfolge. Für den Teil \(x_{1}\){[}k{]} kann die Fourier-Transformierte mit der Korrespondenz der Einsfolge und der Linearität angegeben werden zu
-\begin{align}
-X_{1}(\Omega) &= \pi  \sum\limits_{\nu = - \infty}^{\infty}{\delta(\Omega - 2  \pi  \nu)} \label{eq:7.93}
-\end{align}
+\begin{align*}
+X_{1}(\Omega) &= \pi  \sum\limits_{\nu = - \infty}^{\infty}{\delta(\Omega - 2  \pi  \nu)} 
+\end{align*}
 Zur Ermittlung der Fourier-Transformierten des zweiten Teils \(x_{2}\){[}k{]} wird die Impulsfolge verwendet. Sie kann dargestellt werden als
-\begin{align}
-\delta[ k] &= x_{2}[ k] - x_{2}[ k - 1] \label{eq:7.94}
-\end{align}
+\begin{align*}
+\delta[ k] &= x_{2}[ k] - x_{2}[ k - 1] 
+\end{align*}
 Die Fourier-Transformierte der Impulsfolge ist 1 und eine Verschiebung der Funktion um \(k_{0} = 1\) führt zur Multiplikation der Fourier-Transformierten mit \(e^{-jΩ}\). Damit ergibt sich für die Fourier-Transformierte
-\begin{align}
-1 &= \left( 1 - e^{- j  \Omega} \right)  \sum\limits_{k = - \infty}^{\infty}{x_{2}[ k]  e^{- j  \Omega  k}} = \left( 1 - e^{- j  \Omega} \right)  X_{2}\left( e^{j  \Omega} \right) \label{eq:7.95}
-\end{align}
+\begin{align*}
+1 &= \left( 1 - e^{- j  \Omega} \right)  \sum\limits_{k = - \infty}^{\infty}{x_{2}[ k]  e^{- j  \Omega  k}} = \left( 1 - e^{- j  \Omega} \right)  X_{2}\left( e^{j  \Omega} \right) 
+\end{align*}
 und durch Auflösen
-\begin{align}
-X_{2}(\Omega) &= \frac{1}{1 - e^{- j  \Omega}} \label{eq:7.96}
-\end{align}
+\begin{align*}
+X_{2}(\Omega) &= \frac{1}{1 - e^{- j  \Omega}} 
+\end{align*}
 Durch Superposition von Gleichung \eqref{eq:7.93} und Gleichung \eqref{eq:7.96} ergibt sich die Fourier-Transformierte des diskreten Einheitssprungs zu
-\begin{align}
-F\left( \sigma[ k] \right) &= \frac{1}{1 - e^{- j  \Omega}} + \pi  \sum\limits_{\nu = - \infty}^{\infty}{\delta(\Omega - 2  \pi  \nu)} \label{eq:7.97}
-\end{align}
+\begin{align*}
+F\left( \sigma[ k] \right) &= \frac{1}{1 - e^{- j  \Omega}} + \pi  \sum\limits_{\nu = - \infty}^{\infty}{\delta(\Omega - 2  \pi  \nu)} 
+\end{align*}
 Bild \ref{fig:7.13} stellt den diskreten Einheitssprung und den Betrag seiner Fourier-Transformierten gegenüber.
 
 \begin{fixedfigure}
@@ -831,20 +825,20 @@ des abgetasteten Signals \(x_{A}(t)\) und der Fourier-Transformierten der entspr
 Das zeitkontinuierliche Signal \(x(t)\) besitzt ein Spektrum \(X(ω)\). Um das Abtasttheorem zu erfüllen, wird es mit einem Tiefpass bandbegrenzt. Es entsteht das Signal \(x_{TP}(t)\) mit dem Spektrum \(X_{TP}(ω)\). Wegen der Abtastung ist das Spektrum \(X_{A}(ω)\) periodisch in \(ω_{A}\) und mit dem Kehrwert der Abtastzeit 1/\(T_{A}\) skaliert. Die Folge \(x_{D}\){[}k{]} der Abtastwerte besitzt das Spektrum \(X_{D}(Ω)\), das für Ω = ωT\textsubscript{A} dem Spektrum \(X_{A}(ω)\) entspricht. Das Basisband von dem Spektrum \(X_{A}(ω)\) entspricht dem Spektrum \(X_{TP}(ω)\) und, wenn das Signal \(x(t)\) bandbegrenzt ist, auch dem Spektrum \(X(ω)\). Dieser Zusammenhang der verschiedenen Signale und ihrer Spektren wird an einem Beispiel illustriert.
 
 \begin{example}{Zusammenhang zwischen Spektren zeitkontinuierlicher Signale und Signalfolgen}
-\label{beispiel-zusammenhang-zwischen-spektren-zeitkontinuierlicher-signale-und-signalfolgen}
+\label{example:beispiel-zusammenhang-zwischen-spektren-zeitkontinuierlicher-signale-und-signalfolgen}
 
 Gegeben ist ein kausales, zeitkontinuierliches Signal
-\begin{align}
-x(t) &= \left( e^{- t} - e^{- 2  t} \right)  \sigma(t) \label{eq:7.98}
-\end{align}
+\begin{align*}
+x(t) &= \left( e^{- t} - e^{- 2  t} \right)  \sigma(t) 
+\end{align*}
 Das Signal besitzt die Laplace-Transformierte
-\begin{align}
-X(s) &= \frac{1}{s + 1} - \frac{1}{s + 2} = \frac{1}{s + 1}  \frac{1}{s + 2} \label{eq:7.99}
-\end{align}
+\begin{align*}
+X(s) &= \frac{1}{s + 1} - \frac{1}{s + 2} = \frac{1}{s + 1}  \frac{1}{s + 2} 
+\end{align*}
 Da die Laplace-Transformierte nur Pole in der negativen Halbebene besitzt, ergibt sich das Spektrum \(X(ω)\) zu
-\begin{align}
-X(\omega) &= \frac{1}{j  \omega + 1}  \frac{1}{j  \omega + 2} = \frac{1}{2 - \omega^{2} + 3  j  \omega} \label{eq:7.100}
-\end{align}
+\begin{align*}
+X(\omega) &= \frac{1}{j  \omega + 1}  \frac{1}{j  \omega + 2} = \frac{1}{2 - \omega^{2} + 3  j  \omega} 
+\end{align*}
 Das zeitkontinuierliche Signal \(x(t)\) sowie der Betrag des zugehörigen Spektrums \textbar \(X(ω)\)\textbar{} sind in Bild \ref{fig:7.15} dargestellt.
 
 \begin{fixedfigure}
@@ -862,19 +856,18 @@ Das Signal wird mit einer Abtastzeit \(T_{A} = π\)/25 abgetastet. Dadurch wird 
 \end{fixedfigure}
 
 Das Spektrum der zugehörigen Signalfolge
-\begin{align}
-x_{D}[ k] &= \left( e^{- k  T_{A}} - e^{- 2  k  T_{A}} \right)  \sigma[ k] \label{eq:7.101}
-\end{align}
+\begin{align*}
+x_{D}[ k] &= \left( e^{- k  T_{A}} - e^{- 2  k  T_{A}} \right)  \sigma[ k] 
+\end{align*}
 ist kontinuierlich und errechnet sich über die Definitionsgleichung der Fourier-Transformation für Folgen zu
-\begin{align}
-X_{D}(\Omega) &= \sum\limits_{k = - \infty}^{\infty}{x_{D}[ k]  e^{- j  \Omega  k}} = \sum\limits_{k = - \infty}^{\infty}{\left( e^{- k  T_{A}} - e^{- 2  k  T_{A}} \right)  \sigma[ k]  e^{- j  \Omega  k}} \label{eq:7.102}
-\end{align}
+\begin{align*}
+X_{D}(\Omega) &= \sum\limits_{k = - \infty}^{\infty}{x_{D}[ k]  e^{- j  \Omega  k}} = \sum\limits_{k = - \infty}^{\infty}{\left( e^{- k  T_{A}} - e^{- 2  k  T_{A}} \right)  \sigma[ k]  e^{- j  \Omega  k}} 
+\end{align*}
 Da es sich um eine kausale Folge handelt, kann die Summe auf zwei geometrische Reihen zurückgeführt und berechnet werden.
-\begin{align}
+\begin{align*}
 {X_{D} \left(\Omega \right)} &=  {\sum\limits _{k=0}^{\infty }\left(e^{-k T_{A} } -e^{-2 k T_{A} } \right) e^{-j \Omega  k}  =\sum\limits _{k=0}^{\infty }e^{-k T_{A} }  e^{-j \Omega  k}  -\sum\limits _{k=0}^{\infty }e^{-2 k T_{A} }  e^{-j \Omega  k}  } \\
 {} &=  {\sum\limits _{k=0}^{\infty }\left(e^{-T_{A} -j \Omega } \right)^{k}  -\sum\limits _{k=0}^{\infty }\left(e^{-2 T_{A} -j \Omega } \right)^{k}  =\frac{1}{1-e^{-T_{A} -j \Omega } } -\frac{1}{1-e^{-2 T_{A} -j \Omega } } }
- \label{eq:7.103}
-\end{align}
+\end{align*}
 Bild \ref{fig:7.17} zeigt die Signalfolge \(x_{D}\){[}k{]} und den Betrag des Spektrums der Signalfolge \textbar \(X_{D}(Ω)\)\textbar{} im Vergleich zum Spektrum \(X_{A}(ω)\) des ideal abgetasteten Signals \(x_{A}(t)\), wobei \(X_{A}(ω)\) mit normierter Frequenz dargestellt ist.
 
 \begin{fixedfigure}
@@ -901,12 +894,12 @@ fällt auf, dass die Variable z der z-Transformation bei der Fourier-Transformat
 z-Transformierten auf die Fourier-Transformierte das Spektrum über dem Einheitskreis abgewickelt.
 
 \begin{example}{Zusammenhang zwischen z-Transformation und Fourier-Transformation von Signalfolgen}
-\label{beispiel-zusammenhang-zwischen-z-transformation-und-fourier-transformation-von-signalfolgen}
+\label{example:beispiel-zusammenhang-zwischen-z-transformation-und-fourier-transformation-von-signalfolgen}
 
 Dieser Sachverhalt wird anhand eines Signals mit der z-Transformierten
-\begin{align}
-X(z) &= \frac{z^{2}}{z^{2} - z + 0.5} \label{eq:7.106}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z^{2}}{z^{2} - z + 0.5} 
+\end{align*}
 anschaulich dargestellt. Bild \ref{fig:7.18} zeigt die Pol-Nullstellenverteilung der z-Transformierten \(X(z)\).
 
 \begin{fixedfigure}
@@ -940,16 +933,16 @@ In der linken Grafik ist die Phase der z-Transformierten dargestellt. Zwischen d
 Der Vergleich zeigt, dass die Fourier-Transformierte einer Folge aus der z-Transformierten über die Substitution z = \(e^{jΩ}\) gewonnen werden kann. Dazu ist es allerdings erforderlich, dass der Einheitskreis im Konvergenzbereich der z-Transformierten liegt. Nach den Ausführungen zur z-Transformation in Kapitel \ref{sec:5.1} ist das der Fall, wenn alle Pole der z-Transformierten im Einheitskreis liegen.
 
 \begin{example}{Berechnung der Fourier-Transformierten aus der z-Transformierten}
-\label{beispiel-berechnung-der-fourier-transformierten-aus-der-z-transformierten}
+\label{example:beispiel-berechnung-der-fourier-transformierten-aus-der-z-transformierten}
 
 Die Fourier-Transformierte eines Signals mit der z-Transformierten
-\begin{align}
-X(z) &= \frac{z^{2}}{z^{2} - z + 0.5} \label{eq:7.107}
-\end{align}
+\begin{align*}
+X(z) &= \frac{z^{2}}{z^{2} - z + 0.5} 
+\end{align*}
 soll berechnet werden. Die Pole der z-Transformierten liegen nach Bild \ref{fig:7.18} innerhalb des Einheitskreises. Damit ergibt sich die Fourier-Transformierte aus
-\begin{align}
-X(\Omega) &= \left. \ X(z) \right|_{z = e^{j  \Omega}} = \frac{e^{j  2  \Omega}}{e^{j  2  \Omega} - e^{j  \Omega} + 0.5} \label{eq:7.108}
-\end{align}
+\begin{align*}
+X(\Omega) &= \left. \ X(z) \right|_{z = e^{j  \Omega}} = \frac{e^{j  2  \Omega}}{e^{j  2  \Omega} - e^{j  \Omega} + 0.5} 
+\end{align*}
 Der Betrag des Spektrums ist bereits in Bild \ref{fig:7.19} dargestellt.
 
 \end{example}

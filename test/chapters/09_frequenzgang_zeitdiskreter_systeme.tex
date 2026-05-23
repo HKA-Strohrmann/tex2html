@@ -34,20 +34,20 @@ G(\Omega) &= \frac{Y(\Omega)}{U(\Omega)} = \frac{\sum\limits_{m = 0}^{M}{d_{m}  
 Die resultierende Funktion \(G(Ω)\) wird als Frequenzgang des Systems bezeichnet. In Abschnitt \ref{sec:8.1.3} wird sich zeigen, dass der Frequenzgang \(G(Ω)\) für kausale und stabile Systeme gleichzeitig die Fourier-Transformierte der Impulsantwort \(g[k]\) ist.
 
 \begin{example}{Rekursives Tiefpass-Filter}
-\label{beispiel-rekursives-tiefpass-filter}
+\label{example:beispiel-rekursives-tiefpass-filter}
 
 Das Vorgehen wird am Beispiel eines rekursiven Tiefpassfilters verdeutlicht. Die Transformation der Differenzengleichung
-\begin{align}
-y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] \label{eq:8.4}
-\end{align}
+\begin{align*}
+y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] 
+\end{align*}
 in den Frequenzbereich führt mit 0 \textless{} GF \textless{} 1 zu der Gleichung
-\begin{align}
-Y(\Omega) - GF  Y(\Omega)  e^{- j  \Omega} &= (1 - GF)  U(\Omega) \label{eq:8.5}
-\end{align}
+\begin{align*}
+Y(\Omega) - GF  Y(\Omega)  e^{- j  \Omega} &= (1 - GF)  U(\Omega) 
+\end{align*}
 Ein Auflösen der Gleichung führt zu der Übertragungsfunktion
-\begin{align}
-G(\Omega) &= \frac{Y(\Omega)}{U(\Omega)} = \frac{1 - GF}{1 - GF  e^{- j  \Omega}} \label{eq:8.6}
-\end{align}
+\begin{align*}
+G(\Omega) &= \frac{Y(\Omega)}{U(\Omega)} = \frac{1 - GF}{1 - GF  e^{- j  \Omega}} 
+\end{align*}
 Der Frequenzgang wird im Abschnitt \ref{sec:8.2} dargestellt und interpretiert.
 
 \end{example}
@@ -63,20 +63,20 @@ zeigt, dass die beiden Transformierten und damit auch die beiden Übertragungsfu
 G(\Omega) &= \left. \ G(z) \right|_{z = e^{j  \Omega}} \label{eq:8.8}
 \end{align}
 \begin{example}{Rekursives Tiefpass-Filter}
-\label{beispiel-rekursives-tiefpass-filter-1}
+\label{example:beispiel-rekursives-tiefpass-filter-1}
 
 Das rekursive Tiefpass-Filter hat im z-Bereich die Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{1 - GF}{1 - GF  z^{- 1}} = \frac{(1 - GF)  z}{z - GF} \label{eq:8.9}
-\end{align}
+\begin{align*}
+G(z) &= \frac{1 - GF}{1 - GF  z^{- 1}} = \frac{(1 - GF)  z}{z - GF} 
+\end{align*}
 Der Pol der Übertragungsfunktion \(G(z)\) liegt an der Stelle
-\begin{align}
-\alpha &= GF \label{eq:8.10}
-\end{align}
+\begin{align*}
+\alpha &= GF 
+\end{align*}
 Für 0 \textless{} GF \textless{} 1 liegt der Pol innerhalb des Einheitskreises. Da in diesem Fall das System stabil ist, ergibt sich für diesen Fall der Frequenzgang des Systems zu
-\begin{align}
-G(\Omega) &= \left. \ G(z) \right|_{z = e^{j  \Omega}} = \frac{1 - GF}{1 - GF  e^{- j  \Omega}} \label{eq:8.11}
-\end{align}
+\begin{align*}
+G(\Omega) &= \left. \ G(z) \right|_{z = e^{j  \Omega}} = \frac{1 - GF}{1 - GF  e^{- j  \Omega}} 
+\end{align*}
 \end{example}
 
 \subsection{Faltungsregel der Fourier-Transformation von Signalfolgen}\label{sec:8.1.3}
@@ -96,20 +96,20 @@ G(\Omega) &= \frac{Y(\Omega)}{U(\Omega)} \label{eq:8.14}
 Sie entspricht gemäß der obigen Herleitung der Fourier-Transformierten der Impulsantwort \(g[k]\).
 
 \begin{example}{Rekursives Tiefpass-Filter}
-\label{beispiel-rekursives-tiefpass-filter-2}
+\label{example:beispiel-rekursives-tiefpass-filter-2}
 
 Für ein rekursives Filter mit der Differenzengleichung
-\begin{align}
-y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] \label{eq:8.15}
-\end{align}
+\begin{align*}
+y[ k] - GF  y[ k - 1] &= (1 - GF)  u[ k] 
+\end{align*}
 ergibt sich für 0 \textless{} GF \textless{} 1 die gegen null konvergierende Impulsantwort
-\begin{align}
-g[ k] &= GF^{k}  \sigma[ k] \label{eq:8.16}
-\end{align}
+\begin{align*}
+g[ k] &= GF^{k}  \sigma[ k] 
+\end{align*}
 Aus der Impulsantwort wird mit den Rechenregeln der Fourier-Transformation der Frequenzgang bestimmt zu
-\begin{align}
-G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} \label{eq:8.17}
-\end{align}
+\begin{align*}
+G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} 
+\end{align*}
 Alle Wege, den Frequenzgang des rekursiven Filters zu beschreiben, führen damit zu demselben Ergebnis.
 
 \end{example}
@@ -182,29 +182,27 @@ Der Betrag der Übertragungsfunktion \(A(Ω)\) wird als Amplitudengang und die P
 Bei der Ortskurve wird der Frequenzgang in der komplexen Ebene abgebildet. Dazu werden für unterschiedliche Frequenzen - π ≤ Ω ≤ π Real- und Imaginärteil des Frequenzgangs bestimmt und die entsprechenden Punkte in die komplexe Ebene eingezeichnet.
 
 \begin{example}{Rekursives Tiefpass-Filter}
-\label{beispiel-rekursives-tiefpass-filter-3}
+\label{example:beispiel-rekursives-tiefpass-filter-3}
 
 In Kapitel \ref{sec:8.1} wird der Frequenzgang des rekursiven Tiefpasses erster Ordnung mit 0 \textless{} GF \textless{} 1 berechnet.
-\begin{align}
-G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} \label{eq:8.29}
-\end{align}
+\begin{align*}
+G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} 
+\end{align*}
 Der Frequenzgang kann durch eine konjugiert komplexe Erweiterung in Real- und Imaginärteil aufgeteilt werden.
-\begin{align}
+\begin{align*}
 {G\left(\Omega \right)} &=  {\frac{1-GF}{1-GF e^{-j \Omega } } =\frac{1-GF}{1-GF \cos \left(\Omega \right)+j GF \sin \left(\Omega \right)} } \\
 {} &=  {\left(1-GF\right) \frac{1-GF \cos \left(\Omega \right)-j GF \sin \left(\Omega \right)}{\left(1-GF \cos \left(\Omega \right)\right)^{2} +GF^{2}  \sin ^{2} \left(\Omega \right)} } \\
 {} &=  {\left(1-GF\right) \frac{1-GF \cos \left(\Omega \right)}{1+GF^{2} -2 GF \cos \left(\Omega \right)} -j \left(1-GF\right) \frac{GF \sin \left(\Omega \right)}{1+GF^{2} -2 GF \cos \left(\Omega \right)} }
- \label{eq:8.30}
-\end{align}
+\end{align*}
 Alternativ kann der Frequenzgang in Polarkoordinaten dargestellt werden, es ergibt sich der Betrag
-\begin{align}
-A(\Omega) &= \left| G(\Omega) \right| = \left| \frac{1 - GF}{1 - GF  \cos(\Omega) + j  GF  \sin(\Omega)} \right| = \frac{1 - GF}{\sqrt{1 + GF^{2} - 2  GF  \cos(\Omega)}} \label{eq:8.31}
-\end{align}
+\begin{align*}
+A(\Omega) &= \left| G(\Omega) \right| = \left| \frac{1 - GF}{1 - GF  \cos(\Omega) + j  GF  \sin(\Omega)} \right| = \frac{1 - GF}{\sqrt{1 + GF^{2} - 2  GF  \cos(\Omega)}} 
+\end{align*}
 und die Phase
-\begin{align}
+\begin{align*}
 {\varphi \left(\Omega \right)} &=  {\varphi _{Z} \left(\Omega \right)-\varphi _{N} \left(\Omega \right)=\arctan \left(\frac{Im(Z)}{Re(Z)} \right)-\arctan \left(\frac{Im(N)}{Re(N)} \right)} \\
 {} &=  {\arctan \left(\frac{0}{1-GF} \right)-\arctan \left(\frac{GF \sin \left(\Omega \right)}{1-GF \cos \left(\Omega \right)} \right)=-\arctan \left(\frac{GF \sin \left(\Omega \right)}{1-GF \cos \left(\Omega \right)} \right)}
- \label{eq:8.32}
-\end{align}
+\end{align*}
 Für den Frequenzbereich - π ≤ Ω ≤ π ergeben sich für GF = 0.5 und GF = 0.9 folgende Ortskurven.
 
 \begin{fixedfigure}
@@ -222,12 +220,12 @@ Für das Filter mit GF = 0.5 wird die Ortskurve diskutiert. An den Stellen Ω = 
 Ortskurven stellen Real- und Imaginärteil in einem Schaubild dar, allerdings geht die Frequenzinformation bei der Darstellung verloren. Aus diesem Grund ist ihr Frequenzverhalten schwer zu interpretieren und wenig übersichtlich. Alternativ zur Ortskurve wird deshalb der Frequenzgang mit Frequenzgangskennlinien dargestellt. Dabei werden Betrag und Phase in separaten Diagrammen als Funktion der normierten Kreisfrequenz - π ≤ Ω ≤ π abgebildet. Frequenzgangskennlinien haben den Vorteil, dass der Zusammenhang zwischen Betrag beziehungsweise Phase und Frequenz direkt abgelesen werden kann.
 
 \begin{example}{Rekursives Tiefpass-Filter}
-\label{beispiel-rekursives-tiefpass-filter-4}
+\label{example:beispiel-rekursives-tiefpass-filter-4}
 
 Wieder wird das Beispiel des rekursiven Tiefpasses mit dem Frequenzgang
-\begin{align}
-G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} \label{eq:8.33}
-\end{align}
+\begin{align*}
+G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} 
+\end{align*}
 aufgegriffen. Für den Frequenzbereich - π ≤ Ω ≤ π ergeben sich für GF = 0.5 und GF = 0.9 folgende Frequenzgangskennlinien.
 
 \begin{fixedfigure}
@@ -242,24 +240,23 @@ Die normierte Kreisfrequenz \(Ω = 0\) entspricht dabei der Kreisfrequenz \(ω =
 \end{example}
 
 \begin{example}{Gleitendes Mittelwertfilter}
-\label{beispiel-gleitendes-mittelwertfilter}
+\label{example:beispiel-gleitendes-mittelwertfilter}
 
 Als zweites Beispiel wird der gleitende Mittelwert einer Signalfolge betrachtet. Es besitzt die Differenzengleichung
-\begin{align}
-y[ k] &= \frac{1}{5}  \left( u[ k] + u[ k - 1] + u[ k - 2] + u[ k - 3] + u[ k - 4] \right) \label{eq:8.34}
-\end{align}
+\begin{align*}
+y[ k] &= \frac{1}{5}  \left( u[ k] + u[ k - 1] + u[ k - 2] + u[ k - 3] + u[ k - 4] \right) 
+\end{align*}
 Das System hat eine endliche Impulsantwort \(g[k]\), die in Bild \ref{fig:4.2} dargestellt ist. Das Filter wird wegen der endlichen Impulsantwort als Finite-Impuls-Response (FIR) System bezeichnet. Mit der Verschiebungsregel der Fourier-Transformation ergibt sich die Darstellung im Frequenzbereich
-\begin{align}
-Y(\Omega) &= \frac{1}{5}  \left( 1 + e^{- j  \Omega} + e^{- 2  j  \Omega} + e^{- 3  j  \Omega} + e^{- 4  j  \Omega} \right)  U(\Omega) \label{eq:8.35}
-\end{align}
+\begin{align*}
+Y(\Omega) &= \frac{1}{5}  \left( 1 + e^{- j  \Omega} + e^{- 2  j  \Omega} + e^{- 3  j  \Omega} + e^{- 4  j  \Omega} \right)  U(\Omega) 
+\end{align*}
 Sie führt zu dem Frequenzgang des gleitenden Mittelwertes.
-\begin{align}
+\begin{align*}
 {G\left(\Omega \right)} &=  {\frac{Y\left(\Omega \right)}{U\left(\Omega \right)} =\frac{1}{5}  \left(1+e^{-j \Omega } +e^{-2 j \Omega } +e^{-3 j \Omega } +e^{-4 j \Omega } \right)} \\
 {} &=  {\frac{1}{5}  e^{-2 j \Omega }  \left(e^{2 j \Omega } +e^{j \Omega } +1+e^{-j \Omega } +e^{-2 j \Omega } \right)} \\
 {} &=  {\frac{1}{5}  e^{-2 j \Omega }  \left(1+2 \cos \left(\Omega \right)+2 \cos \left(2 \Omega \right)\right)} \\
 {} &=  {\frac{1}{5}  \left(1+2 \cos \left(\Omega \right)+2 \cos \left(2 \Omega \right)\right) \left(\cos \left(2 \Omega \right)-j \sin \left(2 \Omega \right)\right)}
- \label{eq:8.36}
-\end{align}
+\end{align*}
 Der Frequenzgang ist in Bild \ref{fig:8.3} als Frequenzgangskennlinie dargestellt.
 
 \begin{fixedfigure}
@@ -291,16 +288,16 @@ Das Bode-Diagramm wird bevorzugt für einen Vergleich von analogen und digitalen
 in eine Frequenzachse ω überführt. Damit können die Frequenzgänge des zeitkontinuierlichen und des zeitdiskreten Systems in einem Diagramm verglichen werden.
 
 \begin{example}{Vergleich eines zeitkontinuierlichen und zeitdiskreten Tiefpass-Filters}
-\label{beispiel-vergleich-eines-zeitkontinuierlichen-und-zeitdiskreten-tiefpass-filters}
+\label{example:beispiel-vergleich-eines-zeitkontinuierlichen-und-zeitdiskreten-tiefpass-filters}
 
 Ein rekursives zeitdiskretes Filter mit dem Frequenzgang
-\begin{align}
-G_{D}(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} \label{eq:8.39}
-\end{align}
+\begin{align*}
+G_{D}(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} 
+\end{align*}
 mit einem Gedächtnisfaktor GF = 0.9 wird mit einer Abtastzeit \(T_{A} = \qty{1}{\milli\second}\) betrieben. Die Filterwirkung wird mit einem Tiefpass erster Ordnung verglichen, der eine Zeitkonstante \(T = \qty{10}{\milli\second}\) aufweist.
-\begin{align}
-G_{K}(\omega) &= \frac{1}{1 + j  \omega  T} \label{eq:8.40}
-\end{align}
+\begin{align*}
+G_{K}(\omega) &= \frac{1}{1 + j  \omega  T} 
+\end{align*}
 Bild \ref{fig:8.4} stellt das Bode-Diagramm für die Tiefpass-Filter dar.
 
 \begin{fixedfigure}
@@ -597,22 +594,21 @@ T_{G}(\Omega) &= - \frac{d\varphi}{d\Omega}  T_{A} \label{eq:8.77}
 Im Allgemeinen ist die Gruppenlaufzeit eines Systems eine Funktion der Frequenz Ω und damit nicht konstant. Ist der Phasengang linear, ist seine Ableitung konstant. Damit ist auch die Gruppenlaufzeit eines Systems mit linearer Phase konstant.
 
 \begin{example}{Rekursives Tiefpass-Filter}
-\label{beispiel-rekursives-tiefpass-filter-5}
+\label{example:beispiel-rekursives-tiefpass-filter-5}
 
 In Kapitel \ref{sec:8.1} wird der Frequenzgang des rekursiven Tiefpasses erster Ordnung berechnet.
-\begin{align}
-G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} \label{eq:8.78}
-\end{align}
+\begin{align*}
+G(\Omega) &= \frac{1 - GF}{1 - GF  e^{- j  \Omega}} 
+\end{align*}
 Der Phasengang wird in Gleichung \eqref{eq:8.32} berechnet zu
-\begin{align}
-\varphi(\Omega) &= - \arctan\left( \frac{GF  \sin(\Omega)}{1 - GF  \cos(\Omega)} \right) \label{eq:8.79}
-\end{align}
+\begin{align*}
+\varphi(\Omega) &= - \arctan\left( \frac{GF  \sin(\Omega)}{1 - GF  \cos(\Omega)} \right) 
+\end{align*}
 Die Ableitung nach Ω führt zu der Gruppenlaufzeit von
-\begin{align}
+\begin{align*}
 {T_{G} \left(\Omega \right)} &=  {-\frac{d\varphi }{d\Omega }  T_{A} =\frac{\frac{GF \cos \left(\Omega \right)}{1-GF \cos \left(\Omega \right)} -\frac{GF^{2}  \sin ^{2} \left(\Omega \right)}{\left(1-GF \cos \left(\Omega \right)\right)^{2} } }{1+\frac{GF^{2}  \sin ^{2} \left(\Omega \right)}{\left(1-GF \cos \left(\Omega \right)\right)^{2} } }  T_{A} } \\
 {} &=  {\frac{GF \cos \left(\Omega \right)-GF^{2} }{1-2 GF \cos \left(\Omega \right)+GF^{2} }  T_{A} }
- \label{eq:8.80}
-\end{align}
+\end{align*}
 Bild \ref{fig:8.14} zeigt die Gruppenlaufzeit eines rekursiven Filters 1. Ordnung für GF = 0.9 und eine Abtastzeit von \(T_{A} = \qty{1}{\milli\second}\).
 
 \begin{fixedfigure}
@@ -626,16 +622,16 @@ Das Filter weist nur im Bereich kleiner Frequenzen ω eine konstante Gruppenlauf
 \end{example}
 
 \begin{example}{Totzeitglied}
-\label{beispiel-totzeitglied}
+\label{example:beispiel-totzeitglied}
 
 Das Totzeitglied besitzt nach Gleichung \eqref{eq:8.68} einen Phasengang von
-\begin{align}
-\varphi(\Omega) &= - \Omega  k_{0} \label{eq:8.81}
-\end{align}
+\begin{align*}
+\varphi(\Omega) &= - \Omega  k_{0} 
+\end{align*}
 und damit eine konstante Gruppenlaufzeit von
-\begin{align}
-T_{G}(\Omega) &= - \frac{d}{d\Omega}\left( - \Omega  k_{0} \right)  T_{A} = k_{0}  T_{A} \label{eq:8.82}
-\end{align}
+\begin{align*}
+T_{G}(\Omega) &= - \frac{d}{d\Omega}\left( - \Omega  k_{0} \right)  T_{A} = k_{0}  T_{A} 
+\end{align*}
 Die konstante Gruppenlaufzeit führt auch bei der Anregung eines LTI-Systems mit zwei harmonischen Signalen unterschiedlicher Frequenz zu einer identischen Verzögerung der Signale.
 
 \end{example}
@@ -1020,12 +1016,12 @@ lediglich Nullstellen, die innerhalb des Einheitskreises liegen. Das System \(G_
 Zur Kompensation der Nullstellen außerhalb des Einheitskreises wird ein System eingesetzt, dass Pole außerhalb des Einheitskreises besitzt. Das resultierende System ist nur dann stabil, wenn sich Pole und Nullstellen außerhalb des Einheitskreises perfekt kompensieren. Ansonsten entsteht ein System mit Polen außerhalb des Einheitskreises, das instabil ist. Besondere Vorsicht ist bei Systemen geboten, die mit Fixed-Point-Format arbeiten. Diese ideale Kompensation wird zum Beispiel bei Kammfiltern realisiert {[}Oppe04{]}.
 
 \begin{example}{Minimalphasiges FIR-Filter}
-\label{beispiel-minimalphasiges-fir-filter}
+\label{example:beispiel-minimalphasiges-fir-filter}
 
 Als Beispiel wird ein FIR-Filter mit der Übertragungsfunktion
-\begin{align}
-G(z) &= \frac{(z - 2)  (2  z + 1)  \left( z^{2} - 2  z + 2 \right)}{z^{4}} \label{eq:8.115}
-\end{align}
+\begin{align*}
+G(z) &= \frac{(z - 2)  (2  z + 1)  \left( z^{2} - 2  z + 2 \right)}{z^{4}} 
+\end{align*}
 diskutiert. Es hat Nullstellen bei \(β_{1} = 2\) und \(β_{2}\) = -1/2. Die beiden anderen Nullstellen berechnen sich aus
 {\def\LTcaptype{none} % do not increment counter
 \begin{center}
@@ -1039,15 +1035,14 @@ diskutiert. Es hat Nullstellen bei \(β_{1} = 2\) und \(β_{2}\) = -1/2. Die bei
   \end{tabular}
 \end{center}
 }Damit das System minimalphasig wird, müssen alle Nullstellen innerhalb des Einheitskreises liegen. Dazu wird die Übertragungsfunktion mit der Übertragungsfunktion des Allpass
-\begin{align}
-G_{A}(z) &= \frac{1 - 2  z}{z - 2}  \frac{1 - \sqrt{2}  e^{- j  \frac{\pi}{4}}  z}{z - \sqrt{2}  e^{j  \frac{\pi}{4}}}  \frac{1 - \sqrt{2}  e^{j  \frac{\pi}{4}}  z}{z - \sqrt{2}  e^{- j  \frac{\pi}{4}}} = \frac{(1 - 2  z)  \left( 1 - 2  z - 2  z^{2} \right)}{(z - 2)  \left( z^{2} - 2  z + 2 \right)} \label{eq:8.116}
-\end{align}
+\begin{align*}
+G_{A}(z) &= \frac{1 - 2  z}{z - 2}  \frac{1 - \sqrt{2}  e^{- j  \frac{\pi}{4}}  z}{z - \sqrt{2}  e^{j  \frac{\pi}{4}}}  \frac{1 - \sqrt{2}  e^{j  \frac{\pi}{4}}  z}{z - \sqrt{2}  e^{- j  \frac{\pi}{4}}} = \frac{(1 - 2  z)  \left( 1 - 2  z - 2  z^{2} \right)}{(z - 2)  \left( z^{2} - 2  z + 2 \right)} 
+\end{align*}
 multipliziert.
-\begin{align}
+\begin{align*}
 {G_{M} \left(z\right)} &=  {\frac{\left(z-2\right) \left(2 z+1\right) \left(z^{2} -2 z+2\right)}{z^{4} }  \frac{\left(1-2 z\right) \left(1-2 z-2 z^{2} \right)}{\left(z-2\right) \left(z^{2} -2 z+2\right)} } \\
 {} &=  {\frac{\left(2 z+1\right) \left(1-2 z\right) \left(1-2 z-2 z^{2} \right)}{z^{4} } }
- \label{eq:8.117}
-\end{align}
+\end{align*}
 Das minimalphasige System \(G_{M}(z)\) besitzt die Nullstellen bei \(β_{1,2}\) = ± 1/2 und an den Stellen\\
 \(β_{3,4} = 1\)/2 ± j1/2. Alle Nullstellen liegen innerhalb des Einheitskreises.
 

@@ -3,8 +3,9 @@ import shutil
 import typer
 from typing import Annotated
 
+from .postprocess import fix_html_paths
+
 from . import ui
-from .preprocess import replace_documentclass
 from .latexml import convert_latex_to_html, LaTeXMLOutput
 
 
@@ -41,8 +42,10 @@ def main(
 
 
     try:
-        replace_documentclass(input_path)
+        # replace_documentclass(input_path)
         result = convert_latex_to_html(input_path, output_path, splitat)
+
+        fix_html_paths(output_path)
         
         if result.is_fatal:
             return typer.Exit(code=result.returncode if result.returncode > 0 else 1)

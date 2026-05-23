@@ -15,5 +15,7 @@ def fix_html_paths(html_file: Path) -> None:
     import re
     content = re.sub(r'href="html[/\\]([^"]+)"', r'href="\1"', content)
     content = re.sub(r'src="html[/\\]([^"]+)"', r'src="\1"', content)
+
+    # todo: write console log statement.
     
     html_file.write_text(content, encoding="utf-8")
