@@ -162,12 +162,12 @@ u_{A}[ k] &= \frac{T_{A}  u_{E}[ k] + T_{A}  u_{E}[ k - 1] - T_{A}  u_{A}[ k - 1
 Die aktuelle Ausgangsspannung \(u_{A}\){[}k{]} berechnet sich aus dem aktuellen und einem vergangenen Wert der Eingangsspannung \(u_{E}\){[}k{]} und einem vergangenen Wert der Ausgangsspannung \(u_{A}\){[}k{]}. Bild \ref{fig:4.6} zeigt den Vergleich zwischen dem zeitkontinuierlichen und dem zeitdiskreten System bei unterschiedlichen Abtastzeiten.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = \SI{100}{\micro\second})}]{new media/4_6_vergleich_zwischen_zeitkontinuie.png}
-  \captionof{figure}{Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = \SI{100}{\micro\second})}
+  \includegraphics[alt={Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = \qty{100}{\micro\second})}]{new media/4_6_vergleich_zwischen_zeitkontinuie.png}
+  \captionof{figure}{Vergleich zwischen zeitkontinuierlicher und zeitdiskreter Realisierung eines Tiefpasses (RC = \qty{100}{\micro\second})}
   \label{fig:4.6}
 \end{fixedfigure}
 
-Die Abtastzeit von \(T_{A} = \SI{10}{\micro\second}\) ist deutlich kleiner als die Zeitkonstante des Systems mit \(T = \SI{100}{\micro\second}\). Aus diesem Grund ist die Approximationsgüte im links dargestellten Fall hoch. Die im rechten Bildteil diskutierte Abtastzeit von \(T_{A} = \SI{100}{\micro\second}\) entspricht der Zeitkonstante des Systems. Aus diesem Grund ist die Approximation der Ableitung mit einem Differenzenquotienten unzureichend, die Approximationsgüte ist deutlich schlechter als bei einer Abtastzeit von \(T_{A} = \SI{10}{\micro\second}\). Das Beispiel zeigt, dass zeitkontinuierliche Systeme zeitdiskret nachgebildet werden können. Die lineare Differentialgleichung erster Ordnung
+Die Abtastzeit von \(T_{A} = \qty{10}{\micro\second}\) ist deutlich kleiner als die Zeitkonstante des Systems mit \(T = \qty{100}{\micro\second}\). Aus diesem Grund ist die Approximationsgüte im links dargestellten Fall hoch. Die im rechten Bildteil diskutierte Abtastzeit von \(T_{A} = \qty{100}{\micro\second}\) entspricht der Zeitkonstante des Systems. Aus diesem Grund ist die Approximation der Ableitung mit einem Differenzenquotienten unzureichend, die Approximationsgüte ist deutlich schlechter als bei einer Abtastzeit von \(T_{A} = \qty{10}{\micro\second}\). Das Beispiel zeigt, dass zeitkontinuierliche Systeme zeitdiskret nachgebildet werden können. Die lineare Differentialgleichung erster Ordnung
 \begin{align}
 u_{A}(t) + R  C  \frac{du_{A}}{dt} &= u_{E}(t) \label{eq:4.17}
 \end{align}

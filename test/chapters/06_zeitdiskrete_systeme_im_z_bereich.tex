@@ -305,15 +305,15 @@ Auch nach dieser Korrektur sind die Sprungantworten nicht identisch, da die Flä
 
 Gegeben ist ein zeitkontinuierliches System mit der Impulsantwort
 \begin{align}
-g(t) &= 2  e^{- \frac{}{}\frac{t}{\SI{10}{\milli\second}}}  \sigma(t) \label{eq:6.46}
+g(t) &= 2  e^{- \frac{}{}\frac{t}{\qty{10}{\milli\second}}}  \sigma(t) \label{eq:6.46}
 \end{align}
-Das System wird mit einer Abtastzeit \(T_{A} = \SI{1}{\milli\second}\) abgetastet. Es ergeben sich die Folgenwerte
+Das System wird mit einer Abtastzeit \(T_{A} = \qty{1}{\milli\second}\) abgetastet. Es ergeben sich die Folgenwerte
 \begin{align}
 g[ k] &= 2  e^{- \frac{k}{10}}  \sigma[ k] \label{eq:6.47}
 \end{align}
 Die Sprungantwort des zeitkontinuierlichen Systems lautet
 \begin{align}
-h(t) &= \int_{0}^{t}{2  e^{- \frac{\tau}{\SI{10}{\milli\second}}}d\tau} = - \SI{20}{\milli\second}  \left. \ e^{- \frac{\tau}{\SI{10}{\milli\second}}} \right|_{0}^{t} = \SI{20}{\milli\second}  \left( 1 - e^{- \frac{t}{\SI{10}{\milli\second}}} \right)  \sigma(t) \label{eq:6.48}
+h(t) &= \int_{0}^{t}{2  e^{- \frac{\tau}{\qty{10}{\milli\second}}}d\tau} = - \qty{20}{\milli\second}  \left. \ e^{- \frac{\tau}{\qty{10}{\milli\second}}} \right|_{0}^{t} = \qty{20}{\milli\second}  \left( 1 - e^{- \frac{t}{\qty{10}{\milli\second}}} \right)  \sigma(t) \label{eq:6.48}
 \end{align}
 Die Sprungantwort des zeitdiskreten Systems errechnet sich zu
 \begin{align}
@@ -321,7 +321,7 @@ h[ k] &= \sum\limits_{\kappa = 0}^{k}{2  e^{- \frac{\kappa}{10}}} = 2  {\sum\lim
 \end{align}
 Durch die Multiplikation der Sprungantwort mit der Abtastzeit \(T_{A}\) ergibt sich die Näherung
 \begin{align}
-h\left( k  T_{A} \right) \approx h[ k]  T_{A} &= \SI{2}{\milli\second}  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.50}
+h\left( k  T_{A} \right) \approx h[ k]  T_{A} &= \qty{2}{\milli\second}  \frac{1 - e^{- \frac{k + 1}{10}}}{1 - e^{- \frac{1}{10}}} \label{eq:6.50}
 \end{align}
 Die Impuls- und Sprungantworten sind in Bild \ref{fig:6.4} dargestellt.
 
@@ -474,7 +474,7 @@ Damit lautet die Übertragungsfunktion
 \end{align}
 Auf Basis dieser Darstellung und den Polen des Systems
 \begin{align}
-\alpha_{1,2} &= - \frac{D}{\SI{2}{\meter}} \pm \sqrt{\frac{D^{2}}{\SI{4}{\meter}^{2}} - \frac{c}{m}} \label{eq:6.72}
+\alpha_{1,2} &= - \frac{D}{\qty{2}{\meter}} \pm \sqrt{\frac{D^{2}}{\qty{4}{\meter}^{2}} - \frac{c}{m}} \label{eq:6.72}
 \end{align}
 können die Systemeigenschaften diskutiert werden. Andererseits erfolgt die Systemsimulation über eine Darstellungsform
 \begin{align}
@@ -734,7 +734,7 @@ auf. Damit das System reelle Koeffizienten \(a_{n}\) und \(b_{m}\) besitzt, müs
 \begin{align}
 {g\left[k\right]} &=  {A e^{j \varphi _{A} }  \left(r e^{j \varphi } \right)^{k-1}  \sigma \left[k-1\right]+A e^{-j \varphi _{A} }  \left(r e^{-j \varphi } \right)^{k-1}  \sigma \left[k-1\right]} \\
 {} &=  {A r^{k-1} \left(e^{j \varphi _{A} }  e^{j \varphi  \left(k-1\right)} +e^{-j \varphi _{A} }  e^{-j \varphi  \left(k-1\right)} \right) \sigma \left[k-1\right]} \\
-{} &=  {\SI{2}{\ampere} r^{k-1}  \cos \left(\varphi  \left(k-1\right)+\varphi _{A} \right) \sigma \left[k-1\right]}
+{} &=  {\qty{2}{\ampere} r^{k-1}  \cos \left(\varphi  \left(k-1\right)+\varphi _{A} \right) \sigma \left[k-1\right]}
  \label{eq:6.105}
 \end{align}
 Die Folge ist eine gedämpfte harmonische Folge. Die Phasenlage ϕ des Polpaares definiert, mit welcher Frequenz die Folge schwingt. Der Betrag der Pole r ist für das Abfallen beziehungsweise Ansteigen der Amplitude verantwortlich. Die Koeffizienten A und A* bestimmen über die Amplitude und Phasenlage der Impulsantwort. Die Impulsantwort ist wieder unendlich lang, es handelt sich also erwartungsgemäß um ein IIR-System.

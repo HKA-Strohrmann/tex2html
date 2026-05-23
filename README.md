@@ -50,3 +50,20 @@ latexmk -C --outdir="_build" && latexmk -lualatex -pdf -interaction=nonstopmode 
 - --javascript=LaTeXML-maybeMathJax.js: The LaTeXML-maybeMathJax.js script loads MathJax for browsers without native MathML support, as a fallback rendering solution.
 - babel does not work, figure captions will not render in german. maybe pin babel version to fix?
 - scrbook is not supported, currently is replaced by book. but scrbook offers more featuress, maybe find a new way.
+
+
+
+
+
+DefMacro('\tcb@tikz@option@hook','\relax');
+DefMacro('\tcb@use@autoparskip','\relax');
+DefMacro('\tcb@split@state','\relax');
+DefMacro('\tcb@lrtoggle','\relax');
+DefMacro('\tcb@setbb@toggle','\relax');
+DefMacro('\tcb@height@adjust','\relax');
+DefMacro('\tcb@apply@graph@patches','\relax');
+DefMacro('\kvtcb@width','\relax');
+DefMacro('\kvtcb@phantom','\relax');
+DefMacro('\kvtcb@right@rule','\relax');
+DefMacro('\kvtcb@geonodes','\relax');
+DefMacro('\kvtcb@boxsep','\relax');

@@ -326,10 +326,10 @@ Tabelle \ref{tab:3.2} vergleicht die Definition und die Eigenschaften der Impuls
     \toprule
     Eigenschaft & Zeitkontinuierlicher Bereich & Zeitdiskreter Bereich \\
     \midrule
-    Definition des Impulses & \(\delta(t) = \lim_{\varepsilon \rightarrow 0}\ \frac{1}{\varepsilon}  \left( \sigma\left( t + \frac{\varepsilon}{2} \right) - \sigma\left( t - \frac{\varepsilon}{2} \right) \right)\) & \(\delta\lbrack k\rbrack = \left\{ \begin{aligned}
- & 1	\text{f}\text{ü}\text{r k = 0} \\
-    & 0	\text{f}\text{ü}\text{r k } \neq \text{ 0}
-\end{aligned} \right.\ \) \\
+%     Definition des Impulses & \(\delta(t) = \lim_{\varepsilon \rightarrow 0}\ \frac{1}{\varepsilon}  \left( \sigma\left( t + \frac{\varepsilon}{2} \right) - \sigma\left( t - \frac{\varepsilon}{2} \right) \right)\) & \(\delta\lbrack k\rbrack = \left\{ \begin{aligned}
+%  & 1	\text{f}\text{ü}\text{r k = 0} \\
+%     & 0	\text{f}\text{ü}\text{r k } \neq \text{ 0}
+% \end{aligned} \right.\ \) \\
     Integration & \(\int_{- \infty}^{\infty}{\delta(\tau)\ d\tau} = 1\) & \(\sum\limits_{k = - \infty}^{\infty}{\delta\lbrack k\rbrack} = 1\) \\
     Ausblendeigenschaft & \(\int_{- \infty}^{\infty}{x(t)  \delta\left( t - t_{0} \right)\ dt} = x\left( t_{0} \right)\) & \(\sum\limits_{k = - \infty}^{\infty}{x\lbrack k\rbrack  \delta\left\lbrack k - k_{0} \right\rbrack} = x\left\lbrack k_{0} \right\rbrack\) \\
     Impuls als Ableitung des Sprungs & \(\delta(t) = \frac{d\sigma}{dt}\) & \(\delta\lbrack k\rbrack = \sigma\lbrack k\rbrack - \sigma\lbrack k - 1\rbrack\) \\

@@ -52,5 +52,5 @@ def main(
         return typer.Exit(code=0)
 
     except Exception as e:
-        ui.console.print(f"[bold red]Fatal Unexpected Error:[/bold red] {e}")
+        ui.console.print(f"[bold red]Fatal Unexpected Error: {e}[/bold red]")
         return typer.Exit(code=2)

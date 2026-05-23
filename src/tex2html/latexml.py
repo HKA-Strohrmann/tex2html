@@ -8,12 +8,15 @@ from . import ui
 
 
 # Configuration
-CUSTOM_BINDINGS = ["trfsigns.sty.ltxml"]
-LATEXML_PATHS = ["/test/chapters", "/test/media", "/assets/bindings"]
 LATEXML_TIMEOUT_SEC = 540
-LATEXML_URL_BASE = "https://arxiv.org/static/browse/0.3.4"
-JAVASCRIPT_URL = f"{LATEXML_URL_BASE}/js/arxiv-html-papers-20260131.js"
-CSS_URL = f"{LATEXML_URL_BASE}/css/arxiv-html-papers-20260131.css"
+
+# Asset paths relative to this file
+ASSETS_DIR = Path(__file__).parent / "assets"
+CSS_PATH = ASSETS_DIR / "css" / "arxiv-html-papers-20260131.css"
+JAVASCRIPT_PATH = ASSETS_DIR / "js" / "arxiv-html-papers-20260131.js"
+
+# Custom LaTeXML bindings
+BINDINGS_PATH = ASSETS_DIR / "bindings"
 
 
 @dataclass
@@ -22,12 +25,12 @@ class LaTeXMLOutput:
     missing_packages: list[str]
     undefined_macros: list[str]
     unresolved_errors: list[str]
-    is_fatal: bool  # True if conversion completely failed or timed out
+    is_fatal: bool
 
 
 def convert_latex_to_html(input_file: Path, output_file: Path, splitat: str) -> LaTeXMLOutput:
     """Convert LaTeX file to HTML using LaTeXML."""
-    log_path = output_file.with_suffix(".log")
+    log_path = output_file.with_suffix(".log").resolve()
     ui.console.print(f"Logfile is at '{log_path}'.")
 
     # Build LaTeXML command
@@ -42,14 +45,13 @@ def convert_latex_to_html(input_file: Path, output_file: Path, splitat: str) -> 
         f"--splitat={splitat}",
         f"--log={log_path}",
         f"--timeout={LATEXML_TIMEOUT_SEC}",
-        f"--css={CSS_URL}",
-        f"--javascript={JAVASCRIPT_URL}",
+        f"--css={str(CSS_PATH.resolve())}",
+        f"--javascript={str(JAVASCRIPT_PATH.resolve())}",
         f"--dest={output_file}",
     ]
-    for binding in CUSTOM_BINDINGS:
-        latexml_config.append(f"--preload={binding}")
-    # for path in LATEXML_PATHS:
-    #     latexml_config.append(f"--path={path}")
+    for binding in BINDINGS_PATH.glob("*.sty.ltxml"):
+        latexml_config.append(f"--preload={binding.resolve()}")
+
     latexml_config.append(str(input_file))
 
     ui.console.print(f"Command: {' '.join(latexml_config)}")
