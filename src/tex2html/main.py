@@ -9,7 +9,10 @@ from . import ui
 from .latexml import convert_latex_to_html, LaTeXMLOutput
 
 
-app = typer.Typer(help="CLI for LaTeX to HTML conversion")
+app = typer.Typer(
+    add_completion=False,   # dont list '--install-completion' command
+    help="CLI for LaTeX to HTML conversion"
+)
 
 import importlib.metadata
 __version__ = importlib.metadata.version('tex2html')
@@ -23,7 +26,7 @@ def main(
     input_file: Annotated[str, typer.Argument(help="Input LaTeX file")],
     output_file: Annotated[str, typer.Option("--output-file", help="Output file")] = "html/output.html",
     splitat: Annotated[str, typer.Option("--splitat", help="LaTeXML splitat option (e.g., 'chapter', 'section')")] = "chapter",
-    version: Annotated[bool | None, typer.Option("--version", callback=version_callback, is_eager=True)] = None,
+    version: Annotated[bool | None, typer.Option("--version", help="Show version and exit", callback=version_callback, is_eager=True)] = None,
 ) -> typer.Exit:
     """Convert a LaTeX file to HTML."""    
     input_path = Path(input_file)

@@ -15,5 +15,8 @@ tex2html = "tex2html.main:app"
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+package-data = { tex2html = ["assets/**/*"] }
+
 [tool.uv]
 package = true
