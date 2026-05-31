@@ -8,10 +8,10 @@ The underlying invocation commands and custom CSS/JavaScript files are based on 
 
 - [Python](https://www.python.org/downloads/) 3.12+
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- [LaTeX distribution](https://www.latex-project.org/get/), [MiKTeX](https://miktex.org/download) is recommended.
+- [LaTeX distribution](https://www.latex-project.org/get/): [MiKTeX](https://miktex.org/download) is recommended for Windows.
 - [Ghostscript](https://www.ghostscript.com/releases/gsdnld.html): You probably want to install the 64bit GNU Affero General Public License version.
-- [Perl](https://www.perl.org/get.html#win32): If you are on Windows, select strawberry perl.
-- [ImageMagick](https://imagemagick.org/download/#gsc.tab=0): Please select a dynamic binary distribution (e.g., `ImageMagick-7.1.2-Q16-HDRI-x64-dll.exe`).
+- [Perl](https://www.perl.org/get.html#win32): If you are on Windows, select Strawberry Perl.
+- [ImageMagick](https://imagemagick.org/download/#gsc.tab=0): Please select a dynamic binary distribution (e.g., `ImageMagick-7.x.x-Q16-HDRI-x64-dll.exe`).
 - [LaTeXML](https://math.nist.gov/~BMiller/LaTeXML/get.html)
 - Optional: [Inkscape](https://inkscape.org/release/inkscape-1.4.2/windows/64-bit/msi/dl/) to compile SVG files to pdf.
 
@@ -19,9 +19,9 @@ The underlying invocation commands and custom CSS/JavaScript files are based on 
 
 ### Manual Windows Setup
 
-The ImageMagick has also be binded to your Perl installation. On Windows, there is an issue when ImageMagick is installed with a 64 channel bit mask, which requires a C++ compiler. To work around this issue, you will have to:
+The ImageMagick has to be binded to your Perl installation. On Windows, there is an issue when ImageMagick is installed via Perl. To work around this issue, you will have to:
 
-1. Ensure the following additional tasks are checked when installing the binary/exe file on Windows:
+1. Download ImageMagick from their website. Ensure the following additional tasks are checked when installing the binary/exe file on Windows:
   
     ![install options for image magick](<docs/ImageMagick install.png>)
 
@@ -87,7 +87,7 @@ To convert a LaTeX file to HTML, run the following command:
 
 ```bash
 tex2html "myfile.tex" --output-file "html/myfile.html"
-start html/myfile.html # opens in default browser
+start "html/myfile.html" # opens in default browser
 ```
 
 A detailed list of options can be found by running:
@@ -102,13 +102,13 @@ To test changes locally, synchronize your test assets and run the parser:
 
 ```powershell
 copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\chapters" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\new media" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\new_media" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
 copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\combined.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
 
 cd test
 
 uv run tex2html "combined.tex" --output-file "html/combined.html"
-start html/combined.html
+start "html/combined.html"
 ```
 
 ### Test LaTeX compilation
@@ -126,7 +126,7 @@ To make the global version use an updated version of this package, run the follo
 
 ```bash
 uv version # current version
-uv version --bump patch # select (in order of magnitude) major, minor, patch
+uv version --bump patch # select either major, minor or patch
 ($version = python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
 
 git commit -a -m "Prepared for release $version"

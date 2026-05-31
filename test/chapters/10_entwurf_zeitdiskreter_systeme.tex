@@ -33,7 +33,7 @@ z-Transformation zu
 \begin{align}
 {G\left(z\right)} &=  {\sum\limits _{k=0}^{\infty }g\left[k\right] z^{-k}  =\sum\limits _{k=0}^{\infty }\left(A_{0}  \delta \left(k T_{A} \right)+\sum\limits _{n=1}^{N}A_{n}  e^{\alpha _{n}  k T_{A} }  \sigma \left(k T_{A} \right) \right) z^{-k}  } \\
 {} &=  {A_{0} +\sum\limits _{k=0}^{\infty }\sum\limits _{n=1}^{N}A_{n}  e^{\alpha _{n}  k T_{A} }   z^{-k}  }
- \label{eq:9.4}
+\label{eq:9.4}
 \end{align}
 Vertauschen der Summationsreihenfolge und Anwendung der Summenformel für die geometrische Reihe führt zu
 \begin{align}
@@ -45,65 +45,62 @@ Diese Übertragungsfunktion hat einen Konvergenzbereich von
 \left| e^{\alpha_{n}  T_{A}} \right| < |z| \label{eq:9.6}
 \end{align}
 Da die Polstellen \(α_{n}\) zu einem stabilen zeitkontinuierlichen System gehören, liegen sie in der negativen Halbebene. Damit liegen die Pole der Übertragungsfunktion \(G(z)\) innerhalb des Einheitskreises. Beim impulsinvarianten Entwurf bleiben stabile Systeme demnach stabil.
+
 \begin{application}{Transformation}
   Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Transformation} den Zusammenhang zwischen Punkten in der Laplace-Ebene und Punkten in der z-Ebene für unterschiedliche Transformationsverfahren.
   \tcblower
   \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
 \end{application}
-\subparagraph{Beispiel: Impulsinvarianter Entwurf eines Tiefpasses erster Ordnung}\label{beispiel-impulsinvarianter-entwurf-eines-tiefpasses-erster-ordnung}
+
+
+\begin{example}{Impulsinvarianter Entwurf eines Tiefpasses erster Ordnung}
+\label{example:beispiel-impulsinvarianter-entwurf-eines-tiefpasses-erster-ordnung}
 
 Um das Verfahren zu verdeutlichen, wird es an einem Tiefpass erster Ordnung angewendet. Das Übertragungsglied besitzt die Übertragungsfunktion
-\begin{align}
-G(s) &= \frac{\omega_{G}}{s + \omega_{G}} \label{eq:9.7}
-\end{align}
+\begin{align*}
+G(s) &= \frac{\omega_{G}}{s + \omega_{G}} 
+\end{align*}
 Es weist eine Verstärkung von G(\(s = 0\)) = 1 auf und die zeitkontinuierliche Impulsantwort lauet
-\begin{align}
-g(t) &= \omega_{G}  e^{\omega_{G}  t}  \sigma(t) \label{eq:9.8}
-\end{align}
+\begin{align*}
+g(t) &= \omega_{G}  e^{\omega_{G}  t}  \sigma(t) 
+\end{align*}
 Mit dem Pol α = - \(ω_{G}\) ergibt sich die Übertragungsfunktion des zeitdiskreten Systems von
-\begin{align}
-G(z) &= \frac{Y(z)}{U(z)} = \omega_{G}  \frac{z}{z - e^{- \omega_{G}  T_{A}}} = \omega_{G}  \frac{1}{1 - e^{- \omega_{G}  T_{A}}  z^{- 1}} \label{eq:9.9}
-\end{align}
+\begin{align*}
+G(z) &= \frac{Y(z)}{U(z)} = \omega_{G}  \frac{z}{z - e^{- \omega_{G}  T_{A}}} = \omega_{G}  \frac{1}{1 - e^{- \omega_{G}  T_{A}}  z^{- 1}} 
+\end{align*}
 Das System kann mit der Differenzengleichung
-\begin{align}
-y[ k] &= \omega_{G}  u[ k] + e^{- \omega_{G}  T_{A}}  y[ k - 1] \label{eq:9.10}
-\end{align}
+\begin{align*}
+y[ k] &= \omega_{G}  u[ k] + e^{- \omega_{G}  T_{A}}  y[ k - 1] 
+\end{align*}
 realisiert werden und hat eine Verstärkung von G(\(z = 1\)) = 1.103. Bild \ref{fig:9.1} vergleicht das zeitkontinuierliche und das zeitdiskrete System im Zeitbereich für \(T = 5\) und \(T_{A} = 1\).
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems\\
-im Zeitbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}]{new media/10_1_vergleich_des_zeitkontinuierlic.png}
-  \caption{Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems\\
-im Zeitbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}
+\begin{fixedfigure}
+  \includegraphics[width=\maximagewidth, alt={Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems im Zeitbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}]{new_media/10_1_vergleich_des_zeitkontinuierlic.png}
+  \captionof{figure}{Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems im Zeitbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}
   \label{fig:9.1}
-\end{figure}
+\end{fixedfigure}
 
 Die beiden Impulsantworten \(g(t)\) und \(g[k]\) stimmen erwartungsgemäß an den Stellen t = kT\textsubscript{A} überein. Die Sprungantworten weichen in ihrem Zeitverlauf und in ihrem Endwert voneinander ab. Bild \ref{fig:9.2} vergleicht die beiden Systeme im Frequenzbereich.
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems\\
-im Frequenzbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}]{new media/10_2_vergleich_des_zeitkontinuierlic.png}
-  \caption{Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems\\
-im Frequenzbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}
+\begin{fixedfigure}
+  \includegraphics[width=\maximagewidth, alt={Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems im Frequenzbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}]{new_media/10_2_vergleich_des_zeitkontinuierlic.png}
+  \captionof{figure}{Vergleich des zeitkontinuierlichen und des zeitdiskreten Systems im Frequenzbereich bei impulsinvariantem Entwurf für \(T = 5\) und \(T_{A} = 1\)}
   \label{fig:9.2}
-\end{figure}
+\end{fixedfigure}
 
 Die beiden Amplitudengänge stimmen, abgesehen von dem unterschiedlichen Verstärkungsfaktor, im Bereich kleiner Frequenzen sehr gut überein. Die Abweichungen im Frequenzbereich π/2 \textless{} Ω \textless{} π sind auf die periodische Wiederholung des Spektrums zurückzuführen. Da der Amplitudengang an der Stelle \(Ω = π\) noch nicht vollständig verschwindet, wird die periodische Fortsetzung in das Basisband gefaltet. Dieser Effekt sinkt mit steigender Zeitkonstante T des Systems, da damit die eigentlich erforderliche Bandbegrenzung des Systems besser realisiert wird. Alternativ kann die Abtastzeit reduziert werden.
 
 Die beiden Phasengänge stimmen nur im Bereich sehr kleiner Frequenzen überein. Eigentliche Ursache für die hohen Abweichungen im Phasengang sind die durch den Abtastvorgang entstehenden zusätzlichen Nullstellen in der Übertragungsfunktion. Bild \ref{fig:9.3} vergleicht die Pol-Nullstellen-Diagramme des zeitkontinuierlichen und des zeitdiskreten Systems.
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Vergleich der Pol-Nullstellen-Diagramme}]{new media/10_3_vergleich_der_polnullstellendia.png}
-  \caption{Vergleich der Pol-Nullstellen-Diagramme}
+\begin{fixedfigure}
+  \includegraphics[width=\maximagewidth, alt={Vergleich der Pol-Nullstellen-Diagramme}]{new_media/10_3_vergleich_der_polnullstellendia.png}
+  \captionof{figure}{Vergleich der Pol-Nullstellen-Diagramme}
   \label{fig:9.3}
-\end{figure}
+\end{fixedfigure}
 
 Beide Systeme weisen einen einfachen reellen Pol auf. Die zusätzliche Nullstelle im zeitdiskreten System führt bei normierten Frequenzen Ω = ± π zu einer Phase ϕ = 0.
 
-▪
+\end{example}
 
 Das Vorgehen zum impulsinvarianten Entwurf zeitdiskreter Systeme ist in Tabelle \ref{tab:9.1} zusammengefasst.
 
@@ -163,7 +160,7 @@ Aus ihr ergibt sich die Übertragungsfunktion des zeitdiskreten Systems zu
 \begin{align}
 {G\left(z\right)} &=  {\frac{z-1}{z}  H\left(z\right)=\left(A_{0} -\sum\limits _{n=1}^{N}\frac{A_{n} }{\alpha _{n} }  \right) \frac{z}{z-1}  \frac{z-1}{z} +\sum\limits _{n=1}^{N}\frac{A_{n} }{\alpha _{n} }  \frac{z}{z-e^{\alpha _{n}  T_{A} } }  \frac{z-1}{z}  } \\
 {} &=  {\left(A_{0} -\sum\limits _{n=1}^{N}\frac{A_{n} }{\alpha _{n} }  \right)+\sum\limits _{n=1}^{N}\frac{A_{n} }{\alpha _{n} }  \frac{z-1}{z-e^{\alpha _{n}  T_{A} } }  }
- \label{eq:9.18}
+\label{eq:9.18}
 \end{align}
 Diese Übertragungsfunktion hat einen Konvergenzbereich von
 \begin{align}
@@ -187,7 +184,7 @@ Bild \ref{fig:9.1} vergleicht das zeitkontinuierliche und das zeitdiskrete Syste
 \(T_{A} = 1\).
 
 \begin{fixedfigure}
-  \includegraphics[alt={Vergleich der Impuls- und Sprungantworten von zeitdiskretem und zeitkontinuierlichem System}]{new media/10_4_vergleich_der_impuls_und_sprung.png}
+  \includegraphics[width=\maximagewidth, alt={Vergleich der Impuls- und Sprungantworten von zeitdiskretem und zeitkontinuierlichem System}]{new_media/10_4_vergleich_der_impuls_und_sprung.png}
   \captionof{figure}{Vergleich der Impuls- und Sprungantworten von zeitdiskretem und zeitkontinuierlichem System}
 \end{fixedfigure}
 
@@ -221,7 +218,7 @@ Das Verfahren wird auch als \emph{Zero-Order-Hold-Equivalence} bezeichnet. Die B
 
 \begin{figure}
   \centering
-  \includesvg{new media/10_5_streckendiskretisierung_mit_ein.svg}
+  \includesvg{new_media/10_5_streckendiskretisierung_mit_ein.svg}
   \caption{Strecken-Diskretisierung mit einem Zero-Order-Hold-Glied und einer idealen Abtastung}
   \label{fig:9.5}
 \end{figure}
@@ -285,7 +282,7 @@ In Teil A dieser Buchreihe wird ein Butterworth-Filter 3. Ordnung mit einer Gren
 \begin{align}
 {G\left(s\right)} &=  {\frac{\omega _{G}^{3} }{\left(s+\omega _{G} \right) \left(s+\left(\frac{1}{2} -j \frac{\sqrt{3} }{2} \right) \omega _{G} \right) \left(s+\left(\frac{1}{2} +j \frac{\sqrt{3} }{2} \right) \omega _{G} \right)} } \\
 {} &=  {\frac{\omega _{G} }{s+\omega _{G} } +\frac{\frac{2}{-3+j \sqrt{3} }  \omega _{G} }{s+\left(\frac{1}{2} -j \frac{\sqrt{3} }{2} \right) \omega _{G} } +\frac{\frac{2}{-3-j \sqrt{3} }  \omega _{G} }{s+\left(\frac{1}{2} +j \frac{\sqrt{3} }{2} \right) \omega _{G} } }
- \label{eq:9.27}
+\label{eq:9.27}
 \end{align}
 Das Filter soll zeitdiskret auf einem System umgesetzt werden, das mit einer Abtastrate von\\
 \(f_{A} = \qty{100}{\kilo\hertz}\) arbeitet. Nach Gleichung \eqref{eq:9.5} ergibt sich die z-Transformierte \(G(z)\) zu
@@ -300,13 +297,13 @@ und die Übertragungsfunktion \(G(z)\) berechnet sich zu
 \begin{align}
 {G\left(z\right)} &=  {\frac{\omega _{G} }{1-e^{-\frac{\pi }{5} }  z^{-1} } +\frac{\omega _{G}  \frac{2}{-3+j \sqrt{3} } }{1-e^{-\left(\frac{1}{2} -j \frac{\sqrt{3} }{2} \right) \frac{\pi }{5} }  z^{-1} } +\frac{\omega _{G}  \frac{2}{-3-j \sqrt{3} } }{1-e^{-\left(\frac{1}{2} +j \frac{\sqrt{3} }{2} \right) \frac{\pi }{5} }  z^{-1} } } \\
 {} &=  {{79734} \frac{z^{2} +0.6587 z}{z^{3} -1.7833 z^{2} +1.2002 z-0.2846} }
- \label{eq:9.30}
+\label{eq:9.30}
 \end{align}
 Bild \ref{fig:9.6} stellt das Pol-Nullstellendiagramm für das impulsinvariant entworfene Butterworth-Filter dar.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Pol-Nullstellendiagramm für das impulsinvariant entworfene Butterworth-Filter dritter Ordnung}]{new media/10_6_polnullstellendiagramm_fr_das_i.png}
+  \includegraphics[alt={Pol-Nullstellendiagramm für das impulsinvariant entworfene Butterworth-Filter dritter Ordnung}]{new_media/10_6_polnullstellendiagramm_fr_das_i.png}
   \caption{Pol-Nullstellendiagramm für das impulsinvariant entworfene Butterworth-Filter dritter Ordnung}
   \label{fig:9.6}
 \end{figure}
@@ -323,7 +320,7 @@ Bild \ref{fig:9.7} zeigt den normierten Frequenzgang des zeitdiskreten Systems i
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Frequenzgang des impulsinvariant entworfenen Butterworth-Filters dritter Ordnung}]{new media/10_7_frequenzgang_des_impulsinvarian.png}
+  \includegraphics[width=\maximagewidth, alt={Frequenzgang des impulsinvariant entworfenen Butterworth-Filters dritter Ordnung}]{new_media/10_7_frequenzgang_des_impulsinvarian.png}
   \caption{Frequenzgang des impulsinvariant entworfenen Butterworth-Filters dritter Ordnung}
   \label{fig:9.7}
 \end{figure}
@@ -340,13 +337,13 @@ und damit die Differenzengleichung
 \begin{align}
 {y\left[k\right]} &=  {1.7833 y\left[k-1\right]-1.2002 y\left[k-2\right]+0.2846 y\left[k-3\right]} \\
 {} & {} & {+0.07976 u\left[k-1\right]+{0.05254} u\left[k-2\right]}
- \label{eq:9.34}
+\label{eq:9.34}
 \end{align}
 Bild \ref{fig:9.8} stellt die Impuls- und Sprungantwort des zeitdiskreten Systems im Vergleich zum zeitkontinuierlichen System dar. Wieder werden die zeitdiskreten Signale entsprechend normiert.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Impuls- und Sprungantwort für das impulsinvariant entworfene Butterworth-Filter dritter Ordnung}]{new media/10_8_impuls_und_sprungantwort_fr_das.png}
+  \includegraphics[width=\maximagewidth, alt={Impuls- und Sprungantwort für das impulsinvariant entworfene Butterworth-Filter dritter Ordnung}]{new_media/10_8_impuls_und_sprungantwort_fr_das.png}
   \caption{Impuls- und Sprungantwort für das impulsinvariant entworfene Butterworth-Filter dritter Ordnung}
   \label{fig:9.8}
 \end{figure}
@@ -386,17 +383,20 @@ Bild \ref{fig:9.9} vergleicht die Grundidee der unterschiedlichen Verfahren.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Unterschiedliche Verfahren zur zeitdiskreten Approximation eines Integrators}]{new media/10_9_unterschiedliche_verfahren_zur.png}
+  \includegraphics[width=\maximagewidth, alt={Unterschiedliche Verfahren zur zeitdiskreten Approximation eines Integrators}]{new_media/10_9_unterschiedliche_verfahren_zur.png}
   \caption{Unterschiedliche Verfahren zur zeitdiskreten Approximation eines Integrators}
   \label{fig:9.9}
 \end{figure}
 
 Das Integral einer Funktion entspricht der Fläche unter der Kurve. Sind von der zu integrierenden Kurve nur die Stützstellen u(kT\textsubscript{A}) = \(u[k]\) bekannt, kann die Fläche mit diesen Punkten nur approximiert werden.
+
 \begin{application}{Transformation}
   Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Transformation} den Zusammenhang zwischen Punkten in der Laplace-Ebene und Punkten in der z-Ebene für unterschiedliche Transformationsverfahren.
   \tcblower
   \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
 \end{application}
+
+
 \subsection{Backward-Euler-Verfahren}\label{sec:backward-euler-verfahren}
 
 Das Backward-Euler-Verfahren verwendet zur Approximation des Integrals die Gleichung
@@ -448,10 +448,8 @@ Bild \ref{fig:9.10} stellt die Abbildung der imaginären Achse der s-Ebene auf d
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Abbildung der imaginären Achse der s-Ebene auf die z-Ebene\\
-mit dem Backward-Euler-Verfahren}]{new media/10_10_abbildung_der_imaginren_achse.png}
-  \caption{Abbildung der imaginären Achse der s-Ebene auf die z-Ebene\\
-mit dem Backward-Euler-Verfahren}
+  \includegraphics[alt={Abbildung der imaginären Achse der s-Ebene auf die z-Ebene mit dem Backward-Euler-Verfahren}]{new_media/10_10_abbildung_der_imaginren_achse.png}
+  \caption{Abbildung der imaginären Achse der s-Ebene auf die z-Ebene mit dem Backward-Euler-Verfahren}
   \label{fig:9.10}
 \end{figure}
 
@@ -499,10 +497,8 @@ Bild \ref{fig:9.11} stellt die Abbildung der imaginären Achse der s Ebene auf d
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Abbildung der imaginären Achse der s-Ebene auf die z-Ebene\\
-mit dem Forward-Euler-Verfahren}]{new media/10_11_abbildung_der_imaginren_achse.png}
-  \caption{Abbildung der imaginären Achse der s-Ebene auf die z-Ebene\\
-mit dem Forward-Euler-Verfahren}
+  \includegraphics[alt={Abbildung der imaginären Achse der s-Ebene auf die z-Ebene mit dem Forward-Euler-Verfahren}]{new_media/10_11_abbildung_der_imaginren_achse.png}
+  \caption{Abbildung der imaginären Achse der s-Ebene auf die z-Ebene mit dem Forward-Euler-Verfahren}
   \label{fig:9.11}
 \end{figure}
 
@@ -570,10 +566,8 @@ Bild \ref{fig:9.12} stellt die Abbildung der imaginären Achse der s-Ebene auf d
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Abbildung der imaginären Achse der s-Ebene auf die z-Ebene\\
-bei Approximation der Variable z über eine algebraische Gleichung in s}]{new media/10_12_abbildung_der_imaginren_achse.png}
-  \caption{Abbildung der imaginären Achse der s-Ebene auf die z-Ebene\\
-bei Approximation der Variable z über eine algebraische Gleichung in s}
+  \includegraphics[alt={Abbildung der imaginären Achse der s-Ebene auf die z-Ebene bei Approximation der Variable z über eine algebraische Gleichung in s}]{new_media/10_12_abbildung_der_imaginren_achse.png}
+  \caption{Abbildung der imaginären Achse der s-Ebene auf die z-Ebene bei Approximation der Variable z über eine algebraische Gleichung in s}
   \label{fig:9.12}
 \end{figure}
 
@@ -598,7 +592,7 @@ Die Frequenz wird durch die bilineare Transformation nicht linear, sondern verze
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Visualisierung der Verzerrung der Frequenzachse durch die bilineare Transformation}]{new media/10_13_visualisierung_der_verzerrung.png}
+  \includegraphics[alt={Visualisierung der Verzerrung der Frequenzachse durch die bilineare Transformation}]{new_media/10_13_visualisierung_der_verzerrung.png}
   \caption{Visualisierung der Verzerrung der Frequenzachse durch die bilineare Transformation}
   \label{fig:9.13}
 \end{figure}
@@ -678,10 +672,8 @@ T_{A} &= \frac{2  \pi}{20}\ s = \frac{\pi}{10}\ s
 Zur Berechnung des Ausgangssignals \(T(k)\) muss das Eingangssignal diskretisiert und die Differenzengleichung unter Berücksichtigung der Anfangsbedingung rekursiv berechnet werden. Es ergibt sich folgendes Einschwingverhalten.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Vergleich des simulierten Aufheizverhaltens für unterschiedliche Abtastzeiten\\
-\(T_{A1} = π\)/10 und \(T_{A2} = π\)/100}]{new media/10_14_vergleich_des_simulierten_aufh.png}
-  \captionof{figure}{Vergleich des simulierten Aufheizverhaltens für unterschiedliche Abtastzeiten\\
-\(T_{A1} = π\)/10 und \(T_{A2} = π\)/100}
+  \includegraphics[alt={Vergleich des simulierten Aufheizverhaltens für unterschiedliche Abtastzeiten \(T_{A1} = π\)/10 und \(T_{A2} = π\)/100}]{new_media/10_14_vergleich_des_simulierten_aufh.png}
+  \captionof{figure}{Vergleich des simulierten Aufheizverhaltens für unterschiedliche Abtastzeiten \(T_{A1} = π\)/10 und \(T_{A2} = π\)/100}
 \end{fixedfigure}
 
 In der Grafik ist zum Vergleich das Signal dargestellt, dass sich bei einer 10-mal kleineren Abtastzeit ergibt. Mit sinkender Abtastzeit steigt die Genauigkeit der Simulation.
@@ -698,7 +690,7 @@ Dabei ist V ein noch zu bestimmender Parameter. Die Frequenzverzerrung ergibt si
 \begin{align}
 {j \omega } &=  {V \frac{e^{j \Omega _{P} } -1}{e^{j \Omega _{P} } +1} =V \frac{e^{j \frac{\Omega _{P} }{2} } }{e^{j \frac{\Omega _{P} }{2} } }  \frac{e^{j \frac{\Omega _{P} }{2} } -e^{-j \frac{\Omega _{P} }{2} } }{e^{j \frac{\Omega _{P} }{2} } +e^{j- \frac{\Omega _{P} }{2} } } =V \frac{2 j}{2}  \frac{\sin \left(\frac{\Omega _{P} }{2} \right)}{\cos \left(\frac{\Omega _{P} }{2} \right)} } \\
 {} &=  {j V tan\left(\frac{\Omega _{P} }{2} \right)=j V tan\left(\frac{\omega _{P}  T_{A} }{2} \right)}
- \label{eq:9.81}
+\label{eq:9.81}
 \end{align}
 Damit der Frequenzgang der zeitkontinuierlichen und zeitdiskreten Implementierung an der Frequenz \(ω_{0}\) übereinstimmen, muss damit die Bedingung
 \begin{align}
@@ -728,7 +720,7 @@ und die beiden normierten Kreisfrequenzen \(Ω_{P0}\) und \(Ω_{0}\) sind identi
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Verzerrung der Frequenzachse durch die bilineare Transformation mit Prewarping für \(Ω_{0} = π\)/2}]{new media/10_15_verzerrung_der_frequenzachse_d.png}
+  \includegraphics[alt={Verzerrung der Frequenzachse durch die bilineare Transformation mit Prewarping für \(Ω_{0} = π\)/2}]{new_media/10_15_verzerrung_der_frequenzachse_d.png}
   \caption{Verzerrung der Frequenzachse durch die bilineare Transformation mit Prewarping für \(Ω_{0} = π\)/2}
   \label{fig:9.15}
 \end{figure}
@@ -758,10 +750,8 @@ G(z) &= \frac{z + 1}{z  (1 + V  T) + 1 - V  T} = \frac{z + 1}{\text{4.9163}  z -
 Das Ergebnis kann mit der Berechnung der Amplitudengänge verifiziert werden.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Amplitudengang des zeitkontinuierlichen Tiefpasses und der über bilineare Transformation\\
-ohne und mit Prewarping entworfenen Systeme}]{new media/10_16_amplitudengang_des_zeitkontinu.png}
-  \captionof{figure}{Amplitudengang des zeitkontinuierlichen Tiefpasses und der über bilineare Transformation\\
-ohne und mit Prewarping entworfenen Systeme}
+  \includegraphics[width=\maximagewidth, alt={Amplitudengang des zeitkontinuierlichen Tiefpasses und der über bilineare Transformation ohne und mit Prewarping entworfenen Systeme}]{new_media/10_16_amplitudengang_des_zeitkontinu.png}
+  \captionof{figure}{Amplitudengang des zeitkontinuierlichen Tiefpasses und der über bilineare Transformation ohne und mit Prewarping entworfenen Systeme}
 \end{fixedfigure}
 
 An der Grenzfrequenz \(ω_{G} = 1\)/\qty{2}{\radian\per\second} stimmen der Amplitudengang des zeitkontinuierlichen Systems und des über Prewarping entworfenen Systems exakt überein. Im Gegensatz dazu weist das über bilineare Transformation ohne Prewarping entworfene System eine Frequenzverschiebung auf.
@@ -808,22 +798,20 @@ Das zeitkontinuierliche Filter hat die Übertragungsfunktion
 \begin{align}
 {G\left(s\right)} &=  {\frac{\omega _{GP}^{3} }{\left(s+\omega _{GP} \right) \left(s+\left(\frac{1}{2} -j \frac{\sqrt{3} }{2} \right) \omega _{GP} \right) \left(s+\left(\frac{1}{2} +j \frac{\sqrt{3} }{2} \right) \omega _{GP} \right)} } \\
 {} &=  {\frac{\omega _{GP}^{3} }{s^{3} +\qty{2}{\second}^{2}  \omega _{GP} +\qty{2}{\second} \omega _{GP}^{2} +\omega _{GP}^{3} } =\frac{1}{\left(\frac{s}{\omega _{GP} } \right)^{3} +2 \left(\frac{s}{\omega _{GP} } \right)^{2} +2 \left(\frac{s}{\omega _{GP} } \right)+1} }
- \label{eq:9.94}
+\label{eq:9.94}
 \end{align}
 Mit der bilinearen Transformation wird das zeitkontinuierliche System in ein zeitdiskretes Filter mit der Übertragungsfunktion
 \begin{align}
 {G\left(z\right)} &=  {\left. \frac{1}{\left(\frac{s}{\omega _{GP} } \right)^{3} +2 \left(\frac{s}{\omega _{GP} } \right)^{2} +2 \left(\frac{s}{\omega _{GP} } \right)+1} \right|_{s=\frac{2}{T_{A} }  \frac{z-1}{z+1} } } \\
 {} &=  {{0.0181} \frac{\left(z+1\right)^{3} }{z^{3} -1.760 z^{2} +1.183 z-0.2781} }
- \label{eq:9.95}
+\label{eq:9.95}
 \end{align}
 überführt. Bild \ref{fig:9.17} stellt das Pol-Nullstellendiagramm für das über die bilineare Transformation entworfene Butterworth-Filter dar.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Pol-Nullstellendiagramm für das über die bilineare Transformation\\
-entworfene Butterworth-Filter dritter Ordnung}]{new media/10_17_polnullstellendiagramm_fr_das.png}
-  \caption{Pol-Nullstellendiagramm für das über die bilineare Transformation\\
-entworfene Butterworth-Filter dritter Ordnung}
+  \includegraphics[alt={Pol-Nullstellendiagramm für das über die bilineare Transformation entworfene Butterworth-Filter dritter Ordnung}]{new_media/10_17_polnullstellendiagramm_fr_das.png}
+  \caption{Pol-Nullstellendiagramm für das über die bilineare Transformation entworfene Butterworth-Filter dritter Ordnung}
   \label{fig:9.17}
 \end{figure}
 
@@ -839,10 +827,8 @@ Bild \ref{fig:9.18} zeigt den Frequenzgang des zeitdiskreten Systems im Vergleic
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Frequenzgang des über die bilineare Transformation entworfenen\\
-Butterworth-Filters dritter Ordnung}]{new media/10_18_frequenzgang_des_ber_die_bilin.png}
-  \caption{Frequenzgang des über die bilineare Transformation entworfenen\\
-Butterworth-Filters dritter Ordnung}
+  \includegraphics[width=\maximagewidth, alt={Frequenzgang des über die bilineare Transformation entworfenen Butterworth-Filters dritter Ordnung}]{new_media/10_18_frequenzgang_des_ber_die_bilin.png}
+  \caption{Frequenzgang des über die bilineare Transformation entworfenen Butterworth-Filters dritter Ordnung}
   \label{fig:9.18}
 \end{figure}
 
@@ -860,16 +846,14 @@ und damit die Differenzengleichung
 \begin{align}
 {y\left[k\right]} &=  {1.798 y\left[k-1\right]-1.221 y\left[k-2\right]+0.2898 y\left[k-3\right]} \\
 {} & {} & {+0.0167 u\left[k\right]+0.0501 u\left[k-1\right]+0.0501 u\left[k-2\right]+0.0167 u\left[k-3\right]}
- \label{eq:9.100}
+\label{eq:9.100}
 \end{align}
 Bild \ref{fig:9.19} stellt die Impuls- und Sprungantwort des zeitdiskreten Systems im Vergleich zur Impuls- und Sprungantwort des zeitkontinuierlichen Systems. Wieder werden die zeitdiskreten Signale entsprechend normiert.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Impuls- und Sprungantwort für das über die bilineare Transformation\\
-entworfenen Butterworth-Filter dritter Ordnung}]{new media/10_19_impuls_und_sprungantwort_fr_da.png}
-  \caption{Impuls- und Sprungantwort für das über die bilineare Transformation\\
-entworfenen Butterworth-Filter dritter Ordnung}
+  \includegraphics[width=\maximagewidth, alt={Impuls- und Sprungantwort für das über die bilineare Transformation entworfenen Butterworth-Filter dritter Ordnung}]{new_media/10_19_impuls_und_sprungantwort_fr_da.png}
+  \caption{Impuls- und Sprungantwort für das über die bilineare Transformation entworfenen Butterworth-Filter dritter Ordnung}
   \label{fig:9.19}
 \end{figure}
 
@@ -891,10 +875,10 @@ Der Frequenzgang \(G(Ω)\) kann dazu genutzt werden, Spektralanteile zu unterdr�
 
 Das ideale Tiefpass-Filter weist eine Übertragungsfunktion auf, die niederfrequente Anteile bis zu einer Grenzfrequenz \(Ω_{G}\) ungedämpft durchlässt und hochfrequente Anteile oberhalb der Grenzfrequenz \(Ω_{G}\) sperrt. Die Übertragungsfunktion des idealen Tiefpass-Filters lautet
 \begin{align}
-G_{TP}(\Omega) = \left\{ \begin{aligned}
- & 1\text{   f}\text{ü}\text{r }|\Omega| < \Omega_{G} \\
- & 0\text{  f}\text{ü}\text{r }\Omega_{G} < |\Omega| < \pi\ 
-\end{aligned} \right.\ \label{eq:9.102}
+G_{TP}(\Omega) = \begin{dcases}
+    1 & \text{   f}\text{ü}\text{r }|\Omega| < \Omega_{G} \\
+    0 & \text{  f}\text{ü}\text{r }\Omega_{G} < |\Omega| < \pi
+\end{dcases}\ \label{eq:9.102}
 \end{align}
 Die Impulsantwort des idealen Tiefpass-Filters lautet
 \begin{align}
@@ -904,7 +888,7 @@ Amplitudengang und Impulsantwort des idealen Tiefpass-Filters sind in Bild \ref{
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Amplitudengang und Impulsantwort des idealen Tiefpass-Filters mit \(Ω_{G} = π\)/3}]{new media/10_20_amplitudengang_und_impulsantwo.png}
+  \includegraphics[width=\maximagewidth, alt={Amplitudengang und Impulsantwort des idealen Tiefpass-Filters mit \(Ω_{G} = π\)/3}]{new_media/10_20_amplitudengang_und_impulsantwo.png}
   \caption{Amplitudengang und Impulsantwort des idealen Tiefpass-Filters mit \(Ω_{G} = π\)/3}
   \label{fig:9.20}
 \end{figure}
@@ -917,10 +901,10 @@ Neben der Eigenschaft der frequenzselektiven Dämpfung muss das ideale Tiefpass-
 
 Das ideale Hochpass-Filter weist eine Übertragungsfunktion auf, die niederfrequente Anteile bis zu einer Grenzfrequenz \(Ω_{G}\) sperrt und hochfrequente Anteile oberhalb der Grenzfrequenz \(Ω_{G}\) ungedämpft durchlässt. Die Übertragungsfunktion des idealen Hochpass-Filters lautet damit
 \begin{align}
-G_{HP}(\Omega) = \left\{ \begin{aligned}
- & \text{0   f}\text{ü}\text{r }|\Omega| < \Omega_{G} \\
- & \text{1   f}\text{ü}\text{r }\Omega_{G} < |\Omega| < \pi\ 
-\end{aligned} \right.\ \label{eq:9.104}
+G_{HP}(\Omega) = \begin{dcases}
+     & \text{0   f}\text{ü}\text{r }|\Omega| < \Omega_{G} \\
+     & \text{1   f}\text{ü}\text{r }\Omega_{G} < |\Omega| < \pi
+\end{dcases}\ \label{eq:9.104}
 \end{align}
 Die Übertragungsfunktion kann über die Übertragungsfunktion des Tiefpass-Filters ausgedrückt werden.
 \begin{align}
@@ -934,7 +918,7 @@ Amplitudengang und Impulsantwort des idealen Hochpass-Filters sind in Bild \ref{
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Amplitudengang und Impulsantwort des idealen Hochpass-Filters mit \(Ω_{G} = π\)/3}]{new media/10_21_amplitudengang_und_impulsantwo.png}
+  \includegraphics[width=\maximagewidth, alt={Amplitudengang und Impulsantwort des idealen Hochpass-Filters mit \(Ω_{G} = π\)/3}]{new_media/10_21_amplitudengang_und_impulsantwo.png}
   \caption{Amplitudengang und Impulsantwort des idealen Hochpass-Filters mit \(Ω_{G} = π\)/3}
   \label{fig:9.21}
 \end{figure}
@@ -945,17 +929,17 @@ Auch die Impulsantwort \(g_{HP}\){[}k{]} ist nicht auf den Bereich k ≥ 0 besch
 
 Neben dem idealen Hoch- und Tiefpass existieren die ideale Bandsperre und der ideale Bandpass. Die ideale Bandsperre sperrt in einem Bereich zwischen den Frequenzen \(Ω_{G1}\) und \(Ω_{G2}\). Sie besitzt die Übertragungsfunktion
 \begin{align}
-G_{BS}(\Omega) = \left\{ \begin{aligned}
- & \text{1   f}\text{ü}\text{r }|\Omega| < \Omega_{G1}\text{ und f}\text{ü}\text{r }\Omega_{G2} < |\Omega| < \pi \\
- & \text{0   f}\text{ü}\text{r }\Omega_{G1} < |\Omega| < \Omega_{G2}\ 
-\end{aligned} \right.\ \label{eq:9.107}
+G_{BS}(\Omega) = \begin{dcases}
+     & \text{1   f}\text{ü}\text{r }|\Omega| < \Omega_{G1}\text{ und f}\text{ü}\text{r }\Omega_{G2} < |\Omega| < \pi \\
+     & \text{0   f}\text{ü}\text{r }\Omega_{G1} < |\Omega| < \Omega_{G2}
+\end{dcases}\ \label{eq:9.107}
 \end{align}
 Der ideale Bandpass lässt Signalanteile in einem Bereich zwischen den Frequenzen \(Ω_{G1}\) und \(Ω_{G2}\) durch. Er hat folgende Übertragungsfunktion:
 \begin{align}
-G_{BP}(\Omega) = \left\{ \begin{aligned}
- & \text{1   f}\text{ü}\text{r }\Omega_{G1} < |\Omega| < \Omega_{G2} \\
- & \text{0   f}\text{ü}\text{r }|\Omega| < \Omega_{G1}\text{ und f}\text{ü}\text{r }\Omega_{G2} < |\Omega| < \pi\ 
-\end{aligned} \right.\ \label{eq:9.108}
+G_{BP}(\Omega) = \begin{dcases}
+     & \text{1   f}\text{ü}\text{r }\Omega_{G1} < |\Omega| < \Omega_{G2} \\
+     & \text{0   f}\text{ü}\text{r }|\Omega| < \Omega_{G1}\text{ und f}\text{ü}\text{r }\Omega_{G2} < |\Omega| < \pi
+\end{dcases}\ \label{eq:9.108}
 \end{align}
 Die Übertragungsfunktion des Bandpasses kann über die Übertragungsfunktion der Bandsperre ausgedrückt werden.
 \begin{align}
@@ -965,7 +949,7 @@ Beide Amplitudengänge sind in Bild \ref{fig:9.22} dargestellt.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Amplitudengang der idealen Bandsperre und des idealen Bandpasses}]{new media/10_22_amplitudengang_der_idealen_ban.png}
+  \includegraphics[width=\maximagewidth, alt={Amplitudengang der idealen Bandsperre und des idealen Bandpasses}]{new_media/10_22_amplitudengang_der_idealen_ban.png}
   \caption{Amplitudengang der idealen Bandsperre und des idealen Bandpasses}
   \label{fig:9.22}
 \end{figure}
@@ -978,10 +962,10 @@ In Abschnitt \ref{sec:9.3.1} werden die Frequenzgänge und Impulsantworten ideal
 
 Der Frequenzgang des zeitkontinuierlichen idealen Tiefpasses mit einer Grenzfrequenz \(ω_{G}\) ist definiert über seinen Amplitudengang
 \begin{align}
-A_{TP}(\omega) = \left\{ \begin{aligned}
- & 1\text{   f}\text{ü}\text{r }|\omega| < \omega_{G} \\
- & 0\text{  f}\text{ü}\text{r }\omega_{G} < |\omega|
-\end{aligned} \right.\ \label{eq:9.110}
+A_{TP}(\omega) = \begin{dcases}
+    1 & \text{   f}\text{ü}\text{r }|\omega| < \omega_{G} \\
+    0 & \text{  f}\text{ü}\text{r }\omega_{G} < |\omega|
+\end{dcases}\ \label{eq:9.110}
 \end{align}
 und seine lineare Phase
 \begin{align}
@@ -995,10 +979,8 @@ Amplitudengang und Impulsantwort des idealen zeitkontinuierlichen Tiefpass-Filte
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Impulsantwort des idealen zeitkontinuierlichen Tiefpass-Filters\\
-mit einer Grenzfrequenz \(ω_{G} = 1000\) rad/s}]{new media/10_23_impulsantwort_des_idealen_zeit.png}
-  \caption{Impulsantwort des idealen zeitkontinuierlichen Tiefpass-Filters\\
-mit einer Grenzfrequenz \(ω_{G} = 1000\) rad/s}
+  \includegraphics[alt={Impulsantwort des idealen zeitkontinuierlichen Tiefpass-Filters mit einer Grenzfrequenz \(ω_{G} = \qty{1000}{\radian\per\second}\)}]{new_media/10_23_impulsantwort_des_idealen_zeit.png}
+  \caption{Impulsantwort des idealen zeitkontinuierlichen Tiefpass-Filters mit einer Grenzfrequenz \(ω_{G} = \qty{1000}{\radian\per\second}\)}
   \label{fig:9.23}
 \end{figure}
 
@@ -1017,7 +999,7 @@ Die ersten beiden Bedingungen werden über das Ausschneiden der Impulsantwort \(
 \begin{align}
 g_{w}(t) &= g(t)  w(t) = \frac{\sin\left( \omega_{G}  \left( t - t_{0} \right) \right)}{\pi  \left( t - t_{0} \right)}  \left( \sigma(t) - \sigma\left( t - 2  t_{0} \right) \right) \label{eq:9.113}
 \end{align}
-Damit muss ein zeitdiskretes Filter der Ordnung N bestimmt werden, das an N + 1 Abtastwerten der Impulsantwort dieselben Werte aufweist wie die Impulsantwort des entsprechenden zeitkontinuierlichen Filters. Die Vorgehensweisen zur Bestimmung der Koeffizienten \(b_{m}\) des Filters sind davon abhängig, ob die Filterordnung gerade oder ungerade ist. Beide Varianten werden an einem Beispiel verdeutlicht, bei dem ein Filter mit einer Grenzfrequenz von \(ω_{G} = 1000\) rad/s mit einer Abtastzeit von\\
+Damit muss ein zeitdiskretes Filter der Ordnung N bestimmt werden, das an N + 1 Abtastwerten der Impulsantwort dieselben Werte aufweist wie die Impulsantwort des entsprechenden zeitkontinuierlichen Filters. Die Vorgehensweisen zur Bestimmung der Koeffizienten \(b_{m}\) des Filters sind davon abhängig, ob die Filterordnung gerade oder ungerade ist. Beide Varianten werden an einem Beispiel verdeutlicht, bei dem ein Filter mit einer Grenzfrequenz von \(ω_{G} = \qty{1000}{\radian\per\second}\) mit einer Abtastzeit von\\
 \(T_{A} = \qty{1}{\milli\second}\) realisiert werden soll.
 
 \subsubsection{Gerade Filterordnung}\label{sec:gerade-filterordnung}
@@ -1034,7 +1016,7 @@ Bild \ref{fig:9.24} stellt die Abtastwerte für das oben beschriebene Beispiel b
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Abtastwerte bei einem impulsinvarianten Filterentwurf und gerader Filterordnung \(N = 8\)}]{new media/10_24_abtastwerte_bei_einem_impulsin.png}
+  \includegraphics[alt={Abtastwerte bei einem impulsinvarianten Filterentwurf und gerader Filterordnung \(N = 8\)}]{new_media/10_24_abtastwerte_bei_einem_impulsin.png}
   \caption{Abtastwerte bei einem impulsinvarianten Filterentwurf und gerader Filterordnung \(N = 8\)}
   \label{fig:9.24}
 \end{figure}
@@ -1053,14 +1035,12 @@ Bild \ref{fig:9.25} stellt Amplituden- und Phasengang des Filters dar. Zum besse
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Amplituden- und Phasengang des entworfenen FIR-Filters\\
-bei einem impulsinvarianten Filterentwurf und gerader Filterordnung \(N = 8\)}]{new media/10_25_amplituden_und_phasengang_des.png}
-  \caption{Amplituden- und Phasengang des entworfenen FIR-Filters\\
-bei einem impulsinvarianten Filterentwurf und gerader Filterordnung \(N = 8\)}
+  \includegraphics[width=\maximagewidth, alt={Amplituden- und Phasengang des entworfenen FIR-Filters bei einem impulsinvarianten Filterentwurf und gerader Filterordnung \(N = 8\)}]{new_media/10_25_amplituden_und_phasengang_des.png}
+  \caption{Amplituden- und Phasengang des entworfenen FIR-Filters bei einem impulsinvarianten Filterentwurf und gerader Filterordnung \(N = 8\)}
   \label{fig:9.25}
 \end{figure}
 
-Das Filter erfüllt weitgehend das Spezifikationsziel, an der definierten Grenzfrequenz \(ω_{G} = 1000\) rad/s beträgt der Amplitudengang A(\(ω_{G}\)) = 0.5, das erste Nebenmaximum hat eine Höhe von \(A_{N} = 0.118\). Der Phasengang ist abgesehen von Sprüngen um ∆ϕ = - π an den Stellen, an denen der Amplitudengang Nullstellen aufweist, linear.
+Das Filter erfüllt weitgehend das Spezifikationsziel, an der definierten Grenzfrequenz \(ω_{G} = \qty{1000}{\radian\per\second}\) beträgt der Amplitudengang A(\(ω_{G}\)) = 0.5, das erste Nebenmaximum hat eine Höhe von \(A_{N} = 0.118\). Der Phasengang ist abgesehen von Sprüngen um ∆ϕ = - π an den Stellen, an denen der Amplitudengang Nullstellen aufweist, linear.
 
 Die Differenzengleichung ergibt sich wie bei den Filterentwürfen zuvor aus der Rücktransformation der Übertragungsgleichung \(G(z)\) in den Zeitbereich.
 
@@ -1078,7 +1058,7 @@ Bild \ref{fig:9.24} stellt die Abtastwerte für das oben beschriebene Beispiel b
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Abtastwerte bei einem impulsinvarianten Filterentwurf und ungerader Filterordnung \(N = 9\)}]{new media/10_26_abtastwerte_bei_einem_impulsin.png}
+  \includegraphics[alt={Abtastwerte bei einem impulsinvarianten Filterentwurf und ungerader Filterordnung \(N = 9\)}]{new_media/10_26_abtastwerte_bei_einem_impulsin.png}
   \caption{Abtastwerte bei einem impulsinvarianten Filterentwurf und ungerader Filterordnung \(N = 9\)}
 \end{figure}
 
@@ -1086,10 +1066,8 @@ Aus der Impulsantwort \(g[k]\) kann wieder die Übertragungsfunktion \(G(z)\) un
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Vergleich des Amplituden- und Phasengangs der entworfenen FIR-Filter\\
-bei einem impulsinvarianten Filterentwurf mit den Ordnungen \(N = 8\) und \(N = 9\)}]{new media/10_27_vergleich_des_amplituden_und_p.png}
-  \caption{Vergleich des Amplituden- und Phasengangs der entworfenen FIR-Filter\\
-bei einem impulsinvarianten Filterentwurf mit den Ordnungen \(N = 8\) und \(N = 9\)}
+  \includegraphics[width=\maximagewidth, alt={Vergleich des Amplituden- und Phasengangs der entworfenen FIR-Filter bei einem impulsinvarianten Filterentwurf mit den Ordnungen \(N = 8\) und \(N = 9\)}]{new_media/10_27_vergleich_des_amplituden_und_p.png}
+  \caption{Vergleich des Amplituden- und Phasengangs der entworfenen FIR-Filter bei einem impulsinvarianten Filterentwurf mit den Ordnungen \(N = 8\) und \(N = 9\)}
 \end{figure}
 
 Erwartungsgemäß ist das Filter der Ordnung \(N = 9\) steiler als das Filter der Ordnung \(N = 8\). Die Güte der Approximation des idealen Amplitudengangs wächst mit der Ordnung des Filters. Andererseits führt eine Steigerung der Filterordnung zu einem steileren Phasengang und damit zu einer höheren Gruppenlaufzeit. Die Gruppenlaufzeit \(T_{G}\) steigt mit wachsender Filterordnung linear an.
@@ -1133,11 +1111,11 @@ In Abschnitt \ref{sec:9.3.1} werden FIR-Filter ausgehend von der Impulsantwort e
 g[ k] &= \frac{1}{2  \pi}  \int_{- \pi}^{\pi}{G(\Omega)  e^{j  k  \Omega}\ d\Omega} \label{eq:9.121}
 \end{align}
 Dabei ist die Impulsantwort \(g[k]\) nicht zwingend kausal und besitzt außerdem eine unendlich große Länge. Um diese beiden Einschränkungen zu umgehen, wird die Impulsantwort für den Bereich\\
-- N/2 ≤ k ≤ N/2 berechnet und anschließend um \(k_{0} = N\)/2 nach rechts verschoben. Da der Wert \(k_{0}\) ein ganzzahliger Wert sein muss, lassen sich mit dem hier beschriebenen Verfahren nur FIR-Filter gerader Ordnung implementieren. Das Verfahren wird an dem Beispiel aus Abschnitt \ref{sec:9.3.1} verdeutlicht, bei dem ein Filter mit einer Grenzfrequenz von \(ω_{G} = 1000\) rad/s mit einer Abtastzeit von \(T_{A} = \qty{1}{\milli\second}\) und eine Ordnung \(N = 8\) realisiert werden soll. Die Grenzfrequenz \(ω_{G}\) entspricht der normierten Grenzfrequenz \(Ω_{G}\) = \(ω_{G}\)\(T_{A} = 1\). Damit berechnen sich die Koeffizienten \(g[k]\) zu
+- N/2 ≤ k ≤ N/2 berechnet und anschließend um \(k_{0} = N\)/2 nach rechts verschoben. Da der Wert \(k_{0}\) ein ganzzahliger Wert sein muss, lassen sich mit dem hier beschriebenen Verfahren nur FIR-Filter gerader Ordnung implementieren. Das Verfahren wird an dem Beispiel aus Abschnitt \ref{sec:9.3.1} verdeutlicht, bei dem ein Filter mit einer Grenzfrequenz von \(ω_{G} = \qty{1000}{\radian\per\second}\) mit einer Abtastzeit von \(T_{A} = \qty{1}{\milli\second}\) und eine Ordnung \(N = 8\) realisiert werden soll. Die Grenzfrequenz \(ω_{G}\) entspricht der normierten Grenzfrequenz \(Ω_{G}\) = \(ω_{G}\)\(T_{A} = 1\). Damit berechnen sich die Koeffizienten \(g[k]\) zu
 \begin{align}
 {g\left[k\right]} &=  {\frac{1}{2 \pi }  \int _{-\pi }^{\pi }G\left(\Omega \right) e^{j k \Omega } {\; }d\Omega  =\frac{1}{2 \pi }  \int _{-\Omega _{G} }^{\Omega _{G} }e^{j k \Omega } {\; }d\Omega  } \\
 {} &=  {\frac{1}{2 \pi }  \frac{1}{j k}  \left. e^{j k \Omega } \right|_{-\Omega _{G} }^{\Omega _{G} } =\frac{\sin \left(\Omega _{G}  k\right)}{\pi  k} }
- \label{eq:9.122}
+\label{eq:9.122}
 \end{align}
 Damit die Impulsantwort kausal wird, wird sie um N/2 = 4 verschoben, und es ergibt sich
 \begin{align}
@@ -1181,7 +1159,7 @@ Zur Diskussion unterschiedlicher Fensterfunktionen ist in Bild \ref{fig:9.28} da
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Kriterien zur Bewertung von Spektrum von Fensterfunktionen}]{new media/10_28_kriterien_zur_bewertung_von_sp.png}
+  \includegraphics[alt={Kriterien zur Bewertung von Spektrum von Fensterfunktionen}]{new_media/10_28_kriterien_zur_bewertung_von_sp.png}
   \caption{Kriterien zur Bewertung von Spektrum von Fensterfunktionen}
   \label{fig:9.28}
 \end{figure}
@@ -1217,7 +1195,7 @@ Das Rechteckfenster und der normierte Amplitudengang sind in Bild \ref{fig:9.29}
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Rechteckfenster und Spektrum des Rechteckfensters für \(N = 20\)}]{new media/10_29_rechteckfenster_und_spektrum_d.png}
+  \includegraphics[width=\maximagewidth, alt={Rechteckfenster und Spektrum des Rechteckfensters für \(N = 20\)}]{new_media/10_29_rechteckfenster_und_spektrum_d.png}
   \caption{Rechteckfenster und Spektrum des Rechteckfensters für \(N = 20\)}
   \label{fig:9.29}
 \end{figure}
@@ -1238,7 +1216,7 @@ Das Dreieckfenster und der normierte Amplitudengang sind in Bild \ref{fig:9.30} 
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Dreieckfenster und Spektrum des Dreieckfensters für \(N = 20\)}]{new media/10_30_dreieckfenster_und_spektrum_de.png}
+  \includegraphics[width=\maximagewidth, alt={Dreieckfenster und Spektrum des Dreieckfensters für \(N = 20\)}]{new_media/10_30_dreieckfenster_und_spektrum_de.png}
   \caption{Dreieckfenster und Spektrum des Dreieckfensters für \(N = 20\)}
   \label{fig:9.30}
 \end{figure}
@@ -1259,7 +1237,7 @@ Das Hann-Fenster und sein Spektrum sind in Bild \ref{fig:9.31} dargestellt.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Hann-Fenster und Spektrum des Hann-Fensters für \(N = 20\)}]{new media/10_31_hannfenster_und_spektrum_des_h.png}
+  \includegraphics[width=\maximagewidth, alt={Hann-Fenster und Spektrum des Hann-Fensters für \(N = 20\)}]{new_media/10_31_hannfenster_und_spektrum_des_h.png}
   \caption{Hann-Fenster und Spektrum des Hann-Fensters für \(N = 20\)}
   \label{fig:9.31}
 \end{figure}
@@ -1280,7 +1258,7 @@ Das Hamming-Fenster und sein Spektrum sind in Bild \ref{fig:9.32} dargestellt.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Hamming-Fenster und Spektrum des Hamming-Fensters für \(N = 20\)}]{new media/10_32_hammingfenster_und_spektrum_de.png}
+  \includegraphics[width=\maximagewidth, alt={Hamming-Fenster und Spektrum des Hamming-Fensters für \(N = 20\)}]{new_media/10_32_hammingfenster_und_spektrum_de.png}
   \caption{Hamming-Fenster und Spektrum des Hamming-Fensters für \(N = 20\)}
   \label{fig:9.32}
 \end{figure}
@@ -1319,7 +1297,7 @@ Die Daten zeigen, dass es eine ideale Fensterfunktion nicht gibt. Das Spektrum d
 \begin{example}{Entwicklung eines Tiefpass-Filters mit Hamming-Fenster}
 \label{example:beispiel-entwicklung-eines-tiefpass-filters-mit-hamming-fenster}
 
-Das Verfahren wird an dem Beispiel eines Tiefpass-Filters mit einer Grenzfrequenz von \(ω_{G} = 1000\) rad/s und einer Abtastzeit von \(T_{A} = \qty{1}{\milli\second}\) angewendet. Die Ordnung des Filters wird auf \(N = 12\) festgelegt. Damit ergibt sich eine Gruppenlaufzeit \(T_{G} = t_{0}\) = \qty{6}{\milli\second}.
+Das Verfahren wird an dem Beispiel eines Tiefpass-Filters mit einer Grenzfrequenz von \(ω_{G} = \qty{1000}{\radian\per\second}\) und einer Abtastzeit von \(T_{A} = \qty{1}{\milli\second}\) angewendet. Die Ordnung des Filters wird auf \(N = 12\) festgelegt. Damit ergibt sich eine Gruppenlaufzeit \(T_{G} = t_{0} = \qty{6}{\milli\second}\).
 \begin{align*}
 g[ k] &= \frac{\sin\left( \omega_{G}  \left( k  T_{A} - 6  T_{A} \right) \right)}{\pi  \left( k  T_{A} - 6  T_{A} \right)} = \frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)} 
 \end{align*}
@@ -1330,10 +1308,8 @@ g_{w}[ k] &= \frac{\sin\left( \Omega_{G}  (k - 6) \right)}{\pi  T_{A}  (k - 6)} 
 Bild \ref{fig:9.33} vergleicht die Impulsantworten für die Filterentwürfe mit Rechteck- und Hamming-Fenster miteinander.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Impulsantworten der Filterentwürfe mit Rechteck- und Hamming-Fenster im Vergleich,\\
-Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = 1\) krad/s, \(N = 12\)}]{new media/10_33_impulsantworten_der_filterentw.png}
-  \captionof{figure}{Impulsantworten der Filterentwürfe mit Rechteck- und Hamming-Fenster im Vergleich,\\
-Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = 1\) krad/s, \(N = 12\)}
+  \includegraphics[alt={Impulsantworten der Filterentwürfe mit Rechteck- und Hamming-Fenster im Vergleich, Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = \qty{1}{\kilo\radian\per\second}\), \(N = 12\)}]{new_media/10_33_impulsantworten_der_filterentw.png}
+  \captionof{figure}{Impulsantworten der Filterentwürfe mit Rechteck- und Hamming-Fenster im Vergleich, Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = \qty{1}{\kilo\radian\per\second}\), \(N = 12\)}
   \label{fig:9.33}
 \end{fixedfigure}
 
@@ -1348,10 +1324,8 @@ G_{W}(\Omega) &= \sum\limits_{k = 0}^{12}{g_{w}[ k]  e^{- j  \Omega  k}} = \sum\
 Die zu den Impulsantworten gehörenden Frequenzgänge werden in Bild \ref{fig:9.34} miteinander verglichen.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Filterentwurf mit Rechteck- und Hamming-Fenster im Vergleich,\\
-Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = 1\) krad/s, \(N = 12\)}]{new media/10_34_filterentwurf_mit_rechteck_und.png}
-  \captionof{figure}{Filterentwurf mit Rechteck- und Hamming-Fenster im Vergleich,\\
-Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = 1\) krad/s, \(N = 12\)}
+  \includegraphics[width=\maximagewidth, alt={Filterentwurf mit Rechteck- und Hamming-Fenster im Vergleich, Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = \qty{1}{\kilo\radian\per\second}\), \(N = 12\)}]{new_media/10_34_filterentwurf_mit_rechteck_und.png}
+  \captionof{figure}{Filterentwurf mit Rechteck- und Hamming-Fenster im Vergleich, Tiefpassfilter mit einer Grenzfrequenz \(ω_{G} = \qty{1}{\kilo\radian\per\second}\), \(N = 12\)}
   \label{fig:9.34}
 \end{fixedfigure}
 
@@ -1376,7 +1350,7 @@ Insbesondere die Gleichwelligkeit ist eine Eigenschaft, die bei den analytischen
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Ergebnis für einen Filter nach dem Remez-Entwurf}]{new media/10_35_ergebnis_fr_einen_filter_nach.png}
+  \includegraphics[alt={Ergebnis für einen Filter nach dem Remez-Entwurf}]{new_media/10_35_ergebnis_fr_einen_filter_nach.png}
   \caption{Ergebnis für einen Filter nach dem Remez-Entwurf}
   \label{fig:9.35}
 \end{figure}
@@ -1389,7 +1363,7 @@ Eine Alternante ist ein Berührungspunkt eines Polynoms mit einem Toleranzbereic
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Toleranzbereich und Polynom mit Alternanten}]{new media/10_36_toleranzbereich_und_polynom_mi.png}
+  \includegraphics[alt={Toleranzbereich und Polynom mit Alternanten}]{new_media/10_36_toleranzbereich_und_polynom_mi.png}
   \caption{Toleranzbereich und Polynom mit Alternanten}
   \label{fig:9.36}
 \end{figure}
@@ -1418,7 +1392,7 @@ Ist diese Bedingung erfüllt, ist der maximale absolute Fehler minimiert. Bild \
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Beschreibung eines Amplitudengangs mit einem Polynom der Ordnung \(N = 4\) und Fehlerfunktion}]{new media/10_37_beschreibung_eines_amplitudeng.png}
+  \includegraphics[width=\maximagewidth, alt={Beschreibung eines Amplitudengangs mit einem Polynom der Ordnung \(N = 4\) und Fehlerfunktion}]{new_media/10_37_beschreibung_eines_amplitudeng.png}
   \caption{Beschreibung eines Amplitudengangs mit einem Polynom der Ordnung \(N = 4\) und Fehlerfunktion}
   \label{fig:9.37}
 \end{figure}
@@ -1482,7 +1456,7 @@ Das Verfahren beginnt mit dem Schätzen von N + 2 Frequenzstützstellen \(Ω_{n}
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Initialisierung der Stützstellen \(Ω_{n}\) beim Remez-Algorithmus und Bestimmung der Extremwerte}]{new media/10_38_initialisierung_der_sttzstelle.png}
+  \includegraphics[alt={Initialisierung der Stützstellen \(Ω_{n}\) beim Remez-Algorithmus und Bestimmung der Extremwerte}]{new_media/10_38_initialisierung_der_sttzstelle.png}
   \caption{Initialisierung der Stützstellen \(Ω_{n}\) beim Remez-Algorithmus und Bestimmung der Extremwerte}
   \label{fig:9.38}
 \end{figure}
@@ -1493,7 +1467,7 @@ Für den zweiten Iterationsschritt werden die zuvor geschätzten Frequenzen ausg
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Polynom nach der Erfüllung des Alternantentheorems}]{new media/10_39_polynom_nach_der_erfllung_des.png}
+  \includegraphics[alt={Polynom nach der Erfüllung des Alternantentheorems}]{new_media/10_39_polynom_nach_der_erfllung_des.png}
   \caption{Polynom nach der Erfüllung des Alternantentheorems}
   \label{fig:9.39}
 \end{figure}
@@ -1506,7 +1480,7 @@ Das Flussdiagramm in Bild \ref{fig:9.40} fasst die Vorgehensweise für den Remez
 
 \begin{figure}
   \centering
-  \includesvg{new media/10_40_flussdiagramm_zum_remezaustaus.svg}
+  \includesvg{new_media/10_40_flussdiagramm_zum_remezaustaus.svg}
   \caption{Flussdiagramm zum Remez-Austauschalgorithmus}
   \label{fig:9.40}
 \end{figure}
@@ -1517,7 +1491,7 @@ Der Remez-Entwurf ist ein Filterentwurf, der auf dem Remez-Austauschalgorithmus 
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Toleranzschema am Beispiel eines Tiefpasses}]{new media/10_41_toleranzschema_am_beispiel_ein.png}
+  \includegraphics[alt={Toleranzschema am Beispiel eines Tiefpasses}]{new_media/10_41_toleranzschema_am_beispiel_ein.png}
   \caption{Toleranzschema am Beispiel eines Tiefpasses}
 \end{figure}
 
@@ -1574,7 +1548,7 @@ Das Flussdiagramm in Bild \ref{fig:9.42} fasst die Vorgehensweise für den Remez
 
 \begin{figure}
   \centering
-  \includesvg{new media/10_42_flussdiagramm_zum_remezfiltere.svg}
+  \includesvg{new_media/10_42_flussdiagramm_zum_remezfiltere.svg}
   \caption{Flussdiagramm zum Remez-Filterentwurf}
   \label{fig:9.42}
 \end{figure}
@@ -1587,7 +1561,7 @@ Als Anwendungsbeispiel für den Remez-Entwurf wird ein Hochpass-Filter entworfen
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Hochpass-Toleranzschema für das Anwendungsbeispiel}]{new media/10_43_hochpasstoleranzschema_fr_das.png}
+  \includegraphics[alt={Hochpass-Toleranzschema für das Anwendungsbeispiel}]{new_media/10_43_hochpasstoleranzschema_fr_das.png}
   \caption{Hochpass-Toleranzschema für das Anwendungsbeispiel}
   \label{fig:9.43}
 \end{figure}
@@ -1607,7 +1581,7 @@ Es ergibt sich eine Filterordnung von \(N = 9\). Der Remez-Entwurf führt zu ein
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Frequenzgang eines Equiripple-Hochpass-Filters der Ordnung \(N = 9\)}]{new media/10_44_frequenzgang_eines_equirippleh.png}
+  \includegraphics[width=\maximagewidth, alt={Frequenzgang eines Equiripple-Hochpass-Filters der Ordnung \(N = 9\)}]{new_media/10_44_frequenzgang_eines_equirippleh.png}
   \caption{Frequenzgang eines Equiripple-Hochpass-Filters der Ordnung \(N = 9\)}
   \label{fig:9.44}
 \end{figure}
@@ -1625,7 +1599,7 @@ Beide Filter haben eine symmetrische Impulsantwort, Filter von Typ II haben aber
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Frequenzgang eines Equiripple-Hochpass-Filters der Ordnung \(N = 10\)}]{new media/10_45_frequenzgang_eines_equirippleh.png}
+  \includegraphics[width=\maximagewidth, alt={Frequenzgang eines Equiripple-Hochpass-Filters der Ordnung \(N = 10\)}]{new_media/10_45_frequenzgang_eines_equirippleh.png}
   \caption{Frequenzgang eines Equiripple-Hochpass-Filters der Ordnung \(N = 10\)}
   \label{fig:9.45}
 \end{figure}
@@ -1686,11 +1660,14 @@ realisierbar \\
     \bottomrule
   \end{tabular}
 \end{table}
+
 \begin{application}{Entwurf Digitaler Filter}
   Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Entwurf Digitaler Filter} den Filterentwurf für IIR- und FIR-Filter.
   \tcblower
   \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
 \end{application}
+
+
 \section{Strukturen und Blockschaltbilder digitaler Systeme}\label{sec:9.6}
 
 Die in diesem Kapitel entworfenen Systeme lassen sich über Differenzengleichungen und Übertragungsfunktionen charakterisieren. Die Realisierung zeitdiskreter Systeme kann bei gleicher Übertragungsfunktion aber auf unterschiedliche Art erfolgen. Zur Beschreibung der Realisierungsvarianten werden Blockschaltbilder verwendet. Sie sind Gegenstand dieses Abschnittes.
@@ -1718,7 +1695,7 @@ Wie bei zeitkontinuierlichen Systemen wird eine Verstärkung mit einem Faktor an
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Darstellung eines zeitdiskreten Systems als Blockschaltbild}]{new media/10_46_darstellung_eines_zeitdiskrete.png}
+  \includegraphics[alt={Darstellung eines zeitdiskreten Systems als Blockschaltbild}]{new_media/10_46_darstellung_eines_zeitdiskrete.png}
   \caption{Darstellung eines zeitdiskreten Systems als Blockschaltbild}
   \label{fig:9.46}
 \end{figure}
@@ -1739,7 +1716,7 @@ Diese Gleichung führt zu der Direktstruktur 1 für zeitdiskrete Systeme, die in
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Direktstruktur 1 eines zeitdiskreten Systems}]{new media/10_47_direktstruktur_1_eines_zeitdis.png}
+  \includegraphics[alt={Direktstruktur 1 eines zeitdiskreten Systems}]{new_media/10_47_direktstruktur_1_eines_zeitdis.png}
   \caption{Direktstruktur 1 eines zeitdiskreten Systems}
   \label{fig:9.47}
 \end{figure}
@@ -1756,7 +1733,7 @@ G(z) &= \frac{z^{- 1} - 1.25  z^{- 2} + 0.25  z^{- 3}}{1 - 1.5  z^{- 1} + z^{- 2
 Einsetzen der Koeffizienten aus der gebrochen rationalen Funktion führt zu dem in Bild \ref{fig:9.48} dargestellten Blockschaltbild.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Beispiel für eine Systemdarstellung in Direktstruktur 1}]{new media/10_48_beispiel_fr_eine_systemdarstel.png}
+  \includegraphics[alt={Beispiel für eine Systemdarstellung in Direktstruktur 1}]{new_media/10_48_beispiel_fr_eine_systemdarstel.png}
   \captionof{figure}{Beispiel für eine Systemdarstellung in Direktstruktur 1}
   \label{fig:9.48}
 \end{fixedfigure}
@@ -1773,7 +1750,7 @@ Diese Gleichung führt zu einer Realisierungsform mit minimaler Anzahl von Speic
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Transponierte Direktstruktur 2 eines zeitdiskreten Systems}]{new media/10_49_transponierte_direktstruktur_2.png}
+  \includegraphics[alt={Transponierte Direktstruktur 2 eines zeitdiskreten Systems}]{new_media/10_49_transponierte_direktstruktur_2.png}
   \caption{Transponierte Direktstruktur 2 eines zeitdiskreten Systems}
   \label{fig:9.49}
 \end{figure}
@@ -1788,7 +1765,7 @@ G(z) &= \frac{z^{- 1} - 1.25  z^{- 2} + 0.25  z^{- 3}}{1 - 1.5  z^{- 1} + z^{- 2
 Einsetzen der Koeffizienten führt zu dem in Bild \ref{fig:9.50} dargestellten Signalflussgraphen.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Beispiel für eine Systemdarstellung in transponierter Direktstruktur 2}]{new media/10_50_beispiel_fr_eine_systemdarstel.png}
+  \includegraphics[alt={Beispiel für eine Systemdarstellung in transponierter Direktstruktur 2}]{new_media/10_50_beispiel_fr_eine_systemdarstel.png}
   \captionof{figure}{Beispiel für eine Systemdarstellung in transponierter Direktstruktur 2}
   \label{fig:9.50}
 \end{fixedfigure}
@@ -1807,7 +1784,7 @@ Um Systeme mit reellen Koeffizienten zu erhalten, werden Systeme zweiter Ordnung
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Biquad-Element}]{new media/10_51_biquadelement.png}
+  \includegraphics[alt={Biquad-Element}]{new_media/10_51_biquadelement.png}
   \caption{Biquad-Element}
 \end{figure}
 
@@ -1823,7 +1800,7 @@ G(z) &= \frac{z^{- 1} - z^{- 2}}{1 - 1.2  z^{- 1} + 0.7  z^{- 2} - 0.1  z^{- 3}}
 Die Darstellung führt zu dem in Blockschaltbild mit Biquads, das in Bild \ref{fig:9.52} dargestellt ist.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Beispiel zur Kaskadenstruktur mit Biquads}]{new media/10_52_beispiel_zur_kaskadenstruktur.png}
+  \includegraphics[width=\maximagewidth, alt={Beispiel zur Kaskadenstruktur mit Biquads}]{new_media/10_52_beispiel_zur_kaskadenstruktur.png}
   \captionof{figure}{Beispiel zur Kaskadenstruktur mit Biquads}
   \label{fig:9.52}
 \end{fixedfigure}
@@ -1842,7 +1819,7 @@ Für ein System vierter Ordnung ergibt sich damit eine Parallelschaltung zweier 
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Parallelstruktur mit Biquads}]{new media/10_53_parallelstruktur_mit_biquads.png}
+  \includegraphics[alt={Parallelstruktur mit Biquads}]{new_media/10_53_parallelstruktur_mit_biquads.png}
   \caption{Parallelstruktur mit Biquads}
   \label{fig:9.53}
 \end{figure}
@@ -1859,7 +1836,7 @@ G(z) &= \frac{z^{- 1} - z^{- 2}}{1 - 1.2  z^{- 1} + 0.7  z^{- 2} - 0.1  z^{- 3}}
 Die Darstellung führt zu dem Blockschaltbild mit Biquads, das in Bild \ref{fig:9.54} dargestellt ist.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Beispiel zur Parallelstruktur mit Biquads}]{new media/10_54_beispiel_zur_parallelstruktur.png}
+  \includegraphics[alt={Beispiel zur Parallelstruktur mit Biquads}]{new_media/10_54_beispiel_zur_parallelstruktur.png}
   \captionof{figure}{Beispiel zur Parallelstruktur mit Biquads}
   \label{fig:9.54}
 \end{fixedfigure}
@@ -1878,7 +1855,7 @@ Es ergibt sich eine vergleichsweise einfache Realisierung, die als transversale 
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Transversale Struktur}]{new media/10_55_transversale_struktur.png}
+  \includegraphics[alt={Transversale Struktur}]{new_media/10_55_transversale_struktur.png}
   \caption{Transversale Struktur}
   \label{fig:9.55}
 \end{figure}
@@ -1895,7 +1872,7 @@ G(z) &= \frac{z^{3} + z^{2} + z + 1}{4  z^{3}} = \frac{1}{4}  \left( 1 + z^{- 1}
 Es ergibt sich die in Bild \ref{fig:9.56} dargestellte Transversalstruktur.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Beispiel für eine transversale Struktur}]{new media/10_56_beispiel_fr_eine_transversale.png}
+  \includegraphics[alt={Beispiel für eine transversale Struktur}]{new_media/10_56_beispiel_fr_eine_transversale.png}
   \captionof{figure}{Beispiel für eine transversale Struktur}
   \label{fig:9.56}
 \end{fixedfigure}
@@ -1907,6 +1884,7 @@ Es ergibt sich die in Bild \ref{fig:9.56} dargestellte Transversalstruktur.
 \textless\textless\textless{} wird später ergänzt \textgreater\textgreater\textgreater{}
 
 \subsection{Bewertung der Realisierungsstrukturen unter Berücksichtigung der Fixed-Point-Darstellung}\label{sec:bewertung-der-realisierungsstrukturen-unter-beruxfccksichtigung-der-fixed-point-darstellung}
+
 \begin{application}{Quantisierung von Filterkoeffizienten}
   Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Quantisierung von Filterkoeffizienten} die Auswirkung einer Fixed-Point-Darstellung bei Filtern.
   \tcblower

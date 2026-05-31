@@ -53,7 +53,7 @@ Vertauschen von Summation und Integration sowie Anwendung der Ausblendeigenschaf
 \begin{align}
 {A_{n} } &=  {\frac{1}{T_{B} }  \sum\limits _{k=0}^{N-1}x_{W} \left[k\right] \int _{0}^{T_{B} }\delta \left(t-k T_{A} \right) e^{-j 2 \pi  \frac{n t}{T_{B} } } {\; }dt  =\frac{1}{T_{B} }  \sum\limits _{k=0}^{N-1}x_{W} \left[k\right] \int _{0}^{T_{B} }\delta \left(t-k T_{A} \right) e^{-j 2 \pi  \frac{n k T_{A} }{T_{B} } } {\; }dt  } \\
 {} &=  {\frac{1}{N T_{A} }  \sum\limits _{k=0}^{N-1}x_{W} \left[k\right] e^{-j 2 \pi  \frac{n k T_{A} }{N T_{A} } }  \int _{0}^{T_{B} }\delta \left(t-k T_{A} \right){\; }dt  =\frac{1}{N T_{A} }  \sum\limits _{k=0}^{N-1}x_{W} \left[k\right] e^{-j 2 \pi  \frac{n k}{N} }  }
- \label{eq:10.7}
+\label{eq:10.7}
 \end{align}
 In Anlehnung an die Definitionsgleichung der Fourier-Transformation von Signalfolgen
 \begin{align}
@@ -98,7 +98,7 @@ X_{n} &= \sum\limits_{k = 0}^{15}{x[ k]  e^{- j  \left( 2  \pi  \frac{n}{N}  k \
 Die Berechnung muss nicht unbedingt als analytische Rechnung ausgeführt werden, sie kann wegen der endlichen Summe auch numerisch erfolgen. Das Signal und der Betrag des Spektrums sind in Bild \ref{fig:10.1} dargestellt.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Rechteckfolge und ihre Diskrete-Fourier-Transformierte}]{new media/12_1_rechteckfolge_und_ihre_diskrete.png}
+  \includegraphics[width=\maximagewidth, alt={Rechteckfolge und ihre Diskrete-Fourier-Transformierte}]{new_media/12_1_rechteckfolge_und_ihre_diskrete.png}
   \captionof{figure}{Rechteckfolge und ihre Diskrete-Fourier-Transformierte}
   \label{fig:10.1}
 \end{fixedfigure}
@@ -110,10 +110,8 @@ X(\Omega) &= \sum\limits_{k = 2}^{6}{1  e^{- j  k  \Omega}} = e^{- j  4  \Omega}
 Beide Spektren sind in Bild \ref{fig:10.2} dargestellt. Die periodische Fortsetzung der Diskreten-Fourier-Transformierten und die Fourier-Transformierte der Folge sind an den Punkten \(Ω_{n}\) identisch. Allerdings liefert die Diskrete-Fourier-Transformierte nicht den bislang interpretierten Frequenzbereich von - π \ldots{} π sondern das Spektrum im Bereich von 0 \ldots{} 2π. Wegen der Periodizität der Fourier-Transformierten können die Darstellungen jedoch ineinander überführt werden.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Spektrum der Rechteckfolge berechnet über Fourier-Transformation\\
-und Diskrete-Fourier-Transformation}]{new media/12_2_spektrum_der_rechteckfolge_bere.png}
-  \captionof{figure}{Spektrum der Rechteckfolge berechnet über Fourier-Transformation\\
-und Diskrete-Fourier-Transformation}
+  \includegraphics[width=\maximagewidth, alt={Spektrum der Rechteckfolge berechnet über Fourier-Transformation und Diskrete-Fourier-Transformation}]{new_media/12_2_spektrum_der_rechteckfolge_bere.png}
+  \captionof{figure}{Spektrum der Rechteckfolge berechnet über Fourier-Transformation und Diskrete-Fourier-Transformation}
   \label{fig:10.2}
 \end{fixedfigure}
 
@@ -153,7 +151,7 @@ G(s) &= \frac{1}{1 + 2  d  T  s + T^{2}  s^{2}}
 mit \(T = \qty{31}{\milli\second}\) und \(d = 0.06\) erzeugt. Bild \ref{fig:10.3} zeigt die zeitkontinuierliche Impulsantwort.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Darstellung der Impulsantwort eines Systems 2. Ordnung mit komplexem Polpaar}]{new media/12_3_darstellung_der_impulsantwort_e.png}
+  \includegraphics[alt={Darstellung der Impulsantwort eines Systems 2. Ordnung mit komplexem Polpaar}]{new_media/12_3_darstellung_der_impulsantwort_e.png}
   \captionof{figure}{Darstellung der Impulsantwort eines Systems 2. Ordnung mit komplexem Polpaar}
   \label{fig:10.3}
 \end{fixedfigure}
@@ -161,22 +159,20 @@ mit \(T = \qty{31}{\milli\second}\) und \(d = 0.06\) erzeugt. Bild \ref{fig:10.3
 Die Impulsantwort wird für eine Dauer von \qty{2}{\second} mit \(T_{A} = \qty{1}{\milli\second}\) abgetastet. Die entsprechenden Folgenwerte \(x[k]\) werden mit Hilfe der Diskreten-Fourier-Transformation transformiert. Das Ergebnis ist die Diskrete-Fourier-Transformierte \(X_{n}\). Ihr Betrag ist in Bild \ref{fig:10.4} dargestellt.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Darstellung der Diskreten-Fourier-Transformierten für die Impulsantwort eines PT2-Glieds}]{new media/12_4_darstellung_der_diskretenfourie.png}
+  \includegraphics[alt={Darstellung der Diskreten-Fourier-Transformierten für die Impulsantwort eines PT2-Glieds}]{new_media/12_4_darstellung_der_diskretenfourie.png}
   \captionof{figure}{Darstellung der Diskreten-Fourier-Transformierten für die Impulsantwort eines PT2-Glieds}
   \label{fig:10.4}
 \end{fixedfigure}
 
 Die Signale werden mit einer Abtastzeit von \(T_{A} = \qty{0.001}{\second}\) abgetastet. Wegen der Symmetrie des Spektrums ist die maximal auswertbare Frequenz die halbe Abtastfrequenz
 \begin{align*}
-\frac{\omega_{A}}{2} &= \frac{\pi}{T_{A}} = 3141\ rad/s 
+\frac{\omega_{A}}{2} &= \frac{\pi}{T_{A}} = \qty{3141}{\radian\per\second} 
 \end{align*}
 Bild \ref{fig:10.5} zeigt den Amplituden- und Phasengang in dem Spektralbereich von 0 \ldots{} \(ω_{A}\)/2 in logarithmischer Darstellung und zum Vergleich das Spektrum der zeitkontinuierlichen Funktion \(g(t)\). Dabei wird das über die DFT berechnete Spektrum mit der Abtastzeit \(T_{A}\) multipliziert, um die aus der Abtastung resultierende Skalierung zu kompensieren.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Spektrum der Impulsantwort eines PT2-Glieds,\\
-Vergleich von analytischer Rechnung und Diskreter-Fourier-Transformierter}]{new media/12_5_spektrum_der_impulsantwort_eine.png}
-  \captionof{figure}{Spektrum der Impulsantwort eines PT2-Glieds,\\
-Vergleich von analytischer Rechnung und Diskreter-Fourier-Transformierter}
+  \includegraphics[width=\maximagewidth, alt={Spektrum der Impulsantwort eines PT2-Glieds, Vergleich von analytischer Rechnung und Diskreter-Fourier-Transformierter}]{new_media/12_5_spektrum_der_impulsantwort_eine.png}
+  \captionof{figure}{Spektrum der Impulsantwort eines PT2-Glieds, Vergleich von analytischer Rechnung und Diskreter-Fourier-Transformierter}
   \label{fig:10.5}
 \end{fixedfigure}
 
@@ -239,7 +235,7 @@ Das zeitkontinuierliche Signal \(x(t)\) und das Spektrum \(X(ω)\) sind in Bild 
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Dreieck-Funktion und das Spektrum für das zeitkontinuierliche Signal}]{new media/12_6_dreieckfunktion_und_das_spektru.png}
+  \includegraphics[width=\maximagewidth, alt={Dreieck-Funktion und das Spektrum für das zeitkontinuierliche Signal}]{new_media/12_6_dreieckfunktion_und_das_spektru.png}
   \caption{Dreieck-Funktion und das Spektrum für das zeitkontinuierliche Signal}
   \label{fig:10.6}
 \end{figure}
@@ -256,7 +252,7 @@ Das ideal abgetastete Signal und das Spektrum \(X_{A}(ω)\) sind in Bild \ref{fi
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Ideal abgetastete Dreieckfunktion und ihr Spektrum, Spektrum wird mit 1/\(T_{A}\) und periodisch fortgesetzt}]{new media/12_7_ideal_abgetastete_dreieckfunkti.png}
+  \includegraphics[width=\maximagewidth, alt={Ideal abgetastete Dreieckfunktion und ihr Spektrum, Spektrum wird mit 1/\(T_{A}\) und periodisch fortgesetzt}]{new_media/12_7_ideal_abgetastete_dreieckfunkti.png}
   \caption{Ideal abgetastete Dreieckfunktion und ihr Spektrum, Spektrum wird mit 1/\(T_{A}\) und periodisch fortgesetzt}
   \label{fig:10.7}
 \end{figure}
@@ -273,7 +269,7 @@ Die diskrete Signalfolge und das Spektrum \(X_{D}(Ω)\) sind in Bild \ref{fig:10
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Dreieckfolge und ihr Spektrum, Spektrum wird als Funktion der normierten Kreisfrequenz dargestellt}]{new media/12_8_dreieckfolge_und_ihr_spektrum_s.png}
+  \includegraphics[width=\maximagewidth, alt={Dreieckfolge und ihr Spektrum, Spektrum wird als Funktion der normierten Kreisfrequenz dargestellt}]{new_media/12_8_dreieckfolge_und_ihr_spektrum_s.png}
   \caption{Dreieckfolge und ihr Spektrum, Spektrum wird als Funktion der normierten Kreisfrequenz dargestellt}
   \label{fig:10.8}
 \end{figure}
@@ -286,7 +282,7 @@ Da das Signal \(x[k]\) sowieso zeitbegrenzt war, wirkt sich die Fensterung nicht
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Dreieckfolge und ihre DFT (\(N = 10\)), Zeitsignal periodisch in N fortgesetzt}]{new media/12_9_dreieckfolge_und_ihre_dft_n_10.png}
+  \includegraphics[width=\maximagewidth, alt={Dreieckfolge und ihre DFT (\(N = 10\)), Zeitsignal periodisch in N fortgesetzt}]{new_media/12_9_dreieckfolge_und_ihre_dft_n_10.png}
   \caption{Dreieckfolge und ihre DFT (\(N = 10\)), Zeitsignal periodisch in N fortgesetzt}
   \label{fig:10.9}
 \end{figure}
@@ -303,7 +299,7 @@ Sie sind in Bild \ref{fig:10.10} dargestellt.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Periodisch fortgesetzte Dreieck-Funktion und ihre Fourier-Koeffizienten}]{new media/12_10_periodisch_fortgesetzte_dreiec.png}
+  \includegraphics[width=\maximagewidth, alt={Periodisch fortgesetzte Dreieck-Funktion und ihre Fourier-Koeffizienten}]{new_media/12_10_periodisch_fortgesetzte_dreiec.png}
   \caption{Periodisch fortgesetzte Dreieck-Funktion und ihre Fourier-Koeffizienten}
   \label{fig:10.10}
 \end{figure}
@@ -371,7 +367,7 @@ Die Diskrete-Fourier-Transformierte einer Linearkombination von zwei Signalfolge
 \begin{align}
 {X_{n} } &=  {\sum\limits _{k=0}^{N-1}\left(\nu _{1}  x_{1} \left[k\right]+\nu _{2}  x_{2} \left[k\right]\right) e^{-j \left(2 \pi  \frac{n}{N}  k\right)}  =\sum\limits _{k=0}^{N-1}\nu _{1}  x_{1} \left[k\right] e^{-j \left(2 \pi  \frac{n}{N}  k\right)}  +\sum\limits _{k=0}^{N-1}\nu _{2}  x_{2} \left[k\right] e^{-j \left(2 \pi  \frac{n}{N}  k\right)}  } \\
 {} &=  {\nu _{1}  X_{1n} +\nu _{2}  X_{2n} }
- \label{eq:10.39}
+\label{eq:10.39}
 \end{align}
 Wie bei der Fourier-Transformation von Signalfolgen gilt also das Linearitätsprinzip.
 
@@ -438,7 +434,7 @@ Y_{n} &= N  x[ - k] = N  \sum\limits_{n = - \infty}^{\infty}{\delta\left[ - (k -
 Bild \ref{fig:10.11} stellt die Diskreten-Fourier-Transformierten für die periodische Impuls- und die Einsfolge als Beispiel für Dualität dar. Es werden \(N = 16\) Abtastwerte ausgewertet.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Darstellung der Diskreten-Fourier-Transformierten für Impuls- und Einsfolge}]{new media/12_11_darstellung_der_diskretenfouri.png}
+  \includegraphics[width=\maximagewidth, alt={Darstellung der Diskreten-Fourier-Transformierten für Impuls- und Einsfolge}]{new_media/12_11_darstellung_der_diskretenfouri.png}
   \captionof{figure}{Darstellung der Diskreten-Fourier-Transformierten für Impuls- und Einsfolge}
   \label{fig:10.11}
 \end{fixedfigure}
@@ -453,7 +449,7 @@ Die Diskrete-Fourier-Transformierte einer verschobenen Folge x{[}k - \(k_{0}\){]
 \begin{align}
 {\sum\limits _{k=0}^{N-1}x\left[k-k_{0} \right] e^{-j \left(2 \pi  \frac{n}{N}  k\right)}  } &=  {\sum\limits _{k=0}^{N-1}x\left[k-k_{0} \right] e^{-j \left(2 \pi  \frac{n}{N}  \left(k-k_{0} \right)\right)}  e^{-j \left(2 \pi  \frac{n}{N}  k_{0} \right)}  } \\
 {} &=  {e^{-j \left(2 \pi  \frac{n}{N}  k_{0} \right)}  \sum\limits _{k=0}^{N-1}x\left[k\right] e^{-j \left(2 \pi  \frac{n}{N}  k\right)}  =e^{-j \left(2 \pi  \frac{n}{N}  k_{0} \right)}  X_{n} {\; }}
- \label{eq:10.48}
+\label{eq:10.48}
 \end{align}
 Sinngemäß entsprechen diese Regeln der Verschiebungsregel der Fourier-Transformation für Signalfolgen. Zu beachten ist, dass \(x[k]\) nicht die Folge in der Beobachtungszeit \(T_{B}\) ist, sondern die periodische Fortsetzung dieser Folge. Wegen der periodischen Fortsetzung wird die Zeitverschiebung auch als zirkuläre Verschiebung der Folge bezeichnet.
 
@@ -467,7 +463,7 @@ Bei den bislang diskutierten Transformationen entspricht die Faltung zweier Sign
 Gegeben sind die beiden untenstehenden Folgen \(x_{1}\){[}k{]} und \(x_{2}\){[}k{]}.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Signalfolgen als Beispiel für eine periodische Faltung}]{new media/12_12_signalfolgen_als_beispiel_fr_e.png}
+  \includegraphics[width=\maximagewidth, alt={Signalfolgen als Beispiel für eine periodische Faltung}]{new_media/12_12_signalfolgen_als_beispiel_fr_e.png}
   \captionof{figure}{Signalfolgen als Beispiel für eine periodische Faltung}
 \end{fixedfigure}
 
@@ -526,7 +522,7 @@ Bild \ref{fig:10.13} zeigt den Signalfluss, der bei der Spektralschätzung verwe
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Signalfluss bei der Spektralschätzung}]{new media/12_13_signalfluss_bei_der_spektralsc.pdf}
+  \includegraphics[alt={Signalfluss bei der Spektralschätzung},keepaspectratio]{new_media/12_13_signalfluss_bei_der_spektralsc.pdf}
   \caption{Signalfluss bei der Spektralschätzung}
   \label{fig:10.13}
 \end{figure}
@@ -600,10 +596,8 @@ Der Betrag des Spektrums \(W(Ω)\) ist für unterschiedliche Beobachtungszeiten 
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Spektrum der rechteckförmigen Fensterfunktion \(w(t)\) für Beobachtungszeiten von\\
-\(T_{B1}\) = 10T\textsubscript{A} und \(T_{B2}\) = 50T\textsubscript{A}}]{new media/12_14_spektrum_der_rechteckfrmigen_f.png}
-  \caption{Spektrum der rechteckförmigen Fensterfunktion \(w(t)\) für Beobachtungszeiten von\\
-\(T_{B1}\) = 10T\textsubscript{A} und \(T_{B2}\) = 50T\textsubscript{A}}
+  \includegraphics[width=\maximagewidth, alt={Spektrum der rechteckförmigen Fensterfunktion \(w(t)\) für Beobachtungszeiten von \(T_{B1}\) = 10T\textsubscript{A} und \(T_{B2}\) = 50T\textsubscript{A}}]{new_media/12_14_spektrum_der_rechteckfrmigen_f.png}
+  \caption{Spektrum der rechteckförmigen Fensterfunktion \(w(t)\) für Beobachtungszeiten von \(T_{B1}\) = 10T\textsubscript{A} und \(T_{B2}\) = 50T\textsubscript{A}}
   \label{fig:10.14}
 \end{figure}
 
@@ -612,73 +606,72 @@ Der Effekt der Zeitbegrenzung ist von der Beobachtungszeit \(T_{B}\) abhängig. 
 \Omega &= \frac{2  \pi}{N} \label{eq:10.61}
 \end{align}
 Mit wachsender Anzahl von Abtastwerten N sinkt demnach die Breite des Spektrums. Das Spektrum nähert sich mit wachsender Anzahl N von Abtastwerten einer Impulsfunktion, die bei der Faltungsoperation das Spektrum unverändert lassen würde. Die Auswirkung der Fensterung wird am Beispiel eines harmonischen Signals diskutiert.
+
 \begin{application}{Leakage-Effekt}
   Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Leakage-Effekt} den Zusammenhang zwischen Fensterung im Zeitbereich und Auswirkung der Fensterung auf den Frequenzbereich.
   \tcblower
   \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
 \end{application}
-\subparagraph{Beispiel: Diskrete-Fourier-Transformation einer harmonischen Signalfolge}\label{beispiel-diskrete-fourier-transformation-einer-harmonischen-signalfolge}
+
+
+\begin{example}{Diskrete-Fourier-Transformation einer harmonischen Signalfolge}
+\label{example:beispiel-diskrete-fourier-transformation-einer-harmonischen-signalfolge}
 
 Der Effekt der Fensterung wird am Beispiel einer harmonischen Signalfolge erläutert. Sie ist für eine Periodendauer \(N_{0} = 10\) definiert als
-\begin{align}
-x[ k] &= \cos\left( \frac{2  \pi}{N_{0}}  k \right) = \cos\left( \Omega_{0}  k \right) \label{eq:10.62}
-\end{align}
+\begin{align*}
+x[ k] &= \cos\left( \frac{2  \pi}{N_{0}}  k \right) = \cos\left( \Omega_{0}  k \right) 
+\end{align*}
 Die Signalfolge weist das Spektrum
-\begin{align}
-X(\Omega) &= \pi  \left( \delta\left( \Omega + \Omega_{0} \right) + \delta\left( \Omega - \Omega_{0} \right) \right) \label{eq:10.63}
-\end{align}
+\begin{align*}
+X(\Omega) &= \pi  \left( \delta\left( \Omega + \Omega_{0} \right) + \delta\left( \Omega - \Omega_{0} \right) \right) 
+\end{align*}
 auf. Signalfolge und Spektrum sind für \(Ω_{0} = π\)/5 in Bild \ref{fig:10.15} dargestellt.
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Darstellung einer zeitdiskreten Kosinusfunktion und ihres Spektrums}]{new media/12_15_darstellung_einer_zeitdiskrete.png}
-  \caption{Darstellung einer zeitdiskreten Kosinusfunktion und ihres Spektrums}
+\begin{fixedfigure}
+  \includegraphics[width=\maximagewidth, alt={Darstellung einer zeitdiskreten Kosinusfunktion und ihres Spektrums}]{new_media/12_15_darstellung_einer_zeitdiskrete.png}
+  \captionof{figure}{Darstellung einer zeitdiskreten Kosinusfunktion und ihres Spektrums}
   \label{fig:10.15}
-\end{figure}
+\end{fixedfigure}
 
-Zur Berechnung des Spektrums mit der Diskreten-Fourier-Transformation muss die Signalfolge begrenzt werden. Dazu wird das Signal mit einer Rechteckfolge \(w[k]\) multipliziert. Bei einer Begrenzung des Abtastvorgangs auf 2 volle Periodendauern (\(N = 20\) = \qty{2}{\newton}\textsubscript{0}) wird das Spektrum des Signals \(X(Ω)\) mit dem Spektrum der zugehörigen Fensterfunktion \(W(Ω)\) gefaltet. Weil das Spektrum des Signals \(X(Ω)\) aus zwei Impulsen besteht, wird das Spektrum der zugehörigen Fensterfunktion \(W(Ω)\) an die Stelle der Impulse gefaltet. Damit ergibt sich Bild \ref{fig:10.16}.
+Zur Berechnung des Spektrums mit der Diskreten-Fourier-Transformation muss die Signalfolge begrenzt werden. Dazu wird das Signal mit einer Rechteckfolge \(w[k]\) multipliziert. Bei einer Begrenzung des Abtastvorgangs auf 2 volle Periodendauern (\(N = 20 = \qty{2}{\newton}\)\textsubscript{0}) wird das Spektrum des Signals \(X(Ω)\) mit dem Spektrum der zugehörigen Fensterfunktion \(W(Ω)\) gefaltet. Weil das Spektrum des Signals \(X(Ω)\) aus zwei Impulsen besteht, wird das Spektrum der zugehörigen Fensterfunktion \(W(Ω)\) an die Stelle der Impulse gefaltet. Damit ergibt sich Bild \ref{fig:10.16}.
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT im Basisband (\(N = 20\))}]{new media/12_16_darstellung_einer_zeitbegrenzt.png}
-  \caption{Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT im Basisband (\(N = 20\))}
+\begin{fixedfigure}
+  \includegraphics[width=\maximagewidth, alt={Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT im Basisband (\(N = 20\))}]{new_media/12_16_darstellung_einer_zeitbegrenzt.png}
+  \captionof{figure}{Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT im Basisband (\(N = 20\))}
   \label{fig:10.16}
-\end{figure}
+\end{fixedfigure}
 
 Das Spektrum der Fensterfunktion hat keine Auswirkungen auf die berechnete Diskrete-Fourier-Transformierte, weil es an allen Stellen \(Ω_{n}\) ≠ \(Ω_{0}\) den Wert 0 aufweist. Weiterhin ist der Wert \(Ω_{0}\) ein Vielfaches der Auflösung ∆Ω, die entsprechende Amplitude wird deshalb bei der Diskreten-Fourier-Transformierten wirklich berechnet. Bild \ref{fig:10.17} zeigt außerdem, dass eine periodische Fortsetzung der Signalfolge zur ursprünglichen nicht zeitbegrenzten Signalfolge führen würde.
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Zeitlich begrenzte Signalfolge \(x_{w}\){[}k{]} und die periodische Fortsetzung}]{new media/12_17_zeitlich_begrenzte_signalfolge.png}
-  \caption{Zeitlich begrenzte Signalfolge \(x_{w}\){[}k{]} und die periodische Fortsetzung}
+\begin{fixedfigure}
+  \includegraphics[alt={Zeitlich begrenzte Signalfolge \(x_{w}\){[}k{]} und die periodische Fortsetzung}]{new_media/12_17_zeitlich_begrenzte_signalfolge.png}
+  \captionof{figure}{Zeitlich begrenzte Signalfolge \(x_{w}\){[}k{]} und die periodische Fortsetzung}
   \label{fig:10.17}
-\end{figure}
+\end{fixedfigure}
 
 Das ideale Ergebnis der Diskreten-Fourier-Transformation ist darauf zurückzuführen, dass in diesem Beispiel die Anzahl von Abtastwerten ein Vielfaches der Periodendauer ist. Führt die periodische Wiederholung von Signalausschnitten wieder zur ursprünglichen Signalfolge, entspricht die Diskrete-Fourier-Transformierte dem Spektrum der ursprünglichen Signalfolge \(x_{D}\){[}k{]}. Dieser Fall ist im Allgemeinen aber nicht zu erwarten, da das Signal \(x_{D}\){[}k{]} typischerweise kein harmonisches Signal mit einer bekannten Frequenz sein wird. Bild \ref{fig:10.18} zeigt Signalverläufe für den Fall, dass die Beobachtungsdauer kein Vielfaches der Periodendauer ist (\(N = 15\)). Die periodische Fortsetzung des Signals hat eine Sprungstelle und die Frequenzwerte \(Ω_{n}\), an denen die DFT berechnet wird, ändern sich aufgrund der geänderten Anzahl N von Abtastwerten.
-\begin{align}
-\Omega_{n} &= \frac{2  \pi  n}{N} \label{eq:10.64}
-\end{align}
+\begin{align*}
+\Omega_{n} &= \frac{2  \pi  n}{N} 
+\end{align*}
 Damit entspricht kein Wert \(Ω_{n}\) dem eigentlich vorliegenden Wert \(Ω_{0}\), die DFT ist deshalb nur eine Näherung des erwarteten Spektrums.
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 15\))}]{new media/12_18_darstellung_einer_zeitbegrenzt.png}
-  \caption{Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 15\))}
+\begin{fixedfigure}
+  \includegraphics[width=\maximagewidth, alt={Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 15\))}]{new_media/12_18_darstellung_einer_zeitbegrenzt.png}
+  \captionof{figure}{Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 15\))}
   \label{fig:10.18}
-\end{figure}
+\end{fixedfigure}
 
 Weil die ursprünglichen scharfen Spektrallinien des harmonischen Signals sich auf die vorhandenen Stützstellen an den Stellen \(Ω_{n}\) verteilen, wird dieser Effekt als Leck-Effekt (Leakage) bezeichnet. Bei der Diskussion des Dirichlet-Kerns wird darauf hingewiesen, dass mit einer längeren Beobachtungsdauer die Breite des Dirichlet-Kerns reduziert wird. Das Spektrum der Diskreten-Fourier-Transformation wird schmaler. Deshalb zeigt Bild \ref{fig:10.19} die Signalverläufe für den Fall einer längeren Beobachtungsdauer, die kein Vielfaches der Periodendauer ist (\(N = 35\)).
 
-\begin{figure}
-  \centering
-  \includegraphics[alt={Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 35\))}]{new media/12_19_darstellung_einer_zeitbegrenzt.png}
-  \caption{Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 35\))}
+\begin{fixedfigure}
+  \includegraphics[width=\maximagewidth, alt={Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 35\))}]{new_media/12_19_darstellung_einer_zeitbegrenzt.png}
+  \captionof{figure}{Darstellung einer zeitbegrenzten Kosinus-Folge und ihrer DFT (\(N = 35\))}
   \label{fig:10.19}
-\end{figure}
+\end{fixedfigure}
 
 Die einzelnen Werte der Diskreten-Fourier-Transformierten liegen auf dem Spektrum \(X_{w}(Ω)\), das wegen der längeren Beobachtungszeit jedoch deutlich schmaler ist. Außerdem ist mit der längeren Beobachtungsdauer die spektrale Auflösung gestiegen, was in den reduzierten Abstand ∆Ω der Stützstellen resultiert.
 
-▪
+\end{example}
 
 Der hier an dem Beispiel eines harmonischen Signals dargestellte Leakage-Effekt gilt sinngemäß für beliebige Signale. Die Beispiele in Abschnitt \ref{sec:10.1} sind so gewählt, dass sich bei der periodischen Wiederholung keine Sprungstellen ergeben und sich der Leakage-Effekt praktisch nicht bemerkbar macht.
 
@@ -688,7 +681,7 @@ Der Leakage-Effekt kann darauf zurückgeführt werden, dass die Übergänge bei 
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Periodische Fortsetzung einer Signalsequenz mit und ohne Fensterung}]{new media/12_20_periodische_fortsetzung_einer.png}
+  \includegraphics[width=\maximagewidth, alt={Periodische Fortsetzung einer Signalsequenz mit und ohne Fensterung}]{new_media/12_20_periodische_fortsetzung_einer.png}
   \caption{Periodische Fortsetzung einer Signalsequenz mit und ohne Fensterung}
   \label{fig:10.20}
 \end{figure}
@@ -701,7 +694,7 @@ Nach den Rechenregeln zur Fourier-Transformation berechnet sich das Spektrum \(X
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Kriterien zur Bewertung von Spektrum von Fensterfunktionen}]{new media/12_21_kriterien_zur_bewertung_von_sp.png}
+  \includegraphics[alt={Kriterien zur Bewertung von Spektrum von Fensterfunktionen}]{new_media/12_21_kriterien_zur_bewertung_von_sp.png}
   \caption{Kriterien zur Bewertung von Spektrum von Fensterfunktionen}
   \label{fig:10.21}
 \end{figure}
@@ -737,7 +730,7 @@ Das Rechteckfenster und der normierte Amplitudengang sind in Bild \ref{fig:10.22
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Rechteckfenster und Spektrum des Rechteckfensters für \(N = 20\)}]{new media/12_22_rechteckfenster_und_spektrum_d.png}
+  \includegraphics[width=\maximagewidth, alt={Rechteckfenster und Spektrum des Rechteckfensters für \(N = 20\)}]{new_media/12_22_rechteckfenster_und_spektrum_d.png}
   \caption{Rechteckfenster und Spektrum des Rechteckfensters für \(N = 20\)}
   \label{fig:10.22}
 \end{figure}
@@ -758,7 +751,7 @@ Das Dreieckfenster und der normierte Amplitudengang sind in Bild \ref{fig:10.23}
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Dreieckfenster und Spektrum des Dreieckfensters für \(N = 20\)}]{new media/12_23_dreieckfenster_und_spektrum_de.png}
+  \includegraphics[width=\maximagewidth, alt={Dreieckfenster und Spektrum des Dreieckfensters für \(N = 20\)}]{new_media/12_23_dreieckfenster_und_spektrum_de.png}
   \caption{Dreieckfenster und Spektrum des Dreieckfensters für \(N = 20\)}
   \label{fig:10.23}
 \end{figure}
@@ -779,7 +772,7 @@ Das Hann-Fenster und sein Spektrum sind in Bild \ref{fig:10.24} dargestellt.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Hann-Fenster und Spektrum des Hann-Fensters für \(N = 20\)}]{new media/12_24_hannfenster_und_spektrum_des_h.png}
+  \includegraphics[width=\maximagewidth, alt={Hann-Fenster und Spektrum des Hann-Fensters für \(N = 20\)}]{new_media/12_24_hannfenster_und_spektrum_des_h.png}
   \caption{Hann-Fenster und Spektrum des Hann-Fensters für \(N = 20\)}
   \label{fig:10.24}
 \end{figure}
@@ -800,7 +793,7 @@ Das Hamming-Fenster und sein Spektrum sind in Bild \ref{fig:10.25} dargestellt.
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Hamming-Fenster und Spektrum des Hamming-Fensters für \(N = 20\)}]{new media/12_25_hammingfenster_und_spektrum_de.png}
+  \includegraphics[width=\maximagewidth, alt={Hamming-Fenster und Spektrum des Hamming-Fensters für \(N = 20\)}]{new_media/12_25_hammingfenster_und_spektrum_de.png}
   \caption{Hamming-Fenster und Spektrum des Hamming-Fensters für \(N = 20\)}
   \label{fig:10.25}
 \end{figure}
@@ -842,20 +835,16 @@ Der Vergleich zeigt, dass es eine ideale Fensterfunktion nicht gibt. Das Spektru
 Als Beispiel wird eine harmonische Funktion mit der normierten Kreisfrequenz \(Ω_{0} = 2\)·π/7 abgetastet. Es werden \(N = 32\) Abtastwerte aufgenommen, wobei die Signale mit Rechteck-, Hann- und Hamming-Fenster multipliziert werden. Bild \ref{fig:10.26} zeigt die aufgenommenen Werte.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Abtastwerte der harmonischen Funktion nach Gewichtung mit Rechteck-, Hann-\\
-und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}]{new media/12_26_abtastwerte_der_harmonischen_f.png}
-  \captionof{figure}{Abtastwerte der harmonischen Funktion nach Gewichtung mit Rechteck-, Hann-\\
-und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}
+  \includegraphics[width=\maximagewidth, alt={Abtastwerte der harmonischen Funktion nach Gewichtung mit Rechteck-, Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}]{new_media/12_26_abtastwerte_der_harmonischen_f.png}
+  \captionof{figure}{Abtastwerte der harmonischen Funktion nach Gewichtung mit Rechteck-, Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}
   \label{fig:10.26}
 \end{fixedfigure}
 
 Es ist deutlich zu erkennen, dass die Werte an den Rändern des Beobachtungszeitraums auf null reduziert werden. Mit den jeweils 32 Werten wird eine Diskrete-Fourier-Transformation durchgeführt. Bild \ref{fig:10.27} zeigt die Ergebnisse.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Diskrete-Fourier-Transformierte der harmonischen Funktion\\
-nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}]{new media/12_27_diskretefouriertransformierte.png}
-  \captionof{figure}{Diskrete-Fourier-Transformierte der harmonischen Funktion\\
-nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}
+  \includegraphics[width=\maximagewidth, alt={Diskrete-Fourier-Transformierte der harmonischen Funktion nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}]{new_media/12_27_diskretefouriertransformierte.png}
+  \captionof{figure}{Diskrete-Fourier-Transformierte der harmonischen Funktion nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/7)}
   \label{fig:10.27}
 \end{fixedfigure}
 
@@ -866,10 +855,8 @@ Bei dem Rechteck-Fenster fällt der Betrag des Spektrums nur langsam ab. Stützs
 Zum Vergleich zeigt Bild \ref{fig:10.28} die über die Diskrete-Fourier-Transformation berechneten Spektren bei einer Frequenz \(Ω_{0} = 2\)·π/8.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Diskrete-Fourier-Transformierte der harmonischen Funktion\\
-nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/8)}]{new media/12_28_diskretefouriertransformierte.png}
-  \captionof{figure}{Diskrete-Fourier-Transformierte der harmonischen Funktion\\
-nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/8)}
+  \includegraphics[width=\maximagewidth, alt={Diskrete-Fourier-Transformierte der harmonischen Funktion nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/8)}]{new_media/12_28_diskretefouriertransformierte.png}
+  \captionof{figure}{Diskrete-Fourier-Transformierte der harmonischen Funktion nach Gewichtung mit Rechteck- und Hann- und Hamming-Fenster (Frequenz \(Ω_{0} = 2\)·π/8)}
   \label{fig:10.28}
 \end{fixedfigure}
 
@@ -925,14 +912,8 @@ Im Gegensatz dazu zeigt der Vergleich der Fälle 1 und 3, dass durch eine Vergr�
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Vergleich der Diskreten-Fourier-Transformierten\\
-Fall 1: Signalfolge der Länge \(N_{1} = 16\)\\
-Fall 2: Signalfolge der Länge \(N_{1}\) mit Zero-Padding \(M = 16\)\\
-Fall 3: Signalfolge der Länge \(N_{2}\) = \qty{2}{\newton}\textsubscript{1} = 32}]{new media/12_29_vergleich_der_diskretenfourier.png}
-  \caption{Vergleich der Diskreten-Fourier-Transformierten\\
-Fall 1: Signalfolge der Länge \(N_{1} = 16\)\\
-Fall 2: Signalfolge der Länge \(N_{1}\) mit Zero-Padding \(M = 16\)\\
-Fall 3: Signalfolge der Länge \(N_{2}\) = \qty{2}{\newton}\textsubscript{1} = 32}
+  \includegraphics[width=\maximagewidth, alt={Vergleich der Diskreten-Fourier-Transformierten Fall 1: Signalfolge der Länge \(N_{1} = 16\) Fall 2: Signalfolge der Länge \(N_{1}\) mit Zero-Padding \(M = 16\) Fall 3: Signalfolge der Länge \(N_{2} = \qty{2}{\newton}\)\textsubscript{1} = 32}]{new_media/12_29_vergleich_der_diskretenfourier.png}
+  \caption{Vergleich der Diskreten-Fourier-Transformierten Fall 1: Signalfolge der Länge \(N_{1} = 16\) Fall 2: Signalfolge der Länge \(N_{1}\) mit Zero-Padding \(M = 16\) Fall 3: Signalfolge der Länge \(N_{2} = \qty{2}{\newton}\)\textsubscript{1} = 32}
   \label{fig:10.29}
 \end{figure}
 
@@ -1015,7 +996,7 @@ Bild \ref{fig:10.30} stellt die komplexen Drehfaktoren für die Ordnung \(N = 7\
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Darstellung des komplexen Drehfaktors für die Ordnung \(N = 7\) und \(N = 8\) in der komplexen Ebene}]{new media/12_30_darstellung_des_komplexen_dreh.png}
+  \includegraphics[width=\maximagewidth, alt={Darstellung des komplexen Drehfaktors für die Ordnung \(N = 7\) und \(N = 8\) in der komplexen Ebene}]{new_media/12_30_darstellung_des_komplexen_dreh.png}
   \caption{Darstellung des komplexen Drehfaktors für die Ordnung \(N = 7\) und \(N = 8\) in der komplexen Ebene}
   \label{fig:10.30}
 \end{figure}
@@ -1059,7 +1040,7 @@ in Matrix-Schreibweise
 {X_{1} } \\
 {\vdots } \\
 {X_{N-1} } \end{array}\right)=\boldsymbol{\mathrm{F}}^{-1}  \underline{X}}
- \label{eq:10.88}
+\label{eq:10.88}
 \end{align}
 \subsection{Grundidee der Fast-Fourier-Transformation}\label{sec:grundidee-der-fast-fourier-transformation}
 
@@ -1085,7 +1066,7 @@ Ziel ist es, die in rot eingezeichneten gemeinsamen Vektoren für eine Zusammenf
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Rechenschema der FFT für die Ordnung \(N = 4\)}]{new media/12_31_rechenschema_der_fft_fr_die_or.pdf}
+  \includegraphics[alt={Rechenschema der FFT für die Ordnung \(N = 4\)},keepaspectratio]{new_media/12_31_rechenschema_der_fft_fr_die_or.pdf}
   \caption{Rechenschema der FFT für die Ordnung \(N = 4\)}
   \label{fig:10.31}
 \end{figure}

@@ -7,6 +7,7 @@ from .postprocess import fix_html_paths
 
 from . import ui
 from .latexml import convert_latex_to_html, LaTeXMLOutput
+from .embedding import generate_mdx_from_html
 
 
 app = typer.Typer(
@@ -46,7 +47,7 @@ def main(
 
     try:
         # replace_documentclass(input_path)
-        result = convert_latex_to_html(input_path, output_path, splitat)
+        result: LaTeXMLOutput = convert_latex_to_html(input_path, output_path, splitat)
 
         fix_html_paths(output_path)
         

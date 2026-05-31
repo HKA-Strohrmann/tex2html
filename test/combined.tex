@@ -1,6 +1,8 @@
 
 %___________________________________________________________________
 % Build options
+% ! manually speficy the target language here!
+
 
 \newif\ifenglish
 \englishfalse
@@ -9,80 +11,52 @@
 
 %___________________________________________________________________
 % Detect Compiler
-% \RequirePackage can be used BEFORE \documentclass
-\RequirePackage{iftex}
+% use "ifpdf" to detect copiliation for html or pdf output
+% use "ifPDFTeX" and "ifLuaTeX" to detect pdf compiler and load appropriate packages and fonts.
+%* using PDFtex compiler is discuraged, laulatex is the successor.*
+
+
+\RequirePackage{iftex}  % can be used before \documentclass
 
 
 %___________________________________________________________________
 % Load Class
 
+
 \ifpdf
-\documentclass[
-    paper=a4,
-    parskip=half,          % vertical space between paragraphs
-    fontsize=11pt,
-    DIV=14,                % high page layout: more characters per line
-    headsepline=true,      % horizontal line below header
-    twoside=semi,          % semi two-sided page layout
-    BCOR=0em,              % binding correction
-    headinclude=true,      % include header in type area calculation
-    toc=index,
-    toc=listof,
-    toc=bibliography,
-    numbers=noendperiod,   % no dot after section numbers
-    open=any,              % chapters can start on left or right page
-    fleqn,                 % align equations to the left
-]{scrbook}
+    \documentclass[
+        paper=a4,
+        parskip=half,          % vertical space between paragraphs
+        fontsize=11pt,
+        DIV=14,                % high page layout: more characters per line
+        headsepline=true,      % horizontal line below header
+        twoside=semi,          % semi two-sided page layout
+        BCOR=0em,              % binding correction
+        headinclude=true,      % include header in type area calculation
+        toc=index,
+        toc=listof,
+        toc=bibliography,
+        numbers=noendperiod,   % no dot after section numbers
+        open=any,              % chapters can start on left or right page
+        fleqn,                 % align equations to the left
+    ]{scrbook}
 \else
-\documentclass[
-    paper=a4,
-    parskip=half,          % vertical space between paragraphs
-    fontsize=11pt,
-    DIV=14,                % high page layout: more characters per line
-    headsepline=true,      % horizontal line below header
-    twoside=semi,          % semi two-sided page layout
-    BCOR=0em,              % binding correction
-    headinclude=true,      % include header in type area calculation
-    toc=index,
-    toc=listof,
-    toc=bibliography,
-    numbers=noendperiod,   % no dot after section numbers
-    open=any,              % chapters can start on left or right page
-    fleqn,                 % align equations to the left
-]{book}
-\fi
-
-%___________________________________________________________________
-% Language Setting
-% set to \englishtrue for English output.
-
-
-\ifenglish
-    \newcommand{\LangExample}{Example}
-    \newcommand{\LangExercise}{Exercise}
-    \newcommand{\LangApplication}{Application}
-    \newcommand{\LangVideo}{Video}
-    \newcommand{\LangSummary}{Summary}
-\else
-    \newcommand{\LangExample}{Beispiel}
-    \newcommand{\LangExercise}{Übung}
-    \newcommand{\LangApplication}{Applikation}
-    \newcommand{\LangVideo}{Video}
-    \newcommand{\LangSummary}{Zusammenfassung}
+    \documentclass[
+        a4paper,
+        11pt,
+        fleqn,                 % align equations to the left
+    ]{book}
 \fi
 
 
 %___________________________________________________________________
-% Compiler Configuration
-%! use "ifpdf" to detect copiliation for html or pdf output!
-%! use "PFTeX" "LuaTeX" to detect compiler and load appropriate packages and fonts.
+% Load Packages
 
-
-\usepackage{iftex}
 
 \usepackage{amssymb, amsmath, mathtools}    % must be loaded before unicode-math
 
-\ifPDFTeX
+\ifPDFTeX 
+    \usepackage{textcomp}                 % euro and related symbols
     \ifpdf
         \ifenglish
             \usepackage[english]{babel}
@@ -95,10 +69,11 @@
 
         \usepackage{libertine}                % text font
         \usepackage[libertine]{newtxmath}     % matching math font
-        \let\newtxlaplace\laplace
-        \let\laplace\relax
-        % replicae unicode-math macros like imageof.
+
+        % replicate imageof and other macros from unicode-math with trfsigns.
         % becauuse newtxmath provides a different "laplace" than trfsigns, temporarily rename it to avoid conflicts.
+        \let\newtxlaplace\laplace
+        \let\laplace\relax % unbound laplace from newtxmath
         \usepackage{trfsigns}  
         \let\origof\Laplace
         \let\laplace\relax % unbound laplace from trfsigns
@@ -107,8 +82,9 @@
         \let\multimapinv\fourier
         \newcommand{\vlongdash}{\dft{N}}
         \newcommand{\longdashv}{\DFT{N}}
-        \let\laplace\newtxlaplace
+        \let\laplace\newtxlaplace   % rebound laplace to newtxmath 
 
+        % this allows to use unicode characters in the source code, even when compiling with pdftex.
         \usepackage{newunicodechar} % requires utf8 input encoding
         \newunicodechar{Ω}{\ensuremath{\Omega}}
         \newunicodechar{ω}{\ensuremath{\omega}}
@@ -132,33 +108,29 @@
         \newunicodechar{▪}{\ensuremath{\blacksquare}}
         \newunicodechar{ }{\ } % Fixes non-breaking space
     \fi
-
-    \usepackage{textcomp}                 % euro and related symbols
-    \usepackage{mathtools} % conflicts with unicode-math
 \else
-    \usepackage{unicode-math}
+    %*LuaTeX compiler*
+    \usepackage{unicode-math}  % unicode math symbols and fonts
 
     \defaultfontfeatures{
-        Scale=MatchLowercase,
-        Ligatures=TeX,      % enable kerning for better spacing between letters
-        Kerning=On          % replace sequences (fi) with a single glyph
+        Scale=MatchLowercase,   % scale font to serif lowercase letter
+        Ligatures=TeX,          % enable kerning for better spacing between letters
+        Kerning=On              % replace sequences (fi) with a single glyph
     }
 
-    % Prefer Libertinus when available; otherwise keep defaults.
     \IfFontExistsTF{Libertinus Serif}{%
         \setmainfont{Libertinus Serif}
         \setmonofont[Scale=MatchLowercase]{Libertinus Mono}
         \setsansfont[Scale=MatchLowercase]{Libertinus Sans}
-        
-        \setmathfont[    % load font in math mode, provided by unicode math
+        \setmathfont[    % load font in math mode, macro provided by unicode math
             Scale=MatchLowercase, % scale font to serif lowercase letter
             BoldFont=*  % use the same font for bold math
         ]{libertinusmath-regular.otf}   % must point to .otf file
     }{
-        % fallback to defaults
+        % fallback to default fonts
     }
 
-    \usepackage{polyglossia}
+    \usepackage{polyglossia}    % modern multilingual support
     \ifenglish
         \setdefaultlanguage{english}
     \else
@@ -176,25 +148,63 @@
 
 
 %___________________________________________________________________
+% Language Setting
+%* please refer to the build options at the top of the document to select a language.*
+
+
+\ifenglish
+    \newcommand{\LangExample}{Example}
+    \newcommand{\LangExercise}{Exercise}
+    \newcommand{\LangApplication}{Application}
+    \newcommand{\LangVideo}{Video}
+    \newcommand{\LangSummary}{Summary}
+    \newcommand{\LangSummaryList}{List of Summaries}
+\else
+    \newcommand{\LangExample}{Beispiel}
+    \newcommand{\LangExercise}{Übung}
+    \newcommand{\LangApplication}{Applikation}
+    \newcommand{\LangVideo}{Video}
+    \newcommand{\LangSummary}{Zusammenfassung}
+    \newcommand{\LangSummaryList}{Zusammenfassungsverzeichnis}
+\fi
+
+
+%___________________________________________________________________
 % Image Dimensions
+% 1. images are set with a default width and height. Because 'keepaspectratio' is set,
+% an image will be scaled unitl it hits the first lowest threshold.
+% 2. Image dimensions can be overwritten locally for each image. If only width is changed,
+% the height will be automatically adjusted to maintain the aspect ratio.
+%* Therefore it is recommended to only specfiy the width of an image, and let the height adjust automatically. *
 
-
+% image width can be adjusted. Together with 'keepaspectratio' the height will be auto adjusted.
 \newlength{\imagewidth}
-\setlength{\imagewidth}{0.8\columnwidth}
+\newlength{\maximagewidth}
+\setlength{\imagewidth}{0.5\columnwidth}
+\setlength{\maximagewidth}{1.0\columnwidth}
 
-\newlength{\imageheight}
-\setlength{\imageheight}{0.3\textheight}
+% upper bound for image heigths.
+\newlength{\maximageheight}
+\setlength{\maximageheight}{0.4\textheight}
 
 
 %___________________________________________________________________
 % Load Packages
-% Do not use siunitx: pandoc is unable to convert to markdown
+%* These packages have kown compatibility issues with LaTeXML, but are currently not used:*
+%   - tcolorbox
+%   - biblatex
+%   - scrartcl, scrreprt, scrbook
 
+% These packages are not supported by latexML as well. But they either:
+%   - have no visual affect the HTML output, only the PDF output, or
+%   - a custom bindings file has been created to support (some of) their features in the HTML output.
+%! For unsupported features, the HTML output will be visually degraded and a warning will be issued during conversion.
 \ifpdf
     \usepackage{scrlayer-scrpage}                       % Bessere Kopfzeilen
     \usepackage{fontawesome5}       % load pictograms
     \usepackage{scrhack}   % common fixes for KOMA and other packages
     \usepackage[open]{bookmark}         % fix bookmarks in pdf when using hyperref
+    \usepackage{tasks}  % allow enumerate with mutli col and 
 \fi
 
 \usepackage[nopatch=footnote]{microtype}            % font expansion, must be loaded after babel/polyglossia!
@@ -210,7 +220,7 @@
 \usepackage[    % svgsetup is not known in latexml
     inkscapelatex=false,    % dont render text inside svg with latex
     keepaspectratio,
-    height=\imageheight,
+    height=\maximageheight,
     width=\imagewidth,
 ]{svg}
 \usepackage{caption}
@@ -238,7 +248,6 @@
     ]{siunitx}
 \fi
 
-\usepackage{tasks}
 
 \usepackage{framed}                              % for custom colored boxes
 
@@ -253,6 +262,7 @@
 %___________________________________________________________________
 % Colors
 
+
 % Based on the university CI guide.
 \definecolor{HkaRed}{HTML}{d72305}
 \definecolor{FacGreen}{HTML}{288732}
@@ -266,7 +276,7 @@
 % Options
 
 
-\let\qty\SI % latexml does not yet support qty from siunitx, so we use \SI as a fallback for now
+\let\qty\SI % latexml does not yet support \qty from siunitx, so we use the older \SI as a fallback.
 
 \MakeOuterQuote{"}                         % make " active for csquotes
 
@@ -276,7 +286,7 @@
     pdfpagemode=UseOutlines,
     breaklinks=true,
     colorlinks=true,
-    % Keep link colors but visually calm.
+    % Keep link colors visually calm.
     linkcolor=FacLightBlue,
     citecolor=FacLightBlue,
     urlcolor=FacDarkBlue,
@@ -299,7 +309,7 @@
 % Images grow until width or height limit is reached.
 \setkeys{Gin}{
     keepaspectratio,
-    height=\imageheight,
+    height=\maximageheight,
     width=\imagewidth,
 }
 
@@ -313,14 +323,14 @@
 
 
 \newcounter{example}[chapter]
-\renewcommand{\theexample}{\thechapter.\arabic{example}}
 \newcounter{exercise}[chapter]
-\renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
 \newcounter{application}[chapter]
-\renewcommand{\theapplication}{\thechapter.\arabic{application}}
 \newcounter{video}[chapter]
-\renewcommand{\thevideo}{\thechapter.\arabic{video}}
 \newcounter{summary}[chapter]
+\renewcommand{\theexample}{\thechapter.\arabic{example}}
+\renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
+\renewcommand{\theapplication}{\thechapter.\arabic{application}}
+\renewcommand{\thevideo}{\thechapter.\arabic{video}}
 \renewcommand{\thesummary}{\thechapter.\arabic{summary}}
 
 \newcommand{\tcblower}{\par\vspace{1ex}\hrule\vspace{1ex}\par}
@@ -331,7 +341,7 @@
     \colorlet{shadecolor}{FacGreen!5}%
     \begin{shaded*}%
     \noindent\textbf{\textcolor{FacGreen}{\faCalculator\quad \LangExample~\theexample: #1}}%
-    \par\smallskip%
+    \par%
 }{%
     \end{shaded*}\par%
 }
@@ -341,7 +351,7 @@
     \colorlet{shadecolor}{FacTeal!5}%
     \begin{shaded*}%
     \noindent\textbf{\textcolor{FacTeal}{\faCogs\quad \LangApplication~\theapplication: #1}}%
-    \par\smallskip%
+    \par%
 }{%
     \end{shaded*}\par%
 }
@@ -351,7 +361,7 @@
     \colorlet{shadecolor}{FacDarkBlue!5}%
     \begin{shaded*}%
     \noindent\textbf{\textcolor{FacDarkBlue}{\faPen\quad \LangExercise~\theexercise: #1}}%
-    \par\smallskip%
+    \par%
 }{%
     \end{shaded*}\par%
 }
@@ -361,21 +371,33 @@
     \colorlet{shadecolor}{FacPurple!5}%
     \begin{shaded*}%
     \noindent\textbf{\textcolor{FacPurple}{\faVideo\quad \LangVideo~\thevideo: #1}}%
-    \par\smallskip%
+    \par%
 }{%
     \end{shaded*}\par%
 }
 \newenvironment{summary}[1]{%
     \refstepcounter{summary}%
+    \addcontentsline{los}{summary}{\thesummary: #1}%
     \par%
     \colorlet{shadecolor}{HkaRed!5}%
     \begin{shaded*}%
     \noindent\textbf{\textcolor{HkaRed}{\faBook\quad \LangSummary~\thesummary: #1}}%
-    \par\smallskip%
+    \par%
 }{%
     \end{shaded*}\par%
 }
 
+\ifpdf
+    % make a list of for summaries
+    \DeclareNewTOC[
+        type=summary,
+        listname={\LangSummaryList},
+        extension=los,
+        setup=totoc,
+    ]{los}
+
+    \unsettoc{los}{noparskip}   % Use compact list spacing
+\fi
 
 %___________________________________________________________________
 % Title Page
@@ -409,27 +431,47 @@
         Manfred Strohrmann
     }
 
-    % Requires a two-sided layout.
-    \uppertitleback{
-        14. Ausgabe, Version 14.0.1, Stand: 2024-05-01
-        \medskip
+    \newcommand{\SetupTitleBack}{
+        \uppertitleback{
+            14. Ausgabe, Version 14.0.1, Stand: 2024-05-01
+            \medskip
 
-        Dieses Skript und begleitende Materialien finden Sie unter: \\
-        \url{https://www.h-ka.de/eit/Digitale-Signalverarbeitung}
+            Dieses Skript und begleitende Materialien finden Sie unter: \\
+            \url{https://www.h-ka.de/eit/Digitale-Signalverarbeitung}
+        }
+        \lowertitleback{
+            Copyright \textcopyright\ 2010 Manfred Strohrmann,
+            \medskip
+
+            Published by Manfred Strohrmann. Alle Rechte vorbehalten.
+            \medskip
+
+            Dieses Skript wird als Lehrmaterial für die Vorlesung Digitale Signalverarbeitung an der Hochschule Karlsruhe verwendet. Das Skript wird unter der folgenden Lizenz veröffentlicht: CC BY-NC-ND 4.0 (\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}).
+        }
+        % \dedication{
+        %     \itshape
+        %     Dem akademischen Nachwuchs gewidmet, der die Filter von morgen entwirft.
+        % }
     }
-    \lowertitleback{
-        Copyright \textcopyright\ 2010 Manfred Strohrmann,
-        \medskip
 
-        Published by Manfred Strohrmann. Alle Rechte vorbehalten.
-        \medskip
-
-        Dieses Skript wird als Lehrmaterial für die Vorlesung Digitale Signalverarbeitung an der Hochschule Karlsruhe verwendet. Das Skript wird unter der folgenden Lizenz veröffentlicht: CC BY-NC-ND 4.0 (\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}).
+    % titleback options are only allowed in twoside mode,
+    % so we detect twoside or semitwoside (from KOMA) and enable titleback accordingly.
+    \makeatletter
+    \newif\ifshowtitleback
+    \if@twoside
+        \showtitlebacktrue        
+    \fi
+    \@ifundefined{if@semitwoside}{}{%
+        \if@semitwoside
+            \showtitlebacktrue
+        \fi
     }
-    % \dedication{
-    %     \itshape
-    %     Dem akademischen Nachwuchs gewidmet, der die Filter von morgen entwirft.
-    % }
+    \ifshowtitleback
+        \SetupTitleBack
+    \fi
+    \makeatother
+
+    
 \fi
 
 
@@ -484,9 +526,14 @@
 \ifpdf
     \maketitle
     \tableofcontents
+    \listoftoc{los}
 \fi
 
 % \mainmatter   % arabic page numbers, chapter numbers, chapter entries in ToC
+
+
+%___________________________________________________________________
+% Your Content Here
 
 
 \input{chapters/01_einleitung.tex}
@@ -512,9 +559,5 @@
 \backmatter
 \appendix   % switches to heading letter numbering
 
-% \ifpdf
-%     \listoffigures
-%     \listoftables
-% \fi
 
 \end{document}

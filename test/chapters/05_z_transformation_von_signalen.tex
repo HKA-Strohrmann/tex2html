@@ -53,10 +53,10 @@ Wie bei der Laplace-Transformation werden zunächst einige Korrespondenzen der z
 
 Aus der Definition der diskreten Impulsfolge
 \begin{align}
-x[ k] = \delta[ k] = \left\{ \begin{aligned}
- & 1\ 	\text{f}\text{ü}\text{r k } = \text{ 0} \\
- & 0	\text{f}\text{ü}\text{r ganzzahlige  k } \neq \text{ 0}
-\end{aligned} \right.\ \label{eq:5.9}
+x[ k] = \delta[ k] = \begin{dcases}
+    1 & \text{f}\text{ü}\text{r k } = \text{ 0} \\
+    0 & \text{f}\text{ü}\text{r ganzzahlige  k } \neq \text{ 0}
+\end{dcases}\ \label{eq:5.9}
 \end{align}
 ergibt sich die z-Transformierte durch Einsetzen in die Definitionsgleichung zu
 \begin{align}
@@ -90,10 +90,10 @@ X(z) &= \sum\limits_{k = 0}^{\infty}{\left( \sigma[ k] - \sigma[ k - K] \right) 
 
 Die z-Transformation der Sprungfolge mit der Definition
 \begin{align}
-x[ k] = \sigma[ k] = \left\{ \begin{aligned}
- & 1\ 	\text{f}\text{ü}\text{r ganzzahlige k } \geq \text{ 0} \\
- & 0	\text{f}\text{ü}\text{r ganzzahlige }k < \text{ 0}
-\end{aligned} \right.\ \label{eq:5.16}
+x[ k] = \sigma[ k] = \begin{dcases}
+    1 & \text{f}\text{ü}\text{r ganzzahlige k } \geq \text{ 0} \\
+    0 & \text{f}\text{ü}\text{r ganzzahlige }k < \text{ 0}
+\end{dcases}\ \label{eq:5.16}
 \end{align}
 errechnet sich direkt durch Einsetzen in die Definitionsgleichung zu
 \begin{align}
@@ -162,7 +162,7 @@ Diese Bedingung erfüllen alle Werte der z-Ebene, die außerhalb des Kreises mit
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Konvergenzbereich der z-Transformierten \(X(z)\) einer Folge \(x[k]\)}]{new media/5_1_konvergenzbereich_der_ztransform.png}
+  \includegraphics[alt={Konvergenzbereich der z-Transformierten \(X(z)\) einer Folge \(x[k]\)}]{new_media/5_1_konvergenzbereich_der_ztransform.png}
   \caption{Konvergenzbereich der z-Transformierten \(X(z)\) einer Folge \(x[k]\)}
   \label{fig:5.1}
 \end{figure}
@@ -179,7 +179,7 @@ verwendet. Mit dieser Substitution wird die komplexe s-Ebene in die komplexe z-E
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Darstellung von Bereichen in der s-Ebene und deren transformierten Flächen in der z-Ebene}]{new media/5_2_darstellung_von_bereichen_in_der.png}
+  \includegraphics[width=\maximagewidth, alt={Darstellung von Bereichen in der s-Ebene und deren transformierten Flächen in der z-Ebene}]{new_media/5_2_darstellung_von_bereichen_in_der.png}
   \caption{Darstellung von Bereichen in der s-Ebene und deren transformierten Flächen in der z-Ebene}
   \label{fig:5.2}
 \end{figure}
@@ -195,11 +195,14 @@ Eine Linie der s-Ebene mit konstantem Realteil \(δ_{0}\) wird auf einen Kreis a
 |z| &= \left| e^{\left( \delta_{0} + j  \omega \right)  T_{A}} \right| = \left| e^{\delta_{0}  T_{A}} \right|  \left| e^{j  \omega  T_{A}} \right| = e^{\delta_{0}  T_{A}} \label{eq:5.32}
 \end{align}
 aufweist. Mit negativem Realteil ergibt sich eine Lage innerhalb des Einheitskreises, mit positivem Realteil eine Lage um den Einheitskreis herum. Daraus folgt, dass die gesamte linke s-Halbebene in den Einheitskreis abgebildet wird, während die rechte s-Halbebene um den Einheitskreis herum abgebildet wird. Tabelle \ref{tab:5.1} fasst korrespondierende Elemente der s- und z-Ebene zusammen.
+
 \begin{application}{Transformation}
   Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Transformation} den Zusammenhang zwischen Punkten in der Laplace-Ebene und Punkten in der z-Ebene.
   \tcblower
   \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
 \end{application}
+
+
 \begin{summary}{Tabellarische Übersicht über korrespondierende Elemente der s- und z-Ebene}
 \label{tab:5.1}
 \begin{center}
@@ -241,6 +244,7 @@ berechnet zu
     \bottomrule
   \end{tabular}
 \end{table}
+
 {\def\LTcaptype{none} % do not increment counter
 \begin{table}
   \centering
@@ -249,16 +253,18 @@ berechnet zu
     \toprule
     Pollage \(X(z)\) & Signalfolge \(x[k]\) \\
     \midrule
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/5_3_tabellarische_bersicht.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new media/5_4_tabellarische_bersicht.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/5_5_tabellarische_bersicht.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new media/5_6_tabellarische_bersicht.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new media/5_7_tabellarische_bersicht.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new media/5_8_tabellarische_bersicht.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Kreis, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/5_9_tabellarische_bersicht.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/5_10_tabellarische_bersicht.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/5_11_tabellarische_bersicht.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Rechteck, Screenshot enthält. Automatisch generierte Beschreibung}]{new media/5_12_tabellarische_bersicht.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Diagramm, Screenshot enthält. Automatisch generierte Beschreibung}]{new media/5_13_tabellarische_bersicht.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/5_14_tabellarische_bersicht.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/5_3_tabellarische_bersicht.png} & \includegraphics[alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new_media/5_4_tabellarische_bersicht.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/5_5_tabellarische_bersicht.png} & \includegraphics[alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new_media/5_6_tabellarische_bersicht.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new_media/5_7_tabellarische_bersicht.png} & \includegraphics[alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new_media/5_8_tabellarische_bersicht.png} \\
+    \includegraphics[alt={Ein Bild, das Screenshot, Reihe, Kreis, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/5_9_tabellarische_bersicht.png} & \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new_media/5_10_tabellarische_bersicht.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/5_11_tabellarische_bersicht.png} & \includegraphics[alt={Ein Bild, das Reihe, Diagramm, Rechteck, Screenshot enthält. Automatisch generierte Beschreibung}]{new_media/5_12_tabellarische_bersicht.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Kreis, Diagramm, Screenshot enthält. Automatisch generierte Beschreibung}]{new_media/5_13_tabellarische_bersicht.png} & \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new_media/5_14_tabellarische_bersicht.png} \\
     \bottomrule
   \end{tabular}
 \end{table}
-}Aus Gleichung \eqref{eq:5.34} kann der zu der komplexen Exponentialfolge zugehörige Pol \(λ_{0}\) in der komplexen z-Ebene abgelesen werden. Liegt der Pol auf der reellen Achse, handelt es sich um eine reelle Folge, die bei negativem Realteil alternierend ist. Für einen Betrag von \textbar \(λ_{0}\)\textbar{} \textless{} 1 ist die Folge konvergent, für\\
+}
+
+Aus Gleichung \eqref{eq:5.34} kann der zu der komplexen Exponentialfolge zugehörige Pol \(λ_{0}\) in der komplexen z-Ebene abgelesen werden. Liegt der Pol auf der reellen Achse, handelt es sich um eine reelle Folge, die bei negativem Realteil alternierend ist. Für einen Betrag von \textbar \(λ_{0}\)\textbar{} \textless{} 1 ist die Folge konvergent, für\\
 \textbar \(λ_{0}\)\textbar{} \textgreater{} 1 ist die Folge divergent und für \textbar \(λ_{0}\)\textbar{} = 1 bleibt der Betrag der Folge konstant. Die Lage eines Poles in der z-Ebene kann damit einem Signalverhalten zugeordnet werden, das in Tabelle \ref{tab:5.2} skizziert wird.
 
 Liegen z-Transformierte mit konjugiert komplexem Polpaar der Form
@@ -279,17 +285,20 @@ Für einen Betrag von \textbar \(r_{0}\)\textbar{} \textless{} 1 ist die Folge k
     \toprule
     Pollage \(X(z)\) & Signalfolge \(x[k]\) \\
     \midrule
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new media/5_15_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Rechteck, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/5_16_zusammenhang_zwischen_pollage_u.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Kreis, Screenshot enthält. Automatisch generierte Beschreibung}]{new media/5_17_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/5_18_zusammenhang_zwischen_pollage_u.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Kreis enthält. Automatisch generierte Beschreibung}]{new media/5_19_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/5_20_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new_media/5_15_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Screenshot, Reihe, Rechteck, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/5_16_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Diagramm, Kreis, Screenshot enthält. Automatisch generierte Beschreibung}]{new_media/5_17_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Reihe, Diagramm, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung}]{new_media/5_18_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Diagramm, Screenshot, Kreis enthält. Automatisch generierte Beschreibung}]{new_media/5_19_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new_media/5_20_zusammenhang_zwischen_pollage_u.png} \\
     \bottomrule
   \end{tabular}
 \end{table}
+
 \begin{application}{Komplexe Exponentialfolge}
   Im Online-Portal \emph{Systemtheorie Online} verdeutlicht die Applikation \emph{Komplexe Exponentialfolge} den Zusammenhang zwischen der Pollage in der komplexen Ebene und dem Verhalten der Signalfolge.
   \tcblower
   \url{h-ka.de/eit/digitale-signalverarbeitung/übungen/kapitel2}
 \end{application}
+
+
 \protect\phantomsection\label{_Ref372383177}{}
 
 \section{Rechenregeln der z-Transformation}\label{sec:5.2}
@@ -327,7 +336,7 @@ Bereits bei der Herleitung der verschobenen Impuls- und Sprungfolge wird die Ver
 \begin{align}
 {\boldsymbol{\mathit{Z}}\left\{x\left[k-k_{0} \right]\right\}} &=  {\sum\limits _{k=0}^{\infty }x\left[k-k_{0} \right] z^{-k}  =\sum\limits _{k=k_{0} }^{\infty }x\left[k-k_{0} \right] z^{-k}  =\sum\limits _{k=0}^{\infty }x[k] z^{-(k+k_{0} )}  =z^{-k_{0} }  \sum\limits _{k=0}^{\infty }x[k] z^{-k}  } \\
 {} &=  {z^{-k_{0} }  X(z)}
- \label{eq:5.41}
+\label{eq:5.41}
 \end{align}
 Diskrete Systeme lassen sich über Differenzengleichungen beschreiben. Aus diesem Grund ist die Verschiebungsregel von vergleichbarer Bedeutung wie die Differentiationsregel der Laplace-Transformation.
 
@@ -354,7 +363,7 @@ Um die Summe bei \(k = 0\) beginnen zu lassen, müssen einige Summanden addiert 
 \begin{align}
 {\boldsymbol{\mathit{Z}}\left\{x\left[k+k_{0} \right]\right\}} &=  {z^{k_{0} }  \sum\limits _{k=0}^{k_{0} -1}x\left[k\right] z^{-k}  +z^{k_{0} }  \sum\limits _{k=k_{0} }^{\infty }x\left[k\right] z^{-k}  -z^{k_{0} }  \sum\limits _{k=0}^{k_{0} -1}x\left[k\right] z^{-k}  } \\
 {} &=  {z^{k_{0} }  \sum\limits _{k=0}^{\infty }x\left[k\right] z^{-k}  -z^{k_{0} }  \sum\limits _{k=0}^{k_{0} -1}x\left[k\right] z^{-k}  =z^{k_{0} }  X\left(z\right)-z^{k_{0} }  \sum\limits _{k=0}^{k_{0} -1}x\left[k\right] z^{-k}  }
- \label{eq:5.45}
+\label{eq:5.45}
 \end{align}
 Bei der Diskussion von Systemen im z-Bereich wird sich zeigen, dass sich diese Verschiebungsregel zur Lösung von Differenzengleichungen mit Anfangsbedingungen eignet.
 
@@ -501,7 +510,7 @@ Vertauschen der Summationsreihenfolge und Substitution ergibt
 {} &=  {\sum\limits _{\kappa =0}^{\infty }x\left[\kappa \right] \sum\limits _{k=0}^{\infty }g\left[k-\kappa \right]   z^{-k}  z^{\kappa }  z^{-\kappa } } \\
 {} &=  {\sum\limits _{\kappa =0}^{\infty }x\left[\kappa \right] z^{-\kappa }  \sum\limits _{k=0}^{\infty }g\left[k-\kappa \right]   z^{-\left(k-\kappa \right)} } \\
 {} &=  {\sum\limits _{\kappa =0}^{\infty }x\left[\kappa \right] z^{-\kappa }  \sum\limits _{n=0}^{\infty }g \left[n\right] z^{-n}   =G\left(z\right) X\left(z\right)}
- \label{eq:5.70}
+\label{eq:5.70}
 \end{align}
 Diese Rechenregel wird bei der Diskussion zeitdiskreter Systeme im Bildbereich aufgegriffen.
 
@@ -682,7 +691,7 @@ Mit einigen Umformungen kann die Modulationsregel angewendet werden
 {\sum\limits _{k=0}^{\infty }x\left[k\right] y\left[k\right] z^{-k}  } &=  {\frac{1}{2 \pi  j}  \sum\limits _{k=0}^{\infty }y\left[k\right] \oint X\left(v\right) v^{-1}  \left(\frac{z}{v} \right)^{-k} {\; }dv  } \\
 {} &=  {\frac{1}{2 \pi  j}  \oint \sum\limits _{k=0}^{\infty }y\left[k\right] \left(\frac{z}{v} \right)^{-k}   X\left(v\right) v^{-1} {\; }dv } \\
 {} &=  {\frac{1}{2 \pi  j}  \oint Y\left(\frac{z}{v} \right) X\left(v\right) v^{-1} {\; }dv }
- \label{eq:5.85}
+\label{eq:5.85}
 \end{align}
 Damit ist die Multiplikationsregel hergeleitet. Wie bereits bei der inversen Laplace-Transformation wird die Definition der Rücktransformation aber in der Praxis nicht verwendet. Stattdessen wird die Funktion \(X(z)\) so umgeformt, dass bekannte Korrespondenzen genutzt werden können. Dieser Ansatz führt zur Rücktransformation über eine Partialbruchzerlegung oder über einen Potenzreihenansatz.
 
@@ -702,7 +711,7 @@ Falls der Zählergrad M und der Nennergrad N gleich groß sind, muss vor der Par
 \begin{align}
 X_{0} &= \frac{b_{M}}{a_{N}} \label{eq:5.87}
 \end{align}
-Da die inverse z-Transformierte zu einer Konstanten die Impulsfolge ist, entspricht diesem Summanden im Zeitbereich der Folgenwert für k = 0
+Da die inverse z-Transformierte zu einer Konstanten die Impulsfolge ist, entspricht diesem Summanden im Zeitbereich der Folgenwert für \(k = 0\)
 \begin{align}
 x[ k] &= \frac{b_{M}}{a_{N}}  \delta[ k] \label{eq:5.88}
 \end{align}

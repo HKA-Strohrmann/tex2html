@@ -14,7 +14,7 @@ Differenzengleichungen beschreiben das Verhalten zeitdiskreter Systeme ähnlich,
 
 \begin{figure}
   \centering
-  \includesvg{new media/6_1_verfahren_zur_lsung_von_differen.svg}
+  \includesvg{new_media/6_1_verfahren_zur_lsung_von_differen.svg}
   \caption{Verfahren zur Lösung von Differenzengleichungen mit der z-Transformation}
   \label{fig:6.1}
 \end{figure}
@@ -72,7 +72,7 @@ y[ k] &= \left( ( - GF)  GF^{k}  \sigma[ k] + \sigma[ k] \right)  U_{0} = \left(
 Ein Vergleich mit der über die Faltungssumme berechneten Systemantwort in Bild \ref{fig:6.2} zeigt identische Ausgangssignale.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung (\(U_{0} = 1\))}]{new media/6_2_ausgangssignal_eines_rekursiven.png}
+  \includegraphics[width=\maximagewidth, alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung (\(U_{0} = 1\))}]{new_media/6_2_ausgangssignal_eines_rekursiven.png}
   \captionof{figure}{Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung (\(U_{0} = 1\))}
   \label{fig:6.2}
 \end{fixedfigure}
@@ -125,10 +125,8 @@ y[ k] &= \left( 1 - GF^{k + 1} \right)  U_{0}  \sigma[ k] + y[ 0]  GF^{k}  \sigm
 Die Anfangsbedingung klingt ähnlich wie im zeitkontinuierlichen Bereich exponentiell ab. Bild \ref{fig:6.3} stellt die beiden Signalanteile dar.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8\\
-bei einem Eingangssprung und Anfangsbedingung \(y[0]\) = 2}]{new media/6_3_ausgangssignal_eines_rekursiven.png}
-  \captionof{figure}{Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8\\
-bei einem Eingangssprung und Anfangsbedingung \(y[0]\) = 2}
+  \includegraphics[width=\maximagewidth, alt={Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung und Anfangsbedingung \(y[0]\) = 2}]{new_media/6_3_ausgangssignal_eines_rekursiven.png}
+  \captionof{figure}{Ausgangssignal eines rekursiven Tiefpasses mit GF = 0.8 bei einem Eingangssprung und Anfangsbedingung \(y[0]\) = 2}
   \label{fig:6.3}
 \end{fixedfigure}
 
@@ -326,10 +324,8 @@ h\left( k  T_{A} \right) \approx h[ k]  T_{A} &= \qty{2}{\milli\second}  \frac{1
 Die Impuls- und Sprungantworten sind in Bild \ref{fig:6.4} dargestellt.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems\\
-mit identischen Impulsantworten \(g[k]\) = g(kT\textsubscript{A})}]{new media/6_4_vergleich_der_sprungantworten_ei.png}
-  \captionof{figure}{Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems\\
-mit identischen Impulsantworten \(g[k]\) = g(kT\textsubscript{A})}
+  \includegraphics[width=\maximagewidth, alt={Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems mit identischen Impulsantworten \(g[k]\) = g(kT\textsubscript{A})}]{new_media/6_4_vergleich_der_sprungantworten_ei.png}
+  \captionof{figure}{Vergleich der Sprungantworten eines zeitdiskreten und eines zeitkontinuierlichen Systems mit identischen Impulsantworten \(g[k]\) = g(kT\textsubscript{A})}
   \label{fig:6.4}
 \end{fixedfigure}
 
@@ -363,7 +359,7 @@ Es ergibt sich die in Bild \ref{fig:6.5} gezeigte kanonische Darstellungsform vo
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}]{new media/6_5_kanonisches_blockschaltbild_eine.pdf}
+  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich},keepaspectratio]{new_media/6_5_kanonisches_blockschaltbild_eine.pdf}
   \caption{Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}
   \label{fig:6.5}
 \end{figure}
@@ -392,7 +388,7 @@ Y(z) &= U(z) + \left( 4  U(z) - 3  Y(z) - 2  Y(z)  z^{- 1} \right)  z^{- 1}
 Bild \ref{fig:6.6} zeigt die kanonische Darstellungsform des Systems mit Speichergliedern.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Kanonisches Blockschaltbild Systems mit der Differenzengleichung \eqref{eq:6.55}}]{new media/6_6_kanonisches_blockschaltbild_syst.pdf}
+  \includegraphics[alt={Kanonisches Blockschaltbild Systems mit der Differenzengleichung \eqref{eq:6.55}},keepaspectratio]{new_media/6_6_kanonisches_blockschaltbild_syst.pdf}
   \captionof{figure}{Kanonisches Blockschaltbild Systems mit der Differenzengleichung \eqref{eq:6.55}}
   \label{fig:6.6}
 \end{fixedfigure}
@@ -438,7 +434,7 @@ und Auflösen nach \(Y(s)\) führt mit \(c_{0} = 1\) zu dem Ausdruck
 \begin{align}
 {Y\left(s\right)} &=  {U\left(s\right) \sum\limits _{l=0}^{N}d_{l}  s^{-l}  -Y\left(s\right) \sum\limits _{n=1}^{N}c_{n}  s^{-n}  } \\
 {} &=  {\sum\limits _{l=0}^{N}d_{l}  U\left(s\right) s^{-l}  -\sum\limits _{n=1}^{N}c_{n}  Y\left(s\right) s^{-n}  }
- \label{eq:6.66}
+\label{eq:6.66}
 \end{align}
 Um die Integrierer zusammenfassen zu können, wird die erste Summe zerlegt.
 \begin{align}
@@ -452,7 +448,7 @@ Es ergibt sich die in Bild \ref{fig:6.7} gezeigte kanonische Darstellungsform vo
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}]{new media/6_7_kanonisches_blockschaltbild_eine.pdf}
+  \includegraphics[alt={Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich},keepaspectratio]{new_media/6_7_kanonisches_blockschaltbild_eine.pdf}
   \caption{Kanonisches Blockschaltbild eines linearen, zeitinvarianten Systems im zeitkontinuierlichen Bereich}
   \label{fig:6.7}
 \end{figure}
@@ -487,7 +483,7 @@ X(s) &= \frac{1}{m}  \left( \frac{1}{s^{2}}  F_{E}(s) - \frac{D}{s}  X(s) - \fra
 Es ergibt sich das in Bild \ref{fig:6.8} dargestellte kanonische Blockschaltbild.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Kanonisches Blockschaltbild eines Feder-Masse-Dämpfer-Systems}]{new media/6_8_kanonisches_blockschaltbild_eine.pdf}
+  \includegraphics[alt={Kanonisches Blockschaltbild eines Feder-Masse-Dämpfer-Systems},keepaspectratio]{new_media/6_8_kanonisches_blockschaltbild_eine.pdf}
   \captionof{figure}{Kanonisches Blockschaltbild eines Feder-Masse-Dämpfer-Systems}
   \label{fig:6.8}
 \end{fixedfigure}
@@ -543,7 +539,7 @@ auf. Sie besitzt die Nullstellen \(β_{1}\) = - 1.5 und \(β_{2} = 0\), sowie di
 \(α_{2} = 0.5\). Es ergibt sich das in Bild \ref{fig:6.9} dargestellte Pol-Nullstellen-Diagramm.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Pol-Nullstellen-Diagramm des Systems aus Gleichung \eqref{eq:6.77}}]{new media/6_9_polnullstellendiagramm_des_syste.png}
+  \includegraphics[alt={Pol-Nullstellen-Diagramm des Systems aus Gleichung \eqref{eq:6.77}},width=3.14961in,height=2.24803in]{new_media/6_9_polnullstellendiagramm_des_syste.png}
   \captionof{figure}{Pol-Nullstellen-Diagramm des Systems aus Gleichung \eqref{eq:6.77}}
   \label{fig:6.9}
 \end{fixedfigure}
@@ -597,7 +593,7 @@ ist von dem zukünftigen Wert \(u[k+1]\) abhängig, das System ist damit nicht k
 
 \subsection{Übertragungsfunktion mit Zählergrad M gleich Nennergrad N}\label{sec:uxfcbertragungsfunktion-mit-zuxe4hlergrad-m-gleich-nennergrad-n}
 
-Für kausale Systeme ist der Zählergrad M der Übertragungsfunktion kleiner oder gleich dem Nennergrad N. Für den Fall \(M = N\) muss vor der Partialbruchzerlegung eine Polynomdivision durchgeführt werden. Dadurch entsteht im Ausdruck für die Übertragungsfunktion \(G(z)\) ein konstanter Summand. Da die inverse z-Transformierte zu einer Konstanten die Impulsfolge \(δ[k]\) ist, entspricht diesem Summand im Zeitbereich der Folgenwert für k = 0
+Für kausale Systeme ist der Zählergrad M der Übertragungsfunktion kleiner oder gleich dem Nennergrad N. Für den Fall \(M = N\) muss vor der Partialbruchzerlegung eine Polynomdivision durchgeführt werden. Dadurch entsteht im Ausdruck für die Übertragungsfunktion \(G(z)\) ein konstanter Summand. Da die inverse z-Transformierte zu einer Konstanten die Impulsfolge \(δ[k]\) ist, entspricht diesem Summand im Zeitbereich der Folgenwert für \(k = 0\)
 \begin{align}
 g[ k &= 0] = \frac{b_{M}}{a_{N}} \label{eq:6.87}
 \end{align}
@@ -655,7 +651,7 @@ g[ k] &= g_{1}[ k] + g_{2}[ k] = 2  0.5^{k - 1}  \sigma[ k - 1] + 1.5^{k - 1}  \
 In Bild \ref{fig:6.10} sind die Lage der Pole und Nullstelle sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Lage der Pol- und Nullstellen sowie und Impulsantwort bei einfachen reellen Polen}]{new media/6_10_lage_der_pol_und_nullstellen_so.png}
+  \includegraphics[width=\maximagewidth, alt={Lage der Pol- und Nullstellen sowie und Impulsantwort bei einfachen reellen Polen}]{new_media/6_10_lage_der_pol_und_nullstellen_so.png}
   \captionof{figure}{Lage der Pol- und Nullstellen sowie und Impulsantwort bei einfachen reellen Polen}
   \label{fig:6.10}
 \end{fixedfigure}
@@ -707,7 +703,7 @@ g[ k] &= g_{1}[ k] + g_{2}[ k] = ( - 0.5)^{k - 1}  \sigma[ k - 1] - (k - 1)  ( -
 In Bild \ref{fig:6.11} sind die Lage der Nullstelle und Pole sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei mehrfachem reellem Pol}]{new media/6_11_lage_der_nullstelle_und_pole_so.png}
+  \includegraphics[width=\maximagewidth, alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei mehrfachem reellem Pol}]{new_media/6_11_lage_der_nullstelle_und_pole_so.png}
   \captionof{figure}{Lage der Nullstelle und Pole sowie die Impulsantwort bei mehrfachem reellem Pol}
   \label{fig:6.11}
 \end{fixedfigure}
@@ -735,7 +731,7 @@ auf. Damit das System reelle Koeffizienten \(a_{n}\) und \(b_{m}\) besitzt, müs
 {g\left[k\right]} &=  {A e^{j \varphi _{A} }  \left(r e^{j \varphi } \right)^{k-1}  \sigma \left[k-1\right]+A e^{-j \varphi _{A} }  \left(r e^{-j \varphi } \right)^{k-1}  \sigma \left[k-1\right]} \\
 {} &=  {A r^{k-1} \left(e^{j \varphi _{A} }  e^{j \varphi  \left(k-1\right)} +e^{-j \varphi _{A} }  e^{-j \varphi  \left(k-1\right)} \right) \sigma \left[k-1\right]} \\
 {} &=  {\qty{2}{\ampere} r^{k-1}  \cos \left(\varphi  \left(k-1\right)+\varphi _{A} \right) \sigma \left[k-1\right]}
- \label{eq:6.105}
+\label{eq:6.105}
 \end{align}
 Die Folge ist eine gedämpfte harmonische Folge. Die Phasenlage ϕ des Polpaares definiert, mit welcher Frequenz die Folge schwingt. Der Betrag der Pole r ist für das Abfallen beziehungsweise Ansteigen der Amplitude verantwortlich. Die Koeffizienten A und A* bestimmen über die Amplitude und Phasenlage der Impulsantwort. Die Impulsantwort ist wieder unendlich lang, es handelt sich also erwartungsgemäß um ein IIR-System.
 
@@ -753,7 +749,7 @@ g[ k] &= 2  \sqrt{2}  \left( \frac{1}{\sqrt{2}} \right)^{k - 1}  \cos\left( \fra
 In Bild \ref{fig:6.12} sind die Lage der Pole und Nullstelle sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei konjugiert komplexem Polpaar}]{new media/6_12_lage_der_nullstelle_und_pole_so.png}
+  \includegraphics[width=\maximagewidth, alt={Lage der Nullstelle und Pole sowie die Impulsantwort bei konjugiert komplexem Polpaar}]{new_media/6_12_lage_der_nullstelle_und_pole_so.png}
   \captionof{figure}{Lage der Nullstelle und Pole sowie die Impulsantwort bei konjugiert komplexem Polpaar}
   \label{fig:6.12}
 \end{fixedfigure}
@@ -790,7 +786,7 @@ g[ k] &= \frac{1}{9}  \delta[ k] + \frac{2}{9}  \delta[ k - 1] + \frac{3}{9}  \d
 Die Werte der Impulsantwort sind identisch zu den Koeffizienten des Filters. In Bild \ref{fig:6.13} sind die Lage der Pole und Nullstellen sowie die Impulsantwort des Systems dargestellt.
 
 \begin{fixedfigure}
-  \includegraphics[alt={Pollage und Impulsantwort bei Polen im Koordinatenursprung}]{new media/6_13_pollage_und_impulsantwort_bei_p.png}
+  \includegraphics[width=\maximagewidth, alt={Pollage und Impulsantwort bei Polen im Koordinatenursprung}]{new_media/6_13_pollage_und_impulsantwort_bei_p.png}
   \captionof{figure}{Pollage und Impulsantwort bei Polen im Koordinatenursprung}
   \label{fig:6.13}
 \end{fixedfigure}
@@ -817,7 +813,7 @@ Die Nullstellen der Übertragungsfunktion \(G_{1}(z)\) werden zu Polen der inver
 
 \begin{figure}
   \centering
-  \includegraphics[alt={Pollage für ein invertierbares und ein nicht invertierbares System}]{new media/6_14_pollage_fr_ein_invertierbares_u.png}
+  \includegraphics[width=\maximagewidth, alt={Pollage für ein invertierbares und ein nicht invertierbares System}]{new_media/6_14_pollage_fr_ein_invertierbares_u.png}
   \caption{Pollage für ein invertierbares und ein nicht invertierbares System}
   \label{fig:6.14}
 \end{figure}
@@ -863,12 +859,12 @@ Zählergrad M = Nennergrad N \\
     \toprule
     Pollage & Impulsantwort \\
     \midrule
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/6_15_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new media/6_16_zusammenhang_zwischen_pollage_u.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/6_17_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Rechteck, Design enthält. Automatisch generierte Beschreibung}]{new media/6_18_zusammenhang_zwischen_pollage_u.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new media/6_19_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot enthält. Automatisch generierte Beschreibung}]{new media/6_20_zusammenhang_zwischen_pollage_u.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new media/6_21_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Screenshot, Reihe, Rechteck, Diagramm enthält. Automatisch generierte Beschreibung}]{new media/6_22_zusammenhang_zwischen_pollage_u.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Kreis, Screenshot enthält. Automatisch generierte Beschreibung}]{new media/6_23_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/6_24_zusammenhang_zwischen_pollage_u.png} \\
-    \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Diagramm, Screenshot, Kreis enthält. Automatisch generierte Beschreibung}]{new media/6_25_zusammenhang_zwischen_pollage_u.png} & \includegraphics[width=1.9685in,height=1.31102in,alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new media/6_26_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/6_15_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Screenshot, Reihe enthält. Automatisch generierte Beschreibung}]{new_media/6_16_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Kreis, Screenshot, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/6_17_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Screenshot, Reihe, Rechteck, Design enthält. Automatisch generierte Beschreibung}]{new_media/6_18_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new_media/6_19_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Reihe, Screenshot enthält. Automatisch generierte Beschreibung}]{new_media/6_20_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Kreis enthält. Automatisch generierte Beschreibung}]{new_media/6_21_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Screenshot, Reihe, Rechteck, Diagramm enthält. Automatisch generierte Beschreibung}]{new_media/6_22_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Diagramm, Kreis, Screenshot enthält. Automatisch generierte Beschreibung}]{new_media/6_23_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Reihe, Diagramm, Screenshot, Rechteck enthält. Automatisch generierte Beschreibung}]{new_media/6_24_zusammenhang_zwischen_pollage_u.png} \\
+    \includegraphics[alt={Ein Bild, das Reihe, Diagramm, Screenshot, Kreis enthält. Automatisch generierte Beschreibung}]{new_media/6_25_zusammenhang_zwischen_pollage_u.png} & \includegraphics[alt={Ein Bild, das Reihe, Screenshot, Diagramm, Rechteck enthält. Automatisch generierte Beschreibung}]{new_media/6_26_zusammenhang_zwischen_pollage_u.png} \\
     \bottomrule
   \end{tabular}
 \end{table}
