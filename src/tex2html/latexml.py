@@ -31,7 +31,7 @@ class LaTeXMLOutput:
 def convert_latex_to_html(input_file: Path, output_file: Path, splitat: str) -> LaTeXMLOutput:
     """Convert LaTeX file to HTML using LaTeXML."""
     log_path = output_file.with_suffix(".log").resolve()
-    ui.console.print(f"Logfile is at '{log_path}'.")
+    ui.console.print(f"Logs are written to '{log_path}'.")
 
     # Build LaTeXML command
     latexml_config = [

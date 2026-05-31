@@ -7,7 +7,7 @@ from .postprocess import fix_html_paths
 
 from . import ui
 from .latexml import convert_latex_to_html, LaTeXMLOutput
-from .embedding import generate_mdx_from_html
+from .embedding import generate_mdx_from_html_files
 
 
 app = typer.Typer(
@@ -44,12 +44,18 @@ def main(
         ui.console.print(f"Cleared output directory '{output_dir}'.")    
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    mdx_dir = output_dir.parent / "mdx"
+    if mdx_dir.exists():
+        shutil.rmtree(mdx_dir, ignore_errors=True)
+        ui.console.print(f"Cleared output directory '{mdx_dir}'.")
+
 
     try:
-        # replace_documentclass(input_path)
         result: LaTeXMLOutput = convert_latex_to_html(input_path, output_path, splitat)
 
         fix_html_paths(output_path)
+        html_files = sorted(output_dir.glob("*.html"))
+        generate_mdx_from_html_files(html_files, mdx_directory=mdx_dir)
         
         if result.is_fatal:
             return typer.Exit(code=result.returncode if result.returncode > 0 else 1)

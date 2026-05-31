@@ -144,3 +144,4 @@ uv tool upgrade tex2html
 - --whatsout=fragment for embedding in other pages?
 - --javascript=LaTeXML-maybeMathJax.js: The LaTeXML-maybeMathJax.js script loads MathJax for browsers without native MathML support, as a fallback rendering solution.
 - babel does not work, figure captions will not render in german. maybe pin babel version to fix?
+- dont wipe the full html folder every run, only the affected files. 
