@@ -16,7 +16,7 @@ app = typer.Typer(
 )
 
 import importlib.metadata
-__version__ = importlib.metadata.version('tex2html')
+__version__ = importlib.metadata.version('tex2mdx')
 def version_callback(value: bool):
     if value:
         print(f"Current Version: {__version__}")

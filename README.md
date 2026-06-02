@@ -1,4 +1,4 @@
-# tex2html Conversion Tool
+# tex2mdx Conversion Tool
 
 Converts your LaTeX documents to HTML via [LaTeXML](https://github.com/brucemiller/latexml).
 
@@ -75,10 +75,10 @@ inkscape --version
 Uv handles python dependencies, virtual environments and script execution. To install the project, run the following commands:
 
 ```bash
-git clone https://github.com/HKA-Strohrmann/tex2html.git
-cd tex2html
+git clone https://github.com/HKA-Strohrmann/tex2mdx.git
+cd tex2mdx
 uv sync
-uv tool install . # makes tex2html available anywhere
+uv tool install . # makes tex2mdx available anywhere
 ```
 
 ## Usage
@@ -86,14 +86,14 @@ uv tool install . # makes tex2html available anywhere
 To convert a LaTeX file to HTML, run the following command:
 
 ```bash
-tex2html "myfile.tex" --output-file "html/myfile.html"
+tex2mdx "myfile.tex" --output-file "html/myfile.html"
 start "html/myfile.html" # opens in default browser
 ```
 
 A detailed list of options can be found by running:
 
 ```bash
-tex2html --help
+tex2mdx --help
 ```
 
 ## Testing
@@ -101,19 +101,19 @@ tex2html --help
 To test changes locally, synchronize your test assets and run the parser:
 
 ```powershell
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\chapters" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\new_media" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\combined.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
-copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\titlepage.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2html\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\chapters" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2mdx\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\new_media" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2mdx\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\combined.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2mdx\test" -recurse -force
+copy-item "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\doc2tex\test\skript\titlepage.tex" -destination "C:\Users\Jax\Coding\Strohrmann-Lecture-Platform\tex2mdx\test" -recurse -force
 
 
 cd test
 
-uv run tex2html "combined.tex" --output-file "html/combined.html"
+uv run tex2mdx "combined.tex" --output-file "html/combined.html"
 start "html/combined.html"
 
 # or
-uv run tex2html "test.tex" --output-file "html/test.html"
+uv run tex2mdx "test.tex" --output-file "html/test.html"
 start "html/test.html"
 ```
 
@@ -142,7 +142,7 @@ git tag -a "v$version" -m "Release v$version"
 git push --tags
 
 uv tool install .
-uv tool upgrade tex2html
+uv tool upgrade tex2mdx
 ```
 
 ## To Do

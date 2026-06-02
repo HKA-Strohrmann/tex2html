@@ -5,7 +5,7 @@ from typing import Iterable
 
 from bs4 import BeautifulSoup
 
-from tex2html import ui
+from tex2mdx import ui
 
 DEFAULT_TITLE = "My LaTeX Document"
 DEFAULT_SIDEBAR_POSITION = 1

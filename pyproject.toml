@@ -1,5 +1,5 @@
 [project]
-name = "tex2html"
+name = "tex2mdx"
 version = "0.1.2"
 description = "Add your description here"
 readme = "README.md"
@@ -10,14 +10,14 @@ dependencies = [
 ]
 
 [project.scripts]
-tex2html = "tex2html.main:app"
+tex2mdx = "tex2mdx.main:app"
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-package-data = { tex2html = ["assets/**/*"] }
+package-data = { tex2mdx = ["assets/**/*"] }
 
 [tool.uv]
 package = true

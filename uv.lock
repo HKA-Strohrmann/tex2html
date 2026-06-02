@@ -119,7 +119,7 @@ wheels = [
 ]
 
 [[package]]
-name = "tex2html"
+name = "tex2mdx"
 version = "0.1.2"
 source = { editable = "." }
 dependencies = [
