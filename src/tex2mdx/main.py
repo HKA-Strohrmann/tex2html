@@ -2,10 +2,10 @@ from pathlib import Path
 import shutil
 import typer
 from typing import Annotated
-
-from .postprocess import fix_html_paths
+import webbrowser
 
 from . import ui
+from .postprocess import fix_html_paths
 from .latexml import convert_latex_to_html, LaTeXMLOutput
 from .embedding import generate_mdx_from_html_files
 
@@ -55,14 +55,19 @@ def main(
 
         fix_html_paths(output_path)
         html_files = sorted(output_dir.glob("*.html"))
+        
         generate_mdx_from_html_files(html_files, mdx_directory=mdx_dir)
         
         if result.is_fatal:
             return typer.Exit(code=result.returncode if result.returncode > 0 else 1)
+        
+        ui.console.print(f"Opening html file {output_path.resolve()} in web browser...")
+        webbrowser.open(output_path.resolve().as_uri())
             
         # Return 0 to the OS even if partial results exist, because the CLI "succeeded" 
         # at its task of generating an output.
         return typer.Exit(code=0)
+    
 
     except Exception as e:
         ui.console.print(f"[bold red]Fatal Unexpected Error: {e}[/bold red]")

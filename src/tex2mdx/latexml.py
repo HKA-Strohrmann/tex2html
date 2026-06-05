@@ -12,7 +12,7 @@ LATEXML_TIMEOUT_SEC = 540
 
 # Asset paths relative to this file
 ASSETS_DIR = Path(__file__).parent / "assets"
-CSS_PATH = ASSETS_DIR / "css" / "my_css.css"
+CSS_PATH = ASSETS_DIR / "css" / "cleanup.css"
 
 # Custom LaTeXML bindings
 BINDINGS_PATH = ASSETS_DIR / "bindings"
@@ -73,7 +73,7 @@ def convert_latex_to_html(input_file: Path, output_file: Path, splitat: str) -> 
                 ui.console.print(f"[dim]{result.stderr.strip()}[/dim]")
 
             if returncode == 0:
-                ui.console.print(f"[bold green]Successfully written LaTeXML conversion to '{output_file}'[/bold green]")
+                ui.console.print(f"Successfully written LaTeXML conversion to '{output_file}'.")
             else:
                 ui.console.print(f"[bold red]LaTeXML encountered errors (Exit code {returncode})[/bold red]")
                 is_fatal = True

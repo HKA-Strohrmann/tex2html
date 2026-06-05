@@ -1,6 +1,6 @@
 # tex2mdx Conversion Tool
 
-Converts your LaTeX documents to HTML via [LaTeXML](https://github.com/brucemiller/latexml).
+Converts your LaTeX documents to HTML via [LaTeXML](https://github.com/brucemiller/latexml). THe files are then post-processed to be compatible with the [MDX format](https://mdxjs.com/) and styled with custom CSS. The resulting HTML files can be used in any web application, but are primarily designed for use in our [Strohrmann Lecture Platform](https://github.com/HKA-Strohrmann/strohrmann-lecture-platform).
 
 The underlying invocation commands and custom CSS/JavaScript files are based on the [arXiv-view-as-html](https://github.com/arXiv/arxiv-view-as-html) pipeline. Check out their [official blog post](https://arxiv.org/html/2402.08954v1) for more details.
 
@@ -151,3 +151,4 @@ uv tool upgrade tex2mdx
 - --javascript=LaTeXML-maybeMathJax.js: The LaTeXML-maybeMathJax.js script loads MathJax for browsers without native MathML support, as a fallback rendering solution.
 - babel does not work, figure captions will not render in german. maybe pin babel version to fix?
 - dont wipe the full html folder every run, only the affected files. 
+- update module to explicitly export mdx files. html files are a temp resource and can be used for quick validation.
